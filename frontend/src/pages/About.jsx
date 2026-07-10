@@ -34,7 +34,7 @@ function TeamCard({ person, size = "lg", i = 0 }) {
             href={person.linkedin}
             target="_blank" rel="noreferrer"
             aria-label={`${person.name} on LinkedIn`}
-            className="absolute bottom-4 right-4 h-9 w-9 rounded-full bg-brand-blue text-white grid place-items-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+            className="absolute bottom-4 right-4 h-9 w-9 rounded-full bg-brand-blue text-white grid place-items-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 shadow-lg shadow-brand-blue/40"
             data-testid={`team-linkedin-${person.name.toLowerCase().replace(/\s+/g, "-")}`}
           >
             <Linkedin className="h-4 w-4" />
@@ -219,3 +219,4 @@ export default function About() {
     </div>
   );
 }
+
