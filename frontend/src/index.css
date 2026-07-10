@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Living Intelligence tokens */
+  --bg-dark:            #0A0F1E;
+  --bg-dark-2:          #0F172A;
+  --bg-light:           #F8FAFC;
+  --bg-card-light:      #FFFFFF;
+  --text-primary-dark:  #0F172A;
+  --text-primary-light: #F1F5F9;
+  --text-muted:         #64748B;
+  --border-subtle:      rgba(148,163,184,0.15);
+  --brand-blue:         #2563EB;
+  --brand-blue-light:   #60A5FA;
+
+  /* Per-page accent (default = brand-blue). Overridden on product/solution pages via <html data-accent="green">. */
+  --accent:       #2563EB;
+  --accent-light: #60A5FA;
+  --accent-grad:  linear-gradient(135deg, #2563EB 0%, #60A5FA 100%);
+
+  /* Radix / shadcn compat */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 5%;
+  --border: 214 20% 88%;
+}
+
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html, body, #root { min-height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary-light);
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+}
+
+::selection { background: var(--brand-blue); color: #fff; }
+
+.font-display { font-family: 'Geist Sans', 'Inter', system-ui, sans-serif; letter-spacing: -0.02em; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* ---------- Grid overlays ---------- */
+.grid-bg-dark {
+  background-image:
+    linear-gradient(rgba(148,163,184,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,184,0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 82%);
+}
+.grid-bg-light {
+  background-image:
+    linear-gradient(rgba(15,23,42,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,23,42,0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 84%);
+}
+
+/* ---------- Glassmorphism ---------- */
+.glass-dark {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+.glass-strong {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+}
+.glass-light {
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(15,23,42,0.06);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+/* ---------- Ambient aurora ---------- */
+.aurora {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(45% 45% at 20% 30%, rgba(37,99,235,0.28), transparent 60%),
+    radial-gradient(38% 38% at 82% 25%, rgba(96,165,250,0.22), transparent 60%),
+    radial-gradient(48% 48% at 60% 80%, rgba(37,99,235,0.16), transparent 65%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+.aurora-accent {
+  position: absolute; inset: -20%;
+  background:
+    radial-gradient(45% 45% at 25% 35%, color-mix(in oklab, var(--accent) 30%, transparent), transparent 60%),
+    radial-gradient(40% 40% at 78% 25%, color-mix(in oklab, var(--accent-light) 25%, transparent), transparent 60%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+/* ---------- Text gradients ---------- */
+.text-gradient-brand {
+  background: linear-gradient(120deg, #FFFFFF 0%, #C7D9FF 40%, #60A5FA 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.text-gradient-accent {
+  background: var(--accent-grad);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.text-gradient-dark {
+  background: linear-gradient(120deg, #0F172A 0%, var(--brand-blue) 60%, var(--brand-blue-light) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  background: var(--brand-blue);
+  color: #fff; font-weight: 600; font-size: 0.95rem;
+  box-shadow: 0 10px 40px -12px rgba(37,99,235,0.55), inset 0 1px 0 rgba(255,255,255,0.18);
+  transition: transform 0.25s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.25s ease, background 0.25s ease;
+}
+.btn-primary:hover { transform: translateY(-2px); background: color-mix(in oklab, var(--brand-blue) 90%, #fff); box-shadow: 0 18px 50px -12px rgba(37,99,235,0.6); }
+
+.btn-accent {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  background: var(--accent-grad);
+  color: #fff; font-weight: 600; font-size: 0.95rem;
+  box-shadow: 0 12px 40px -12px color-mix(in oklab, var(--accent) 60%, transparent), inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: transform 0.25s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.25s ease;
+}
+.btn-accent:hover { transform: translateY(-2px); box-shadow: 0 20px 50px -12px color-mix(in oklab, var(--accent) 55%, transparent); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  color: var(--text-primary-light); font-weight: 500; font-size: 0.95rem;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.03);
+  transition: all 0.25s ease;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: var(--accent); }
+
+.btn-ghost-light {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  color: var(--text-primary-dark); font-weight: 500; font-size: 0.95rem;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: rgba(255,255,255,0.6);
+  transition: all 0.25s ease;
+}
+.btn-ghost-light:hover { border-color: var(--brand-blue); background: #fff; }
+
+/* ---------- Chips ---------- */
+.chip {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(96,165,250,0.08);
+  border: 1px solid rgba(96,165,250,0.25);
+  color: #93C5FD;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.chip-accent {
+  background: color-mix(in oklab, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--accent) 32%, transparent);
+  color: var(--accent-light);
+}
+.chip-light {
+  background: rgba(37,99,235,0.06);
+  border: 1px solid rgba(37,99,235,0.20);
+  color: var(--brand-blue);
+}
+
+/* ---------- Tilt card hover (site-wide 3D micro-tilt) ---------- */
+.tilt {
+  transition: transform 0.35s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.35s ease, border-color 0.35s ease;
+  transform: perspective(1000px) rotateX(0) rotateY(0);
+}
+.tilt:hover {
+  transform: perspective(1000px) translateY(-4px);
+  box-shadow: 0 30px 60px -25px rgba(0,0,0,0.55);
+  border-color: rgba(96,165,250,0.35);
+}
+
+.card-lift { transition: transform 0.35s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.35s ease, border-color 0.35s ease; }
+.card-lift:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -25px rgba(0,0,0,0.55); border-color: color-mix(in oklab, var(--accent) 35%, transparent); }
+
+/* ---------- Marquee mask ---------- */
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+
+/* ---------- Custom scrollbar ---------- */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand-blue); }
+
+/* ---------- Focus ---------- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---------- Duotone image treatments ---------- */
+.duotone-blue img,
+img.duotone-blue {
+  filter: grayscale(100%) contrast(105%) brightness(80%) sepia(20%) hue-rotate(190deg) saturate(240%);
+}
+
+/* ---------- Section rhythm helpers ---------- */
+.section-dark  { background: var(--bg-dark);  color: var(--text-primary-light); }
+.section-dark2 { background: var(--bg-dark-2); color: var(--text-primary-light); }
+.section-light { background: var(--bg-light); color: var(--text-primary-dark); }

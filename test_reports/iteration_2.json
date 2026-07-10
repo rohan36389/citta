@@ -1,0 +1,36 @@
+{
+  "summary": "Frontend-only E2E testing of CittaAI v2 rebuild. Tested Home (hero 3D canvas + all 11 sections), Products (WhatsApp, Influencer), Solutions (all 6 with accent color verification), Recognition, Case Studies, About (team + counters), Contact (form submit), Services (+ SubPage), navbar dropdowns, mobile menu, keyboard focus, back-to-top. NO console/runtime errors on any page. 3D hero renders correctly with node network + connecting lines + data packets. All 7 team photos, 3 badges and logos load with HTTP 200. Accent color CSS variables switch correctly across products/solutions (green/purple/blue/indigo/pink/teal/violet/cyan). Content matches /data/content.js verbatim.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "BackToTop", "issue": "Fixed 'Back to top' button (bottom-6 right-6, z-40) is overlapped by the 'Made with Emergent' badge in the same corner — Playwright reports the badge intercepts pointer events, so real users likely cannot click Back-to-top. Move BackToTop up (e.g., bottom-20 / bottom-24) or shift left so it does not sit under the Emergent badge.", "selector": "[data-testid=\"back-to-top\"]", "priority": "MEDIUM"},
+      {"component": "About TeamCard hover LinkedIn", "issue": "On hover of Akhil Reddy / Aravind Reddy card, the LinkedIn icon <a data-testid=team-linkedin-*> transitions from opacity 0 to ~0.31 (not fully opaque). Icon is barely visible on hover; recommend opacity 1 (or at least 0.9) on group-hover for clear affordance. Also both LinkedIn hrefs are set to '#' placeholder in content.js — should point to real profiles or be removed.", "selector": "[data-testid=\"team-linkedin-akhil-reddy\"], [data-testid=\"team-linkedin-aravind-reddy\"]", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "About /about (mobile 390px)", "issues": ["Team grid uses 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4' → at 390px it stacks in ONE column. Review spec expects 2 columns on mobile. Consider 'grid-cols-2 md:grid-cols-2 lg:grid-cols-4' for a 2-up mobile team grid."]},
+      {"screen": "Hero (Home)", "issues": ["Hero H1 wraps across 3 lines on 1920 desktop with the 3D orb overlapping the last letters slightly (visible in screenshot). Consider a max-w or lg:col-span layout so title does not overlap the 3D canvas ambient orb visually."]}
+    ]
+  },
+  "test_report_links": ["/app/test_reports/iteration_2.json"],
+  "action_items": [
+    "Move BackToTop off the 'Made with Emergent' corner (change from bottom-6 right-6 to something like bottom-24 right-6 or bottom-6 left-6) so it is actually clickable in production.",
+    "Fix About team LinkedIn hover: increase opacity to ~1.0 on group hover and replace href '#' with real LinkedIn URLs (or remove the icon if URLs are not available).",
+    "Optional (design polish): make About /about team grid 2 columns on mobile (390px) per review spec.",
+    "Optional: prevent H1 text/3D orb visual overlap on large desktops."
+  ],
+  "critical_code_review_comments": [
+    "PSPage sets document.documentElement CSS vars (--accent, --accent-light, --accent-grad) on mount and cleans up on unmount — works correctly, but if the user visits two PS pages back-to-back, briefly the vars are removed then reapplied. Consider setting them synchronously in a layout effect to avoid a 1-frame flash of default color.",
+    "BackToTop click uses window.scrollTo with smooth behavior — this fails Playwright click due to Emergent badge overlay. In production this is a visible UX collision on every page after 600px scroll.",
+    "content.js linkedin values are '#' placeholder for Akhil / Aravind — real production release should either remove or fill real URLs; leaving '#' will scroll to top when clicked.",
+    "Contact form submission is client-side only (mocked success). This is expected per problem statement (no backend). Ensure form values are validated before showing success — briefly verified form has required attrs; success message renders regardless of validity if bypassed."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (frontend-only)", "frontend": "94%"},
+  "test_credentials": "N/A",
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Site is fully rendered from /app/frontend/src/data/content.js. No backend endpoints. All routes verified: /, /products/whatsapp-marketing (green), /products/influencer-marketing (purple), /solutions/{ecommerce-os(blue), real-estate-os(indigo), pharma-os(pink), smart-cities-os(teal), education-os(violet), enterprise-ai-os(cyan)}, /recognition, /case-studies, /about, /contact, /services, /services/data-engineering. Assets: /assets/brand/logo-square.png, /assets/team/*.jpg (7 photos), /assets/badges/*.png (iso, msme, startup-india) all served 200. 3D hero uses @react-three/fiber v9; renders cleanly with 46 fibonacci nodes, distance-thresholded line segments, 28 instanced pulsing packets. Zero console errors across all tested routes. Only two functional issues to fix: (a) BackToTop overlap with Emergent badge, (b) About team LinkedIn icon barely visible on hover + '#' hrefs.",
+  "rca of the issue": "BackToTop overlap: BackToTop.jsx line 24 uses className='fixed bottom-6 right-6 z-40'. The Emergent global badge is anchored bottom-right and has higher stack order in the DOM (id='emergent-badge'), so it intercepts pointer events. Reproduction: scroll any page > 600px, attempt to click the small up-arrow — badge captures click. Mitigation: change to 'bottom-24 right-6' (above badge) OR 'bottom-6 left-6'. LinkedIn hover: About.jsx group-hover styling likely uses 'opacity-30' or similar Tailwind on hover instead of 'opacity-100'; observed computed opacity = 0.306907 after hover."
+}
