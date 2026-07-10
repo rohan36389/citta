@@ -28,7 +28,7 @@ function Bars() {
   return (
     <svg viewBox="0 0 200 100" className="w-full h-16">
       {bars.map((h, i) => (
-        <rect key={i} x={i * 40 + 4} y={100 - h} width={28} height={h} fill="#60A5FA" opacity={0.35 + i * 0.15} rx="3" />
+        <rect key={`bar-${h}-${i}`} x={i * 40 + 4} y={100 - h} width={28} height={h} fill="#60A5FA" opacity={0.35 + i * 0.15} rx="3" />
       ))}
     </svg>
   );

@@ -71,7 +71,7 @@ function SkyscraperArt() {
       <rect width="400" height="500" fill="url(#sky)" />
       {/* Buildings */}
       {[[60, 200, 60, 300], [140, 120, 80, 380], [240, 60, 90, 440], [345, 180, 40, 320]].map(([x, y, w, h], i) => (
-        <g key={i}>
+        <g key={`bldg-${x}-${y}`}>
           <rect x={x} y={y} width={w} height={h} fill="url(#bldg)" stroke="#334155" strokeWidth="1" />
           {/* Windows grid */}
           {Array.from({ length: Math.floor(h / 20) }).map((_, r) => (

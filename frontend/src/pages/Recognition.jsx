@@ -22,7 +22,7 @@ function AwardArt({ variant = "trophy" }) {
         {/* Confetti */}
         {Array.from({ length: 30 }).map((_, i) => {
           const cx = (i * 37) % 400, cy = (i * 53) % 300;
-          return <circle key={i} cx={cx} cy={cy} r={i % 2 ? 2 : 1.5} fill="#60A5FA" opacity="0.4" />;
+          return <circle key={`c-${cx}-${cy}`} cx={cx} cy={cy} r={i % 2 ? 2 : 1.5} fill="#60A5FA" opacity="0.4" />;
         })}
         {/* Trophy */}
         <g transform="translate(200,145)">
@@ -55,7 +55,7 @@ function AwardArt({ variant = "trophy" }) {
       {/* Stars background */}
       {Array.from({ length: 22 }).map((_, i) => {
         const cx = (i * 71) % 400, cy = (i * 47) % 300;
-        return <circle key={i} cx={cx} cy={cy} r={1.5} fill="#60A5FA" opacity="0.35" />;
+        return <circle key={`s-${cx}-${cy}`} cx={cx} cy={cy} r={1.5} fill="#60A5FA" opacity="0.35" />;
       })}
       {/* Rosette */}
       <g transform="translate(200,140)">

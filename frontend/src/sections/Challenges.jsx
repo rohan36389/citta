@@ -23,7 +23,7 @@ function GearsIllustration() {
       <g transform="translate(160,180)">
         <g className="animate-[spin_28s_linear_infinite]" style={{ transformOrigin: "center" }}>
           {Array.from({ length: 12 }).map((_, i) => (
-            <rect key={i} x="-8" y="-115" width="16" height="30" fill="url(#gearRim)"
+            <rect key={`lg-${i}`} x="-8" y="-115" width="16" height="30" fill="url(#gearRim)"
                   transform={`rotate(${(i / 12) * 360})`} />
           ))}
           <circle r="95" fill="url(#gearGrad)" stroke="#334155" strokeWidth="2" />
@@ -35,7 +35,7 @@ function GearsIllustration() {
       <g transform="translate(300,110)">
         <g className="animate-[spin_18s_linear_reverse_infinite]" style={{ transformOrigin: "center" }}>
           {Array.from({ length: 8 }).map((_, i) => (
-            <rect key={i} x="-5" y="-58" width="10" height="18" fill="url(#gearRim)"
+            <rect key={`sm-${i}`} x="-5" y="-58" width="10" height="18" fill="url(#gearRim)"
                   transform={`rotate(${(i / 8) * 360})`} />
           ))}
           <circle r="48" fill="url(#gearGrad)" stroke="#334155" strokeWidth="1.5" />
@@ -46,7 +46,7 @@ function GearsIllustration() {
       <g transform="translate(80,300)">
         <g className="animate-[spin_22s_linear_infinite]" style={{ transformOrigin: "center" }}>
           {Array.from({ length: 6 }).map((_, i) => (
-            <rect key={i} x="-4" y="-40" width="8" height="14" fill="url(#gearRim)"
+            <rect key={`ty-${i}`} x="-4" y="-40" width="8" height="14" fill="url(#gearRim)"
                   transform={`rotate(${(i / 6) * 360})`} />
           ))}
           <circle r="32" fill="url(#gearGrad)" stroke="#334155" strokeWidth="1" />

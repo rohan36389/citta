@@ -19,7 +19,7 @@ function NodeSphere({ nodes, group }) {
   return (
     <group ref={group}>
       {nodes.map((p, i) => (
-        <mesh key={i} position={p}>
+        <mesh key={`node-${p[0].toFixed(3)}-${p[1].toFixed(3)}-${p[2].toFixed(3)}`} position={p}>
           <sphereGeometry args={[0.035, 12, 12]} />
           <meshBasicMaterial color={i % 3 === 0 ? "#60A5FA" : "#93C5FD"} />
         </mesh>

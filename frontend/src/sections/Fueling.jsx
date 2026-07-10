@@ -37,7 +37,7 @@ export default function Fueling() {
           <div className="flex gap-10 animate-marquee whitespace-nowrap py-6">
             {logos.map((name, i) => (
               <div
-                key={i}
+                key={`logo-${i}-${name}`}
                 className="shrink-0 min-w-[170px] h-16 rounded-xl border border-slate-200/70 bg-white/70 backdrop-blur grid place-items-center px-6"
                 data-testid={`fueling-logo-${i}`}
               >

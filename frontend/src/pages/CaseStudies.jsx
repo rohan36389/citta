@@ -13,7 +13,7 @@ function Bars() {
   return (
     <svg viewBox="0 0 200 90" className="w-full h-24">
       {bars.map((h, i) => (
-        <rect key={i} x={i * 40 + 4} y={90 - (h * 0.9)} width={28} height={h * 0.9} fill="#60A5FA" opacity={0.35 + i * 0.15} rx="3" />
+        <rect key={`bar-${h}-${i}`} x={i * 40 + 4} y={90 - (h * 0.9)} width={28} height={h * 0.9} fill="#60A5FA" opacity={0.35 + i * 0.15} rx="3" />
       ))}
     </svg>
   );
