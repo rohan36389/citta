@@ -3,6 +3,8 @@ import {
   BarChart3, Database, ShieldAlert, Settings, Upload, RefreshCw, Trash2, 
   CheckCircle, AlertCircle, FileText, Globe, Key, Clock, TrendingUp 
 } from "lucide-react";
+import { API_BASE_URL } from "../apiConfig";
+
 
 export default function AdminConsultant() {
   const [activeTab, setActiveTab] = useState("analytics");
@@ -24,7 +26,7 @@ export default function AdminConsultant() {
 
   const fetchStatus = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/admin/status");
+      const res = await fetch(`${API_BASE_URL}/api/admin/status`);
       const data = await res.json();
       setStatus(data);
       setProvider(data.provider || "nvidia");
@@ -36,7 +38,7 @@ export default function AdminConsultant() {
 
   const fetchAnalytics = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/admin/analytics");
+      const res = await fetch(`${API_BASE_URL}/api/admin/analytics`);
       const data = await res.json();
       setAnalytics(data);
     } catch (err) {
@@ -46,7 +48,7 @@ export default function AdminConsultant() {
 
   const fetchDocuments = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/admin/documents");
+      const res = await fetch(`${API_BASE_URL}/api/admin/documents`);
       const data = await res.json();
       setDocuments(data);
     } catch (err) {
@@ -68,7 +70,7 @@ export default function AdminConsultant() {
   const handleReindex = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/api/admin/reindex", { method: "POST" });
+      const res = await fetch(`${API_BASE_URL}/api/admin/reindex`, { method: "POST" });
       if (res.ok) {
         const data = await res.json();
         showNotification(data.message || "Website re-indexed successfully!");
@@ -90,7 +92,7 @@ export default function AdminConsultant() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/api/admin/config", {
+      const res = await fetch(`${API_BASE_URL}/api/admin/config`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -126,7 +128,7 @@ export default function AdminConsultant() {
     formData.append("title", docTitle || uploadFile.name);
 
     try {
-      const res = await fetch("http://localhost:8000/api/admin/upload", {
+      const res = await fetch(`${API_BASE_URL}/api/admin/upload`, {
         method: "POST",
         body: formData
       });
@@ -155,7 +157,7 @@ export default function AdminConsultant() {
     
     setIsLoading(true);
     try {
-      const res = await fetch(`http://localhost:8000/api/admin/documents/${encodeURIComponent(sourceName)}`, {
+      const res = await fetch(`${API_BASE_URL}/api/admin/documents/${encodeURIComponent(sourceName)}`, {
         method: "DELETE"
       });
       if (res.ok) {

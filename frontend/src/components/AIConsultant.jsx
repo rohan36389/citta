@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, Send, X, Minus, Sparkles, User, Bot, ExternalLink, ArrowRight, RefreshCw, Globe } from "lucide-react";
+import { API_BASE_URL } from "../apiConfig";
 
 // Generate or retrieve persistent Session ID
 const getSessionId = () => {
@@ -274,7 +275,7 @@ export default function AIConsultant() {
     abortControllerRef.current = controller;
 
     try {
-      const response = await fetch("http://localhost:8000/api/chat", {
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ session_id: sessionId, message: textToSend }),
@@ -436,7 +437,7 @@ export default function AIConsultant() {
       setMessages((prev) => 
         prev.map((m) => 
           m.id === botMsgId 
-            ? { ...m, text: "I encountered a connection error. Please make sure the local CittaAI Consultant backend is running on port 8000." } 
+            ? { ...m, text: "I encountered a connection error. Please verify the CittaAI backend service is operational and try again." } 
             : m
         )
       );
