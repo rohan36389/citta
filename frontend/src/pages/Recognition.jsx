@@ -102,9 +102,17 @@ export default function Recognition() {
               className="glass-strong rounded-3xl overflow-hidden grid md:grid-cols-12"
               data-testid={`award-${i}`}
             >
-              <div className="md:col-span-5 relative min-h-[280px]">
-                <AwardArt variant={i === 0 ? "trophy" : "ribbon"} />
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-950/60 to-transparent pointer-events-none" />
+              <div className="md:col-span-5 relative min-h-[280px] overflow-hidden bg-slate-950/50">
+                {a.image ? (
+                  <img
+                    src={a.image}
+                    alt={a.name}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                ) : (
+                  <AwardArt variant={i === 0 ? "trophy" : "ribbon"} />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-950/80 via-slate-950/20 to-transparent pointer-events-none" />
               </div>
               <div className="md:col-span-7 p-8 md:p-10 relative">
                 <div className="flex items-center gap-2 mb-4">

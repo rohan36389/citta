@@ -1,0 +1,79 @@
+{
+  "uuid": "14e80662-f600-5117-871e-8d25e6cb5539",
+  "id": "b2b_spices_export",
+  "type": "case_study",
+  "slug": "b2b-spices-export",
+  "name": "B2B Spices Export",
+  "title": "B2B Spices Export",
+  "tagline": "Generated 50+ tons of export inquiries in 1 month and reduced CPL by 70%.",
+  "overview": "Generate qualified export leads while reducing acquisition costs.",
+  "description": "AI-powered lead generation and performance marketing.",
+  "cta": "Read Case Study",
+  "url": "/case-studies/b2b-spices-export",
+  "search": {
+    "primary_keywords": [
+      "b2b spices export",
+      "case study"
+    ],
+    "secondary_keywords": [
+      "Lead Generation",
+      "Performance Marketing",
+      "Export",
+      "B2B"
+    ],
+    "aliases": [
+      "b2b spices export",
+      "b2b-spices-export",
+      "b2b_spices_export"
+    ],
+    "synonyms": [
+      "success story",
+      "client project"
+    ]
+  },
+  "classification": {
+    "category": "case_study",
+    "industry": "Export",
+    "domain": "CASE_STUDIES",
+    "subdomain": null
+  },
+  "target_users": [
+    "Sales Leads",
+    "Clients"
+  ],
+  "capabilities": [],
+  "workflows": [],
+  "benefits": [
+    "Export Inquiries: 50+ tons in 1 month",
+    "Cost Per Lead Reduction: 70% lower CPL"
+  ],
+  "use_cases": [
+    "Lead Generation",
+    "Performance Marketing",
+    "Export",
+    "B2B"
+  ],
+  "faq": [],
+  "relationships": [
+    {
+      "type": "related_service",
+      "target": "data_engineering"
+    },
+    {
+      "type": "related_service",
+      "target": "enterprise_agentic_ai"
+    },
+    {
+      "type": "related_service",
+      "target": "enterprise_ai_os"
+    }
+  ],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "case_studies.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "routing_order": [
+    "cache",
+    "golden_answers",
+    "business_registry",
+    "faq",
+    "hybrid_rag",
+    "fallback"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "product_name": "Smart Cities OS",
+  "tagline": "Urban Intelligence Platform",
+  "description": "AI-driven insights from IoT, mobility, utilities, and citizen data for smarter city planning. Create truly intelligent urban ecosystems.",
+  "cta": "Talk to Sales",
+  "stats": [
+    {
+      "value": "25%",
+      "label": "Traffic Reduction"
+    },
+    {
+      "value": "30%",
+      "label": "Energy Savings"
+    },
+    {
+      "value": "40%",
+      "label": "Response Time"
+    },
+    {
+      "value": "1M+",
+      "label": "Citizens Served"
+    }
+  ],
+  "section_heading": "Urban Intelligence Platform",
+  "section_subheading": "Unified city data across IoT, mobility, and utilities for smarter urban decisions.",
+  "capabilities": [
+    {
+      "title": "Unified City Data Platform",
+      "subtitle": "AI-driven insights from IoT, mobility, utilities, and citizen data",
+      "description": "Consolidate all urban data sources into a single intelligent platform.",
+      "features": [
+        "Real-time data ingestion from thousands of IoT sensors",
+        "Cross-domain data correlation and analysis",
+        "Citizen feedback and sentiment integration",
+        "Open data APIs for ecosystem integration"
+      ]
+    },
+    {
+      "title": "Smart Mobility Intelligence",
+      "subtitle": "Traffic optimization and transportation planning",
+      "description": "Reduce congestion and improve urban mobility with AI-driven insights.",
+      "features": [
+        "Real-time traffic flow optimization",
+        "Predictive congestion management",
+        "Public transit demand forecasting",
+        "Parking availability prediction"
+      ]
+    },
+    {
+      "title": "Utility & Resource Management",
+      "subtitle": "Optimizing energy, water, and waste systems",
+      "description": "Maximize resource efficiency across all city utilities.",
+      "features": [
+        "Smart grid load balancing",
+        "Water distribution optimization",
+        "Waste collection route optimization",
+        "Energy consumption forecasting"
+      ]
+    }
+  ],
+  "why_section": {
+    "heading": "Why Smart Cities OS?",
+    "subheading": "From traffic to utilities, one platform for complete city intelligence.",
+    "pillars": [
+      "Traffic AI",
+      "Energy Grid",
+      "Water Systems",
+      "Public Safety",
+      "Urban Planning",
+      "Emergency Response"
+    ]
+  }
+}

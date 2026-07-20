@@ -1,0 +1,78 @@
+{
+  "uuid": "f9b643cb-df6c-5cc6-b025-5fbe0d209f73",
+  "id": "contact_info",
+  "type": "contact",
+  "slug": "contact",
+  "name": "Contact & Location Info",
+  "title": "Contact Information",
+  "tagline": "Get in touch with CittaAI solutions desk",
+  "overview": "Reach out via Email: info@cittaai.com or Phone: +91 9392655040.",
+  "description": "Located at: 5th Floor, SVS One Building, Patrika Nagar Rd Number 2, HUDA Techno Enclave, HITEC City, Hyderabad, Telangana 500081",
+  "cta": "Get Support",
+  "url": "/contact",
+  "search": {
+    "primary_keywords": [
+      "contact",
+      "email",
+      "phone",
+      "address"
+    ],
+    "secondary_keywords": [
+      "business hours",
+      "office location",
+      "maps link",
+      "contact_info",
+      "location_info"
+    ],
+    "aliases": [
+      "contact",
+      "location",
+      "office",
+      "hq"
+    ],
+    "synonyms": [
+      "phone number",
+      "email address",
+      "support desk"
+    ]
+  },
+  "classification": {
+    "category": "contact",
+    "industry": "All",
+    "domain": "CONTACT",
+    "subdomain": null
+  },
+  "target_users": [
+    "Clients",
+    "Partners",
+    "Inquirers"
+  ],
+  "capabilities": [],
+  "workflows": [],
+  "benefits": [
+    "We typically respond within 24 hours during business hours."
+  ],
+  "use_cases": [
+    "Hyderabad",
+    "India"
+  ],
+  "faq": [
+    {
+      "question": "What are your business hours?",
+      "answer": "Mon-Fri 9am-6pm"
+    },
+    {
+      "question": "Where is your Hyderabad office?",
+      "answer": "5th Floor, SVS One Building, Patrika Nagar Rd Number 2, HUDA Techno Enclave, HITEC City, Hyderabad, Telangana 500081"
+    }
+  ],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "contact.json, location.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

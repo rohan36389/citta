@@ -1,0 +1,149 @@
+{
+  "product_name": "WhatsApp Marketing Platform",
+  "tagline": "Brand Messaging OS",
+  "description": "A scalable WhatsApp engagement and broadcast system where we onboard brands and help them run high-volume messaging (including lakhs of messages) with compliance-friendly workflows, automation, and support.",
+  "cta": "Get Demo",
+  "stats": [
+    {
+      "value": "98%",
+      "label": "Open Rate"
+    },
+    {
+      "value": "45-60%",
+      "label": "Click Rate"
+    },
+    {
+      "value": "Lakhs",
+      "label": "Daily Messages"
+    },
+    {
+      "value": "24/7",
+      "label": "Engagement"
+    }
+  ],
+  "section_heading": "Core Capabilities",
+  "section_subheading": "Comprehensive tools for scalable engagement.",
+  "capabilities": [
+    {
+      "title": "Brand Onboarding",
+      "subtitle": "Setup & Support",
+      "description": "Full support for WABA setup, number provisioning, and catalog optimization.",
+      "features": [
+        "WABA onboarding assistance",
+        "Number setup & approvals",
+        "Catalog optimization",
+        "Business profile setup"
+      ]
+    },
+    {
+      "title": "Message Types",
+      "subtitle": "Utility & Promotional",
+      "description": "Support for utility, promotional, and engagement messages across the lifecycle.",
+      "features": [
+        "Utility messages (OTP, updates)",
+        "Promotional offers & sales",
+        "Engagement (Polls, NPS)",
+        "Rich media support"
+      ]
+    },
+    {
+      "title": "Mass Scale Broadcasting",
+      "subtitle": "High Volume Campaigns",
+      "description": "Run bulk campaigns with distinct queues, retry logic, and smart rate control.",
+      "features": [
+        "Bulk high-volume campaigns",
+        "Smart rate control",
+        "Delivery scheduling",
+        "Load balancing"
+      ]
+    },
+    {
+      "title": "Segmentation & Targeting",
+      "subtitle": "Audience Cohorts",
+      "description": "Target specific audience segments based on tags, behavior, and cohorts.",
+      "features": [
+        "Audience lists & tags",
+        "High intent cohorts",
+        "Personalization fields",
+        "Behavioral targeting"
+      ]
+    },
+    {
+      "title": "Automation & Journeys",
+      "subtitle": "Drip Sequences",
+      "description": "Build triggered flows for welcome, nurture, and conversion.",
+      "features": [
+        "Welcome & Nurture drips",
+        "Trigger-based flows",
+        "Abandoned cart recovery",
+        "Reactivation sequences"
+      ]
+    },
+    {
+      "title": "Two-Way Inbox",
+      "subtitle": "Support Workflows",
+      "description": "Shared team inbox for handling customer replies and support tickets.",
+      "features": [
+        "Shared team inbox",
+        "Quick replies & notes",
+        "SLA tracking",
+        "Escalation workflows"
+      ]
+    },
+    {
+      "title": "Templates Management",
+      "subtitle": "Approvals & Versioning",
+      "description": "Manage message templates with versioning and category mapping.",
+      "features": [
+        "Template library",
+        "Category mapping",
+        "Approval tracking",
+        "Versioning support"
+      ]
+    },
+    {
+      "title": "Analytics & Reporting",
+      "subtitle": "Performance Insights",
+      "description": "Deep analytics on delivery, read rates, CTR, and conversions.",
+      "features": [
+        "Delivery & Read rates",
+        "CTR & Conversion events",
+        "Campaign performance",
+        "Segment-wise analysis"
+      ]
+    },
+    {
+      "title": "Integrations",
+      "subtitle": "CRM & API",
+      "description": "Seamless integration with CRMs, e-commerce platforms, and APIs.",
+      "features": [
+        "CRM lead sync",
+        "E-commerce events",
+        "Webhooks & API access",
+        "Click tracking + UTM"
+      ]
+    },
+    {
+      "title": "Compliance & Safety",
+      "subtitle": "Brand Protection",
+      "description": "Maintain high domain health with built-in compliance tools.",
+      "features": [
+        "Opt-in/Opt-out management",
+        "Frequency capping",
+        "List hygiene",
+        "Spam perception reduction"
+      ]
+    },
+    {
+      "title": "Managed Services",
+      "subtitle": "Expert Support Add-on",
+      "description": "Dedicated support for campaign planning, copywriting, and optimization.",
+      "features": [
+        "Campaign planning",
+        "Copywriting & templates",
+        "Support operations",
+        "Monthly performance reviews"
+      ]
+    }
+  ]
+}

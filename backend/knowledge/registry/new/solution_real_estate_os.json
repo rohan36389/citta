@@ -1,0 +1,510 @@
+{
+  "uuid": "f37dfb5d-355e-5210-8eee-fa2eb0061662",
+  "id": "real_estate_os",
+  "type": "solution",
+  "slug": "real-estate-os",
+  "name": "Real Estate OS",
+  "title": "Real Estate OS",
+  "tagline": "One-Stop Platform for Real Estate Operations",
+  "overview": "Unify the entire lifecycle: listings \u2192 leads \u2192 site visits \u2192 agreements \u2192 post-sale \u2192 analytics.",
+  "description": "Unify the entire lifecycle: listings \u2192 leads \u2192 site visits \u2192 agreements \u2192 post-sale \u2192 analytics.",
+  "cta": "Talk to Sales",
+  "url": "/solutions/real-estate-os",
+  "search": {
+    "primary_keywords": [
+      "real estate os",
+      "realestate os",
+      "realestate"
+    ],
+    "secondary_keywords": [
+      "one-stop platform for real estate operations"
+    ],
+    "aliases": [
+      "real-estate-os",
+      "real estate os",
+      "realestate os",
+      "realestate",
+      "real_estate_os"
+    ],
+    "synonyms": []
+  },
+  "classification": {
+    "category": "real_estate_os",
+    "industry": "General",
+    "domain": "SOLUTIONS",
+    "subdomain": null
+  },
+  "target_users": [
+    "Admin",
+    "User"
+  ],
+  "capabilities": [
+    {
+      "id": "real_estate_os_property_listings_management",
+      "title": "Property Listings Management",
+      "subtitle": "Builders & Owners",
+      "description": "Unified listings management for builders and owners.",
+      "keywords": [
+        "property",
+        "listings",
+        "management"
+      ],
+      "aliases": [
+        "property listings management"
+      ],
+      "features": [
+        {
+          "id": "centralized_property_listings",
+          "title": "Centralized property listings",
+          "description": "Feature support for Centralized property listings in Property Listings Management.",
+          "keywords": [
+            "centralized",
+            "property",
+            "listings"
+          ]
+        },
+        {
+          "id": "inventory_management",
+          "title": "Inventory management",
+          "description": "Feature support for Inventory management in Property Listings Management.",
+          "keywords": [
+            "inventory",
+            "management"
+          ]
+        },
+        {
+          "id": "builder_&_owner_portals",
+          "title": "Builder & Owner portals",
+          "description": "Feature support for Builder & Owner portals in Property Listings Management.",
+          "keywords": [
+            "builder",
+            "owner",
+            "portals"
+          ]
+        },
+        {
+          "id": "real-time_availability_updates",
+          "title": "Real-time availability updates",
+          "description": "Feature support for Real-time availability updates in Property Listings Management.",
+          "keywords": [
+            "real-time",
+            "availability",
+            "updates"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "real_estate_os_lead_management",
+      "title": "Lead Management",
+      "subtitle": "Omnichannel Follow-up",
+      "description": "Manage leads with omnichannel tracking and automated follow-ups.",
+      "keywords": [
+        "lead",
+        "management"
+      ],
+      "aliases": [
+        "lead management"
+      ],
+      "features": [
+        {
+          "id": "omnichannel_lead_capture",
+          "title": "Omnichannel lead capture",
+          "description": "Feature support for Omnichannel lead capture in Lead Management.",
+          "keywords": [
+            "omnichannel",
+            "lead",
+            "capture"
+          ]
+        },
+        {
+          "id": "automated_follow-up_sequences",
+          "title": "Automated follow-up sequences",
+          "description": "Feature support for Automated follow-up sequences in Lead Management.",
+          "keywords": [
+            "automated",
+            "follow-up",
+            "sequences"
+          ]
+        },
+        {
+          "id": "lead_qualification_&_scoring",
+          "title": "Lead qualification & scoring",
+          "description": "Feature support for Lead qualification & scoring in Lead Management.",
+          "keywords": [
+            "lead",
+            "qualification",
+            "scoring"
+          ]
+        },
+        {
+          "id": "unified_communication_history",
+          "title": "Unified communication history",
+          "description": "Feature support for Unified communication history in Lead Management.",
+          "keywords": [
+            "unified",
+            "communication",
+            "history"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "real_estate_os_customer_journey_tracking",
+      "title": "Customer Journey Tracking",
+      "subtitle": "Visit to Booking",
+      "description": "Track every step: visit, negotiation, booking, and documentation.",
+      "keywords": [
+        "customer",
+        "journey",
+        "tracking"
+      ],
+      "aliases": [
+        "customer journey tracking"
+      ],
+      "features": [
+        {
+          "id": "site_visit_tracking",
+          "title": "Site visit tracking",
+          "description": "Feature support for Site visit tracking in Customer Journey Tracking.",
+          "keywords": [
+            "site",
+            "visit",
+            "tracking"
+          ]
+        },
+        {
+          "id": "negotiation_history",
+          "title": "Negotiation history",
+          "description": "Feature support for Negotiation history in Customer Journey Tracking.",
+          "keywords": [
+            "negotiation",
+            "history"
+          ]
+        },
+        {
+          "id": "booking_management",
+          "title": "Booking management",
+          "description": "Feature support for Booking management in Customer Journey Tracking.",
+          "keywords": [
+            "booking",
+            "management"
+          ]
+        },
+        {
+          "id": "document_workflow_tracking",
+          "title": "Document workflow tracking",
+          "description": "Feature support for Document workflow tracking in Customer Journey Tracking.",
+          "keywords": [
+            "document",
+            "workflow",
+            "tracking"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "real_estate_os_partner_ecosystem",
+      "title": "Partner Ecosystem",
+      "subtitle": "Broker & Partner Management",
+      "description": "Manage relationships with brokers and channel partners.",
+      "keywords": [
+        "partner",
+        "ecosystem"
+      ],
+      "aliases": [
+        "partner ecosystem"
+      ],
+      "features": [
+        {
+          "id": "broker_onboarding_&_management",
+          "title": "Broker onboarding & management",
+          "description": "Feature support for Broker onboarding & management in Partner Ecosystem.",
+          "keywords": [
+            "broker",
+            "onboarding",
+            "management"
+          ]
+        },
+        {
+          "id": "commission_tracking",
+          "title": "Commission tracking",
+          "description": "Feature support for Commission tracking in Partner Ecosystem.",
+          "keywords": [
+            "commission",
+            "tracking"
+          ]
+        },
+        {
+          "id": "performance_analytics",
+          "title": "Performance analytics",
+          "description": "Feature support for Performance analytics in Partner Ecosystem.",
+          "keywords": [
+            "performance",
+            "analytics"
+          ]
+        },
+        {
+          "id": "collaborative_sales_tools",
+          "title": "Collaborative sales tools",
+          "description": "Feature support for Collaborative sales tools in Partner Ecosystem.",
+          "keywords": [
+            "collaborative",
+            "sales",
+            "tools"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "real_estate_os_project_analytics",
+      "title": "Project Analytics",
+      "subtitle": "Traffic, Leads, ROI",
+      "description": "Deep insights into traffic, lead conversion, and channel ROI.",
+      "keywords": [
+        "project",
+        "analytics"
+      ],
+      "aliases": [
+        "project analytics"
+      ],
+      "features": [
+        {
+          "id": "traffic_&_lead_sources",
+          "title": "Traffic & Lead sources",
+          "description": "Feature support for Traffic & Lead sources in Project Analytics.",
+          "keywords": [
+            "traffic",
+            "lead",
+            "sources"
+          ]
+        },
+        {
+          "id": "conversion_rate_optimization",
+          "title": "Conversion rate optimization",
+          "description": "Feature support for Conversion rate optimization in Project Analytics.",
+          "keywords": [
+            "conversion",
+            "rate",
+            "optimization"
+          ]
+        },
+        {
+          "id": "channel_roi_analysis",
+          "title": "Channel ROI analysis",
+          "description": "Feature support for Channel ROI analysis in Project Analytics.",
+          "keywords": [
+            "channel",
+            "analysis"
+          ]
+        },
+        {
+          "id": "sales_performance_dashboards",
+          "title": "Sales performance dashboards",
+          "description": "Feature support for Sales performance dashboards in Project Analytics.",
+          "keywords": [
+            "sales",
+            "performance",
+            "dashboards"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "real_estate_os_document_vault",
+      "title": "Document Vault",
+      "subtitle": "Verification Workflows",
+      "description": "Secure document storage with automated verification workflows.",
+      "keywords": [
+        "document",
+        "vault"
+      ],
+      "aliases": [
+        "document vault"
+      ],
+      "features": [
+        {
+          "id": "secure_document_storage",
+          "title": "Secure document storage",
+          "description": "Feature support for Secure document storage in Document Vault.",
+          "keywords": [
+            "secure",
+            "document",
+            "storage"
+          ]
+        },
+        {
+          "id": "automated_verification_checks",
+          "title": "Automated verification checks",
+          "description": "Feature support for Automated verification checks in Document Vault.",
+          "keywords": [
+            "automated",
+            "verification",
+            "checks"
+          ]
+        },
+        {
+          "id": "digital_signatures",
+          "title": "Digital signatures",
+          "description": "Feature support for Digital signatures in Document Vault.",
+          "keywords": [
+            "digital",
+            "signatures"
+          ]
+        },
+        {
+          "id": "compliance_audit_trails",
+          "title": "Compliance audit trails",
+          "description": "Feature support for Compliance audit trails in Document Vault.",
+          "keywords": [
+            "compliance",
+            "audit",
+            "trails"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "real_estate_os_automated_communication",
+      "title": "Automated Communication",
+      "subtitle": "Chat & Voice Agents",
+      "description": "24/7 engagement via chat and voice agents.",
+      "keywords": [
+        "automated",
+        "communication"
+      ],
+      "aliases": [
+        "automated communication"
+      ],
+      "features": [
+        {
+          "id": "ai_chatbots_for_instant_queries",
+          "title": "AI Chatbots for instant queries",
+          "description": "Feature support for AI Chatbots for instant queries in Automated Communication.",
+          "keywords": [
+            "chatbots",
+            "instant",
+            "queries"
+          ]
+        },
+        {
+          "id": "voice_agents_for_calls",
+          "title": "Voice agents for calls",
+          "description": "Feature support for Voice agents for calls in Automated Communication.",
+          "keywords": [
+            "voice",
+            "agents",
+            "calls"
+          ]
+        },
+        {
+          "id": "appointment_scheduling",
+          "title": "Appointment scheduling",
+          "description": "Feature support for Appointment scheduling in Automated Communication.",
+          "keywords": [
+            "appointment",
+            "scheduling"
+          ]
+        },
+        {
+          "id": "proactive_notifications",
+          "title": "Proactive notifications",
+          "description": "Feature support for Proactive notifications in Automated Communication.",
+          "keywords": [
+            "proactive",
+            "notifications"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "real_estate_os_finance_tracking",
+      "title": "Finance Tracking",
+      "subtitle": "Payment Milestones",
+      "description": "Track payments and financial milestones effortlessly.",
+      "keywords": [
+        "finance",
+        "tracking"
+      ],
+      "aliases": [
+        "finance tracking"
+      ],
+      "features": [
+        {
+          "id": "payment_milestone_tracking",
+          "title": "Payment milestone tracking",
+          "description": "Feature support for Payment milestone tracking in Finance Tracking.",
+          "keywords": [
+            "payment",
+            "milestone",
+            "tracking"
+          ]
+        },
+        {
+          "id": "invoicing_&_receipts",
+          "title": "Invoicing & Receipts",
+          "description": "Feature support for Invoicing & Receipts in Finance Tracking.",
+          "keywords": [
+            "invoicing",
+            "receipts"
+          ]
+        },
+        {
+          "id": "outstanding_payment_alerts",
+          "title": "Outstanding payment alerts",
+          "description": "Feature support for Outstanding payment alerts in Finance Tracking.",
+          "keywords": [
+            "outstanding",
+            "payment",
+            "alerts"
+          ]
+        },
+        {
+          "id": "financial_reporting",
+          "title": "Financial reporting",
+          "description": "Feature support for Financial reporting in Finance Tracking.",
+          "keywords": [
+            "financial",
+            "reporting"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [
+    "Listings Mgmt",
+    "Lead Tracking",
+    "Journey Map",
+    "Broker Network",
+    "ROI Analytics",
+    "Doc Vault"
+  ],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "04_product_real_estate_os.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

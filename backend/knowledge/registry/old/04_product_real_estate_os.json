@@ -1,0 +1,128 @@
+{
+  "product_name": "Real Estate OS",
+  "tagline": "One-Stop Platform for Real Estate Operations",
+  "description": "Unify the entire lifecycle: listings → leads → site visits → agreements → post-sale → analytics.",
+  "cta": "Talk to Sales",
+  "stats": [
+    {
+      "value": "End-to-End",
+      "label": "Lifecycle Management"
+    },
+    {
+      "value": "Unified",
+      "label": "Sales + Ops + Intel"
+    },
+    {
+      "value": "24/7",
+      "label": "Automated Engagement"
+    },
+    {
+      "value": "360°",
+      "label": "Portfolio View"
+    }
+  ],
+  "section_heading": "Unified Real Estate Operations",
+  "section_subheading": "Sales + Ops + Intelligence in one platform.",
+  "capabilities": [
+    {
+      "title": "Property Listings Management",
+      "subtitle": "Builders & Owners",
+      "description": "Unified listings management for builders and owners.",
+      "features": [
+        "Centralized property listings",
+        "Inventory management",
+        "Builder & Owner portals",
+        "Real-time availability updates"
+      ]
+    },
+    {
+      "title": "Lead Management",
+      "subtitle": "Omnichannel Follow-up",
+      "description": "Manage leads with omnichannel tracking and automated follow-ups.",
+      "features": [
+        "Omnichannel lead capture",
+        "Automated follow-up sequences",
+        "Lead qualification & scoring",
+        "Unified communication history"
+      ]
+    },
+    {
+      "title": "Customer Journey Tracking",
+      "subtitle": "Visit to Booking",
+      "description": "Track every step: visit, negotiation, booking, and documentation.",
+      "features": [
+        "Site visit tracking",
+        "Negotiation history",
+        "Booking management",
+        "Document workflow tracking"
+      ]
+    },
+    {
+      "title": "Partner Ecosystem",
+      "subtitle": "Broker & Partner Management",
+      "description": "Manage relationships with brokers and channel partners.",
+      "features": [
+        "Broker onboarding & management",
+        "Commission tracking",
+        "Performance analytics",
+        "Collaborative sales tools"
+      ]
+    },
+    {
+      "title": "Project Analytics",
+      "subtitle": "Traffic, Leads, ROI",
+      "description": "Deep insights into traffic, lead conversion, and channel ROI.",
+      "features": [
+        "Traffic & Lead sources",
+        "Conversion rate optimization",
+        "Channel ROI analysis",
+        "Sales performance dashboards"
+      ]
+    },
+    {
+      "title": "Document Vault",
+      "subtitle": "Verification Workflows",
+      "description": "Secure document storage with automated verification workflows.",
+      "features": [
+        "Secure document storage",
+        "Automated verification checks",
+        "Digital signatures",
+        "Compliance audit trails"
+      ]
+    },
+    {
+      "title": "Automated Communication",
+      "subtitle": "Chat & Voice Agents",
+      "description": "24/7 engagement via chat and voice agents.",
+      "features": [
+        "AI Chatbots for instant queries",
+        "Voice agents for calls",
+        "Appointment scheduling",
+        "Proactive notifications"
+      ]
+    },
+    {
+      "title": "Finance Tracking",
+      "subtitle": "Payment Milestones",
+      "description": "Track payments and financial milestones effortlessly.",
+      "features": [
+        "Payment milestone tracking",
+        "Invoicing & Receipts",
+        "Outstanding payment alerts",
+        "Financial reporting"
+      ]
+    }
+  ],
+  "why_section": {
+    "heading": "Why Real Estate OS?",
+    "subheading": "Real estate businesses run everything from one OS—sales + ops + intelligence.",
+    "pillars": [
+      "Listings Mgmt",
+      "Lead Tracking",
+      "Journey Map",
+      "Broker Network",
+      "ROI Analytics",
+      "Doc Vault"
+    ]
+  }
+}

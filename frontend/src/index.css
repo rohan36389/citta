@@ -61,13 +61,13 @@ body {
 
 /* ---------- Glassmorphism ---------- */
 .glass-dark {
-  background: rgba(255,255,255,0.04);
+  background: rgba(10, 15, 30, 0.7);
   border: 1px solid rgba(255,255,255,0.08);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
 }
 .glass-strong {
-  background: rgba(255,255,255,0.06);
+  background: rgba(10, 15, 30, 0.85);
   border: 1px solid rgba(255,255,255,0.12);
   backdrop-filter: blur(22px) saturate(160%);
   -webkit-backdrop-filter: blur(22px) saturate(160%);
@@ -229,3 +229,91 @@ img.duotone-blue {
 .section-dark  { background: var(--bg-dark);  color: var(--text-primary-light); }
 .section-dark2 { background: var(--bg-dark-2); color: var(--text-primary-light); }
 .section-light { background: var(--bg-light); color: var(--text-primary-dark); }
+
+/* ---------- AI Consultant UI Styles ---------- */
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(37,99,235,0.2), inset 0 1px 0 rgba(255,255,255,0.2); }
+  50% { transform: scale(1.05); box-shadow: 0 0 35px rgba(37,99,235,0.45), inset 0 1px 0 rgba(255,255,255,0.3); }
+}
+
+@keyframes particle-orbit-1 {
+  0% { transform: rotate(0deg) translateX(42px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(42px) rotate(-360deg); }
+}
+
+@keyframes particle-orbit-2 {
+  0% { transform: rotate(180deg) translateX(48px) rotate(-180deg); }
+  100% { transform: rotate(540deg) translateX(48px) rotate(-540deg); }
+}
+
+.liquid-orb-container {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.liquid-orb {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: orb-breathe 4s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.liquid-orb::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(37,99,235,0.5), rgba(96,165,250,0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+.orbit-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #60A5FA;
+  box-shadow: 0 0 10px #2563EB;
+}
+
+.orbit-particle-1 {
+  animation: particle-orbit-1 5s linear infinite;
+}
+
+.orbit-particle-2 {
+  animation: particle-orbit-2 7s linear infinite;
+  background: #34D399;
+  box-shadow: 0 0 10px #059669;
+}
+
+@keyframes neon-blink {
+  0%, 100% { outline: 3px solid rgba(37,99,235,0.8); outline-offset: 4px; box-shadow: 0 0 20px rgba(37,99,235,0.4); }
+  50% { outline: 3px solid rgba(96,165,250,0.3); outline-offset: 2px; box-shadow: 0 0 5px rgba(96,165,250,0.1); }
+}
+
+.neon-highlight {
+  animation: neon-blink 0.75s ease-in-out infinite;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+

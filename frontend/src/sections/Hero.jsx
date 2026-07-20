@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 import { HOMEPAGE } from "@/data/content";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const HeroCanvas = lazy(() => import("@/components/HeroCanvas"));
 
@@ -21,9 +22,11 @@ export default function Hero() {
     >
       <div className="absolute inset-0">
         {ready && (
-          <Suspense fallback={<div className="absolute inset-0 grid-bg-dark" />}> 
-            <HeroCanvas />
-          </Suspense>
+          <ErrorBoundary fallback={<div className="absolute inset-0 grid-bg-dark" />}>
+            <Suspense fallback={<div className="absolute inset-0 grid-bg-dark" />}> 
+              <HeroCanvas />
+            </Suspense>
+          </ErrorBoundary>
         )}
       </div>
       <div className="absolute inset-0 pointer-events-none">
@@ -102,6 +105,7 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+
 
       {/* Bottom-right subtle scroll cue */}
       <div className="absolute bottom-8 right-8 hidden md:flex flex-col items-end gap-2 text-white/40 text-[10px] font-mono uppercase tracking-widest">

@@ -1,0 +1,82 @@
+{
+  "uuid": "6f9fa063-740a-5850-88dd-9cffeb082351",
+  "id": "fmcg_social_growth",
+  "type": "case_study",
+  "slug": "fmcg-social-growth",
+  "name": "FMCG Brand",
+  "title": "FMCG Brand",
+  "tagline": "Followers grew from 2K to 37K and generated 1000+ UGC assets.",
+  "overview": "Increase brand awareness and generate high-quality user-generated content.",
+  "description": "AI-driven marketing and influencer campaign.",
+  "cta": "Read Case Study",
+  "url": "/case-studies/fmcg-social-growth",
+  "search": {
+    "primary_keywords": [
+      "fmcg brand",
+      "case study"
+    ],
+    "secondary_keywords": [
+      "Influencer Marketing",
+      "Social Media",
+      "Brand Growth",
+      "UGC"
+    ],
+    "aliases": [
+      "fmcg",
+      "fmcg brand",
+      "fmcg case study",
+      "fmcg social growth",
+      "fmcg-social-growth",
+      "fmcg_social_growth"
+    ],
+    "synonyms": [
+      "success story",
+      "client project"
+    ]
+  },
+  "classification": {
+    "category": "case_study",
+    "industry": "FMCG",
+    "domain": "CASE_STUDIES",
+    "subdomain": null
+  },
+  "target_users": [
+    "Sales Leads",
+    "Clients"
+  ],
+  "capabilities": [],
+  "workflows": [],
+  "benefits": [
+    "Followers Growth: 2K \u2192 37K",
+    "UGC Assets: 1000+"
+  ],
+  "use_cases": [
+    "Influencer Marketing",
+    "Social Media",
+    "Brand Growth",
+    "UGC"
+  ],
+  "faq": [],
+  "relationships": [
+    {
+      "type": "related_service",
+      "target": "influencer_marketing"
+    },
+    {
+      "type": "related_service",
+      "target": "ai_powered_marketing"
+    },
+    {
+      "type": "related_service",
+      "target": "ecommerce_os"
+    }
+  ],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "case_studies.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "registries": [
+    {
+      "name": "company",
+      "enabled": true,
+      "priority": 70,
+      "registry_id": "company_v1",
+      "registry_type": "COMPANY_INFO",
+      "content": "company.json"
+    },
+    {
+      "name": "products",
+      "enabled": true,
+      "priority": 90,
+      "registry_id": "products_v1",
+      "registry_type": "PRODUCTS",
+      "content": "products.json"
+    },
+    {
+      "name": "services",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "services_v1",
+      "registry_type": "SERVICES",
+      "content": "services.json"
+    },
+    {
+      "name": "solutions",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "solutions_v1",
+      "registry_type": "SOLUTIONS",
+      "content": "solutions.json"
+    },
+    {
+      "name": "case_studies",
+      "enabled": true,
+      "priority": 85,
+      "registry_id": "case_studies_v1",
+      "registry_type": "CASE_STUDIES",
+      "content": "case_studies.json"
+    },
+    {
+      "name": "leadership",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "leadership_v1",
+      "registry_type": "LEADERSHIP",
+      "content": "leadership.json"
+    },
+    {
+      "name": "recognition",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "recognition_v1",
+      "registry_type": "RECOGNITION",
+      "content": "recognition.json"
+    },
+    {
+      "name": "partners",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "partners_v1",
+      "registry_type": "PARTNERS",
+      "content": "partners.json"
+    },
+    {
+      "name": "contact",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "contact_v1",
+      "registry_type": "CONTACT",
+      "content": "contact.json"
+    },
+    {
+      "name": "location",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "location_v1",
+      "registry_type": "LOCATION",
+      "content": "location.json"
+    },
+    {
+      "name": "faq",
+      "enabled": true,
+      "priority": 75,
+      "registry_id": "faq_v1",
+      "registry_type": "FAQ",
+      "content": "faq.json"
+    },
+    {
+      "name": "pricing",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "pricing_v1",
+      "registry_type": "PRICING",
+      "content": "pricing.json"
+    }
+  ],
+  "metadata": {}
+}

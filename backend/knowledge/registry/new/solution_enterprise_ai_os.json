@@ -1,0 +1,562 @@
+{
+  "uuid": "d580744c-6811-5a75-b77e-e8b498437815",
+  "id": "enterprise_ai_os",
+  "type": "solution",
+  "slug": "enterprise-ai-os",
+  "name": "Enterprise AI OS",
+  "title": "Enterprise AI OS",
+  "tagline": "Build, Evaluate, Deploy \u2014 Production-Ready AI Systems",
+  "overview": "The complete platform for RAG, agents, and cognitive workflows.",
+  "description": "The complete platform for RAG, agents, and cognitive workflows.",
+  "cta": "Talk to Sales",
+  "url": "/solutions/enterprise-ai-os",
+  "search": {
+    "primary_keywords": [
+      "enterprise ai os"
+    ],
+    "secondary_keywords": [
+      "build, evaluate, deploy \u2014 production-ready ai systems"
+    ],
+    "aliases": [
+      "enterprise-ai-os",
+      "enterprise_ai_os",
+      "enterprise ai os"
+    ],
+    "synonyms": []
+  },
+  "classification": {
+    "category": "enterprise_ai_os",
+    "industry": "Enterprise",
+    "domain": "SOLUTIONS",
+    "subdomain": null
+  },
+  "target_users": [
+    "Admin",
+    "User"
+  ],
+  "capabilities": [
+    {
+      "id": "enterprise_ai_os_rag_agentic_applications",
+      "title": "RAG & Agentic Applications",
+      "subtitle": "End-to-End Production Pipelines",
+      "description": "Build, evaluate, and ship production-ready RAG + agent workflows.",
+      "keywords": [
+        "agentic",
+        "applications"
+      ],
+      "aliases": [
+        "rag & agentic applications"
+      ],
+      "features": [
+        {
+          "id": "data_ingestion_&_vector_indexing",
+          "title": "Data ingestion & Vector indexing",
+          "description": "Feature support for Data ingestion & Vector indexing in RAG & Agentic Applications.",
+          "keywords": [
+            "data",
+            "ingestion",
+            "vector",
+            "indexing"
+          ]
+        },
+        {
+          "id": "evaluation_+_benchmarks",
+          "title": "Evaluation + benchmarks",
+          "description": "Feature support for Evaluation + benchmarks in RAG & Agentic Applications.",
+          "keywords": [
+            "evaluation",
+            "benchmarks"
+          ]
+        },
+        {
+          "id": "chat_playground_&_deployment",
+          "title": "Chat playground & Deployment",
+          "description": "Feature support for Chat playground & Deployment in RAG & Agentic Applications.",
+          "keywords": [
+            "chat",
+            "playground",
+            "deployment"
+          ]
+        },
+        {
+          "id": "developer-friendly_apis",
+          "title": "Developer-friendly APIs",
+          "description": "Feature support for Developer-friendly APIs in RAG & Agentic Applications.",
+          "keywords": [
+            "developer-friendly",
+            "apis"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "enterprise_ai_os_conversational_ai",
+      "title": "Conversational AI",
+      "subtitle": "Enterprise chat assistants",
+      "description": "Multi-channel chat experiences with governance and analytics.",
+      "keywords": [
+        "conversational"
+      ],
+      "aliases": [
+        "conversational ai"
+      ],
+      "features": [
+        {
+          "id": "support_&_operations_assistants",
+          "title": "Support & Operations assistants",
+          "description": "Feature support for Support & Operations assistants in Conversational AI.",
+          "keywords": [
+            "support",
+            "operations",
+            "assistants"
+          ]
+        },
+        {
+          "id": "internal_knowledge_base_chat",
+          "title": "Internal knowledge base chat",
+          "description": "Feature support for Internal knowledge base chat in Conversational AI.",
+          "keywords": [
+            "internal",
+            "knowledge",
+            "base",
+            "chat"
+          ]
+        },
+        {
+          "id": "multi-channel_orchestration",
+          "title": "Multi-channel orchestration",
+          "description": "Feature support for Multi-channel orchestration in Conversational AI.",
+          "keywords": [
+            "multi-channel",
+            "orchestration"
+          ]
+        },
+        {
+          "id": "governance_and_analytics",
+          "title": "Governance and analytics",
+          "description": "Feature support for Governance and analytics in Conversational AI.",
+          "keywords": [
+            "governance",
+            "analytics"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "enterprise_ai_os_voice_agents",
+      "title": "Voice Agents",
+      "subtitle": "Real-time voice intelligence",
+      "description": "Low latency voice-to-action pipelines using Google's ADK.",
+      "keywords": [
+        "voice",
+        "agents"
+      ],
+      "aliases": [
+        "voice agents"
+      ],
+      "features": [
+        {
+          "id": "real-time_voice_agents",
+          "title": "Real-time voice agents",
+          "description": "Feature support for Real-time voice agents in Voice Agents.",
+          "keywords": [
+            "real-time",
+            "voice",
+            "agents"
+          ]
+        },
+        {
+          "id": "call_automation_&_support_triage",
+          "title": "Call automation & Support triage",
+          "description": "Feature support for Call automation & Support triage in Voice Agents.",
+          "keywords": [
+            "call",
+            "automation",
+            "support",
+            "triage"
+          ]
+        },
+        {
+          "id": "appointment_handling",
+          "title": "Appointment handling",
+          "description": "Feature support for Appointment handling in Voice Agents.",
+          "keywords": [
+            "appointment",
+            "handling"
+          ]
+        },
+        {
+          "id": "low_latency_execution",
+          "title": "Low latency execution",
+          "description": "Feature support for Low latency execution in Voice Agents.",
+          "keywords": [
+            "latency",
+            "execution"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "enterprise_ai_os_multi-agent_systems",
+      "title": "Multi-Agent Systems",
+      "subtitle": "Collaborative agent orchestration",
+      "description": "Task-specific agents working together with shared memory and tools.",
+      "keywords": [
+        "multi-agent",
+        "systems"
+      ],
+      "aliases": [
+        "multi-agent systems"
+      ],
+      "features": [
+        {
+          "id": "orchestration_&_role-based_agents",
+          "title": "Orchestration & Role-based agents",
+          "description": "Feature support for Orchestration & Role-based agents in Multi-Agent Systems.",
+          "keywords": [
+            "orchestration",
+            "role-based",
+            "agents"
+          ]
+        },
+        {
+          "id": "shared_memory_&_tool_access",
+          "title": "Shared memory & tool access",
+          "description": "Feature support for Shared memory & tool access in Multi-Agent Systems.",
+          "keywords": [
+            "shared",
+            "memory",
+            "tool",
+            "access"
+          ]
+        },
+        {
+          "id": "cross-functional_collaborative_workflows",
+          "title": "Cross-functional collaborative workflows",
+          "description": "Feature support for Cross-functional collaborative workflows in Multi-Agent Systems.",
+          "keywords": [
+            "cross-functional",
+            "collaborative",
+            "workflows"
+          ]
+        },
+        {
+          "id": "complex_problem_solving",
+          "title": "Complex problem solving",
+          "description": "Feature support for Complex problem solving in Multi-Agent Systems.",
+          "keywords": [
+            "complex",
+            "problem",
+            "solving"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "enterprise_ai_os_document_ai",
+      "title": "Document AI",
+      "subtitle": "OCR to Agentic Extraction",
+      "description": "Intelligent extraction and validation from forms, invoices, and reports.",
+      "keywords": [
+        "document"
+      ],
+      "aliases": [
+        "document ai"
+      ],
+      "features": [
+        {
+          "id": "ocr_+_structured_extraction",
+          "title": "OCR + structured extraction",
+          "description": "Feature support for OCR + structured extraction in Document AI.",
+          "keywords": [
+            "structured",
+            "extraction"
+          ]
+        },
+        {
+          "id": "validation_&_exception_flows",
+          "title": "Validation & Exception flows",
+          "description": "Feature support for Validation & Exception flows in Document AI.",
+          "keywords": [
+            "validation",
+            "exception",
+            "flows"
+          ]
+        },
+        {
+          "id": "human-in-the-loop_review",
+          "title": "Human-in-the-loop review",
+          "description": "Feature support for Human-in-the-loop review in Document AI.",
+          "keywords": [
+            "human-in-the-loop",
+            "review"
+          ]
+        },
+        {
+          "id": "compliance_document_processing",
+          "title": "Compliance document processing",
+          "description": "Feature support for Compliance document processing in Document AI.",
+          "keywords": [
+            "compliance",
+            "document",
+            "processing"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "enterprise_ai_os_data_engineering_analytics",
+      "title": "Data Engineering & Analytics",
+      "subtitle": "Modern data pipelines",
+      "description": "Pipelines for structured/unstructured data with scalable reporting.",
+      "keywords": [
+        "data",
+        "engineering",
+        "analytics"
+      ],
+      "aliases": [
+        "data engineering & analytics"
+      ],
+      "features": [
+        {
+          "id": "structured_unstructured_data_pipelines",
+          "title": "Structured/Unstructured data pipelines",
+          "description": "Feature support for Structured/Unstructured data pipelines in Data Engineering & Analytics.",
+          "keywords": [
+            "structured/unstructured",
+            "data",
+            "pipelines"
+          ]
+        },
+        {
+          "id": "dashboards_&_metrics_layers",
+          "title": "Dashboards & Metrics layers",
+          "description": "Feature support for Dashboards & Metrics layers in Data Engineering & Analytics.",
+          "keywords": [
+            "dashboards",
+            "metrics",
+            "layers"
+          ]
+        },
+        {
+          "id": "data_reliability_checks",
+          "title": "Data reliability checks",
+          "description": "Feature support for Data reliability checks in Data Engineering & Analytics.",
+          "keywords": [
+            "data",
+            "reliability",
+            "checks"
+          ]
+        },
+        {
+          "id": "scalable_reporting_infrastructure",
+          "title": "Scalable reporting infrastructure",
+          "description": "Feature support for Scalable reporting infrastructure in Data Engineering & Analytics.",
+          "keywords": [
+            "scalable",
+            "reporting",
+            "infrastructure"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "enterprise_ai_os_agentic_knowledge_graph",
+      "title": "Agentic Knowledge Graph",
+      "subtitle": "Contextual relationship discovery",
+      "description": "Convert enterprise documents into connected knowledge graphs for better reasoning.",
+      "keywords": [
+        "agentic",
+        "knowledge",
+        "graph"
+      ],
+      "aliases": [
+        "agentic knowledge graph"
+      ],
+      "features": [
+        {
+          "id": "document_to_graph_conversion",
+          "title": "Document to Graph conversion",
+          "description": "Feature support for Document to Graph conversion in Agentic Knowledge Graph.",
+          "keywords": [
+            "document",
+            "graph",
+            "conversion"
+          ]
+        },
+        {
+          "id": "relationship_discovery_&_traceability",
+          "title": "Relationship discovery & Traceability",
+          "description": "Feature support for Relationship discovery & Traceability in Agentic Knowledge Graph.",
+          "keywords": [
+            "relationship",
+            "discovery",
+            "traceability"
+          ]
+        },
+        {
+          "id": "root_cause_analysis_support",
+          "title": "Root cause analysis support",
+          "description": "Feature support for Root cause analysis support in Agentic Knowledge Graph.",
+          "keywords": [
+            "root",
+            "cause",
+            "analysis",
+            "support"
+          ]
+        },
+        {
+          "id": "enhanced_reasoning_capabilities",
+          "title": "Enhanced reasoning capabilities",
+          "description": "Feature support for Enhanced reasoning capabilities in Agentic Knowledge Graph.",
+          "keywords": [
+            "enhanced",
+            "reasoning",
+            "capabilities"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "enterprise_ai_os_database_agents",
+      "title": "Database Agents",
+      "subtitle": "NL-to-SQL & Tool-driven agents",
+      "description": "Safe, permissioned database interaction via natural language.",
+      "keywords": [
+        "database",
+        "agents"
+      ],
+      "aliases": [
+        "database agents"
+      ],
+      "features": [
+        {
+          "id": "nl-to-sql_capabilities",
+          "title": "NL-to-SQL capabilities",
+          "description": "Feature support for NL-to-SQL capabilities in Database Agents.",
+          "keywords": [
+            "nl-to-sql",
+            "capabilities"
+          ]
+        },
+        {
+          "id": "guardrails_&_permissions",
+          "title": "Guardrails & Permissions",
+          "description": "Feature support for Guardrails & Permissions in Database Agents.",
+          "keywords": [
+            "guardrails",
+            "permissions"
+          ]
+        },
+        {
+          "id": "safe_query_execution",
+          "title": "Safe query execution",
+          "description": "Feature support for Safe query execution in Database Agents.",
+          "keywords": [
+            "safe",
+            "query",
+            "execution"
+          ]
+        },
+        {
+          "id": "analytics_copilots",
+          "title": "Analytics copilots",
+          "description": "Feature support for Analytics copilots in Database Agents.",
+          "keywords": [
+            "analytics",
+            "copilots"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "enterprise_ai_os_fine-tuning_rl",
+      "title": "Fine-Tuning & RL",
+      "subtitle": "Domain specialization",
+      "description": "Fine-tuning for domain behavior, accuracy, and safe deployment.",
+      "keywords": [
+        "fine-tuning"
+      ],
+      "aliases": [
+        "fine-tuning & rl"
+      ],
+      "features": [
+        {
+          "id": "domain-specific_fine-tuning",
+          "title": "Domain-specific fine-tuning",
+          "description": "Feature support for Domain-specific fine-tuning in Fine-Tuning & RL.",
+          "keywords": [
+            "domain-specific",
+            "fine-tuning"
+          ]
+        },
+        {
+          "id": "rl_post-training_optimization",
+          "title": "RL Post-training optimization",
+          "description": "Feature support for RL Post-training optimization in Fine-Tuning & RL.",
+          "keywords": [
+            "post-training",
+            "optimization"
+          ]
+        },
+        {
+          "id": "accuracy_improvements",
+          "title": "Accuracy improvements",
+          "description": "Feature support for Accuracy improvements in Fine-Tuning & RL.",
+          "keywords": [
+            "accuracy",
+            "improvements"
+          ]
+        },
+        {
+          "id": "safe_deployment_standards",
+          "title": "Safe deployment standards",
+          "description": "Feature support for Safe deployment standards in Fine-Tuning & RL.",
+          "keywords": [
+            "safe",
+            "deployment",
+            "standards"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [
+    "Fast Deployment",
+    "Enterprise Controls",
+    "Measurable Eval",
+    "PoC to Production",
+    "Integration Ready",
+    "Advanced Agents"
+  ],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "08_product_enterprise_ai_os.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

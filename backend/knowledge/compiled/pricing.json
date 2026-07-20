@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "registry_id": "pricing_v1",
+    "registry_type": "PRICING",
+    "schema_version": "1.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-18",
+    "knowledge_date": "2026-07-18",
+    "priority": 80,
+    "capabilities": {
+      "reasoning": false,
+      "comparison": false,
+      "transformation": false,
+      "summarization": false,
+      "examples": false
+    },
+    "supported_sections": [
+      "overview"
+    ],
+    "aliases": [
+      "pricing",
+      "cost",
+      "rates"
+    ]
+  },
+  "verified": true,
+  "source": "Corporate Policy",
+  "response": "CittaAI does not publicly publish pricing information. Please contact our sales team or book a demo for a customized quotation."
+}

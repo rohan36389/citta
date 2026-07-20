@@ -83,41 +83,46 @@ export default function Navbar() {
         transition={{ duration: 0.55, ease: [0.2, 0.7, 0.2, 1] }}
         className="mx-auto mt-4 max-w-7xl px-4 sm:px-6"
       >
-        <div className={`flex items-center justify-between rounded-full pl-3 pr-2 py-2 transition-all duration-300 ${
-          scrolled ? "glass-strong shadow-2xl" : "glass-dark"
-        }`}>
-          <Link to="/" className="flex items-center gap-2.5" data-testid="nav-brand">
-            <img src={BRAND.logoSquare} alt="CittaAI" className="h-8 w-8 rounded-md" />
-            <div className="hidden sm:block leading-none">
-              <div className="font-display text-white text-[17px] font-semibold tracking-tight">
-                {BRAND.wordmark}<span className="text-brand-light font-bold">{BRAND.wordmarkAccent}</span>
-              </div>
-              <div className="text-white/40 text-[9px] font-mono uppercase tracking-widest mt-0.5">{BRAND.drivenBy}</div>
-            </div>
+        {/* Outer row: logo left + pill right */}
+        <div className="flex items-center gap-4">
+
+          {/* ── Full logo — outside the pill ── */}
+          <Link to="/" data-testid="nav-brand" className="shrink-0 group">
+            <img
+              src="/assets/brand/logo-wide.png"
+              alt="CittaAI — Driven by Fixity"
+              className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+              style={{ maxWidth: "240px", mixBlendMode: "screen" }}
+            />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-7">
-            {NAV.primary.map((item) => <NavLink key={item.label} item={item} />)}
-          </nav>
+          {/* ── Nav pill ── */}
+          <div className={`flex flex-1 items-center justify-between rounded-full pl-5 pr-2 py-2 transition-all duration-300 ${
+            scrolled ? "glass-strong shadow-2xl" : "glass-dark"
+          }`}>
+            <nav className="hidden lg:flex items-center gap-7">
+              {NAV.primary.map((item) => <NavLink key={item.label} item={item} />)}
+            </nav>
 
-          <div className="hidden lg:flex items-center gap-2">
-            <button className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white px-3 py-2 rounded-full transition-colors" data-testid="nav-lang">
-              <Globe className="h-4 w-4" /> {NAV.language}
+            <div className="hidden lg:flex items-center gap-2">
+              <button className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white px-3 py-2 rounded-full transition-colors" data-testid="nav-lang">
+                <Globe className="h-4 w-4" /> {NAV.language}
+              </button>
+              <Link to={NAV.cta.to} data-testid="nav-cta" className="btn-primary !py-2 !px-4 !text-[13px]">
+                {NAV.cta.label} <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            <button
+              onClick={() => setOpen((v) => !v)}
+              data-testid="nav-mobile-toggle"
+              className="lg:hidden h-10 w-10 rounded-full grid place-items-center border border-white/10 text-white"
+              aria-label="Menu"
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
-            <Link to={NAV.cta.to} data-testid="nav-cta" className="btn-primary !py-2 !px-4 !text-[13px]">
-              {NAV.cta.label} <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-
-          <button
-            onClick={() => setOpen((v) => !v)}
-            data-testid="nav-mobile-toggle"
-            className="lg:hidden h-10 w-10 rounded-full grid place-items-center border border-white/10 text-white"
-            aria-label="Menu"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
+          </div>{/* end pill */}
+        </div>{/* end outer row */}
 
         <AnimatePresence>
           {open && (

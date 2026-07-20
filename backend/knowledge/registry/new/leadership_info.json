@@ -1,0 +1,431 @@
+{
+  "uuid": "2f8647ce-3cba-5a72-a4ab-eae1d78b9b45",
+  "id": "leadership_info",
+  "type": "leadership",
+  "slug": "leadership",
+  "name": "Leadership Team",
+  "title": "Executive Leadership",
+  "tagline": "Innovators and experienced engineers",
+  "overview": "Meet CittaAI's executive leadership and functional heads driving AI innovation.",
+  "description": "Meet CittaAI's executive leadership and functional heads driving AI innovation.",
+  "cta": "Meet the Team",
+  "url": "/about",
+  "search": {
+    "primary_keywords": [
+      "leaders",
+      "team",
+      "who is the ceo",
+      "management",
+      "executive team",
+      "founders"
+    ],
+    "aliases": [
+      "leaders",
+      "team",
+      "founder",
+      "ceo",
+      "cto",
+      "coo",
+      "our team",
+      "leadership team",
+      "management team",
+      "executive team"
+    ],
+    "synonyms": [
+      "founders",
+      "management",
+      "leaders",
+      "executives",
+      "board"
+    ]
+  },
+  "classification": {
+    "category": "leadership",
+    "industry": "All",
+    "domain": "LEADERSHIP",
+    "subdomain": null
+  },
+  "target_users": [
+    "Investors",
+    "Clients",
+    "Partners"
+  ],
+  "capabilities": [
+    {
+      "id": "vinay_velivela",
+      "title": "Vinay Velivela",
+      "subtitle": "CEO of Fixity Technologies",
+      "description": "Visionary leader driving innovation and enterprise growth.",
+      "keywords": [
+        "ceo",
+        "chief executive officer",
+        "founder",
+        "vinay velivela",
+        "vinay"
+      ],
+      "aliases": [
+        "vinay velivela",
+        "vinay",
+        "ceo",
+        "chief executive officer"
+      ],
+      "features": [],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "saladi_chandra_balaji",
+      "title": "Saladi Chandra Balaji",
+      "subtitle": "Co-Founder & COO",
+      "description": "Leading operations, execution, and strategic business initiatives.",
+      "keywords": [
+        "coo",
+        "chief operating officer",
+        "co-founder",
+        "saladi chandra balaji",
+        "saladi",
+        "operations head"
+      ],
+      "aliases": [
+        "saladi chandra balaji",
+        "saladi",
+        "coo",
+        "chief operating officer",
+        "operations head"
+      ],
+      "features": [],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "akhil_reddy",
+      "title": "Akhil Reddy",
+      "subtitle": "Co-Founder & CTO",
+      "description": "Architecting enterprise AI platforms and advanced technology solutions.",
+      "keywords": [
+        "cto",
+        "chief technology officer",
+        "co-founder",
+        "akhil reddy",
+        "akhil",
+        "technology head"
+      ],
+      "aliases": [
+        "akhil reddy",
+        "akhil",
+        "cto",
+        "chief technology officer",
+        "technology head",
+        "technical founder"
+      ],
+      "features": [],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "ganesh_gandhi_vadalani",
+      "title": "Ganesh Gandhi Vadalani",
+      "subtitle": "CMO",
+      "description": "Driving global marketing strategy, branding, and growth marketing.",
+      "keywords": [
+        "cmo",
+        "chief marketing officer",
+        "ganesh gandhi vadalani",
+        "ganesh",
+        "marketing head"
+      ],
+      "aliases": [
+        "ganesh gandhi vadalani",
+        "ganesh",
+        "cmo",
+        "chief marketing officer",
+        "marketing head"
+      ],
+      "features": [],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "harish_nerati",
+      "title": "Harish Nerati",
+      "subtitle": "Operations and Sales Head",
+      "description": "Optimizing operational efficiency and driving sales growth.",
+      "keywords": [
+        "harish nerati",
+        "harish",
+        "sales head",
+        "operations head"
+      ],
+      "aliases": [
+        "harish nerati",
+        "harish",
+        "sales head",
+        "sales lead",
+        "operations manager"
+      ],
+      "features": [],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "aravind_reddy",
+      "title": "Aravind Reddy",
+      "subtitle": "E-Commerce Head",
+      "description": "Leading digital commerce strategy and e-commerce platform initiatives.",
+      "keywords": [
+        "aravind reddy",
+        "aravind",
+        "e-commerce head",
+        "ecommerce head"
+      ],
+      "aliases": [
+        "aravind reddy",
+        "aravind",
+        "e-commerce head",
+        "ecommerce head",
+        "digital commerce head"
+      ],
+      "features": [],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "parvatha_mohan",
+      "title": "Parvatha Mohan",
+      "subtitle": "Business Development Head",
+      "description": "Building strategic partnerships and expanding business opportunities.",
+      "keywords": [
+        "parvatha mohan",
+        "parvatha",
+        "business development head",
+        "bd head"
+      ],
+      "aliases": [
+        "parvatha mohan",
+        "parvatha",
+        "business development head",
+        "bd head",
+        "business head"
+      ],
+      "features": [],
+      "benefits": [],
+      "relationships": []
+    }
+  ],
+  "members": [
+    {
+      "id": "vinay_velivela",
+      "name": "Vinay Velivela",
+      "designation": "CEO",
+      "department": "Executive Leadership",
+      "reports_to": null,
+      "bio": "Visionary leader driving innovation and organizational growth.",
+      "responsibilities": [
+        "Company Vision",
+        "Business Strategy",
+        "Innovation",
+        "Enterprise Growth"
+      ],
+      "keywords": [
+        "CEO",
+        "Chief Executive Officer",
+        "Founder",
+        "Leadership"
+      ],
+      "aliases": [
+        "Chief Executive Officer",
+        "CEO",
+        "vinay",
+        "vinay velivela"
+      ]
+    },
+    {
+      "id": "saladi_chandra_balaji",
+      "name": "Saladi Chandra Balaji",
+      "designation": "Co-Founder & COO",
+      "department": "Operations",
+      "reports_to": "vinay_velivela",
+      "bio": "Leading operations, execution, and strategic business initiatives.",
+      "responsibilities": [
+        "Operations",
+        "Strategic Planning",
+        "Execution",
+        "Business Processes"
+      ],
+      "keywords": [
+        "COO",
+        "Chief Operating Officer",
+        "Co-Founder",
+        "Operations"
+      ],
+      "aliases": [
+        "COO",
+        "Operations Head",
+        "saladi",
+        "saladi chandra balaji"
+      ]
+    },
+    {
+      "id": "akhil_reddy",
+      "name": "Akhil Reddy",
+      "designation": "Co-Founder & CTO",
+      "department": "Technology",
+      "reports_to": "vinay_velivela",
+      "bio": "Architecting enterprise AI platforms and advanced technology solutions.",
+      "responsibilities": [
+        "Technology Strategy",
+        "AI Architecture",
+        "Engineering",
+        "Research & Development"
+      ],
+      "keywords": [
+        "CTO",
+        "Chief Technology Officer",
+        "Technology",
+        "AI"
+      ],
+      "aliases": [
+        "CTO",
+        "Technology Head",
+        "Technical Founder",
+        "akhil",
+        "akhil reddy"
+      ]
+    },
+    {
+      "id": "ganesh_gandhi_vadalani",
+      "name": "Ganesh Gandhi Vadalani",
+      "designation": "CMO",
+      "department": "Marketing",
+      "reports_to": "vinay_velivela",
+      "bio": "Driving global marketing strategy, branding, and business positioning.",
+      "responsibilities": [
+        "Marketing",
+        "Brand Strategy",
+        "Demand Generation",
+        "Growth Marketing"
+      ],
+      "keywords": [
+        "CMO",
+        "Chief Marketing Officer",
+        "Marketing"
+      ],
+      "aliases": [
+        "Marketing Head",
+        "CMO",
+        "ganesh",
+        "ganesh gandhi vadalani"
+      ]
+    },
+    {
+      "id": "harish_nerati",
+      "name": "Harish Nerati",
+      "designation": "Operations and Sales Head",
+      "department": "Operations & Sales",
+      "reports_to": "saladi_chandra_balaji",
+      "bio": "Optimizing operational efficiency and driving sales growth.",
+      "responsibilities": [
+        "Operations",
+        "Sales",
+        "Client Success",
+        "Business Growth"
+      ],
+      "keywords": [
+        "Sales Head",
+        "Operations Head",
+        "Sales",
+        "Operations"
+      ],
+      "aliases": [
+        "Sales Lead",
+        "Operations Manager",
+        "harish",
+        "harish nerati"
+      ]
+    },
+    {
+      "id": "aravind_reddy",
+      "name": "Aravind Reddy",
+      "designation": "E-Commerce Head",
+      "department": "Digital Commerce",
+      "reports_to": "vinay_velivela",
+      "bio": "Leading digital commerce strategy and e-commerce platform initiatives.",
+      "responsibilities": [
+        "E-Commerce",
+        "Digital Commerce",
+        "Marketplace Strategy",
+        "Growth"
+      ],
+      "keywords": [
+        "E-Commerce Head",
+        "Commerce",
+        "Digital Commerce"
+      ],
+      "aliases": [
+        "Ecommerce Head",
+        "Digital Commerce Head",
+        "aravind",
+        "aravind reddy"
+      ]
+    },
+    {
+      "id": "parvatha_mohan",
+      "name": "Parvatha Mohan",
+      "designation": "Business Development Head",
+      "department": "Business Development",
+      "reports_to": "vinay_velivela",
+      "bio": "Building strategic partnerships and expanding business opportunities.",
+      "responsibilities": [
+        "Business Development",
+        "Partnerships",
+        "Client Acquisition",
+        "Strategic Alliances"
+      ],
+      "keywords": [
+        "Business Development",
+        "BD",
+        "Partnerships"
+      ],
+      "aliases": [
+        "BD Head",
+        "Business Head",
+        "parvatha",
+        "parvatha mohan"
+      ]
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [],
+  "faq": [
+    {
+      "question": "Who is the CEO of CittaAI?",
+      "answer": "Vinay Velivela serves as the CEO of CittaAI."
+    },
+    {
+      "question": "Who is the CTO of CittaAI?",
+      "answer": "Akhil Reddy is the Co-Founder and CTO of CittaAI."
+    },
+    {
+      "question": "Who founded CittaAI?",
+      "answer": "CittaAI was founded by a team of researchers and engineers, with Saladi Chandra Balaji and Akhil Reddy serving as Co-Founders."
+    },
+    {
+      "question": "Who leads Marketing?",
+      "answer": "Ganesh Gandhi Vadalani serves as the Chief Marketing Officer (CMO)."
+    },
+    {
+      "question": "Who handles Business Development?",
+      "answer": "Parvatha Mohan leads Business Development."
+    }
+  ],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "leadership.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

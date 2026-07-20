@@ -1,0 +1,120 @@
+{
+  "section_heading": "About CittaAI",
+  "description": "A full-service Enterprise AI consultancy delivering customized intelligence solutions worldwide.",
+  "stats": [
+    {
+      "value": "100+",
+      "label": "Enterprise Clients"
+    },
+    {
+      "value": "50M+",
+      "label": "Users Served"
+    },
+    {
+      "value": "1B+",
+      "label": "Data Processed"
+    },
+    {
+      "value": "99.9%",
+      "label": "Uptime SLA"
+    }
+  ],
+  "origins": {
+    "heading": "Our Origins",
+    "title": "Research-Grade Intelligence. Enterprise-Ready Scale.",
+    "paragraphs": [
+      "CittaAI was founded in 2022 by a team of researchers and engineers who saw a fundamental disconnect: the technology for AI existed, but the bridge to enterprise value was broken.",
+      "We set out to build that bridge. Not just another AI tool, but a comprehensive operating system that understands the nuance, security, and scale required by the world's largest organizations. Today, we process billions of data points for the Fortune 500."
+    ],
+    "certifications": [
+      "ISO 9001:2015",
+      "MSME",
+      "Startup India"
+    ]
+  },
+  "why_enterprises_choose_us": {
+    "heading": "Why Enterprises Choose Us",
+    "points": [
+      {
+        "title": "Enterprise-Grade Security",
+        "description": "SOC2 Type II & HIPAA Compliant"
+      },
+      {
+        "title": "99.9% Uptime Guarantee",
+        "description": "Global Edge Network redundancy"
+      },
+      {
+        "title": "24/7 Dedicated Support",
+        "description": "Direct line to engineering"
+      },
+      {
+        "title": "Custom Model Fine-tuning",
+        "description": "Your data, your competitive edge"
+      }
+    ]
+  },
+  "our_dna": {
+    "heading": "Our DNA",
+    "title": "The Principles That Drive Us",
+    "description": "We believe in engineering excellence, radical transparency, and the transformative power of intelligence.",
+    "principles": [
+      {
+        "title": "Innovation First",
+        "description": "We don't just use AI; we advance the state of the art."
+      },
+      {
+        "title": "Client Partnership",
+        "description": "Your wins are our wins. We build for long-term value."
+      },
+      {
+        "title": "Ethical AI",
+        "description": "Transparency and safety are baked into every model."
+      },
+      {
+        "title": "Speed & Excellence",
+        "description": "Rapid iteration without compromising engineering rigor."
+      }
+    ]
+  },
+  "team": {
+    "heading": "Our Team",
+    "title": "The Minds Behind the Intelligence.",
+    "members": [
+      {
+        "name": "Vinay Velivela",
+        "role": "CEO of Fixity Technologies",
+        "description": "Visionary leader driving innovation and growth."
+      },
+      {
+        "name": "Saladi Chandra Balaji",
+        "role": "Co-Founder & COO",
+        "description": "Leading operations and strategic vision."
+      },
+      {
+        "name": "Akhil Reddy",
+        "role": "Co-Founder & CTO",
+        "description": "Architecting enterprise AI solutions."
+      },
+      {
+        "name": "Ganesh Gandhi Vadalani",
+        "role": "CMO",
+        "description": "Driving global marketing strategies."
+      },
+      {
+        "name": "Harish Nerati",
+        "role": "Operations and Sales Head",
+        "description": "Optimizing operations and sales growth."
+      },
+      {
+        "name": "Aravind Reddy",
+        "role": "E-Commerce Head",
+        "description": "Specializing in digital commerce platforms."
+      },
+      {
+        "name": "Parvatha Mohan",
+        "role": "Business Development Head",
+        "description": "Expanding strategic partnerships."
+      }
+    ]
+  }
+}

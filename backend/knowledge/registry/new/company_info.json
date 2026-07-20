@@ -1,0 +1,137 @@
+{
+  "uuid": "0e448f2d-0c0e-5d28-b5f7-26be9caee891",
+  "id": "company_info",
+  "type": "company",
+  "slug": "about",
+  "name": "CittaAI",
+  "title": "About CittaAI",
+  "tagline": "Elevate. Innovate. Captivate.",
+  "overview": "A full-service Enterprise AI consultancy delivering customized intelligence solutions worldwide.",
+  "description": "A full-service Enterprise AI consultancy delivering customized intelligence solutions worldwide.",
+  "cta": "Read More",
+  "url": "/about",
+  "search": {
+    "primary_keywords": [
+      "citta",
+      "cittaai",
+      "about company"
+    ],
+    "secondary_keywords": [
+      "enterprise ai",
+      "consultancy",
+      "who leads",
+      "who founded"
+    ],
+    "aliases": [
+      "citta",
+      "cittaai",
+      "company",
+      "about",
+      "who_founded"
+    ],
+    "synonyms": [
+      "agency",
+      "partner"
+    ]
+  },
+  "classification": {
+    "category": "company",
+    "industry": "AI Consulting",
+    "domain": "COMPANY_INFO",
+    "subdomain": null
+  },
+  "target_users": [
+    "Enterprises",
+    "Job Seekers",
+    "Partners"
+  ],
+  "capabilities": [
+    {
+      "id": "innovation_first",
+      "title": "Innovation First",
+      "subtitle": "",
+      "description": "We don't just use AI; we advance the state of the art.",
+      "keywords": [
+        "dna",
+        "value"
+      ],
+      "aliases": [
+        "innovation first"
+      ],
+      "features": [],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "client_partnership",
+      "title": "Client Partnership",
+      "subtitle": "",
+      "description": "Your wins are our wins. We build for long-term value.",
+      "keywords": [
+        "dna",
+        "value"
+      ],
+      "aliases": [
+        "client partnership"
+      ],
+      "features": [],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "ethical_ai",
+      "title": "Ethical AI",
+      "subtitle": "",
+      "description": "Transparency and safety are baked into every model.",
+      "keywords": [
+        "dna",
+        "value"
+      ],
+      "aliases": [
+        "ethical ai"
+      ],
+      "features": [],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "speed_&_excellence",
+      "title": "Speed & Excellence",
+      "subtitle": "",
+      "description": "Rapid iteration without compromising engineering rigor.",
+      "keywords": [
+        "dna",
+        "value"
+      ],
+      "aliases": [
+        "speed & excellence"
+      ],
+      "features": [],
+      "benefits": [],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [
+    "Enterprise-Grade Security: SOC2 Type II & HIPAA Compliant",
+    "99.9% Uptime Guarantee: Global Edge Network redundancy",
+    "24/7 Dedicated Support: Direct line to engineering",
+    "Custom Model Fine-tuning: Your data, your competitive edge"
+  ],
+  "use_cases": [
+    "Enterprise Clients",
+    "Users Served",
+    "Data Processed",
+    "Uptime SLA"
+  ],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "14_about_cittaai.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

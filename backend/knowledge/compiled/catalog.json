@@ -1,0 +1,707 @@
+{
+  "products": [
+    {
+      "id": "whatsapp_marketing",
+      "name": "WhatsApp Marketing Platform",
+      "category": "product",
+      "route": "/products/whatsapp-marketing",
+      "summary": "Enterprise-grade high-volume business messaging automation engine.",
+      "description": "Unified direct-to-customer messaging platform integrated with the official WhatsApp Business API, supporting broadcasts, CRM segments, and multi-agent shared inboxes.",
+      "overview": {
+        "summary": "Enterprise-grade high-volume business messaging automation engine.",
+        "description": "Unified direct-to-customer messaging platform integrated with the official WhatsApp Business API, supporting broadcasts, CRM segments, and multi-agent shared inboxes."
+      },
+      "how_it_works": {
+        "process": "Connects directly via the official WhatsApp Business API to run high-volume broadcasts with built-in compliance controls.",
+        "steps": [
+          "Official WhatsApp Business API verification",
+          "Dynamic audience cohort segmentation",
+          "Mass broadcasting with smart rate limit controls",
+          "Two-way agent desk shared inbox routing"
+        ]
+      },
+      "features": [
+        "Official WhatsApp Business API verified sender integration",
+        "Mass broadcasting campaigns with opt-in and DND compliance controls",
+        "Unified shared inbox for multi-agent collaborative desks",
+        "Cohort segmentation targeting based on CRM behavior rules"
+      ],
+      "benefits": [
+        "Achieve up to 98% message open rates",
+        "Reduce lead acquisition/support response latency by 75%"
+      ],
+      "best_for": [
+        "D2C Brands",
+        "Retail Enterprises",
+        "Customer Support Teams"
+      ],
+      "faq": [
+        {
+          "question": "Is it compliant with WhatsApp policies?",
+          "answer": "Yes, it enforces strict opt-in/opt-out rules and rate limits to keep your sender number healthy."
+        }
+      ],
+      "case_studies": [
+        "Jewellery Brand"
+      ],
+      "related_entities": [
+        "ecommerce_os",
+        "ai_powered_marketing"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "wa",
+        "whastapp",
+        "whatsapp",
+        "whatsapp marketing",
+        "whatsapp marketing platform",
+        "whatsapp platform",
+        "whatsapp-marketing",
+        "whatsapp_marketing"
+      ]
+    },
+    {
+      "id": "influencer_marketing",
+      "name": "Influencer Marketing Platform",
+      "category": "product",
+      "route": "/products/influencer-marketing",
+      "summary": "Automated campaign execution and creator relationship platform.",
+      "description": "Workspace for planning creator collaborations, managing payouts, verifying creator demographic audience metrics, and tracking campaign sales lift ROI.",
+      "overview": {
+        "summary": "Automated campaign execution and creator relationship platform.",
+        "description": "Workspace for planning creator collaborations, managing payouts, verifying creator demographic audience metrics, and tracking campaign sales lift ROI."
+      },
+      "how_it_works": {
+        "process": "Streamlines creator discovery, contract automation, payout tracking, and cross-platform campaign analytics.",
+        "steps": [
+          "Search and verify creators in demographic database",
+          "Generate contract and payout terms automatically",
+          "Launch campaigns and track UTM/sales conversions",
+          "Compile performance reports dynamically"
+        ]
+      },
+      "features": [
+        "Creator demographic analytics and verification database filters",
+        "Automated payout cycles, TDS tax processing, and legally binding contract loops",
+        "Real-time ROI dashboard mapping metrics across TikTok, Instagram, and YouTube"
+      ],
+      "benefits": [
+        "Cut creator discovery overhead by up to 60%",
+        "Establish measurable ROI for UGC brand awareness campaigns"
+      ],
+      "best_for": [
+        "Brand Marketers",
+        "D2C Marketing Executives",
+        "Influencer Agencies"
+      ],
+      "faq": [
+        {
+          "question": "Which social platforms are supported?",
+          "answer": "TikTok, Instagram, and YouTube are fully integrated for real-time tracking."
+        }
+      ],
+      "case_studies": [
+        "FMCG Brand"
+      ],
+      "related_entities": [
+        "ecommerce_os",
+        "ai_powered_marketing"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "influencer",
+        "influencer marketing",
+        "influencer marketing platform",
+        "influencer platform",
+        "influencer-marketing",
+        "influencer_marketing",
+        "influncer"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": "data_engineering",
+      "name": "Data Engineering",
+      "category": "service",
+      "route": "/services/data-engineering",
+      "summary": "Cloud data platforms and high-throughput real-time streaming architectures.",
+      "description": "Modern data warehousing, real-time pipeline construction, ETL orchestrations, and analytics foundation models engineered to lock in AI readiness.",
+      "overview": {
+        "summary": "Cloud data platforms and high-throughput real-time streaming architectures.",
+        "description": "Modern data warehousing, real-time pipeline construction, ETL orchestrations, and analytics foundation models engineered to lock in AI readiness."
+      },
+      "how_it_works": {
+        "process": "Builds secure cloud data platforms and pipelines using standard ETL/ELT practices to prepare data for real-time AI ingestion.",
+        "steps": [
+          "Source system connector provisioning",
+          "ETL/ELT orchestration setup via dbt and Airflow",
+          "Analytics database model optimization",
+          "High-throughput real-time stream processing"
+        ]
+      },
+      "features": [
+        "Real-time pipelines (Kafka, Spark Streaming, Flink)",
+        "Data warehousing architectures (BigQuery, Snowflake, Redshift)",
+        "Automated ETL orchestration structures (dbt, Apache Airflow)"
+      ],
+      "benefits": [
+        "Optimize analytical warehouse queries by up to 40%",
+        "Ensure data pipeline ingestion latency below 5 seconds"
+      ],
+      "best_for": [
+        "Enterprise CIOs",
+        "BI Analysts",
+        "Data Science Teams"
+      ],
+      "faq": [
+        {
+          "question": "Which cloud warehouses do you support?",
+          "answer": "BigQuery, Snowflake, and Redshift are fully supported."
+        }
+      ],
+      "case_studies": [
+        "B2B Spices Export",
+        "FMCG Brand"
+      ],
+      "related_entities": [
+        "ecommerce_os",
+        "pharma_os",
+        "smart_cities_os",
+        "education_os",
+        "real_estate_os",
+        "enterprise_ai_os"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "data engineering",
+        "data-engineering",
+        "data_engineering"
+      ]
+    },
+    {
+      "id": "enterprise_agentic_ai",
+      "name": "Enterprise & Agentic AI",
+      "category": "service",
+      "route": "/services/enterprise-ai",
+      "summary": "Autonomous task coordination agents and custom model adaptation pipelines.",
+      "description": "Development of customized large language model pipelines, local offline LLM optimization setups, vector index adapters, and multi-agent autonomous orchestrations.",
+      "overview": {
+        "summary": "Autonomous task coordination agents and custom model adaptation pipelines.",
+        "description": "Development of customized large language model pipelines, local offline LLM optimization setups, vector index adapters, and multi-agent autonomous orchestrations."
+      },
+      "how_it_works": {
+        "process": "Creates autonomous agent graphs and optimized RAG indexes to automate complex multi-step data tasks.",
+        "steps": [
+          "Custom fine-tuning and adaptation audits",
+          "Multi-agent architecture design via LangGraph",
+          "Retrieval augmented generation setup with high-precision indexes",
+          "Model safety guardrail mapping"
+        ]
+      },
+      "features": [
+        "Custom fine-tuning and supervised reinforcement training pipelines",
+        "Multi-agent autonomous systems (LangGraph, CrewAI)",
+        "High-precision vector retrieval architectures (RAG)"
+      ],
+      "benefits": [
+        "Automate multi-step data analysis workflows from hours to seconds",
+        "Achieve verified accuracy targets for internal information retrieval"
+      ],
+      "best_for": [
+        "R&D Managers",
+        "Operations Executives",
+        "Innovation Hubs"
+      ],
+      "faq": [
+        {
+          "question": "How do you guarantee agent safety?",
+          "answer": "By using deterministic guardrail layers and strict category bounds check rules."
+        }
+      ],
+      "case_studies": [
+        "B2B Spices Export"
+      ],
+      "related_entities": [
+        "enterprise_ai_os"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "enterprise & agentic ai",
+        "enterprise agentic ai",
+        "enterprise-agentic-ai",
+        "enterprise_agentic_ai"
+      ]
+    },
+    {
+      "id": "ai_strategy",
+      "name": "AI Strategy & Advisory",
+      "category": "service",
+      "route": "/services/ai-strategy",
+      "summary": "Executive advisory and technological feasibility roadmaps.",
+      "description": "High-level advisory guiding enterprises through AI feasibility audits, CoE center setups, ROI priority calculations, and compliance governance designs.",
+      "overview": {
+        "summary": "Executive advisory and technological feasibility roadmaps.",
+        "description": "High-level advisory guiding enterprises through AI feasibility audits, CoE center setups, ROI priority calculations, and compliance governance designs."
+      },
+      "how_it_works": {
+        "process": "Guides organization leadership from initial feasibility audits to deployment designs and centers of excellence.",
+        "steps": [
+          "Business capability and technology audit",
+          "ROI prioritization and risk scoping matrix",
+          "Centers of Excellence (CoE) organization planning",
+          "Compliance and security governance blueprint"
+        ]
+      },
+      "features": [
+        "AI capability audits and technology readiness assessments",
+        "Strategic AI roadmap planning and CoE setup blueprints",
+        "AI ROI calculations and model choice risk auditing"
+      ],
+      "benefits": [
+        "Mitigate expensive deployment risks on low-ROI pilot projects",
+        "Establish structured governance policies aligned with compliance targets"
+      ],
+      "best_for": [
+        "Board Members",
+        "Enterprise Executives",
+        "VPs of Technology"
+      ],
+      "faq": [
+        {
+          "question": "How long does a roadmap assessment take?",
+          "answer": "Typically 4 to 8 weeks depending on organizational complexity."
+        }
+      ],
+      "case_studies": [],
+      "related_entities": [],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "ai strategy",
+        "ai strategy & advisory",
+        "ai-strategy",
+        "ai_strategy"
+      ]
+    },
+    {
+      "id": "ai_powered_marketing",
+      "name": "AI-Powered Marketing",
+      "category": "service",
+      "route": "/services/martech-360",
+      "summary": "AI-driven customer acquisition, conversion, and revenue tracking.",
+      "description": "Full-funnel digital growth strategies integrating automated copy generation, search engine optimization monitoring, and WhatsApp checkout loops.",
+      "overview": {
+        "summary": "AI-driven customer acquisition, conversion, and revenue tracking.",
+        "description": "Full-funnel digital growth strategies integrating automated copy generation, search engine optimization monitoring, and WhatsApp checkout loops."
+      },
+      "how_it_works": {
+        "process": "Integrates growth marketing automation loops, search engine monitors, and interactive checkout messaging channels.",
+        "steps": [
+          "Growth funnel mapping and KPI target scoping",
+          "Campaign configuration with automated copy testing",
+          "Multi-channel attribution modeling",
+          "Interactive conversion optimization checkout setup"
+        ]
+      },
+      "features": [
+        "Automated branding, ad copy generation, and PPC bidding",
+        "Social media campaign optimization and creator matching",
+        "Conversion rate optimization auditing via WhatsApp checkout funnels"
+      ],
+      "benefits": [
+        "Improve PPC return-on-ad-spend (ROAS) by up to 35%",
+        "Increase content output throughput by 4x without losing alignment"
+      ],
+      "best_for": [
+        "Growth Leads",
+        "E-commerce CMOs",
+        "Digital Agencies"
+      ],
+      "faq": [
+        {
+          "question": "Does it integrate with existing ad platforms?",
+          "answer": "Yes, Meta Ads, Google Ads, and TikTok Ads are fully integrated."
+        }
+      ],
+      "case_studies": [
+        "Jewellery Brand",
+        "FMCG Brand"
+      ],
+      "related_entities": [
+        "whatsapp_marketing",
+        "influencer_marketing"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "ai powered marketing",
+        "ai-powered marketing",
+        "ai-powered-marketing",
+        "ai_powered_marketing"
+      ]
+    }
+  ],
+  "solutions": [
+    {
+      "id": "ecommerce_os",
+      "name": "E-Commerce OS",
+      "category": "solution",
+      "route": "/solutions/ecommerce-os",
+      "summary": "Unified digital operating system for retail and D2C brands.",
+      "description": "An end-to-end industry operating system connecting online store channels, real-time inventory management, stock alerts, and automated customer desk messaging.",
+      "overview": {
+        "summary": "Unified digital operating system for retail and D2C brands.",
+        "description": "An end-to-end industry operating system connecting online store channels, real-time inventory management, stock alerts, and automated customer desk messaging."
+      },
+      "how_it_works": {
+        "process": "Integrates shop systems, local stock lists, and AI messaging assistants to handle transactions automatically.",
+        "steps": [
+          "E-commerce storefront integration",
+          "Real-time stock level synchronization",
+          "AI shopping assistant chatbot setup",
+          "Fulfillment and dispatch notification routing"
+        ]
+      },
+      "features": [
+        "Real-time inventory synchronization across store channels in under 1 second",
+        "AI-driven product search and recommendation agents",
+        "Automated stock level reordering and logistics fulfillment loops"
+      ],
+      "benefits": [
+        "Eliminate stock level inconsistencies across physical/digital channels",
+        "Boost catalog conversion using interactive checkout links in messaging"
+      ],
+      "best_for": [
+        "Retailers",
+        "D2C Brands",
+        "E-Commerce Merchants"
+      ],
+      "faq": [
+        {
+          "question": "Does it connect with Shopify?",
+          "answer": "Yes, Shopify and WooCommerce are fully supported out-of-the-box."
+        }
+      ],
+      "case_studies": [
+        "FMCG Brand"
+      ],
+      "related_entities": [
+        "whatsapp_marketing",
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "e commerce os",
+        "e-commerce",
+        "e-commerce os",
+        "ecommerce",
+        "ecommerce os",
+        "ecommerce-os",
+        "ecommerce_os",
+        "retail",
+        "retail os"
+      ]
+    },
+    {
+      "id": "pharma_os",
+      "name": "Pharma & Healthcare OS",
+      "category": "solution",
+      "route": "/solutions/pharma-os",
+      "summary": "Compliance-first pharmacy logistics and operations framework.",
+      "description": "Secure, audit-ready software layer coordinating patient files, medicine inventory tracking, shelf-life alarms, and doctor scheduling rosters.",
+      "overview": {
+        "summary": "Compliance-first pharmacy logistics and operations framework.",
+        "description": "Secure, audit-ready software layer coordinating patient files, medicine inventory tracking, shelf-life alarms, and doctor scheduling rosters."
+      },
+      "how_it_works": {
+        "process": "Enforces HIPAA data checks while managing drug inventory shelf life and dispatch alerts.",
+        "steps": [
+          "HIPAA/GDPR database configuration",
+          "Batch expiration date tracking setup",
+          "Clinic roster mapping",
+          "Patient alert notifications configuration"
+        ]
+      },
+      "features": [
+        "Secure clinical records database aligned with HIPAA/GDPR rules",
+        "Batch inventory tracking with predictive shell-life waste alarms",
+        "Hospital queue coordination and automated SMS/WhatsApp alerts"
+      ],
+      "benefits": [
+        "Establish regulatory audit readiness across medical desks",
+        "Reduce batch pharmaceutical waste through active inventory alerts"
+      ],
+      "best_for": [
+        "Hospitals",
+        "Clinics",
+        "Large Pharmacy Chains"
+      ],
+      "faq": [
+        {
+          "question": "Is it compliant with healthcare standards?",
+          "answer": "Yes, it is strictly audit-ready and HIPAA compliant."
+        }
+      ],
+      "case_studies": [],
+      "related_entities": [
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "healthcare",
+        "healthcare os",
+        "pharma",
+        "pharma & healthcare",
+        "pharma & healthcare os",
+        "pharma os",
+        "pharma-os",
+        "pharma_os",
+        "pharmaa",
+        "pharmaa os"
+      ]
+    },
+    {
+      "id": "smart_cities_os",
+      "name": "Smart Cities OS",
+      "category": "solution",
+      "route": "/solutions/smart-cities-os",
+      "summary": "Municipal governance and citizen utility grid middleware.",
+      "description": "Urban governance dashboard coordinating citizen registries, dispatch ticket routing, smart street monitors, and utility grid logs.",
+      "overview": {
+        "summary": "Municipal governance and citizen utility grid middleware.",
+        "description": "Urban governance dashboard coordinating citizen registries, dispatch ticket routing, smart street monitors, and utility grid logs."
+      },
+      "how_it_works": {
+        "process": "Connects city IoT sensors and citizen ticketing portals to dispatch service crews dynamically.",
+        "steps": [
+          "IoT device dashboard connection",
+          "Ticketing dispatch automation",
+          "Citizen portal verification",
+          "Energy usage logging setup"
+        ]
+      },
+      "features": [
+        "Unified citizen identity portal with verified access rules",
+        "Automated utility ticket dispatch routing based on query categories",
+        "IoT device dashboards tracking municipal lighting and waste sensors"
+      ],
+      "benefits": [
+        "Improve dispatch ticket routing speed by up to 50%",
+        "Optimize grid energy consumption via adaptive smart lighting"
+      ],
+      "best_for": [
+        "Municipal Corporations",
+        "Urban Planners",
+        "Smart Grid Operators"
+      ],
+      "faq": [
+        {
+          "question": "Which sensors are supported?",
+          "answer": "Standard urban waste, water flow, and street lighting sensors are supported."
+        }
+      ],
+      "case_studies": [],
+      "related_entities": [
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "smart cities",
+        "smart cities os",
+        "smart-cities-os",
+        "smart_cities_os"
+      ]
+    },
+    {
+      "id": "education_os",
+      "name": "Education OS",
+      "category": "solution",
+      "route": "/solutions/education-os",
+      "summary": "Centralized college administration, learning platform, and grading desks.",
+      "description": "Unified college LMS linking registrations, mentor tracking, online study classrooms, and proctoring exam desks.",
+      "overview": {
+        "summary": "Centralized college administration, learning platform, and grading desks.",
+        "description": "Unified college LMS linking registrations, mentor tracking, online study classrooms, and proctoring exam desks."
+      },
+      "how_it_works": {
+        "process": "Integrates student profile directories, course materials, and online examination modules.",
+        "steps": [
+          "Student information system provisioning",
+          "Virtual blended classroom configuration",
+          "Exam proctoring setup",
+          "Report card compilation"
+        ]
+      },
+      "features": [
+        "Central information directory for registrations, mentor groups, and departments",
+        "Virtual classroom hub supporting blended course assignments",
+        "Exam assessment platform with automated grading sheet compiled reports"
+      ],
+      "benefits": [
+        "Reduce student file administration overhead",
+        "Provide secure, 24/7 learning resources for remote student cohorts"
+      ],
+      "best_for": [
+        "Universities",
+        "Colleges",
+        "Online Education Providers"
+      ],
+      "faq": [
+        {
+          "question": "Can it integrate with standard LMS?",
+          "answer": "Yes, LTI integrations are supported."
+        }
+      ],
+      "case_studies": [],
+      "related_entities": [
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "education",
+        "education os",
+        "education-os",
+        "education_os"
+      ]
+    },
+    {
+      "id": "real_estate_os",
+      "name": "Real Estate OS",
+      "category": "solution",
+      "route": "/solutions/real-estate-os",
+      "summary": "Broker operations and inventory matching framework.",
+      "description": "Property management framework automating listing coordinates, client demand profiles, broker payouts, and legally binding digital signatures.",
+      "overview": {
+        "summary": "Broker operations and inventory matching framework.",
+        "description": "Property management framework automating listing coordinates, client demand profiles, broker payouts, and legally binding digital signatures."
+      },
+      "how_it_works": {
+        "process": "Matches buyer demand profiles with property listing attributes dynamically and runs digital sign-off loops.",
+        "steps": [
+          "Property asset directory setup",
+          "Lead-listing matching algorithm configuration",
+          "Payout rule settings",
+          "Digital contract signature loop verification"
+        ]
+      },
+      "features": [
+        "Interactive directory mapping specification search filters",
+        "Lead-to-property matching algorithm linking client requirements to active listings",
+        "Legally binding contract generation and digital signature loops"
+      ],
+      "benefits": [
+        "Lower vacancy lease latency times by up to 40%",
+        "Track broker deal payouts and sales commissions dynamically"
+      ],
+      "best_for": [
+        "Real Estate Brokerages",
+        "Property Agencies",
+        "Leasing Managers"
+      ],
+      "faq": [
+        {
+          "question": "Are the signatures legally binding?",
+          "answer": "Yes, they comply with national digital signature regulations."
+        }
+      ],
+      "case_studies": [],
+      "related_entities": [
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "broker os",
+        "estate os",
+        "property os",
+        "real estate",
+        "real estate os",
+        "real-estate",
+        "real-estate-os",
+        "real_estate_os",
+        "realestate",
+        "realestate os"
+      ]
+    },
+    {
+      "id": "enterprise_ai_os",
+      "name": "Enterprise AI OS",
+      "category": "solution",
+      "route": "/solutions/enterprise-ai-os",
+      "summary": "Cognitive middleware orchestrating database adapters and model paths.",
+      "description": "High-performance software suite serving as the intelligence layer, coordinating LLM routing, query safety checks, and secure DB connections.",
+      "overview": {
+        "summary": "Cognitive middleware orchestrating database adapters and model paths.",
+        "description": "High-performance software suite serving as the intelligence layer, coordinating LLM routing, query safety checks, and secure DB connections."
+      },
+      "how_it_works": {
+        "process": "Routes user requests to cost-efficient models while scrubbing sensitive data and running SQL mappings.",
+        "steps": [
+          "Dynamic model routing parameters setup",
+          "Enterprise DB adapters configuration",
+          "PII/data compliance checks design",
+          "Agent coordinate integration"
+        ]
+      },
+      "features": [
+        "Model routing logic dynamically matching queries to cost-efficient backends",
+        "Secure database adapters mapping enterprise SQL/NoSQL targets",
+        "Compliance check guardrails preventing sensitive PII leakage"
+      ],
+      "benefits": [
+        "Reduce API token cost structures by up to 40%",
+        "Accelerate custom AI agent deployment cycles from weeks to hours"
+      ],
+      "best_for": [
+        "Enterprise Developers",
+        "CTOs",
+        "Security Architects"
+      ],
+      "faq": [
+        {
+          "question": "How does it protect PII?",
+          "answer": "Built-in redaction rules filter out credit cards, emails, and names before sending to external model paths."
+        }
+      ],
+      "case_studies": [
+        "B2B Spices Export"
+      ],
+      "related_entities": [
+        "enterprise_agentic_ai",
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "agentic ai os",
+        "ai os",
+        "enterprise ai",
+        "enterprise ai os",
+        "enterprise-ai-os",
+        "enterprise_ai_os"
+      ]
+    }
+  ],
+  "metadata": {}
+}

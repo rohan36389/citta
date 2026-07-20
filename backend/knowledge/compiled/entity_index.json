@@ -1,0 +1,61 @@
+{
+  "PRODUCTS": {
+    "whatsapp marketing platform": "whatsapp_marketing",
+    "whatsapp marketing": "whatsapp_marketing",
+    "whatsapp platform": "whatsapp_marketing",
+    "wa": "whatsapp_marketing",
+    "influencer marketing platform": "influencer_marketing",
+    "influencer marketing": "influencer_marketing",
+    "influencer platform": "influencer_marketing",
+    "creator platform": "influencer_marketing"
+  },
+  "SERVICES": {
+    "data engineering": "data_engineering",
+    "cloud data platform": "data_engineering",
+    "data engineering service": "data_engineering",
+    "enterprise & agentic ai": "enterprise_agentic_ai",
+    "enterprise agentic ai": "enterprise_agentic_ai",
+    "enterprise ai": "enterprise_agentic_ai",
+    "agentic ai": "enterprise_agentic_ai",
+    "agentic systems": "enterprise_agentic_ai",
+    "ai strategy & advisory": "ai_strategy",
+    "ai strategy": "ai_strategy",
+    "strategy consulting": "ai_strategy",
+    "ai powered marketing": "ai_powered_marketing",
+    "ai-powered marketing": "ai_powered_marketing",
+    "martech 360": "ai_powered_marketing",
+    "marketing automation": "ai_powered_marketing"
+  },
+  "SOLUTIONS": {
+    "ecommerce os": "ecommerce_os",
+    "e-commerce os": "ecommerce_os",
+    "retail os": "ecommerce_os",
+    "pharma & healthcare os": "pharma_os",
+    "pharma os": "pharma_os",
+    "pharmaa os": "pharma_os",
+    "pharmaa": "pharma_os",
+    "healthcare os": "pharma_os",
+    "smart cities os": "smart_cities_os",
+    "urban os": "smart_cities_os",
+    "smart city": "smart_cities_os",
+    "education os": "education_os",
+    "lms os": "education_os",
+    "learning os": "education_os",
+    "real estate os": "real_estate_os",
+    "realestate os": "real_estate_os",
+    "realestate": "real_estate_os",
+    "broker os": "real_estate_os",
+    "property os": "real_estate_os",
+    "enterprise ai os": "enterprise_ai_os"
+  },
+  "CASE_STUDIES": {
+    "case study": "case_studies",
+    "case studies": "case_studies",
+    "jewellery brand": "jewellery_brand_roi",
+    "jewellery": "jewellery_brand_roi",
+    "fmcg brand": "fmcg_social_growth",
+    "fmcg": "fmcg_social_growth",
+    "spices export": "b2b_spices_export",
+    "b2b spices export": "b2b_spices_export"
+  }
+}

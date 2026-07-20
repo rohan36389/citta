@@ -1,0 +1,169 @@
+{
+  "registries": [
+    {
+      "name": "company_info",
+      "enabled": true,
+      "priority": 95,
+      "registry_id": "company_info_v2",
+      "registry_type": "COMPANY_INFO",
+      "content": "new/company_info.json"
+    },
+    {
+      "name": "product_whatsapp_marketing",
+      "enabled": true,
+      "priority": 90,
+      "registry_id": "whatsapp_marketing_v2",
+      "registry_type": "PRODUCTS",
+      "content": "new/product_whatsapp_marketing.json"
+    },
+    {
+      "name": "product_influencer_marketing",
+      "enabled": true,
+      "priority": 90,
+      "registry_id": "influencer_marketing_v2",
+      "registry_type": "PRODUCTS",
+      "content": "new/product_influencer_marketing.json"
+    },
+    {
+      "name": "solution_ecommerce_os",
+      "enabled": true,
+      "priority": 85,
+      "registry_id": "ecommerce_os_v2",
+      "registry_type": "SOLUTIONS",
+      "content": "new/solution_ecommerce_os.json"
+    },
+    {
+      "name": "solution_real_estate_os",
+      "enabled": true,
+      "priority": 85,
+      "registry_id": "real_estate_os_v2",
+      "registry_type": "SOLUTIONS",
+      "content": "new/solution_real_estate_os.json"
+    },
+    {
+      "name": "solution_pharma_os",
+      "enabled": true,
+      "priority": 85,
+      "registry_id": "pharma_os_v2",
+      "registry_type": "SOLUTIONS",
+      "content": "new/solution_pharma_os.json"
+    },
+    {
+      "name": "solution_smart_cities_os",
+      "enabled": true,
+      "priority": 85,
+      "registry_id": "smart_cities_os_v2",
+      "registry_type": "SOLUTIONS",
+      "content": "new/solution_smart_cities_os.json"
+    },
+    {
+      "name": "solution_education_os",
+      "enabled": true,
+      "priority": 85,
+      "registry_id": "education_os_v2",
+      "registry_type": "SOLUTIONS",
+      "content": "new/solution_education_os.json"
+    },
+    {
+      "name": "solution_enterprise_ai_os",
+      "enabled": true,
+      "priority": 85,
+      "registry_id": "enterprise_ai_os_v2",
+      "registry_type": "SOLUTIONS",
+      "content": "new/solution_enterprise_ai_os.json"
+    },
+    {
+      "name": "service_data_engineering",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "data_engineering_v2",
+      "registry_type": "SERVICES",
+      "content": "new/service_data_engineering.json"
+    },
+    {
+      "name": "service_enterprise_agentic_ai",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "enterprise_agentic_ai_v2",
+      "registry_type": "SERVICES",
+      "content": "new/service_enterprise_agentic_ai.json"
+    },
+    {
+      "name": "service_ai_strategy",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "ai_strategy_v2",
+      "registry_type": "SERVICES",
+      "content": "new/service_ai_strategy.json"
+    },
+    {
+      "name": "service_ai_powered_marketing",
+      "enabled": true,
+      "priority": 80,
+      "registry_id": "ai_powered_marketing_v2",
+      "registry_type": "SERVICES",
+      "content": "new/service_ai_powered_marketing.json"
+    },
+    {
+      "name": "awards_recognition",
+      "enabled": true,
+      "priority": 75,
+      "registry_id": "awards_recognition_v2",
+      "registry_type": "RECOGNITION",
+      "content": "new/awards_recognition.json"
+    },
+    {
+      "name": "leadership_info",
+      "enabled": true,
+      "priority": 75,
+      "registry_id": "leadership_info_v2",
+      "registry_type": "LEADERSHIP",
+      "content": "new/leadership_info.json"
+    },
+    {
+      "name": "contact_info",
+      "enabled": true,
+      "priority": 70,
+      "registry_id": "contact_info_v2",
+      "registry_type": "CONTACT",
+      "content": "new/contact_info.json"
+    },
+    {
+      "name": "faq_general",
+      "enabled": true,
+      "priority": 65,
+      "registry_id": "faq_general_v2",
+      "registry_type": "FAQ",
+      "content": "new/faq_general.json"
+    },
+    {
+      "name": "case_study_jewellery_brand_roi",
+      "enabled": true,
+      "priority": 60,
+      "registry_id": "case_study_jewellery_v2",
+      "registry_type": "CASE_STUDIES",
+      "content": "new/case_study_jewellery_brand_roi.json"
+    },
+    {
+      "name": "case_study_fmcg_social_growth",
+      "enabled": true,
+      "priority": 60,
+      "registry_id": "case_study_fmcg_v2",
+      "registry_type": "CASE_STUDIES",
+      "content": "new/case_study_fmcg_social_growth.json"
+    },
+    {
+      "name": "case_study_b2b_spices_export",
+      "enabled": true,
+      "priority": 60,
+      "registry_id": "case_study_spices_v2",
+      "registry_type": "CASE_STUDIES",
+      "content": "new/case_study_b2b_spices_export.json"
+    }
+  ],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19"
+  }
+}

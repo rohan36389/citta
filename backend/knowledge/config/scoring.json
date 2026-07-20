@@ -1,0 +1,7 @@
+{
+  "semantic_similarity": 0.40,
+  "alias_matching": 0.25,
+  "context_matching": 0.20,
+  "section_matching": 0.10,
+  "registry_priority": 0.05
+}

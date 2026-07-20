@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "registry_id": "case_studies_v1",
+    "registry_type": "CASE_STUDIES",
+    "schema_version": "1.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-18",
+    "knowledge_date": "2026-07-18",
+    "priority": 85,
+    "capabilities": {
+      "reasoning": true,
+      "comparison": true,
+      "transformation": true,
+      "summarization": true,
+      "examples": true
+    },
+    "supported_sections": [
+      "overview"
+    ]
+  },
+  "entities": [
+    {
+      "id": "jewellery_brand_roi",
+      "title": "Jewellery Brand",
+      "industry": "Jewellery",
+      "challenge": "Improve customer engagement and maximize campaign return on investment.",
+      "solution": "AI-powered WhatsApp funnel with intelligent customer engagement.",
+      "results": "\u20b93.5 Cr+ ROI generated from a single campaign.",
+      "metrics": [
+        "\u20b93.5 Cr+ ROI",
+        "98% read rate"
+      ],
+      "related_entities": [
+        "whatsapp_marketing",
+        "ai_powered_marketing"
+      ],
+      "tags": [
+        "WhatsApp Marketing",
+        "AI",
+        "Customer Engagement",
+        "ROI"
+      ],
+      "name": "Jewellery Brand",
+      "aliases": [
+        "jewellery",
+        "jewellery brand",
+        "jewellery brand roi",
+        "jewellery case study",
+        "jewellery-brand-roi",
+        "jewellery_brand_roi"
+      ]
+    },
+    {
+      "id": "fmcg_social_growth",
+      "title": "FMCG Brand",
+      "industry": "FMCG",
+      "challenge": "Increase brand awareness and generate high-quality user-generated content.",
+      "solution": "AI-driven marketing and influencer campaign.",
+      "results": "Followers grew from 2K to 37K and generated 1000+ UGC assets.",
+      "metrics": [
+        "Followers Growth: 2K \u2192 37K",
+        "UGC Assets: 1000+"
+      ],
+      "related_entities": [
+        "influencer_marketing",
+        "ai_powered_marketing",
+        "ecommerce_os"
+      ],
+      "tags": [
+        "Influencer Marketing",
+        "Social Media",
+        "Brand Growth",
+        "UGC"
+      ],
+      "name": "FMCG Brand",
+      "aliases": [
+        "fmcg",
+        "fmcg brand",
+        "fmcg case study",
+        "fmcg social growth",
+        "fmcg-social-growth",
+        "fmcg_social_growth"
+      ]
+    },
+    {
+      "id": "b2b_spices_export",
+      "title": "B2B Spices Export",
+      "industry": "Export",
+      "challenge": "Generate qualified export leads while reducing acquisition costs.",
+      "solution": "AI-powered lead generation and performance marketing.",
+      "results": "Generated 50+ tons of export inquiries in 1 month and reduced CPL by 70%.",
+      "metrics": [
+        "Export Inquiries: 50+ tons in 1 month",
+        "Cost Per Lead Reduction: 70% lower CPL"
+      ],
+      "related_entities": [
+        "data_engineering",
+        "enterprise_agentic_ai",
+        "enterprise_ai_os"
+      ],
+      "tags": [
+        "Lead Generation",
+        "Performance Marketing",
+        "Export",
+        "B2B"
+      ],
+      "name": "B2B Spices Export",
+      "aliases": [
+        "b2b spices export",
+        "b2b-spices-export",
+        "b2b_spices_export"
+      ]
+    }
+  ]
+}

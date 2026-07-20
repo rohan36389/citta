@@ -1,0 +1,8 @@
+{
+  "spell_correction": true,
+  "response_cache": true,
+  "auto_reload": false,
+  "knowledge_graph": true,
+  "rag_guardrails": true,
+  "query_rewrite_log": true
+}

@@ -28,13 +28,8 @@ export const NAV = {
     {
       label: "Products",
       children: [
-        { label: "MarkTech Suite", to: "/products/whatsapp-marketing", note: "Brand Messaging OS" },
-        { label: "WhatsApp Marketing Platform", to: "/products/whatsapp-marketing" },
-        { label: "Influencer Marketing Platform", to: "/products/influencer-marketing" },
-        { label: "Agentic AI Platforms", to: "/solutions/enterprise-ai-os" },
-        { label: "LMS & Education", to: "/solutions/education-os" },
-        { label: "Pharma AI Suite", to: "/solutions/pharma-os" },
-        { label: "GovTech Solutions", to: "/solutions/smart-cities-os" },
+        { label: "WhatsApp Marketing", to: "/products/whatsapp-marketing" },
+        { label: "Influencer Marketing", to: "/products/influencer-marketing" },
       ],
     },
     {
@@ -118,11 +113,8 @@ export const HOMEPAGE = {
     title: "Built for Impact",
     lead: "Specialized AI platforms engineered to solve complex vertical challenges.",
     items: [
-      { n: "01", title: "WorkTech Products", desc: "AI-Driven Growth, Engineered for Scale. Unify customer data and automate personalized engagement.", to: "/products/whatsapp-marketing" },
-      { n: "02", title: "Agentic AI Platforms", desc: "Deployment-ready autonomous agents for customer support and sales.", to: "/solutions/enterprise-ai-os" },
-      { n: "03", title: "LMS & Education", desc: "Adaptive learning platforms for institutions.", to: "/solutions/education-os" },
-      { n: "04", title: "Pharma AI Suite", desc: "Compliance & batch review automation.", to: "/solutions/pharma-os" },
-      { n: "05", title: "GovTech Applications", desc: "Secure public sector digital infrastructure.", to: "/solutions/smart-cities-os" },
+      { n: "01", title: "WhatsApp Marketing", desc: "Enterprise-grade WhatsApp broadcasting, CRM automation, and customer engagement funnels.", to: "/products/whatsapp-marketing" },
+      { n: "02", title: "Influencer Marketing", desc: "SaaS-based creator campaigns discovery, UGC content orchestration, and performance metrics.", to: "/products/influencer-marketing" },
     ],
   },
   services: {
@@ -158,12 +150,12 @@ export const HOMEPAGE = {
     ],
   },
   fueling: {
-    eyebrow: "Fueling Growth",
-    title: "Fueling Growth For Market Leaders",
+    eyebrow: "Data-Driven Trust",
+    title: "Fueling Growth\nFor Market Leaders.",
+    desc: "Join the ecosystem of forward-thinking enterprises leveraging our autonomous architectures to dominate their verticals.",
     stats: [
       { v: "15+", l: "Enterprise Partners" },
       { v: "100%", l: "Retention Rate" },
-      { v: "50+", l: "Deployments" },
     ],
     logos: ["Aurum Street", "Devarasa", "Green Leaves", "Nails by Mahas", "Olive Mithai", "Premedis", "SRK Jawa", "SVS", "Shilpa Botanica", "Shaaranga", "Vegasri", "Axygen", "Fixity"],
   },
@@ -424,6 +416,7 @@ export const RECOGNITION = {
       subtitle: "Double Victory",
       body: "Winner — AI-Powered DPR Preparation Solution. Winner — SaaS-Based Export Console.",
       org: "Andhra Pradesh Innovation Society (APIS) and APMSME Development Corporation",
+      image: "/assets/recognition/ap-msme-2025.jpg",
       wins: [
         "Winner · AI-Powered DPR Preparation Solution",
         "Winner · SaaS-Based Export Console",
@@ -434,6 +427,7 @@ export const RECOGNITION = {
       subtitle: "HYBIZ TV Business Excellence Awards, 3rd Edition",
       body: "Recognized among the leading AI startups shaping enterprise-grade intelligence in India.",
       org: "HYBIZ TV",
+      image: "/assets/recognition/best-ai-startup-2025.png",
       wins: [],
     },
   ],
@@ -514,11 +508,8 @@ export const CONTACT_PAGE = {
 export const FOOTER = {
   columns: [
     { h: "Products", links: [
-      { l: "MarkTech Suite",       to: "/products/whatsapp-marketing" },
-      { l: "Agentic AI Platforms", to: "/solutions/enterprise-ai-os" },
-      { l: "LMS & Education",      to: "/solutions/education-os" },
-      { l: "Pharma AI Suite",      to: "/solutions/pharma-os" },
-      { l: "GovTech Solutions",    to: "/solutions/smart-cities-os" },
+      { l: "WhatsApp Marketing", to: "/products/whatsapp-marketing" },
+      { l: "Influencer Marketing", to: "/products/influencer-marketing" },
     ]},
     { h: "Services", links: [
       { l: "Data Engineering", to: "/services/data-engineering" },

@@ -1,0 +1,139 @@
+{
+  "product_name": "Enterprise AI OS",
+  "tagline": "Build, Evaluate, Deploy — Production-Ready AI Systems",
+  "description": "The complete platform for RAG, agents, and cognitive workflows.",
+  "cta": "Talk to Sales",
+  "stats": [
+    {
+      "value": "10x",
+      "label": "Faster Development"
+    },
+    {
+      "value": "99%",
+      "label": "Enterprise Uptime"
+    },
+    {
+      "value": "End-to-End",
+      "label": "Full Stack Platform"
+    },
+    {
+      "value": "Secure",
+      "label": "Enterprise Grade"
+    }
+  ],
+  "section_heading": "Comprehensive AI Stack",
+  "section_subheading": "Nine powerful modules covering every aspect of modern enterprise AI.",
+  "capabilities": [
+    {
+      "title": "RAG & Agentic Applications",
+      "subtitle": "End-to-End Production Pipelines",
+      "description": "Build, evaluate, and ship production-ready RAG + agent workflows.",
+      "features": [
+        "Data ingestion & Vector indexing",
+        "Evaluation + benchmarks",
+        "Chat playground & Deployment",
+        "Developer-friendly APIs"
+      ]
+    },
+    {
+      "title": "Conversational AI",
+      "subtitle": "Enterprise chat assistants",
+      "description": "Multi-channel chat experiences with governance and analytics.",
+      "features": [
+        "Support & Operations assistants",
+        "Internal knowledge base chat",
+        "Multi-channel orchestration",
+        "Governance and analytics"
+      ]
+    },
+    {
+      "title": "Voice Agents",
+      "subtitle": "Real-time voice intelligence",
+      "description": "Low latency voice-to-action pipelines using Google's ADK.",
+      "features": [
+        "Real-time voice agents",
+        "Call automation & Support triage",
+        "Appointment handling",
+        "Low latency execution"
+      ]
+    },
+    {
+      "title": "Multi-Agent Systems",
+      "subtitle": "Collaborative agent orchestration",
+      "description": "Task-specific agents working together with shared memory and tools.",
+      "features": [
+        "Orchestration & Role-based agents",
+        "Shared memory & tool access",
+        "Cross-functional collaborative workflows",
+        "Complex problem solving"
+      ]
+    },
+    {
+      "title": "Document AI",
+      "subtitle": "OCR to Agentic Extraction",
+      "description": "Intelligent extraction and validation from forms, invoices, and reports.",
+      "features": [
+        "OCR + structured extraction",
+        "Validation & Exception flows",
+        "Human-in-the-loop review",
+        "Compliance document processing"
+      ]
+    },
+    {
+      "title": "Data Engineering & Analytics",
+      "subtitle": "Modern data pipelines",
+      "description": "Pipelines for structured/unstructured data with scalable reporting.",
+      "features": [
+        "Structured/Unstructured data pipelines",
+        "Dashboards & Metrics layers",
+        "Data reliability checks",
+        "Scalable reporting infrastructure"
+      ]
+    },
+    {
+      "title": "Agentic Knowledge Graph",
+      "subtitle": "Contextual relationship discovery",
+      "description": "Convert enterprise documents into connected knowledge graphs for better reasoning.",
+      "features": [
+        "Document to Graph conversion",
+        "Relationship discovery & Traceability",
+        "Root cause analysis support",
+        "Enhanced reasoning capabilities"
+      ]
+    },
+    {
+      "title": "Database Agents",
+      "subtitle": "NL-to-SQL & Tool-driven agents",
+      "description": "Safe, permissioned database interaction via natural language.",
+      "features": [
+        "NL-to-SQL capabilities",
+        "Guardrails & Permissions",
+        "Safe query execution",
+        "Analytics copilots"
+      ]
+    },
+    {
+      "title": "Fine-Tuning & RL",
+      "subtitle": "Domain specialization",
+      "description": "Fine-tuning for domain behavior, accuracy, and safe deployment.",
+      "features": [
+        "Domain-specific fine-tuning",
+        "RL Post-training optimization",
+        "Accuracy improvements",
+        "Safe deployment standards"
+      ]
+    }
+  ],
+  "why_section": {
+    "heading": "Why Enterprise AI OS?",
+    "subheading": "Built to move from PoC → Production with confidence.",
+    "pillars": [
+      "Fast Deployment",
+      "Enterprise Controls",
+      "Measurable Eval",
+      "PoC to Production",
+      "Integration Ready",
+      "Advanced Agents"
+    ]
+  }
+}

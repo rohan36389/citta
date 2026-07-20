@@ -1,0 +1,34 @@
+[
+  {
+    "label": "Home",
+    "route": "/"
+  },
+  {
+    "label": "Products",
+    "route": "/products/whatsapp-marketing"
+  },
+  {
+    "label": "Services",
+    "route": "/services"
+  },
+  {
+    "label": "Solutions",
+    "route": "/solutions/ecommerce-os"
+  },
+  {
+    "label": "Recognition",
+    "route": "/recognition"
+  },
+  {
+    "label": "Case Studies",
+    "route": "/case-studies"
+  },
+  {
+    "label": "About Us",
+    "route": "/about"
+  },
+  {
+    "label": "Contact",
+    "route": "/contact"
+  }
+]

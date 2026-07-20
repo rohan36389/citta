@@ -1,0 +1,117 @@
+{
+  "product_name": "Influencer Marketing Platform",
+  "tagline": "Creator Collaboration OS",
+  "description": "A marketplace + campaign management platform connecting Brands, Agencies, and Influencers, with end-to-end workflows from discovery to execution, plus affiliate tracking and analytics.",
+  "cta": "Get Demo",
+  "stats": [
+    {
+      "value": "End-to-End",
+      "label": "Campaign Mgmt"
+    },
+    {
+      "value": "ROI",
+      "label": "Measurable Results"
+    },
+    {
+      "value": "Native",
+      "label": "Affiliate Tracking"
+    },
+    {
+      "value": "100%",
+      "label": "Verified Creators"
+    }
+  ],
+  "section_heading": "Core Functionalities",
+  "section_subheading": "From discovery to payments, everything you need to scale influencer marketing.",
+  "capabilities": [
+    {
+      "title": "Influencer Discovery",
+      "subtitle": "Find & Shortlist",
+      "description": "Browse influencers by category, niche, location, language, and audience type.",
+      "features": [
+        "Search by reach & platform",
+        "Wishlist / shortlists",
+        "Side-by-side comparison",
+        "Engagement verification"
+      ]
+    },
+    {
+      "title": "Communication & Hub",
+      "subtitle": "Chat & Negotiation",
+      "description": "Built-in chat for centralized communication and deal negotiation.",
+      "features": [
+        "Built-in chat system",
+        "Negotiation flows",
+        "Conversation logs",
+        "Agreement summaries"
+      ]
+    },
+    {
+      "title": "Campaign Management",
+      "subtitle": "Creation & Assignment",
+      "description": "Create campaigns with objectives, creative briefs, and influencer assignments.",
+      "features": [
+        "Objective-based campaigns",
+        "Creative briefs & guidelines",
+        "Influencer assignment",
+        "Milestone tracking"
+      ]
+    },
+    {
+      "title": "Live Tracking",
+      "subtitle": "Real-time Status",
+      "description": "Live status tracking for each creator and deliverable with alerts.",
+      "features": [
+        "Live status tracking",
+        "Deadline alerts",
+        "Content proof collection",
+        "Pending approval reminders"
+      ]
+    },
+    {
+      "title": "Analytics & ROI",
+      "subtitle": "Detailed Reporting",
+      "description": "Deep analytics on detailed reach, views, engagement, and campaign ROI.",
+      "features": [
+        "Campaign-level dashboards",
+        "Influencer performance breakdown",
+        "Engagement quality",
+        "Exportable agency reports"
+      ]
+    },
+    {
+      "title": "Affiliate Marketing",
+      "subtitle": "Clicks + Attribution",
+      "description": "Generate trackable links and track conversions and revenue per influencer.",
+      "features": [
+        "Trackable links/codes",
+        "Revenue attribution",
+        "Affiliate leaderboards",
+        "Performance-based insights"
+      ]
+    },
+    {
+      "title": "Payments & Compliance",
+      "subtitle": "Roadmap Ready",
+      "description": "Manage payment milestones, invoicing, and contract acceptance tracking.",
+      "features": [
+        "Payment milestones",
+        "Invoicing support",
+        "Payout tracking",
+        "Contract management"
+      ]
+    }
+  ],
+  "best_for": [
+    "D2C Brands",
+    "Consumer Services",
+    "Education Brands",
+    "Apps",
+    "Local Franchises"
+  ],
+  "outcomes": [
+    "Faster creator sourcing",
+    "Smoother execution",
+    "Measurable ROI with affiliate attribution"
+  ]
+}

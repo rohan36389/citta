@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "registry_id": "location_v1",
+    "registry_type": "LOCATION",
+    "schema_version": "1.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-18",
+    "knowledge_date": "2026-07-18",
+    "priority": 80,
+    "capabilities": {
+      "reasoning": false,
+      "comparison": false,
+      "transformation": true,
+      "summarization": true,
+      "examples": true
+    },
+    "supported_sections": [
+      "overview"
+    ],
+    "aliases": [
+      "office",
+      "location",
+      "address",
+      "hq",
+      "headquarters"
+    ]
+  },
+  "verified": true,
+  "source": "contact_details.md",
+  "address": "5th Floor, SVS One Building, Patrika Nagar Rd Number 2, HUDA Techno Enclave, HITEC City, Hyderabad, Telangana 500081",
+  "maps_link": "https://maps.google.com/?q=CittaAI+HITEC+City+Hyderabad",
+  "city": "Hyderabad",
+  "country": "India"
+}

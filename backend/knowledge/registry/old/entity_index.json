@@ -1,0 +1,14 @@
+{
+  "entity": "case_studies",
+  "aliases": [
+    "case study",
+    "case studies",
+    "success story",
+    "success stories",
+    "roi",
+    "results",
+    "customer stories",
+    "client success"
+  ],
+  "registry": "case_studies.json"
+}

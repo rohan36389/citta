@@ -1,0 +1,71 @@
+{
+  "uuid": "9d7ba1e1-3832-5c06-9687-ffebbb2970ae",
+  "id": "faq_general",
+  "type": "faq",
+  "slug": "faq",
+  "name": "General FAQ",
+  "title": "Frequently Asked Questions",
+  "tagline": "Find quick answers to common queries",
+  "overview": "Frequently asked questions about CittaAI's platform, deployment, models, and licensing.",
+  "description": "Frequently asked questions about CittaAI's platform, deployment, models, and licensing.",
+  "cta": "Read FAQs",
+  "url": "/faq",
+  "search": {
+    "primary_keywords": [
+      "faq",
+      "questions",
+      "answers"
+    ],
+    "secondary_keywords": [
+      "pricing",
+      "licensing",
+      "deployment"
+    ],
+    "aliases": [
+      "faq",
+      "help",
+      "menu"
+    ],
+    "synonyms": [
+      "support",
+      "qna"
+    ]
+  },
+  "classification": {
+    "category": "faq",
+    "industry": "All",
+    "domain": "FAQ",
+    "subdomain": null
+  },
+  "target_users": [
+    "General Public",
+    "Clients"
+  ],
+  "capabilities": [],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [],
+  "faq": [
+    {
+      "question": "What is CittaAI?",
+      "answer": "CittaAI is an Enterprise-Grade AI Intelligence & Transformation Partner. We build cognitive operating systems, cloud data platforms, and automated workflow orchestrations."
+    },
+    {
+      "question": "What is the Enterprise AI OS?",
+      "answer": "The Enterprise AI OS is a cognitive middleware solution developed by CittaAI. It coordinates model routing logic, secure database adapters, and strict data compliance checks."
+    },
+    {
+      "question": "How do I start a consultation?",
+      "answer": "You can contact our solutions architecture desk directly by sending an email to info@cittaai.com or calling +91 9392655040 to schedule a strategy call."
+    }
+  ],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "faq.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

@@ -1,0 +1,230 @@
+import re
+import logging
+from typing import Dict, Any, Tuple, Optional, List, Union
+
+logger = logging.getLogger(__name__)
+
+# Valid CittaAI static page routes
+VALID_STATIC_ROUTES = {
+    "/", "/contact", "/about", "/services", "/recognition", "/case-studies"
+}
+
+FALLBACK_MESSAGE = "I don't have enough verified information to answer that."
+
+def validate_response(
+    text: str,
+    resolved_entity: Optional[str] = None,
+    resolved_section: Optional[str] = None,
+    registry: Optional[Any] = None,
+    retry_count: int = 0,
+    return_metrics: bool = False
+) -> Union[Tuple[bool, str], Tuple[bool, str, Dict[str, Any]]]:
+    """
+    Production Response Validator:
+    Verifies LLM response against strict grounding constraints:
+    1. Resolved entity matches response
+    2. Requested section matches response
+    3. No unsupported products
+    4. No unsupported technologies
+    5. No fake pricing
+    6. No unsupported case studies
+    7. No unsupported statistics
+    
+    If validation fails and retry_count < 1, indicates retry required.
+    If retry_count >= 1 and validation fails again, returns FALLBACK_MESSAGE ("I don't have enough verified information to answer that.").
+    Never loops indefinitely.
+    """
+    from knowledge_registry import get_registry
+    reg = registry or get_registry()
+    
+    metrics: Dict[str, Any] = {
+        "valid": True,
+        "reasons": [],
+        "unsupported_products": [],
+        "unsupported_technologies": [],
+        "unsupported_pricing": [],
+        "unsupported_case_studies": [],
+        "unsupported_statistics": [],
+        "entity_matched": True,
+        "section_matched": True,
+        "retry_count": retry_count
+    }
+
+    if not text or not text.strip():
+        metrics["valid"] = False
+        metrics["reasons"].append("Empty response text")
+        final_text = FALLBACK_MESSAGE if retry_count >= 1 else text
+        if return_metrics:
+            return False, final_text, metrics
+        return False, final_text
+
+    text_lower = text.lower()
+
+    # 1. Resolved Entity Validation
+    if resolved_entity and hasattr(reg, "get_entity"):
+        ent = reg.get_entity(resolved_entity)
+        if ent:
+            ent_name = (ent.get("name") or ent.get("title") or resolved_entity).lower()
+            aliases = [str(a).lower() for a in ent.get("aliases", [])]
+            matched_entity = (
+                ent_name in text_lower or 
+                resolved_entity.lower() in text_lower or 
+                any(a in text_lower for a in aliases if len(a) > 3)
+            )
+            if not matched_entity:
+                metrics["entity_matched"] = False
+                metrics["valid"] = False
+                metrics["reasons"].append(f"Response does not match resolved entity '{resolved_entity}'")
+
+    # 2. Requested Section Validation
+    if resolved_section and resolved_section.lower() != "overview":
+        sec_keywords = [resolved_section.lower().replace("_", " ")]
+        sec_name_clean = resolved_section.lower()
+        if sec_name_clean == "how_it_works":
+            sec_keywords.extend(["how", "work", "process", "step", "flow", "integrate", "working"])
+        elif sec_name_clean == "benefits":
+            sec_keywords.extend(["benefit", "advantage", "value", "roi", "save", "boost", "improve"])
+        elif sec_name_clean == "features":
+            sec_keywords.extend(["feature", "capability", "module", "function", "tool", "spec"])
+        elif sec_name_clean == "integrations":
+            sec_keywords.extend(["integrate", "connection", "api", "crm", "erp", "shopify", "plugin"])
+            
+        matched_section = any(k in text_lower for k in sec_keywords)
+        if not matched_section:
+            metrics["section_matched"] = False
+            metrics["valid"] = False
+            metrics["reasons"].append(f"Response does not match requested section '{resolved_section}'")
+
+    # 3. Unsupported Products Check
+    # Verify product mentions in text against reg.entities and reg.products
+    product_phrases = re.findall(r"\b([a-z0-9_-]+\s+(?:os|platform|tool|app))\b", text_lower)
+    valid_products = set()
+    if hasattr(reg, "entities"):
+        for ent_id, ent in reg.entities.items():
+            valid_products.add(ent_id.lower())
+            p_name = ent.get("name") or ent.get("title")
+            if p_name:
+                valid_products.add(p_name.lower())
+            for a in ent.get("aliases", []):
+                valid_products.add(str(a).lower())
+
+    for prod_p in product_phrases:
+        if prod_p not in valid_products and "operating system" not in prod_p:
+            if not any(prod_p in vp for vp in valid_products):
+                metrics["unsupported_products"].append(prod_p)
+                metrics["valid"] = False
+                metrics["reasons"].append(f"Unsupported product detected: '{prod_p}'")
+
+    # 4. Unsupported Technologies Check
+    known_techs = set(["python", "fastapi", "react", "sqlite", "postgresql", "bigquery", "spark", "airflow", "dbt", "llm", "rag", "bge", "huggingface", "pytorch", "tensorflow", "openai", "gemini", "shopify", "woocommerce", "whatsapp", "meta", "apis", "api"])
+    if hasattr(reg, "entities"):
+        for ent in reg.entities.values():
+            for t in ent.get("technologies", []):
+                known_techs.add(str(t).lower())
+
+    tech_mentions = re.findall(r"\b([a-z0-9]+\.(?:js|py|ai|io))\b", text_lower)
+    for tech in tech_mentions:
+        if tech not in known_techs:
+            metrics["unsupported_technologies"].append(tech)
+            metrics["valid"] = False
+            metrics["reasons"].append(f"Unsupported technology detected: '{tech}'")
+
+    # 5. Fake Pricing Check
+    # Catch raw numerical prices ($X, Rs. Y, X USD) that are not present in ground truth
+    price_matches = re.findall(r"(\$\d+(?:\,\d+)*(?:\.\d+)?|\brs\.\s*\d+|\b\d+\s*(?:usd|eur|gbp|inr)\b)", text_lower)
+    if price_matches:
+        valid_prices = []
+        if resolved_entity and hasattr(reg, "get_entity"):
+            ent = reg.get_entity(resolved_entity)
+            if ent:
+                valid_prices.append(str(ent.get("pricing") or "").lower())
+        for p_match in price_matches:
+            if not any(p_match in vp for vp in valid_prices if vp):
+                metrics["unsupported_pricing"].append(p_match)
+                metrics["valid"] = False
+                metrics["reasons"].append(f"Fake/unverified pricing detected: '{p_match}'")
+
+    # 6. Unsupported Case Studies Check
+    valid_cs = set()
+    if hasattr(reg, "registry_index"):
+        cs_reg = reg.registry_index.get("CASE_STUDIES", {})
+        if cs_reg:
+            for cs in cs_reg.get("entities", []):
+                cs_n = (cs.get("name") or cs.get("title") or "").lower()
+                if cs_n:
+                    valid_cs.add(cs_n)
+                    
+    cs_mentions = re.findall(r"\b([a-z0-9\s]+\s+case\s+study)\b", text_lower)
+    for cs_m in cs_mentions:
+        cs_clean = cs_m.replace("case study", "").strip()
+        if cs_clean and not any(cs_clean in vcs for vcs in valid_cs):
+            metrics["unsupported_case_studies"].append(cs_m)
+            metrics["valid"] = False
+            metrics["reasons"].append(f"Unsupported case study detected: '{cs_m}'")
+
+    # 7. Unsupported Statistics Check
+    stat_matches = re.findall(r"(\b\d{1,3}(?:\.\d+)?%|\b\d+x\s+roi\b|\b\d+x\b)", text_lower)
+    valid_stats = set()
+    if hasattr(reg, "entities"):
+        for ent in reg.entities.values():
+            stat_str = str(ent).lower()
+            for sm in stat_matches:
+                if sm in stat_str:
+                    valid_stats.add(sm)
+
+    for stat in stat_matches:
+        if stat not in valid_stats:
+            metrics["unsupported_statistics"].append(stat)
+            metrics["valid"] = False
+            metrics["reasons"].append(f"Unsupported statistic detected: '{stat}'")
+
+    # 8. Route Link Validation
+    links = re.findall(r"\[[^\]]*\]\(((?:http://localhost:\d+|https?://cittaai\.com)?/[^)]*)\)", text)
+    for link in links:
+        path = link
+        if "http" in link:
+            path_match = re.search(r"https?://[^/]+(/?.*)", link)
+            if path_match:
+                path = path_match.group(1)
+        path_clean = path.split("#")[0].strip()
+        if path_clean not in VALID_STATIC_ROUTES and (not hasattr(reg, "routes") or path_clean not in reg.routes):
+            metrics["valid"] = False
+            metrics["reasons"].append(f"Hallucinated link route detected: '{path_clean}'")
+
+    # Category Consistency Validation
+    for prod in getattr(reg, "products", []):
+        p_name = prod["name"].lower()
+        if p_name in text_lower:
+            mismatch_patterns = [
+                rf"\b{re.escape(p_name)}\s+(?:is\s+a\s+)?(?:solution|service)\b",
+                rf"\bour\s+{re.escape(p_name)}\s+(?:service|solution)\b"
+            ]
+            if any(re.search(pat, text_lower) for pat in mismatch_patterns):
+                metrics["valid"] = False
+                metrics["reasons"].append(f"Product '{prod['name']}' misclassified as service/solution.")
+
+    for sol in getattr(reg, "solutions", []):
+        s_name = sol["name"].lower()
+        if s_name in text_lower:
+            mismatch_patterns = [
+                rf"\b{re.escape(s_name)}\s+(?:is\s+a\s+)?(?:product|service)\b",
+                rf"\bour\s+{re.escape(s_name)}\s+(?:product|service)\b"
+            ]
+            if any(re.search(pat, text_lower) for pat in mismatch_patterns):
+                metrics["valid"] = False
+                metrics["reasons"].append(f"Solution '{sol['name']}' misclassified as product/service.")
+
+    # Determine Output Text & Handling
+    if not metrics["valid"]:
+        if retry_count >= 1:
+            logger.warning(f"Response Validation Failed on retry {retry_count}. Returning fallback message. Reasons: {metrics['reasons']}")
+            final_text = FALLBACK_MESSAGE
+        else:
+            logger.warning(f"Response Validation Failed on initial check. Single retry indicated. Reasons: {metrics['reasons']}")
+            final_text = text
+    else:
+        final_text = text
+
+    if return_metrics:
+        return metrics["valid"], final_text, metrics
+    return metrics["valid"], final_text

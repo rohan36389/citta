@@ -1,0 +1,245 @@
+{
+  "uuid": "4e736310-57e6-563a-898b-2ef6dd0f9653",
+  "id": "smart_cities_os",
+  "type": "solution",
+  "slug": "smart-cities-os",
+  "name": "Smart Cities OS",
+  "title": "Smart Cities OS",
+  "tagline": "Urban Intelligence Platform",
+  "overview": "AI-driven insights from IoT, mobility, utilities, and citizen data for smarter city planning. Create truly intelligent urban ecosystems.",
+  "description": "AI-driven insights from IoT, mobility, utilities, and citizen data for smarter city planning. Create truly intelligent urban ecosystems.",
+  "cta": "Talk to Sales",
+  "url": "/solutions/smart-cities-os",
+  "search": {
+    "primary_keywords": [
+      "smart cities os"
+    ],
+    "secondary_keywords": [
+      "urban intelligence platform"
+    ],
+    "aliases": [
+      "smart_cities_os",
+      "smart-cities-os",
+      "smart cities os"
+    ],
+    "synonyms": []
+  },
+  "classification": {
+    "category": "smart_cities_os",
+    "industry": "General",
+    "domain": "SOLUTIONS",
+    "subdomain": null
+  },
+  "target_users": [
+    "Admin",
+    "User"
+  ],
+  "capabilities": [
+    {
+      "id": "smart_cities_os_unified_city_data_platform",
+      "title": "Unified City Data Platform",
+      "subtitle": "AI-driven insights from IoT, mobility, utilities, and citizen data",
+      "description": "Consolidate all urban data sources into a single intelligent platform.",
+      "keywords": [
+        "unified",
+        "city",
+        "data",
+        "platform"
+      ],
+      "aliases": [
+        "unified city data platform"
+      ],
+      "features": [
+        {
+          "id": "real-time_data_ingestion_from_thousands_of_iot_sen",
+          "title": "Real-time data ingestion from thousands of IoT sensors",
+          "description": "Feature support for Real-time data ingestion from thousands of IoT sensors in Unified City Data Platform.",
+          "keywords": [
+            "real-time",
+            "data",
+            "ingestion",
+            "from",
+            "thousands",
+            "sensors"
+          ]
+        },
+        {
+          "id": "cross-domain_data_correlation_and_analysis",
+          "title": "Cross-domain data correlation and analysis",
+          "description": "Feature support for Cross-domain data correlation and analysis in Unified City Data Platform.",
+          "keywords": [
+            "cross-domain",
+            "data",
+            "correlation",
+            "analysis"
+          ]
+        },
+        {
+          "id": "citizen_feedback_and_sentiment_integration",
+          "title": "Citizen feedback and sentiment integration",
+          "description": "Feature support for Citizen feedback and sentiment integration in Unified City Data Platform.",
+          "keywords": [
+            "citizen",
+            "feedback",
+            "sentiment",
+            "integration"
+          ]
+        },
+        {
+          "id": "open_data_apis_for_ecosystem_integration",
+          "title": "Open data APIs for ecosystem integration",
+          "description": "Feature support for Open data APIs for ecosystem integration in Unified City Data Platform.",
+          "keywords": [
+            "open",
+            "data",
+            "apis",
+            "ecosystem",
+            "integration"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "smart_cities_os_smart_mobility_intelligence",
+      "title": "Smart Mobility Intelligence",
+      "subtitle": "Traffic optimization and transportation planning",
+      "description": "Reduce congestion and improve urban mobility with AI-driven insights.",
+      "keywords": [
+        "smart",
+        "mobility",
+        "intelligence"
+      ],
+      "aliases": [
+        "smart mobility intelligence"
+      ],
+      "features": [
+        {
+          "id": "real-time_traffic_flow_optimization",
+          "title": "Real-time traffic flow optimization",
+          "description": "Feature support for Real-time traffic flow optimization in Smart Mobility Intelligence.",
+          "keywords": [
+            "real-time",
+            "traffic",
+            "flow",
+            "optimization"
+          ]
+        },
+        {
+          "id": "predictive_congestion_management",
+          "title": "Predictive congestion management",
+          "description": "Feature support for Predictive congestion management in Smart Mobility Intelligence.",
+          "keywords": [
+            "predictive",
+            "congestion",
+            "management"
+          ]
+        },
+        {
+          "id": "public_transit_demand_forecasting",
+          "title": "Public transit demand forecasting",
+          "description": "Feature support for Public transit demand forecasting in Smart Mobility Intelligence.",
+          "keywords": [
+            "public",
+            "transit",
+            "demand",
+            "forecasting"
+          ]
+        },
+        {
+          "id": "parking_availability_prediction",
+          "title": "Parking availability prediction",
+          "description": "Feature support for Parking availability prediction in Smart Mobility Intelligence.",
+          "keywords": [
+            "parking",
+            "availability",
+            "prediction"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "smart_cities_os_utility_resource_management",
+      "title": "Utility & Resource Management",
+      "subtitle": "Optimizing energy, water, and waste systems",
+      "description": "Maximize resource efficiency across all city utilities.",
+      "keywords": [
+        "utility",
+        "resource",
+        "management"
+      ],
+      "aliases": [
+        "utility & resource management"
+      ],
+      "features": [
+        {
+          "id": "smart_grid_load_balancing",
+          "title": "Smart grid load balancing",
+          "description": "Feature support for Smart grid load balancing in Utility & Resource Management.",
+          "keywords": [
+            "smart",
+            "grid",
+            "load",
+            "balancing"
+          ]
+        },
+        {
+          "id": "water_distribution_optimization",
+          "title": "Water distribution optimization",
+          "description": "Feature support for Water distribution optimization in Utility & Resource Management.",
+          "keywords": [
+            "water",
+            "distribution",
+            "optimization"
+          ]
+        },
+        {
+          "id": "waste_collection_route_optimization",
+          "title": "Waste collection route optimization",
+          "description": "Feature support for Waste collection route optimization in Utility & Resource Management.",
+          "keywords": [
+            "waste",
+            "collection",
+            "route",
+            "optimization"
+          ]
+        },
+        {
+          "id": "energy_consumption_forecasting",
+          "title": "Energy consumption forecasting",
+          "description": "Feature support for Energy consumption forecasting in Utility & Resource Management.",
+          "keywords": [
+            "energy",
+            "consumption",
+            "forecasting"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [
+    "Traffic AI",
+    "Energy Grid",
+    "Water Systems",
+    "Public Safety",
+    "Urban Planning",
+    "Emergency Response"
+  ],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "06_product_smart_cities_os.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

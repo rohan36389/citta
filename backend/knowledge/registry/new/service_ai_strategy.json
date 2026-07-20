@@ -1,0 +1,216 @@
+{
+  "uuid": "ed453dd3-958b-5667-a845-053b7b55457d",
+  "id": "ai_strategy",
+  "type": "service",
+  "slug": "ai-strategy",
+  "name": "AI Strategy & Advisory",
+  "title": "AI Strategy & Advisory",
+  "tagline": "Professional AI Services",
+  "overview": "Book a consultation with our AI experts today.",
+  "description": "Book a consultation with our AI experts today.",
+  "cta": "Book Now",
+  "url": "/services/ai-strategy",
+  "search": {
+    "primary_keywords": [
+      "ai strategy & advisory"
+    ],
+    "secondary_keywords": [
+      "book a consultation with our ai experts today."
+    ],
+    "aliases": [
+      "ai strategy",
+      "ai_strategy",
+      "ai-strategy"
+    ],
+    "synonyms": []
+  },
+  "classification": {
+    "category": "ai_strategy",
+    "industry": "Enterprise",
+    "domain": "SERVICES",
+    "subdomain": null
+  },
+  "target_users": [
+    "CIO",
+    "CTO",
+    "Product Owners"
+  ],
+  "capabilities": [
+    {
+      "id": "ai_strategy_ai_readiness_assessment",
+      "title": "AI readiness assessment",
+      "subtitle": "Technical & cultural audit",
+      "description": "Before you build, know where you stand. We evaluate your data infrastructure, talent, and processes to determine your readiness for AI adoption.",
+      "keywords": [
+        "readiness",
+        "assessment"
+      ],
+      "aliases": [
+        "ai readiness assessment"
+      ],
+      "features": [
+        {
+          "id": "data_maturity_scoring",
+          "title": "Data maturity scoring",
+          "description": "Capability feature: Data maturity scoring"
+        },
+        {
+          "id": "infrastructure_audit",
+          "title": "Infrastructure audit",
+          "description": "Capability feature: Infrastructure audit"
+        },
+        {
+          "id": "skills_gap_analysis",
+          "title": "Skills gap analysis",
+          "description": "Capability feature: Skills gap analysis"
+        },
+        {
+          "id": "roi_projection_modeling",
+          "title": "ROI projection modeling",
+          "description": "Capability feature: ROI projection modeling"
+        }
+      ],
+      "benefits": [
+        "Clarity",
+        "Risk Reduction",
+        "Roadmap"
+      ],
+      "relationships": []
+    },
+    {
+      "id": "ai_strategy_strategic_roadmap",
+      "title": "Strategic roadmap",
+      "subtitle": "Phased implementation plans",
+      "description": "We build comprehensive, multi-year AI roadmaps that align with your business goals, ensuring every initiative drives tangible value.",
+      "keywords": [
+        "strategic",
+        "roadmap"
+      ],
+      "aliases": [
+        "strategic roadmap"
+      ],
+      "features": [
+        {
+          "id": "milestone_planning",
+          "title": "Milestone planning",
+          "description": "Capability feature: Milestone planning"
+        },
+        {
+          "id": "resource_allocation",
+          "title": "Resource allocation",
+          "description": "Capability feature: Resource allocation"
+        },
+        {
+          "id": "technology_selection",
+          "title": "Technology selection",
+          "description": "Capability feature: Technology selection"
+        },
+        {
+          "id": "kpi_definition",
+          "title": "KPI definition",
+          "description": "Capability feature: KPI definition"
+        }
+      ],
+      "benefits": [
+        "Alignment",
+        "Momentum",
+        "Vision"
+      ],
+      "relationships": []
+    },
+    {
+      "id": "ai_strategy_use_case_prioritization",
+      "title": "Use case prioritization",
+      "subtitle": "Impact vs effort matrix",
+      "description": "Not all AI ideas are equal. We help you identify and prioritize high-impact, low-effort use cases that demonstrate value quickly.",
+      "keywords": [
+        "case",
+        "prioritization"
+      ],
+      "aliases": [
+        "use case prioritization"
+      ],
+      "features": [
+        {
+          "id": "feasibility_workshops",
+          "title": "Feasibility workshops",
+          "description": "Capability feature: Feasibility workshops"
+        },
+        {
+          "id": "value_estimation",
+          "title": "Value estimation",
+          "description": "Capability feature: Value estimation"
+        },
+        {
+          "id": "risk_assessment",
+          "title": "Risk assessment",
+          "description": "Capability feature: Risk assessment"
+        },
+        {
+          "id": "pilot_definitions",
+          "title": "Pilot definitions",
+          "description": "Capability feature: Pilot definitions"
+        }
+      ],
+      "benefits": [
+        "Focus",
+        "Success Rate",
+        "Budget"
+      ],
+      "relationships": []
+    },
+    {
+      "id": "ai_strategy_ai_governance",
+      "title": "AI governance",
+      "subtitle": "Ethics, safety & compliance",
+      "description": "Scale AI responsibly. We establish governance frameworks that ensure your AI systems are ethical, compliant, and secure.",
+      "keywords": [
+        "governance"
+      ],
+      "aliases": [
+        "ai governance"
+      ],
+      "features": [
+        {
+          "id": "ethical_guidelines",
+          "title": "Ethical guidelines",
+          "description": "Capability feature: Ethical guidelines"
+        },
+        {
+          "id": "model_monitoring_frameworks",
+          "title": "Model monitoring frameworks",
+          "description": "Capability feature: Model monitoring frameworks"
+        },
+        {
+          "id": "compliance_auditing_(eu_ai_act)",
+          "title": "Compliance auditing (EU AI Act)",
+          "description": "Capability feature: Compliance auditing (EU AI Act)"
+        },
+        {
+          "id": "bias_detection",
+          "title": "Bias detection",
+          "description": "Capability feature: Bias detection"
+        }
+      ],
+      "benefits": [
+        "Trust",
+        "Safety",
+        "Compliance"
+      ],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "11_service_ai_strategy_advisory.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

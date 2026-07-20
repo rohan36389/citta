@@ -1,0 +1,107 @@
+{
+  "uuid": "51d63633-d7e4-54b6-83e4-25d84cd3ad6a",
+  "id": "awards_recognition",
+  "type": "award",
+  "slug": "recognition",
+  "name": "Awards & Recognition",
+  "title": "Awards & Recognition",
+  "tagline": "Celebrating Excellence & Innovation",
+  "overview": "Recognized by leading industry bodies for our transformative impact on enterprise AI. Showcasing milestones, accolades, and global participation that define our commitment to engineering the future.",
+  "description": "Recognized by leading industry bodies for our transformative impact on enterprise AI. Showcasing milestones, accolades, and global participation that define our commitment to engineering the future.",
+  "cta": "View Awards",
+  "url": "/recognition",
+  "search": {
+    "primary_keywords": [
+      "awards",
+      "recognition",
+      "achievements"
+    ],
+    "secondary_keywords": [
+      "ap msme challenge",
+      "hybiz tv",
+      "innovation award"
+    ],
+    "aliases": [
+      "awards",
+      "recognition",
+      "awards_info"
+    ],
+    "synonyms": [
+      "accolades",
+      "wins"
+    ]
+  },
+  "classification": {
+    "category": "recognition",
+    "industry": "AI & Tech Industry",
+    "domain": "COMPANY_INFO",
+    "subdomain": null
+  },
+  "target_users": [
+    "Partners",
+    "Clients",
+    "Jury"
+  ],
+  "capabilities": [
+    {
+      "id": "ap_msme_digital_empowerment_challenge_2025",
+      "title": "Andhra Pradesh MSME Digital Empowerment Challenge 2025",
+      "subtitle": "AP MSME Digital Empowerment Challenge 2025",
+      "description": "CittaAI proudly secured a double victory at the AP MSME Digital Empowerment Challenge 2025, organized by the Andhra Pradesh Innovation Society (APIS) and APMSME Development Corporation.",
+      "keywords": [
+        "award",
+        "empowerment"
+      ],
+      "aliases": [
+        "andhra pradesh msme digital empowerment challenge 2025"
+      ],
+      "features": [
+        {
+          "id": "win_0",
+          "title": "Winner \u2014 AI-Powered DPR Preparation Solution",
+          "description": "Award victory details: Winner \u2014 AI-Powered DPR Preparation Solution"
+        },
+        {
+          "id": "win_1",
+          "title": "Winner \u2014 SaaS-Based Export Console",
+          "description": "Award victory details: Winner \u2014 SaaS-Based Export Console"
+        }
+      ],
+      "benefits": [
+        "These achievements reinforce our dedication to empowering MSMEs through cutting-edge AI, data-driven precision, and scalable digital tools. We extend our gratitude to APIS, APMSME, and the evaluation committee \u2014 and to our team for turning vision into impact."
+      ],
+      "relationships": []
+    },
+    {
+      "id": "best_ai_startup_of_the_year_2025___hybiz_tv_busine",
+      "title": "Best AI Startup of the Year \u2014 2025",
+      "subtitle": "Best AI Startup of the Year 2025 - HYBIZ TV Business Excellence Awards",
+      "description": "CittaAI has been honored as the \"Best AI Startup of the Year\" at the 3rd Edition of the HYBIZ TV Business Excellence Awards 2025.",
+      "keywords": [
+        "award",
+        "empowerment"
+      ],
+      "aliases": [
+        "best ai startup of the year \u2014 2025"
+      ],
+      "features": [],
+      "benefits": [
+        "At CittaAI, we are just getting started. This award fuels our passion to continue building scalable, future-ready AI solutions that deliver measurable impact across industries."
+      ],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "13_awards_recognition.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

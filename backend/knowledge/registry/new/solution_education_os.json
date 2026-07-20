@@ -1,0 +1,445 @@
+{
+  "uuid": "f3ab141f-98b0-5d75-bed9-7aa8c046fc3c",
+  "id": "education_os",
+  "type": "solution",
+  "slug": "education-os",
+  "name": "Education OS",
+  "title": "Education OS",
+  "tagline": "The Complete Learning + Assessment + Coding Ecosystem for Colleges",
+  "overview": "Managed learning, teaching, and performance with role-based control.",
+  "description": "Managed learning, teaching, and performance with role-based control.",
+  "cta": "Talk to Sales",
+  "url": "/solutions/education-os",
+  "search": {
+    "primary_keywords": [
+      "test series",
+      "student information system",
+      "college lms",
+      "education os",
+      "education platform"
+    ],
+    "secondary_keywords": [
+      "grading workflows",
+      "campus cohort",
+      "the complete learning + assessment + coding ecosystem for colleges",
+      "coding contests"
+    ],
+    "aliases": [
+      "education-os",
+      "education_os",
+      "education os",
+      "lms",
+      "college os"
+    ],
+    "synonyms": []
+  },
+  "classification": {
+    "category": "education_os",
+    "industry": "General",
+    "domain": "SOLUTIONS",
+    "subdomain": null
+  },
+  "target_users": [
+    "Admin",
+    "User"
+  ],
+  "capabilities": [
+    {
+      "id": "education_os_college_lms_multi-college_ready",
+      "title": "College LMS (Multi-College Ready)",
+      "subtitle": "Unified governance for multi-campus institutions",
+      "description": "Onboard multiple colleges with isolated admin controls and deep analytics.",
+      "keywords": [
+        "college",
+        "(multi-college",
+        "ready)"
+      ],
+      "aliases": [
+        "college lms (multi-college ready)"
+      ],
+      "features": [
+        {
+          "id": "role-based_access_admin,_hod,_educator,_learner",
+          "title": "Role-based access: Admin, HOD, Educator, Learner",
+          "description": "Feature support for Role-based access: Admin, HOD, Educator, Learner in College LMS (Multi-College Ready).",
+          "keywords": [
+            "role-based",
+            "access:",
+            "admin,",
+            "hod,",
+            "educator,",
+            "learner"
+          ]
+        },
+        {
+          "id": "department-wise_analytics_and_reporting",
+          "title": "Department-wise analytics and reporting",
+          "description": "Feature support for Department-wise analytics and reporting in College LMS (Multi-College Ready).",
+          "keywords": [
+            "department-wise",
+            "analytics",
+            "reporting"
+          ]
+        },
+        {
+          "id": "course_assignment_by_groups___batches___classes",
+          "title": "Course assignment by groups / batches / classes",
+          "description": "Feature support for Course assignment by groups / batches / classes in College LMS (Multi-College Ready).",
+          "keywords": [
+            "course",
+            "assignment",
+            "groups",
+            "batches",
+            "classes"
+          ]
+        },
+        {
+          "id": "isolated_admin_controls_for_each_college",
+          "title": "Isolated admin controls for each college",
+          "description": "Feature support for Isolated admin controls for each college in College LMS (Multi-College Ready).",
+          "keywords": [
+            "isolated",
+            "admin",
+            "controls",
+            "each",
+            "college"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "education_os_groups_cohort_management",
+      "title": "Groups & Cohort Management",
+      "subtitle": "Streamlined batch and class management",
+      "description": "Empower teachers and admins to manage student groups effectively.",
+      "keywords": [
+        "groups",
+        "cohort",
+        "management"
+      ],
+      "aliases": [
+        "groups & cohort management"
+      ],
+      "features": [
+        {
+          "id": "groups_creation_by_teachers_or_admin",
+          "title": "Groups creation by Teachers or Admin",
+          "description": "Feature support for Groups creation by Teachers or Admin in Groups & Cohort Management.",
+          "keywords": [
+            "groups",
+            "creation",
+            "teachers",
+            "admin"
+          ]
+        },
+        {
+          "id": "bulk_course_test_assignment_to_groups",
+          "title": "Bulk course/test assignment to groups",
+          "description": "Feature support for Bulk course/test assignment to groups in Groups & Cohort Management.",
+          "keywords": [
+            "bulk",
+            "course/test",
+            "assignment",
+            "groups"
+          ]
+        },
+        {
+          "id": "real-time_progress_tracking_and_completion_reports",
+          "title": "Real-time progress tracking and completion reports",
+          "description": "Feature support for Real-time progress tracking and completion reports in Groups & Cohort Management.",
+          "keywords": [
+            "real-time",
+            "progress",
+            "tracking",
+            "completion",
+            "reports"
+          ]
+        },
+        {
+          "id": "performance_monitoring_at_cohort_level",
+          "title": "Performance monitoring at cohort level",
+          "description": "Feature support for Performance monitoring at cohort level in Groups & Cohort Management.",
+          "keywords": [
+            "performance",
+            "monitoring",
+            "cohort",
+            "level"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "education_os_course_learning_experience",
+      "title": "Course Learning Experience",
+      "subtitle": "Video + Quiz + Coding integrated learning",
+      "description": "A rich, interactive learning environment that ensures retention.",
+      "keywords": [
+        "course",
+        "learning",
+        "experience"
+      ],
+      "aliases": [
+        "course learning experience"
+      ],
+      "features": [
+        {
+          "id": "extensive_video_player_experience",
+          "title": "Extensive video player experience",
+          "description": "Feature support for Extensive video player experience in Course Learning Experience.",
+          "keywords": [
+            "extensive",
+            "video",
+            "player",
+            "experience"
+          ]
+        },
+        {
+          "id": "built-in_quiz_&_coding_checkpoints",
+          "title": "Built-in quiz & coding checkpoints",
+          "description": "Feature support for Built-in quiz & coding checkpoints in Course Learning Experience.",
+          "keywords": [
+            "built-in",
+            "quiz",
+            "coding",
+            "checkpoints"
+          ]
+        },
+        {
+          "id": "structured_learning_paths_with_progress_tracking",
+          "title": "Structured learning paths with progress tracking",
+          "description": "Feature support for Structured learning paths with progress tracking in Course Learning Experience.",
+          "keywords": [
+            "structured",
+            "learning",
+            "paths",
+            "with",
+            "progress",
+            "tracking"
+          ]
+        },
+        {
+          "id": "in-course_assessments_for_skill_validation",
+          "title": "In-course assessments for skill validation",
+          "description": "Feature support for In-course assessments for skill validation in Course Learning Experience.",
+          "keywords": [
+            "in-course",
+            "assessments",
+            "skill",
+            "validation"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "education_os_test_series_platform",
+      "title": "Test Series Platform",
+      "subtitle": "Comprehensive Aptitude & Coding assessments",
+      "description": "Evaluate students with auto-graded aptitude and coding tests.",
+      "keywords": [
+        "test",
+        "series",
+        "platform"
+      ],
+      "aliases": [
+        "test series platform"
+      ],
+      "features": [
+        {
+          "id": "create_test_series_with_multiple_tests",
+          "title": "Create Test Series with multiple Tests",
+          "description": "Feature support for Create Test Series with multiple Tests in Test Series Platform.",
+          "keywords": [
+            "create",
+            "test",
+            "series",
+            "with",
+            "multiple",
+            "tests"
+          ]
+        },
+        {
+          "id": "combined_aptitude_and_coding_questions",
+          "title": "Combined Aptitude and Coding questions",
+          "description": "Feature support for Combined Aptitude and Coding questions in Test Series Platform.",
+          "keywords": [
+            "combined",
+            "aptitude",
+            "coding",
+            "questions"
+          ]
+        },
+        {
+          "id": "auto-evaluation_&_topic-wise_insights",
+          "title": "Auto-evaluation & topic-wise insights",
+          "description": "Feature support for Auto-evaluation & topic-wise insights in Test Series Platform.",
+          "keywords": [
+            "auto-evaluation",
+            "topic-wise",
+            "insights"
+          ]
+        },
+        {
+          "id": "leaderboards_&_competitive_global_ranking",
+          "title": "Leaderboards & competitive global ranking",
+          "description": "Feature support for Leaderboards & competitive global ranking in Test Series Platform.",
+          "keywords": [
+            "leaderboards",
+            "competitive",
+            "global",
+            "ranking"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "education_os_coding_lms",
+      "title": "Coding LMS",
+      "subtitle": "Dedicated coding competitive platform",
+      "description": "Build a strong coding culture with structured practice and contests.",
+      "keywords": [
+        "coding"
+      ],
+      "aliases": [
+        "coding lms"
+      ],
+      "features": [
+        {
+          "id": "structured_problem_solving_with_difficulty_levels",
+          "title": "Structured problem solving with difficulty levels",
+          "description": "Feature support for Structured problem solving with difficulty levels in Coding LMS.",
+          "keywords": [
+            "structured",
+            "problem",
+            "solving",
+            "with",
+            "difficulty",
+            "levels"
+          ]
+        },
+        {
+          "id": "live_competitive_contests_with_leaderboards",
+          "title": "Live competitive contests with leaderboards",
+          "description": "Feature support for Live competitive contests with leaderboards in Coding LMS.",
+          "keywords": [
+            "live",
+            "competitive",
+            "contests",
+            "with",
+            "leaderboards"
+          ]
+        },
+        {
+          "id": "skill_benchmarking_&_improvement_tracking",
+          "title": "Skill benchmarking & improvement tracking",
+          "description": "Feature support for Skill benchmarking & improvement tracking in Coding LMS.",
+          "keywords": [
+            "skill",
+            "benchmarking",
+            "improvement",
+            "tracking"
+          ]
+        },
+        {
+          "id": "support_for_multiple_programming_languages",
+          "title": "Support for multiple programming languages",
+          "description": "Feature support for Support for multiple programming languages in Coding LMS.",
+          "keywords": [
+            "support",
+            "multiple",
+            "programming",
+            "languages"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "education_os_video_lms",
+      "title": "Video LMS",
+      "subtitle": "Video-first lightweight learning",
+      "description": "Ideal for training libraries, recorded sessions, and seminars.",
+      "keywords": [
+        "video"
+      ],
+      "aliases": [
+        "video lms"
+      ],
+      "features": [
+        {
+          "id": "lightweight_mode_for_quick_deployment",
+          "title": "Lightweight mode for quick deployment",
+          "description": "Feature support for Lightweight mode for quick deployment in Video LMS.",
+          "keywords": [
+            "lightweight",
+            "mode",
+            "quick",
+            "deployment"
+          ]
+        },
+        {
+          "id": "searchable_chapters_and_content",
+          "title": "Searchable chapters and content",
+          "description": "Feature support for Searchable chapters and content in Video LMS.",
+          "keywords": [
+            "searchable",
+            "chapters",
+            "content"
+          ]
+        },
+        {
+          "id": "consumption_analytics_&_progress_tracking",
+          "title": "Consumption analytics & progress tracking",
+          "description": "Feature support for Consumption analytics & progress tracking in Video LMS.",
+          "keywords": [
+            "consumption",
+            "analytics",
+            "progress",
+            "tracking"
+          ]
+        },
+        {
+          "id": "perfect_for_revision_and_supplementary_content",
+          "title": "Perfect for revision and supplementary content",
+          "description": "Feature support for Perfect for revision and supplementary content in Video LMS.",
+          "keywords": [
+            "perfect",
+            "revision",
+            "supplementary",
+            "content"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [
+    "Unified Platform",
+    "Measurable Outcomes",
+    "College Hierarchy",
+    "Role-Based Access",
+    "Coding Practice",
+    "Contest Management"
+  ],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "07_product_education_os.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

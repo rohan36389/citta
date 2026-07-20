@@ -1,0 +1,148 @@
+{
+  "service_category": "Enterprise & Agentic AI Solutions",
+  "cta_section": {
+    "heading": "Ready to scale?",
+    "subheading": "Book a consultation with our AI experts today.",
+    "cta": "Book Now"
+  },
+  "page_contents_menu": [
+    "Overview",
+    "Key Benefits",
+    "How It Works",
+    "Common Questions"
+  ],
+  "services": [
+    {
+      "title": "Custom LLM fine-tuning",
+      "subtitle": "Tailored models for your domain",
+      "overview": "Adapt state-of-the-art Large Language Models to your specific industry language and use cases. We handle dataset preparation, fine-tuning, and evaluation.",
+      "key_benefits": [
+        {
+          "title": "Accuracy",
+          "description": "Models that speak your language"
+        },
+        {
+          "title": "Privacy",
+          "description": "Keep data within your VPC"
+        },
+        {
+          "title": "Control",
+          "description": "Own your model weights"
+        }
+      ],
+      "core_capabilities": [
+        "Llama 3 / Mistral fine-tuning",
+        "Domain-specific dataset creation",
+        "Parameter-efficient tuning (LoRA)",
+        "Model evaluation benchmarks"
+      ]
+    },
+    {
+      "title": "Multi-agent systems",
+      "subtitle": "Autonomous swarms for complex tasks",
+      "overview": "Deploy collaborative swarms of AI agents that can break down complex objectives, assign tasks, and execute workflows autonomously, mimicking human teamwork.",
+      "key_benefits": [
+        {
+          "title": "Productivity",
+          "description": "Automate entire departments"
+        },
+        {
+          "title": "Complexity",
+          "description": "Solve non-linear problems"
+        },
+        {
+          "title": "Scalability",
+          "description": "Spin up agents on demand"
+        }
+      ],
+      "core_capabilities": [
+        "Autogen / CrewAI frameworks",
+        "Role-based agent design",
+        "Inter-agent communication protocols",
+        "Human-in-the-loop workflows"
+      ]
+    },
+    {
+      "title": "RAG solutions",
+      "subtitle": "Chat with your enterprise data",
+      "overview": "Ground your AI in reality with Retrieval Augmented Generation (RAG). We build systems that let users query your proprietary documents with high accuracy and source attribution.",
+      "key_benefits": [
+        {
+          "title": "Truthfulness",
+          "description": "Eliminate hallucinations"
+        },
+        {
+          "title": "Access",
+          "description": "Unlock siloed knowledge"
+        },
+        {
+          "title": "Security",
+          "description": "Rbac-aware retrieval"
+        }
+      ],
+      "core_capabilities": [
+        "Vector database integration",
+        "Hybrid search algorithms",
+        "Citation & source tracking",
+        "Document parsing pipelines"
+      ]
+    },
+    {
+      "title": "Conversational AI",
+      "subtitle": "Voice & text agents",
+      "overview": "Create natural, human-like voice and text interfaces for your applications. Our conversational agents handle complex intent and maintain context over long interactions.",
+      "key_benefits": [
+        {
+          "title": "Experience",
+          "description": "Natural, fluid interactions"
+        },
+        {
+          "title": "Efficiency",
+          "description": "Deflect routine calls"
+        },
+        {
+          "title": "24/7",
+          "description": "Always-on service"
+        }
+      ],
+      "core_capabilities": [
+        "NLU / NLP pipeline design",
+        "Voice synthesis & recognition",
+        "Dialog state management",
+        "Omnichannel deployment"
+      ]
+    }
+  ],
+  "site_footer": {
+    "logo": "CittaAI",
+    "tagline": "The intelligence layer for the modern enterprise. Engineering autonomy from the ground up.",
+    "certifications": [
+      "ISO 9001:2015",
+      "MSME",
+      "Startup India"
+    ],
+    "nav": {
+      "Products": [
+        "MarkTech Suite",
+        "Agentic AI Platforms",
+        "LMS & Education",
+        "Pharma AI Suite",
+        "GovTech Solutions"
+      ],
+      "Services": [
+        "Data Engineering",
+        "Enterprise AI",
+        "AI Strategy",
+        "MarTech 360",
+        "Consulting"
+      ],
+      "Company": [
+        "About Us",
+        "Case Studies",
+        "Careers",
+        "Blog",
+        "Press"
+      ]
+    }
+  }
+}

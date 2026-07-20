@@ -1,0 +1,127 @@
+{
+  "what_products": {
+    "aliases": [
+      "products",
+      "what products",
+      "offerings",
+      "what platforms",
+      "list products",
+      "flagship products",
+      "show products"
+    ],
+    "answer": {
+      "response": "\ud83c\udfc6 **CittaAI Flagship Products**\n\nCittaAI offers the following state-of-the-art enterprise platforms:\n\n1. **WhatsApp Marketing Platform**: Unified enterprise-grade automation integrated with the official WhatsApp Business API, supporting broadcasts, team desks, and chat automations. [Explore Product](/products/whatsapp-marketing)\n2. **Influencer Marketing Platform**: Creator analytics, contract generation, ROI dashboards, and workflow management for brand amplification campaigns. [Explore Product](/products/influencer-marketing)",
+      "source": "Golden Answers",
+      "verified": true,
+      "navigation": "/products/whatsapp-marketing"
+    }
+  },
+  "what_services": {
+    "aliases": [
+      "services",
+      "consulting",
+      "what services",
+      "list services",
+      "professional services",
+      "show services"
+    ],
+    "answer": {
+      "response": "\ud83d\udee0\ufe0f **CittaAI Professional Services**\n\nCittaAI provides specialized, research-grade advisory and engineering capabilities:\n\n1. **Data Engineering**: Cloud data warehouses, dbt pipeline orchestrations, ETL workflows, and real-time Kafka streams. [Explore Service](/services/data-engineering)\n2. **Enterprise & Agentic AI**: Autonomous multi-agent coordination, local offline LLM optimization, and fine-tuning adapters. [Explore Service](/services/enterprise-ai)\n3. **AI Strategy & Advisory**: Feasibility roadmaps, capability audits, and executive advisory. [Explore Service](/services/ai-strategy)\n4. **AI-Powered Marketing**: Dynamic PPC optimization, MarTech integrations, and automation loops. [Explore Service](/services/martech-360)",
+      "source": "Golden Answers",
+      "verified": true,
+      "navigation": "/services"
+    }
+  },
+  "what_solutions": {
+    "aliases": [
+      "solutions",
+      "industry os",
+      "operating system",
+      "what solutions",
+      "list solutions",
+      "operating systems",
+      "show solutions"
+    ],
+    "answer": {
+      "response": "\ud83c\udf10 **CittaAI Industry Operating Systems (OS)**\n\nWe deploy secure middleware orchestrating data, automation, and compliance:\n\n1. **Enterprise AI OS**: Multi-model routing, database adapters, and compliance controls. [Explore Solution](/solutions/enterprise-ai-os)\n2. **E-Commerce OS**: Live inventory synchronization, billing desks, and shopping desks. [Explore Solution](/solutions/ecommerce-os)\n3. **Pharma & Healthcare OS**: Secure clinical files, queue management, and batch tracks. [Explore Solution](/solutions/pharma-os)\n4. **Smart Cities OS**: Ticket routing, municipal monitors, and resource dashboards. [Explore Solution](/solutions/smart-cities-os)\n5. **Education OS**: Student information systems, grading workflows, and classroom modules. [Explore Solution](/solutions/education-os)\n6. **Real Estate OS**: Interactive asset directories, property leads, and contract tools. [Explore Solution](/solutions/real-estate-os)",
+      "source": "Golden Answers",
+      "verified": true,
+      "navigation": "/solutions/ecommerce-os"
+    }
+  },
+  "who_founded": {
+    "aliases": [
+      "who founded",
+      "who is the CEO",
+      "who started",
+      "ceo",
+      "founder",
+      "started the company",
+      "founded the company",
+      "kiran kumar",
+      "who leads",
+      "who lead"
+    ],
+    "answer": {
+      "response": "\ud83d\udc64 **CittaAI Leadership**\n\nCittaAI was founded in **2022** by a team of researchers and engineers. The company is led by **Kiran Kumar** (Founder & CEO), Vinay Velivela (CEO of Fixity Technologies), Saladi Chandra Balaji (Co-Founder & COO), and Akhil Reddy (Co-Founder & CTO). We engineer research-grade intelligence at enterprise scale.",
+      "source": "Golden Answers",
+      "verified": true,
+      "navigation": "/about"
+    }
+  },
+  "contact_info": {
+    "aliases": [
+      "contact",
+      "email",
+      "phone",
+      "number",
+      "reach",
+      "email address",
+      "phone number",
+      "how do i contact"
+    ],
+    "answer": {
+      "response": "\ud83d\udcde **Contact CittaAI**\n\nYou can reach our solutions desk directly:\n- **Phone**: +91 9392655040\n- **Email**: info@cittaai.com\n- **Business Hours**: Mon-Fri 9am-6pm\n- **Response Desk**: We typically respond within 24 hours during business hours. [Write to Us](/contact)",
+      "source": "Golden Answers",
+      "verified": true,
+      "navigation": "/contact"
+    }
+  },
+  "location_info": {
+    "aliases": [
+      "address",
+      "location",
+      "where is",
+      "office",
+      "headquarters",
+      "hq",
+      "located",
+      "where are you located",
+      "hyderabad office"
+    ],
+    "answer": {
+      "response": "\ud83c\udfe2 **CittaAI Headquarters Location**\n\n- **Address**: 5th Floor, SVS One Building, Patrika Nagar Rd Number 2, HUDA Techno Enclave, HITEC City, Hyderabad, Telangana 500081\n- **Explore Map**: [Google Maps Map Link](https://maps.google.com/?q=CittaAI+HITEC+City+Hyderabad)",
+      "source": "Golden Answers",
+      "verified": true,
+      "navigation": "/contact"
+    }
+  },
+  "awards_info": {
+    "aliases": [
+      "awards",
+      "achievements",
+      "recognition",
+      "won",
+      "ap msme",
+      "hybiz",
+      "apis msme challenge"
+    ],
+    "answer": {
+      "response": "\ud83c\udfc6 **CittaAI Awards & Recognition**\n\nCittaAI has secured significant validation for its cognitive architectures:\n\n1. **AP MSME Digital Empowerment Challenge 2025 (Double Victory)**: Winner for both our AI-Powered DPR Preparation Solution and SaaS-Based Export Console (organized by AP Innovation Society and APMSME Development Corp).\n2. **Best AI Startup of the Year 2025**: Awarded at the 3rd Edition of the HYBIZ TV Business Excellence Awards.\n\nExplore details on our [Awards page](/recognition).",
+      "source": "Golden Answers",
+      "verified": true,
+      "navigation": "/recognition"
+    }
+  },
+  "metadata": {}
+}

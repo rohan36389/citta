@@ -1,0 +1,215 @@
+{
+  "uuid": "fd92d497-d236-5649-b7dd-144a50466661",
+  "id": "enterprise_agentic_ai",
+  "type": "service",
+  "slug": "enterprise-ai",
+  "name": "Enterprise & Agentic AI",
+  "title": "Enterprise & Agentic AI",
+  "tagline": "Professional AI Services",
+  "overview": "Book a consultation with our AI experts today.",
+  "description": "Book a consultation with our AI experts today.",
+  "cta": "Book Now",
+  "url": "/services/enterprise-ai",
+  "search": {
+    "primary_keywords": [
+      "enterprise & agentic ai"
+    ],
+    "secondary_keywords": [
+      "book a consultation with our ai experts today."
+    ],
+    "aliases": [
+      "enterprise_agentic_ai",
+      "enterprise-agentic-ai",
+      "enterprise agentic ai"
+    ],
+    "synonyms": []
+  },
+  "classification": {
+    "category": "enterprise_agentic_ai",
+    "industry": "Enterprise",
+    "domain": "SERVICES",
+    "subdomain": null
+  },
+  "target_users": [
+    "CIO",
+    "CTO",
+    "Product Owners"
+  ],
+  "capabilities": [
+    {
+      "id": "custom_llm_fine_tuning",
+      "title": "Custom LLM fine-tuning",
+      "subtitle": "Tailored models for your domain",
+      "description": "Adapt state-of-the-art Large Language Models to your specific industry language and use cases. We handle dataset preparation, fine-tuning, and evaluation.",
+      "keywords": [
+        "custom",
+        "fine-tuning"
+      ],
+      "aliases": [
+        "custom llm fine-tuning"
+      ],
+      "features": [
+        {
+          "id": "llama_3___mistral_fine_tuning",
+          "title": "Llama 3 / Mistral fine-tuning",
+          "description": "Capability feature: Llama 3 / Mistral fine-tuning"
+        },
+        {
+          "id": "domain_specific_dataset_creation",
+          "title": "Domain-specific dataset creation",
+          "description": "Capability feature: Domain-specific dataset creation"
+        },
+        {
+          "id": "parameter_efficient_tuning_(lora)",
+          "title": "Parameter-efficient tuning (LoRA)",
+          "description": "Capability feature: Parameter-efficient tuning (LoRA)"
+        },
+        {
+          "id": "model_evaluation_benchmarks",
+          "title": "Model evaluation benchmarks",
+          "description": "Capability feature: Model evaluation benchmarks"
+        }
+      ],
+      "benefits": [
+        "Accuracy",
+        "Privacy",
+        "Control"
+      ],
+      "relationships": []
+    },
+    {
+      "id": "multi_agent_systems",
+      "title": "Multi-agent systems",
+      "subtitle": "Autonomous swarms for complex tasks",
+      "description": "Deploy collaborative swarms of AI agents that can break down complex objectives, assign tasks, and execute workflows autonomously, mimicking human teamwork.",
+      "keywords": [
+        "multi-agent",
+        "systems"
+      ],
+      "aliases": [
+        "multi-agent systems"
+      ],
+      "features": [
+        {
+          "id": "autogen___crewai_frameworks",
+          "title": "Autogen / CrewAI frameworks",
+          "description": "Capability feature: Autogen / CrewAI frameworks"
+        },
+        {
+          "id": "role_based_agent_design",
+          "title": "Role-based agent design",
+          "description": "Capability feature: Role-based agent design"
+        },
+        {
+          "id": "inter_agent_communication_protocols",
+          "title": "Inter-agent communication protocols",
+          "description": "Capability feature: Inter-agent communication protocols"
+        },
+        {
+          "id": "human_in_the_loop_workflows",
+          "title": "Human-in-the-loop workflows",
+          "description": "Capability feature: Human-in-the-loop workflows"
+        }
+      ],
+      "benefits": [
+        "Productivity",
+        "Complexity",
+        "Scalability"
+      ],
+      "relationships": []
+    },
+    {
+      "id": "rag_solutions",
+      "title": "RAG solutions",
+      "subtitle": "Chat with your enterprise data",
+      "description": "Ground your AI in reality with Retrieval Augmented Generation (RAG). We build systems that let users query your proprietary documents with high accuracy and source attribution.",
+      "keywords": [
+        "solutions"
+      ],
+      "aliases": [
+        "rag solutions"
+      ],
+      "features": [
+        {
+          "id": "vector_database_integration",
+          "title": "Vector database integration",
+          "description": "Capability feature: Vector database integration"
+        },
+        {
+          "id": "hybrid_search_algorithms",
+          "title": "Hybrid search algorithms",
+          "description": "Capability feature: Hybrid search algorithms"
+        },
+        {
+          "id": "citation_and_source_tracking",
+          "title": "Citation & source tracking",
+          "description": "Capability feature: Citation & source tracking"
+        },
+        {
+          "id": "document_parsing_pipelines",
+          "title": "Document parsing pipelines",
+          "description": "Capability feature: Document parsing pipelines"
+        }
+      ],
+      "benefits": [
+        "Truthfulness",
+        "Access",
+        "Security"
+      ],
+      "relationships": []
+    },
+    {
+      "id": "conversational_ai",
+      "title": "Conversational AI",
+      "subtitle": "Voice & text agents",
+      "description": "Create natural, human-like voice and text interfaces for your applications. Our conversational agents handle complex intent and maintain context over long interactions.",
+      "keywords": [
+        "conversational"
+      ],
+      "aliases": [
+        "conversational ai"
+      ],
+      "features": [
+        {
+          "id": "nlu___nlp_pipeline_design",
+          "title": "NLU / NLP pipeline design",
+          "description": "Capability feature: NLU / NLP pipeline design"
+        },
+        {
+          "id": "voice_synthesis_and_recognition",
+          "title": "Voice synthesis & recognition",
+          "description": "Capability feature: Voice synthesis & recognition"
+        },
+        {
+          "id": "dialog_state_management",
+          "title": "Dialog state management",
+          "description": "Capability feature: Dialog state management"
+        },
+        {
+          "id": "omnichannel_deployment",
+          "title": "Omnichannel deployment",
+          "description": "Capability feature: Omnichannel deployment"
+        }
+      ],
+      "benefits": [
+        "Experience",
+        "Efficiency",
+        "24/7"
+      ],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "10_service_enterprise_agentic_ai.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

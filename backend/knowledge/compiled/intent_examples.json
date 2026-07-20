@@ -1,0 +1,99 @@
+{
+  "LIST_PRODUCTS": [
+    "products",
+    "what products",
+    "offerings",
+    "platforms",
+    "marketing platforms",
+    "what products does cittaai offer",
+    "show me your product list",
+    "list products",
+    "products?",
+    "what do you offer",
+    "what we offer",
+    "what does cittaai offer",
+    "offerings?",
+    "platforms?",
+    "capabilities"
+  ],
+  "LIST_SERVICES": [
+    "services",
+    "consulting",
+    "what services",
+    "what services do you provide",
+    "what are your professional services",
+    "list services",
+    "services?",
+    "consulting?"
+  ],
+  "LIST_SOLUTIONS": [
+    "solutions",
+    "industry os",
+    "operating systems",
+    "what solutions do you offer",
+    "list solutions",
+    "show solutions",
+    "solutions?",
+    "healthcare solutions",
+    "can your company help hospitals",
+    "operating systems?",
+    "industry os?",
+    "municipal",
+    "smart city"
+  ],
+  "PURCHASE": [
+    "i want",
+    "interested in",
+    "buy",
+    "purchase",
+    "looking for",
+    "i'm looking for",
+    "we are planning to buy",
+    "i want whatsapp marketing",
+    "i want ecommerce os",
+    "i want a whatsapp bot",
+    "can you build a whatsapp bot",
+    "whatsapp automation",
+    "need whatsapp",
+    "whatsapp bot",
+    "bot for my business",
+    "buy bot"
+  ],
+  "CONSULTATION": [
+    "can you help",
+    "my company needs",
+    "we need help",
+    "consultation",
+    "strategy call",
+    "can cittaai help my company",
+    "schedule a call",
+    "advisory",
+    "strategy call",
+    "can you help my business"
+  ],
+  "IMPLEMENTATION": [
+    "we need to build",
+    "we need integration",
+    "implement",
+    "integrate",
+    "we need ai",
+    "we need automation",
+    "deploy",
+    "deployment"
+  ],
+  "DEMO_REQUEST": [
+    "book a demo",
+    "request a demo",
+    "see a demo",
+    "show me a demo",
+    "schedule a demo"
+  ],
+  "CONTACT_SALES": [
+    "how do i get started",
+    "contact sales",
+    "talk to sales",
+    "get in touch",
+    "initialize partnership"
+  ],
+  "metadata": {}
+}

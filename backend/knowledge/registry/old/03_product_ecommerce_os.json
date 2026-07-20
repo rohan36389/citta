@@ -1,0 +1,128 @@
+{
+  "product_name": "E-Commerce OS",
+  "tagline": "One-Stop Platform for Commerce, Growth, and Operations",
+  "description": "Run everything—from storefront to supply chain to support.",
+  "cta": "Talk to Sales",
+  "stats": [
+    {
+      "value": "One",
+      "label": "Unified Platform"
+    },
+    {
+      "value": "End-to-End",
+      "label": "Commerce OS"
+    },
+    {
+      "value": "24/7",
+      "label": "AI Support"
+    },
+    {
+      "value": "Real-time",
+      "label": "Analytics"
+    }
+  ],
+  "section_heading": "Unified Commerce Intelligence",
+  "section_subheading": "Store operations, growth marketing, support, and supply chain in one platform.",
+  "capabilities": [
+    {
+      "title": "Product & Inventory",
+      "subtitle": "Catalog & Pricing",
+      "description": "Unified product catalog with dynamic pricing and inventory management.",
+      "features": [
+        "Centralized product catalog",
+        "Dynamic pricing engine",
+        "Real-time inventory tracking",
+        "Multi-location stock management"
+      ]
+    },
+    {
+      "title": "Order Lifecycle",
+      "subtitle": "Orders, Returns, Delivery",
+      "description": "End-to-end order processing from checkout to doorstep delivery.",
+      "features": [
+        "Automated order processing",
+        "Returns & refund management",
+        "Delivery tracking integration",
+        "Customer delivery notifications"
+      ]
+    },
+    {
+      "title": "CRM & Retention",
+      "subtitle": "Segmentation & Loyalty",
+      "description": "Deep customer insights for retention and loyalty growth.",
+      "features": [
+        "Customer segmentation",
+        "Loyalty program management",
+        "Retention workflows",
+        "Lifetime value analysis"
+      ]
+    },
+    {
+      "title": "Marketing Workflows",
+      "subtitle": "Campaigns & Creatives",
+      "description": "Integrated marketing suite for performance and creative management.",
+      "features": [
+        "Performance marketing dashboards",
+        "Campaign management",
+        "Creative asset library",
+        "Attribution modeling"
+      ]
+    },
+    {
+      "title": "Conversational AI",
+      "subtitle": "Customer Support",
+      "description": "AI-driven chatbots for instant 24/7 customer support.",
+      "features": [
+        "Instant query resolution",
+        "Order status automation",
+        "Product recommendations",
+        "Seamless human handoff"
+      ]
+    },
+    {
+      "title": "Voice Agents",
+      "subtitle": "Order Queries & Support",
+      "description": "Voice AI for handling order queries and support follow-ups.",
+      "features": [
+        "Inbound call handling",
+        "Outbound support follow-ups",
+        "Voice-based order tracking",
+        "Customer feedback collection"
+      ]
+    },
+    {
+      "title": "Data Analytics",
+      "subtitle": "Forecasting & Insights",
+      "description": "Predictive analytics for demand forecasting and business growth.",
+      "features": [
+        "Demand forecasting",
+        "Sales trend analysis",
+        "Inventory optimization",
+        "Profitability tracking"
+      ]
+    },
+    {
+      "title": "Supply Chain Intel",
+      "subtitle": "Vendor & Procurement",
+      "description": "Vendor management and intelligent procurement workflows.",
+      "features": [
+        "Vendor performance scoring",
+        "Procurement automation",
+        "Supply chain visibility",
+        "Cost optimization"
+      ]
+    }
+  ],
+  "why_section": {
+    "heading": "Why Ecommerce OS?",
+    "subheading": "A single OS to run commerce—from storefront to supply chain to support.",
+    "pillars": [
+      "Store Ops",
+      "Growth Mktg",
+      "AI Support",
+      "Supply Chain",
+      "Data Intel",
+      "CRM"
+    ]
+  }
+}

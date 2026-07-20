@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "registry_id": "faq_v1",
+    "registry_type": "FAQ",
+    "schema_version": "1.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-18",
+    "knowledge_date": "2026-07-18",
+    "priority": 75,
+    "capabilities": {
+      "reasoning": false,
+      "comparison": false,
+      "transformation": true,
+      "summarization": true,
+      "examples": true
+    },
+    "supported_sections": [
+      "overview"
+    ]
+  },
+  "entities": [
+    {
+      "question": "What is CittaAI?",
+      "answer": "CittaAI is an Enterprise-Grade AI Intelligence & Transformation Partner. We build cognitive operating systems, cloud data platforms, and automated workflow orchestrations.",
+      "route": "/about",
+      "id": "unknown_entity",
+      "name": "unknown_entity",
+      "aliases": [
+        "unknown entity",
+        "unknown-entity",
+        "unknown_entity"
+      ]
+    },
+    {
+      "question": "What is the Enterprise AI OS?",
+      "answer": "The Enterprise AI OS is a cognitive middleware solution developed by CittaAI. It coordinates model routing logic, secure database adapters, and strict data compliance checks.",
+      "route": "/solutions/enterprise-ai-os",
+      "id": "unknown_entity",
+      "name": "unknown_entity",
+      "aliases": [
+        "unknown entity",
+        "unknown-entity",
+        "unknown_entity"
+      ]
+    },
+    {
+      "question": "How do I start a consultation?",
+      "answer": "You can contact our solutions architecture desk directly by sending an email to info@cittaai.com or calling +91 9392655040 to schedule a strategy call.",
+      "route": "/contact",
+      "id": "unknown_entity",
+      "name": "unknown_entity",
+      "aliases": [
+        "unknown entity",
+        "unknown-entity",
+        "unknown_entity"
+      ]
+    }
+  ]
+}

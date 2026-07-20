@@ -1,0 +1,25 @@
+{
+  "section_heading": "Awards & Recognition",
+  "section_subheading": "Celebrating Excellence & Innovation",
+  "description": "Recognized by leading industry bodies for our transformative impact on enterprise AI. Showcasing milestones, accolades, and global participation that define our commitment to engineering the future.",
+  "awards": [
+    {
+      "award_group": "AP MSME Digital Empowerment Challenge 2025",
+      "title": "Andhra Pradesh MSME Digital Empowerment Challenge 2025",
+      "description": "CittaAI proudly secured a double victory at the AP MSME Digital Empowerment Challenge 2025, organized by the Andhra Pradesh Innovation Society (APIS) and APMSME Development Corporation.",
+      "acknowledgement": "Our digital solutions have been acknowledged as among the most innovative in the state:",
+      "wins": [
+        "Winner — AI-Powered DPR Preparation Solution",
+        "Winner — SaaS-Based Export Console"
+      ],
+      "closing_statement": "These achievements reinforce our dedication to empowering MSMEs through cutting-edge AI, data-driven precision, and scalable digital tools. We extend our gratitude to APIS, APMSME, and the evaluation committee — and to our team for turning vision into impact."
+    },
+    {
+      "award_group": "Best AI Startup of the Year 2025 - HYBIZ TV Business Excellence Awards",
+      "title": "Best AI Startup of the Year — 2025",
+      "description": "CittaAI has been honored as the \"Best AI Startup of the Year\" at the 3rd Edition of the HYBIZ TV Business Excellence Awards 2025.",
+      "acknowledgement": "We are grateful to HYBIZ TV, the distinguished jury, and the Business Excellence Awards team for this recognition. Our sincere thanks also go to our mentors, partners, and clients who have been with us throughout this journey.",
+      "closing_statement": "At CittaAI, we are just getting started. This award fuels our passion to continue building scalable, future-ready AI solutions that deliver measurable impact across industries."
+    }
+  ]
+}

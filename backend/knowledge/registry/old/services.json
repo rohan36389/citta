@@ -1,0 +1,261 @@
+{
+  "metadata": {
+    "registry_id": "services_v1",
+    "registry_type": "SERVICES",
+    "schema_version": "1.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-18",
+    "knowledge_date": "2026-07-18",
+    "priority": 80,
+    "capabilities": {
+      "reasoning": false,
+      "comparison": false,
+      "transformation": true,
+      "summarization": true,
+      "examples": true
+    },
+    "supported_sections": [
+      "overview",
+      "how_it_works",
+      "features",
+      "benefits",
+      "faq",
+      "case_studies",
+      "related_entities"
+    ],
+    "aliases": [
+      "services",
+      "service",
+      "consulting"
+    ]
+  },
+  "entities": [
+    {
+      "id": "data_engineering",
+      "name": "Data Engineering",
+      "category": "service",
+      "route": "/services/data-engineering",
+      "summary": "Cloud data platforms and high-throughput real-time streaming architectures.",
+      "description": "Modern data warehousing, real-time pipeline construction, ETL orchestrations, and analytics foundation models engineered to lock in AI readiness.",
+      "overview": {
+        "summary": "Cloud data platforms and high-throughput real-time streaming architectures.",
+        "description": "Modern data warehousing, real-time pipeline construction, ETL orchestrations, and analytics foundation models engineered to lock in AI readiness."
+      },
+      "how_it_works": {
+        "process": "Builds secure cloud data platforms and pipelines using standard ETL/ELT practices to prepare data for real-time AI ingestion.",
+        "steps": [
+          "Source system connector provisioning",
+          "ETL/ELT orchestration setup via dbt and Airflow",
+          "Analytics database model optimization",
+          "High-throughput real-time stream processing"
+        ]
+      },
+      "features": [
+        "Real-time pipelines (Kafka, Spark Streaming, Flink)",
+        "Data warehousing architectures (BigQuery, Snowflake, Redshift)",
+        "Automated ETL orchestration structures (dbt, Apache Airflow)"
+      ],
+      "benefits": [
+        "Optimize analytical warehouse queries by up to 40%",
+        "Ensure data pipeline ingestion latency below 5 seconds"
+      ],
+      "best_for": [
+        "Enterprise CIOs",
+        "BI Analysts",
+        "Data Science Teams"
+      ],
+      "faq": [
+        {
+          "question": "Which cloud warehouses do you support?",
+          "answer": "BigQuery, Snowflake, and Redshift are fully supported."
+        }
+      ],
+      "case_studies": [
+        "B2B Spices Export",
+        "FMCG Brand"
+      ],
+      "related_entities": [
+        "ecommerce_os",
+        "pharma_os",
+        "smart_cities_os",
+        "education_os",
+        "real_estate_os",
+        "enterprise_ai_os"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "data engineering",
+        "data-engineering",
+        "data_engineering"
+      ]
+    },
+    {
+      "id": "enterprise_agentic_ai",
+      "name": "Enterprise & Agentic AI",
+      "category": "service",
+      "route": "/services/enterprise-ai",
+      "summary": "Autonomous task coordination agents and custom model adaptation pipelines.",
+      "description": "Development of customized large language model pipelines, local offline LLM optimization setups, vector index adapters, and multi-agent autonomous orchestrations.",
+      "overview": {
+        "summary": "Autonomous task coordination agents and custom model adaptation pipelines.",
+        "description": "Development of customized large language model pipelines, local offline LLM optimization setups, vector index adapters, and multi-agent autonomous orchestrations."
+      },
+      "how_it_works": {
+        "process": "Creates autonomous agent graphs and optimized RAG indexes to automate complex multi-step data tasks.",
+        "steps": [
+          "Custom fine-tuning and adaptation audits",
+          "Multi-agent architecture design via LangGraph",
+          "Retrieval augmented generation setup with high-precision indexes",
+          "Model safety guardrail mapping"
+        ]
+      },
+      "features": [
+        "Custom fine-tuning and supervised reinforcement training pipelines",
+        "Multi-agent autonomous systems (LangGraph, CrewAI)",
+        "High-precision vector retrieval architectures (RAG)"
+      ],
+      "benefits": [
+        "Automate multi-step data analysis workflows from hours to seconds",
+        "Achieve verified accuracy targets for internal information retrieval"
+      ],
+      "best_for": [
+        "R&D Managers",
+        "Operations Executives",
+        "Innovation Hubs"
+      ],
+      "faq": [
+        {
+          "question": "How do you guarantee agent safety?",
+          "answer": "By using deterministic guardrail layers and strict category bounds check rules."
+        }
+      ],
+      "case_studies": [
+        "B2B Spices Export"
+      ],
+      "related_entities": [
+        "enterprise_ai_os"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "enterprise & agentic ai",
+        "enterprise agentic ai",
+        "enterprise-agentic-ai",
+        "enterprise_agentic_ai"
+      ]
+    },
+    {
+      "id": "ai_strategy",
+      "name": "AI Strategy & Advisory",
+      "category": "service",
+      "route": "/services/ai-strategy",
+      "summary": "Executive advisory and technological feasibility roadmaps.",
+      "description": "High-level advisory guiding enterprises through AI feasibility audits, CoE center setups, ROI priority calculations, and compliance governance designs.",
+      "overview": {
+        "summary": "Executive advisory and technological feasibility roadmaps.",
+        "description": "High-level advisory guiding enterprises through AI feasibility audits, CoE center setups, ROI priority calculations, and compliance governance designs."
+      },
+      "how_it_works": {
+        "process": "Guides organization leadership from initial feasibility audits to deployment designs and centers of excellence.",
+        "steps": [
+          "Business capability and technology audit",
+          "ROI prioritization and risk scoping matrix",
+          "Centers of Excellence (CoE) organization planning",
+          "Compliance and security governance blueprint"
+        ]
+      },
+      "features": [
+        "AI capability audits and technology readiness assessments",
+        "Strategic AI roadmap planning and CoE setup blueprints",
+        "AI ROI calculations and model choice risk auditing"
+      ],
+      "benefits": [
+        "Mitigate expensive deployment risks on low-ROI pilot projects",
+        "Establish structured governance policies aligned with compliance targets"
+      ],
+      "best_for": [
+        "Board Members",
+        "Enterprise Executives",
+        "VPs of Technology"
+      ],
+      "faq": [
+        {
+          "question": "How long does a roadmap assessment take?",
+          "answer": "Typically 4 to 8 weeks depending on organizational complexity."
+        }
+      ],
+      "case_studies": [],
+      "related_entities": [],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "ai strategy",
+        "ai strategy & advisory",
+        "ai-strategy",
+        "ai_strategy"
+      ]
+    },
+    {
+      "id": "ai_powered_marketing",
+      "name": "AI-Powered Marketing",
+      "category": "service",
+      "route": "/services/martech-360",
+      "summary": "AI-driven customer acquisition, conversion, and revenue tracking.",
+      "description": "Full-funnel digital growth strategies integrating automated copy generation, search engine optimization monitoring, and WhatsApp checkout loops.",
+      "overview": {
+        "summary": "AI-driven customer acquisition, conversion, and revenue tracking.",
+        "description": "Full-funnel digital growth strategies integrating automated copy generation, search engine optimization monitoring, and WhatsApp checkout loops."
+      },
+      "how_it_works": {
+        "process": "Integrates growth marketing automation loops, search engine monitors, and interactive checkout messaging channels.",
+        "steps": [
+          "Growth funnel mapping and KPI target scoping",
+          "Campaign configuration with automated copy testing",
+          "Multi-channel attribution modeling",
+          "Interactive conversion optimization checkout setup"
+        ]
+      },
+      "features": [
+        "Automated branding, ad copy generation, and PPC bidding",
+        "Social media campaign optimization and creator matching",
+        "Conversion rate optimization auditing via WhatsApp checkout funnels"
+      ],
+      "benefits": [
+        "Improve PPC return-on-ad-spend (ROAS) by up to 35%",
+        "Increase content output throughput by 4x without losing alignment"
+      ],
+      "best_for": [
+        "Growth Leads",
+        "E-commerce CMOs",
+        "Digital Agencies"
+      ],
+      "faq": [
+        {
+          "question": "Does it integrate with existing ad platforms?",
+          "answer": "Yes, Meta Ads, Google Ads, and TikTok Ads are fully integrated."
+        }
+      ],
+      "case_studies": [
+        "Jewellery Brand",
+        "FMCG Brand"
+      ],
+      "related_entities": [
+        "whatsapp_marketing",
+        "influencer_marketing"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "ai powered marketing",
+        "ai-powered marketing",
+        "ai-powered-marketing",
+        "ai_powered_marketing"
+      ]
+    }
+  ]
+}

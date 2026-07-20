@@ -1,0 +1,11 @@
+{
+  "SHORT": {
+    "max_words": 80
+  },
+  "STANDARD": {
+    "max_words": 180
+  },
+  "DETAILED": {
+    "max_words": 400
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "uuid": "5efef927-b455-5070-9344-6d7acb617a1b",
+  "id": "data_engineering",
+  "type": "service",
+  "slug": "data-engineering",
+  "name": "Data Engineering",
+  "title": "Data Engineering",
+  "tagline": "Professional AI Services",
+  "overview": "Book a consultation with our AI experts today.",
+  "description": "Book a consultation with our AI experts today.",
+  "cta": "Book Now",
+  "url": "/services/data-engineering",
+  "search": {
+    "primary_keywords": [
+      "data engineering"
+    ],
+    "secondary_keywords": [
+      "book a consultation with our ai experts today."
+    ],
+    "aliases": [
+      "data-engineering",
+      "data_engineering",
+      "data engineering"
+    ],
+    "synonyms": []
+  },
+  "classification": {
+    "category": "data_engineering",
+    "industry": "Enterprise",
+    "domain": "SERVICES",
+    "subdomain": null
+  },
+  "target_users": [
+    "CIO",
+    "CTO",
+    "Product Owners"
+  ],
+  "capabilities": [
+    {
+      "id": "data_engineering_real_time_data_pipelines",
+      "title": "Real-time data pipelines",
+      "subtitle": "Stream processing with minimal latency",
+      "description": "Build resilient, low-latency data pipelines that power real-time analytics and AI applications. We handle the complexity of streaming data at scale.",
+      "keywords": [
+        "real-time",
+        "data",
+        "pipelines"
+      ],
+      "aliases": [
+        "real-time data pipelines"
+      ],
+      "features": [
+        {
+          "id": "apache_kafka_and_flink_implementation",
+          "title": "Apache Kafka & Flink implementation",
+          "description": "Capability feature: Apache Kafka & Flink implementation"
+        },
+        {
+          "id": "real_time_etl_elt",
+          "title": "Real-time ETL/ELT",
+          "description": "Capability feature: Real-time ETL/ELT"
+        },
+        {
+          "id": "stream_processing_architectures",
+          "title": "Stream processing architectures",
+          "description": "Capability feature: Stream processing architectures"
+        },
+        {
+          "id": "data_quality_monitoring",
+          "title": "Data quality monitoring",
+          "description": "Capability feature: Data quality monitoring"
+        }
+      ],
+      "benefits": [
+        "Real-Time Insights",
+        "Reliability",
+        "Scalability"
+      ],
+      "relationships": []
+    },
+    {
+      "id": "data_engineering_cloud_data_warehouse",
+      "title": "Cloud data warehouse",
+      "subtitle": "Snowflake/BigQuery architecture",
+      "description": "Design and implement modern cloud data warehouses that serve as the single source of truth for your enterprise. We optimize for performance, cost, and usability.",
+      "keywords": [
+        "cloud",
+        "data",
+        "warehouse"
+      ],
+      "aliases": [
+        "cloud data warehouse"
+      ],
+      "features": [
+        {
+          "id": "snowflake___bigquery___redshift",
+          "title": "Snowflake / BigQuery / Redshift",
+          "description": "Capability feature: Snowflake / BigQuery / Redshift"
+        },
+        {
+          "id": "data_modeling_(star_snowflake_schema)",
+          "title": "Data modeling (Star/Snowflake schema)",
+          "description": "Capability feature: Data modeling (Star/Snowflake schema)"
+        },
+        {
+          "id": "cost_optimization_strategies",
+          "title": "Cost optimization strategies",
+          "description": "Capability feature: Cost optimization strategies"
+        },
+        {
+          "id": "rbac_and_innovative_security",
+          "title": "RBAC & innovative security",
+          "description": "Capability feature: RBAC & innovative security"
+        }
+      ],
+      "benefits": [
+        "Single Source of Truth",
+        "Cost Efficency",
+        "Performance"
+      ],
+      "relationships": []
+    },
+    {
+      "id": "data_engineering_data_lake_architecture",
+      "title": "Data lake architecture",
+      "subtitle": "Scalable storage for unstructured data",
+      "description": "Unlock the value of unstructured data. Our data lake solutions provide a secure, scalable repository for all your raw data, ready for machine learning and advanced analytics.",
+      "keywords": [
+        "data",
+        "lake",
+        "architecture"
+      ],
+      "aliases": [
+        "data lake architecture"
+      ],
+      "features": [
+        {
+          "id": "s3___adls_implementation",
+          "title": "S3 / ADLS implementation",
+          "description": "Capability feature: S3 / ADLS implementation"
+        },
+        {
+          "id": "delta_lake___iceberg_formats",
+          "title": "Delta Lake / Iceberg formats",
+          "description": "Capability feature: Delta Lake / Iceberg formats"
+        },
+        {
+          "id": "data_cataloging_and_discovery",
+          "title": "Data cataloging & discovery",
+          "description": "Capability feature: Data cataloging & discovery"
+        },
+        {
+          "id": "automated_lifecycle_policies",
+          "title": "Automated lifecycle policies",
+          "description": "Capability feature: Automated lifecycle policies"
+        }
+      ],
+      "benefits": [
+        "Flexibility",
+        "ML Ready",
+        "Low Cost"
+      ],
+      "relationships": []
+    },
+    {
+      "id": "data_engineering_master_data_management",
+      "title": "Master data management",
+      "subtitle": "Golden record creation & governance",
+      "description": "Ensure data consistency across your organization. We build Master Data Management (MDM) systems that create a trustworthy 'golden record' for your critical business entities.",
+      "keywords": [
+        "master",
+        "data",
+        "management"
+      ],
+      "aliases": [
+        "master data management"
+      ],
+      "features": [
+        {
+          "id": "entity_resolution_and_matching",
+          "title": "Entity resolution & matching",
+          "description": "Capability feature: Entity resolution & matching"
+        },
+        {
+          "id": "data_stewardship_workflows",
+          "title": "Data stewardship workflows",
+          "description": "Capability feature: Data stewardship workflows"
+        },
+        {
+          "id": "reference_data_management",
+          "title": "Reference data management",
+          "description": "Capability feature: Reference data management"
+        },
+        {
+          "id": "data_quality_firewalls",
+          "title": "Data quality firewalls",
+          "description": "Capability feature: Data quality firewalls"
+        }
+      ],
+      "benefits": [
+        "Trusted Data",
+        "Compliance",
+        "360 View"
+      ],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "09_service_data_engineering.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

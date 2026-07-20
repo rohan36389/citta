@@ -1,0 +1,508 @@
+{
+  "uuid": "17767c75-4501-5f15-9ae7-c569ff650825",
+  "id": "ecommerce_os",
+  "type": "solution",
+  "slug": "ecommerce-os",
+  "name": "E-Commerce OS",
+  "title": "E-Commerce OS",
+  "tagline": "One-Stop Platform for Commerce, Growth, and Operations",
+  "overview": "Run everything\u2014from storefront to supply chain to support.",
+  "description": "Run everything\u2014from storefront to supply chain to support.",
+  "cta": "Talk to Sales",
+  "url": "/solutions/ecommerce-os",
+  "search": {
+    "primary_keywords": [
+      "e-commerce os"
+    ],
+    "secondary_keywords": [
+      "one-stop platform for commerce, growth, and operations"
+    ],
+    "aliases": [
+      "ecommerce_os",
+      "ecommerce os",
+      "ecommerce-os"
+    ],
+    "synonyms": []
+  },
+  "classification": {
+    "category": "ecommerce_os",
+    "industry": "General",
+    "domain": "SOLUTIONS",
+    "subdomain": null
+  },
+  "target_users": [
+    "Admin",
+    "User"
+  ],
+  "capabilities": [
+    {
+      "id": "ecommerce_os_product_inventory",
+      "title": "Product & Inventory",
+      "subtitle": "Catalog & Pricing",
+      "description": "Unified product catalog with dynamic pricing and inventory management.",
+      "keywords": [
+        "product",
+        "inventory"
+      ],
+      "aliases": [
+        "product & inventory"
+      ],
+      "features": [
+        {
+          "id": "centralized_product_catalog",
+          "title": "Centralized product catalog",
+          "description": "Feature support for Centralized product catalog in Product & Inventory.",
+          "keywords": [
+            "centralized",
+            "product",
+            "catalog"
+          ]
+        },
+        {
+          "id": "dynamic_pricing_engine",
+          "title": "Dynamic pricing engine",
+          "description": "Feature support for Dynamic pricing engine in Product & Inventory.",
+          "keywords": [
+            "dynamic",
+            "pricing",
+            "engine"
+          ]
+        },
+        {
+          "id": "real-time_inventory_tracking",
+          "title": "Real-time inventory tracking",
+          "description": "Feature support for Real-time inventory tracking in Product & Inventory.",
+          "keywords": [
+            "real-time",
+            "inventory",
+            "tracking"
+          ]
+        },
+        {
+          "id": "multi-location_stock_management",
+          "title": "Multi-location stock management",
+          "description": "Feature support for Multi-location stock management in Product & Inventory.",
+          "keywords": [
+            "multi-location",
+            "stock",
+            "management"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "ecommerce_os_order_lifecycle",
+      "title": "Order Lifecycle",
+      "subtitle": "Orders, Returns, Delivery",
+      "description": "End-to-end order processing from checkout to doorstep delivery.",
+      "keywords": [
+        "order",
+        "lifecycle"
+      ],
+      "aliases": [
+        "order lifecycle"
+      ],
+      "features": [
+        {
+          "id": "automated_order_processing",
+          "title": "Automated order processing",
+          "description": "Feature support for Automated order processing in Order Lifecycle.",
+          "keywords": [
+            "automated",
+            "order",
+            "processing"
+          ]
+        },
+        {
+          "id": "returns_&_refund_management",
+          "title": "Returns & refund management",
+          "description": "Feature support for Returns & refund management in Order Lifecycle.",
+          "keywords": [
+            "returns",
+            "refund",
+            "management"
+          ]
+        },
+        {
+          "id": "delivery_tracking_integration",
+          "title": "Delivery tracking integration",
+          "description": "Feature support for Delivery tracking integration in Order Lifecycle.",
+          "keywords": [
+            "delivery",
+            "tracking",
+            "integration"
+          ]
+        },
+        {
+          "id": "customer_delivery_notifications",
+          "title": "Customer delivery notifications",
+          "description": "Feature support for Customer delivery notifications in Order Lifecycle.",
+          "keywords": [
+            "customer",
+            "delivery",
+            "notifications"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "ecommerce_os_crm_retention",
+      "title": "CRM & Retention",
+      "subtitle": "Segmentation & Loyalty",
+      "description": "Deep customer insights for retention and loyalty growth.",
+      "keywords": [
+        "retention"
+      ],
+      "aliases": [
+        "crm & retention"
+      ],
+      "features": [
+        {
+          "id": "customer_segmentation",
+          "title": "Customer segmentation",
+          "description": "Feature support for Customer segmentation in CRM & Retention.",
+          "keywords": [
+            "customer",
+            "segmentation"
+          ]
+        },
+        {
+          "id": "loyalty_program_management",
+          "title": "Loyalty program management",
+          "description": "Feature support for Loyalty program management in CRM & Retention.",
+          "keywords": [
+            "loyalty",
+            "program",
+            "management"
+          ]
+        },
+        {
+          "id": "retention_workflows",
+          "title": "Retention workflows",
+          "description": "Feature support for Retention workflows in CRM & Retention.",
+          "keywords": [
+            "retention",
+            "workflows"
+          ]
+        },
+        {
+          "id": "lifetime_value_analysis",
+          "title": "Lifetime value analysis",
+          "description": "Feature support for Lifetime value analysis in CRM & Retention.",
+          "keywords": [
+            "lifetime",
+            "value",
+            "analysis"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "ecommerce_os_marketing_workflows",
+      "title": "Marketing Workflows",
+      "subtitle": "Campaigns & Creatives",
+      "description": "Integrated marketing suite for performance and creative management.",
+      "keywords": [
+        "marketing",
+        "workflows"
+      ],
+      "aliases": [
+        "marketing workflows"
+      ],
+      "features": [
+        {
+          "id": "performance_marketing_dashboards",
+          "title": "Performance marketing dashboards",
+          "description": "Feature support for Performance marketing dashboards in Marketing Workflows.",
+          "keywords": [
+            "performance",
+            "marketing",
+            "dashboards"
+          ]
+        },
+        {
+          "id": "campaign_management",
+          "title": "Campaign management",
+          "description": "Feature support for Campaign management in Marketing Workflows.",
+          "keywords": [
+            "campaign",
+            "management"
+          ]
+        },
+        {
+          "id": "creative_asset_library",
+          "title": "Creative asset library",
+          "description": "Feature support for Creative asset library in Marketing Workflows.",
+          "keywords": [
+            "creative",
+            "asset",
+            "library"
+          ]
+        },
+        {
+          "id": "attribution_modeling",
+          "title": "Attribution modeling",
+          "description": "Feature support for Attribution modeling in Marketing Workflows.",
+          "keywords": [
+            "attribution",
+            "modeling"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "ecommerce_os_conversational_ai",
+      "title": "Conversational AI",
+      "subtitle": "Customer Support",
+      "description": "AI-driven chatbots for instant 24/7 customer support.",
+      "keywords": [
+        "conversational"
+      ],
+      "aliases": [
+        "conversational ai"
+      ],
+      "features": [
+        {
+          "id": "instant_query_resolution",
+          "title": "Instant query resolution",
+          "description": "Feature support for Instant query resolution in Conversational AI.",
+          "keywords": [
+            "instant",
+            "query",
+            "resolution"
+          ]
+        },
+        {
+          "id": "order_status_automation",
+          "title": "Order status automation",
+          "description": "Feature support for Order status automation in Conversational AI.",
+          "keywords": [
+            "order",
+            "status",
+            "automation"
+          ]
+        },
+        {
+          "id": "product_recommendations",
+          "title": "Product recommendations",
+          "description": "Feature support for Product recommendations in Conversational AI.",
+          "keywords": [
+            "product",
+            "recommendations"
+          ]
+        },
+        {
+          "id": "seamless_human_handoff",
+          "title": "Seamless human handoff",
+          "description": "Feature support for Seamless human handoff in Conversational AI.",
+          "keywords": [
+            "seamless",
+            "human",
+            "handoff"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "ecommerce_os_voice_agents",
+      "title": "Voice Agents",
+      "subtitle": "Order Queries & Support",
+      "description": "Voice AI for handling order queries and support follow-ups.",
+      "keywords": [
+        "voice",
+        "agents"
+      ],
+      "aliases": [
+        "voice agents"
+      ],
+      "features": [
+        {
+          "id": "inbound_call_handling",
+          "title": "Inbound call handling",
+          "description": "Feature support for Inbound call handling in Voice Agents.",
+          "keywords": [
+            "inbound",
+            "call",
+            "handling"
+          ]
+        },
+        {
+          "id": "outbound_support_follow-ups",
+          "title": "Outbound support follow-ups",
+          "description": "Feature support for Outbound support follow-ups in Voice Agents.",
+          "keywords": [
+            "outbound",
+            "support",
+            "follow-ups"
+          ]
+        },
+        {
+          "id": "voice-based_order_tracking",
+          "title": "Voice-based order tracking",
+          "description": "Feature support for Voice-based order tracking in Voice Agents.",
+          "keywords": [
+            "voice-based",
+            "order",
+            "tracking"
+          ]
+        },
+        {
+          "id": "customer_feedback_collection",
+          "title": "Customer feedback collection",
+          "description": "Feature support for Customer feedback collection in Voice Agents.",
+          "keywords": [
+            "customer",
+            "feedback",
+            "collection"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "ecommerce_os_data_analytics",
+      "title": "Data Analytics",
+      "subtitle": "Forecasting & Insights",
+      "description": "Predictive analytics for demand forecasting and business growth.",
+      "keywords": [
+        "data",
+        "analytics"
+      ],
+      "aliases": [
+        "data analytics"
+      ],
+      "features": [
+        {
+          "id": "demand_forecasting",
+          "title": "Demand forecasting",
+          "description": "Feature support for Demand forecasting in Data Analytics.",
+          "keywords": [
+            "demand",
+            "forecasting"
+          ]
+        },
+        {
+          "id": "sales_trend_analysis",
+          "title": "Sales trend analysis",
+          "description": "Feature support for Sales trend analysis in Data Analytics.",
+          "keywords": [
+            "sales",
+            "trend",
+            "analysis"
+          ]
+        },
+        {
+          "id": "inventory_optimization",
+          "title": "Inventory optimization",
+          "description": "Feature support for Inventory optimization in Data Analytics.",
+          "keywords": [
+            "inventory",
+            "optimization"
+          ]
+        },
+        {
+          "id": "profitability_tracking",
+          "title": "Profitability tracking",
+          "description": "Feature support for Profitability tracking in Data Analytics.",
+          "keywords": [
+            "profitability",
+            "tracking"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "ecommerce_os_supply_chain_intel",
+      "title": "Supply Chain Intel",
+      "subtitle": "Vendor & Procurement",
+      "description": "Vendor management and intelligent procurement workflows.",
+      "keywords": [
+        "supply",
+        "chain",
+        "intel"
+      ],
+      "aliases": [
+        "supply chain intel"
+      ],
+      "features": [
+        {
+          "id": "vendor_performance_scoring",
+          "title": "Vendor performance scoring",
+          "description": "Feature support for Vendor performance scoring in Supply Chain Intel.",
+          "keywords": [
+            "vendor",
+            "performance",
+            "scoring"
+          ]
+        },
+        {
+          "id": "procurement_automation",
+          "title": "Procurement automation",
+          "description": "Feature support for Procurement automation in Supply Chain Intel.",
+          "keywords": [
+            "procurement",
+            "automation"
+          ]
+        },
+        {
+          "id": "supply_chain_visibility",
+          "title": "Supply chain visibility",
+          "description": "Feature support for Supply chain visibility in Supply Chain Intel.",
+          "keywords": [
+            "supply",
+            "chain",
+            "visibility"
+          ]
+        },
+        {
+          "id": "cost_optimization",
+          "title": "Cost optimization",
+          "description": "Feature support for Cost optimization in Supply Chain Intel.",
+          "keywords": [
+            "cost",
+            "optimization"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    }
+  ],
+  "benefits": [
+    "35% Higher conversion rate across digital storefronts",
+    "Automated inventory sync and real-time order tracking",
+    "Unified customer support with AI chatbots",
+    "Reduced supply chain friction and cost optimization"
+  ],
+  "use_cases": [
+    "Store Ops",
+    "Growth Mktg",
+    "AI Support",
+    "Supply Chain",
+    "Data Intel",
+    "CRM"
+  ],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "03_product_ecommerce_os.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

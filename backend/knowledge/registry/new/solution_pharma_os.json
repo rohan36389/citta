@@ -1,0 +1,438 @@
+{
+  "uuid": "c7bb6c7e-4361-5d28-9532-bd960d37b775",
+  "id": "pharma_os",
+  "type": "solution",
+  "slug": "pharma-os",
+  "name": "Pharma OS",
+  "title": "Pharma OS",
+  "tagline": "AI-Powered Quality, Compliance & Release Intelligence",
+  "overview": "Digitizes workflows for faster, reliable batch decisions.",
+  "description": "Digitizes workflows for faster, reliable batch decisions.",
+  "cta": "Talk to Sales",
+  "url": "/solutions/pharma-os",
+  "search": {
+    "primary_keywords": [
+      "pharma os",
+      "pharmaa os",
+      "pharmaa"
+    ],
+    "secondary_keywords": [
+      "ai-powered quality, compliance & release intelligence"
+    ],
+    "aliases": [
+      "pharma os",
+      "pharmaa os",
+      "pharmaa",
+      "pharma_os",
+      "pharma-os"
+    ],
+    "synonyms": []
+  },
+  "classification": {
+    "category": "pharma_os",
+    "industry": "General",
+    "domain": "SOLUTIONS",
+    "subdomain": null
+  },
+  "target_users": [
+    "Admin",
+    "User"
+  ],
+  "capabilities": [
+    {
+      "id": "pharma_os_quality_dashboards",
+      "title": "Quality Dashboards",
+      "subtitle": "Centralized visibility for quality KPIs",
+      "description": "Central dashboards for deviations, CAPA, and trends with audit-ready visibility.",
+      "keywords": [
+        "quality",
+        "dashboards"
+      ],
+      "aliases": [
+        "quality dashboards"
+      ],
+      "features": [
+        {
+          "id": "central_dashboards_for_quality_kpis_&_deviations",
+          "title": "Central dashboards for quality KPIs & deviations",
+          "description": "Feature support for Central dashboards for quality KPIs & deviations in Quality Dashboards.",
+          "keywords": [
+            "central",
+            "dashboards",
+            "quality",
+            "kpis",
+            "deviations"
+          ]
+        },
+        {
+          "id": "audit-ready_visibility_across_plants_&_products",
+          "title": "Audit-ready visibility across plants & products",
+          "description": "Feature support for Audit-ready visibility across plants & products in Quality Dashboards.",
+          "keywords": [
+            "audit-ready",
+            "visibility",
+            "across",
+            "plants",
+            "products"
+          ]
+        },
+        {
+          "id": "trend_analysis_for_proactive_quality_management",
+          "title": "Trend analysis for proactive quality management",
+          "description": "Feature support for Trend analysis for proactive quality management in Quality Dashboards.",
+          "keywords": [
+            "trend",
+            "analysis",
+            "proactive",
+            "quality",
+            "management"
+          ]
+        },
+        {
+          "id": "real-time_monitoring_of_quality_metrics",
+          "title": "Real-time monitoring of quality metrics",
+          "description": "Feature support for Real-time monitoring of quality metrics in Quality Dashboards.",
+          "keywords": [
+            "real-time",
+            "monitoring",
+            "quality",
+            "metrics"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "pharma_os_batch_records_review_tool",
+      "title": "Batch Records Review Tool",
+      "subtitle": "Digitized workflow reviews",
+      "description": "Accelerate review cycles with digitized batch record workflows and structured checklists.",
+      "keywords": [
+        "batch",
+        "records",
+        "review",
+        "tool"
+      ],
+      "aliases": [
+        "batch records review tool"
+      ],
+      "features": [
+        {
+          "id": "digitized_batch_record_review_workflows",
+          "title": "Digitized batch record review workflows",
+          "description": "Feature support for Digitized batch record review workflows in Batch Records Review Tool.",
+          "keywords": [
+            "digitized",
+            "batch",
+            "record",
+            "review",
+            "workflows"
+          ]
+        },
+        {
+          "id": "faster_review_cycles_with_structured_checklists",
+          "title": "Faster review cycles with structured checklists",
+          "description": "Feature support for Faster review cycles with structured checklists in Batch Records Review Tool.",
+          "keywords": [
+            "faster",
+            "review",
+            "cycles",
+            "with",
+            "structured",
+            "checklists"
+          ]
+        },
+        {
+          "id": "exception_handling_and_digital_signatures",
+          "title": "Exception handling and digital signatures",
+          "description": "Feature support for Exception handling and digital signatures in Batch Records Review Tool.",
+          "keywords": [
+            "exception",
+            "handling",
+            "digital",
+            "signatures"
+          ]
+        },
+        {
+          "id": "streamlined_approval_processes",
+          "title": "Streamlined approval processes",
+          "description": "Feature support for Streamlined approval processes in Batch Records Review Tool.",
+          "keywords": [
+            "streamlined",
+            "approval",
+            "processes"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "pharma_os_protocol_preparation_tools",
+      "title": "Protocol Preparation Tools",
+      "subtitle": "Guided creation & automated reporting",
+      "description": "Streamline protocol creation and automate summary report preparation.",
+      "keywords": [
+        "protocol",
+        "preparation",
+        "tools"
+      ],
+      "aliases": [
+        "protocol preparation tools"
+      ],
+      "features": [
+        {
+          "id": "guided_protocol_creation_with_templates",
+          "title": "Guided protocol creation with templates",
+          "description": "Feature support for Guided protocol creation with templates in Protocol Preparation Tools.",
+          "keywords": [
+            "guided",
+            "protocol",
+            "creation",
+            "with",
+            "templates"
+          ]
+        },
+        {
+          "id": "automated_summary_report_preparation",
+          "title": "Automated summary report preparation",
+          "description": "Feature support for Automated summary report preparation in Protocol Preparation Tools.",
+          "keywords": [
+            "automated",
+            "summary",
+            "report",
+            "preparation"
+          ]
+        },
+        {
+          "id": "review-ready_outputs_and_standardization",
+          "title": "Review-ready outputs and standardization",
+          "description": "Feature support for Review-ready outputs and standardization in Protocol Preparation Tools.",
+          "keywords": [
+            "review-ready",
+            "outputs",
+            "standardization"
+          ]
+        },
+        {
+          "id": "reduced_manual_documentation_effort",
+          "title": "Reduced manual documentation effort",
+          "description": "Feature support for Reduced manual documentation effort in Protocol Preparation Tools.",
+          "keywords": [
+            "reduced",
+            "manual",
+            "documentation",
+            "effort"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "pharma_os_cpv_tool",
+      "title": "CPV Tool",
+      "subtitle": "Continuous Process Verification",
+      "description": "Support batch release readiness with ongoing process verification and trend monitoring.",
+      "keywords": [
+        "tool"
+      ],
+      "aliases": [
+        "cpv tool"
+      ],
+      "features": [
+        {
+          "id": "ongoing_process_verification_with_trend_monitoring",
+          "title": "Ongoing process verification with trend monitoring",
+          "description": "Feature support for Ongoing process verification with trend monitoring in CPV Tool.",
+          "keywords": [
+            "ongoing",
+            "process",
+            "verification",
+            "with",
+            "trend",
+            "monitoring"
+          ]
+        },
+        {
+          "id": "data-backed_signals_for_batch_release_readiness",
+          "title": "Data-backed signals for batch release readiness",
+          "description": "Feature support for Data-backed signals for batch release readiness in CPV Tool.",
+          "keywords": [
+            "data-backed",
+            "signals",
+            "batch",
+            "release",
+            "readiness"
+          ]
+        },
+        {
+          "id": "statistical_process_control_integration",
+          "title": "Statistical process control integration",
+          "description": "Feature support for Statistical process control integration in CPV Tool.",
+          "keywords": [
+            "statistical",
+            "process",
+            "control",
+            "integration"
+          ]
+        },
+        {
+          "id": "real-time_process_deviation_alerts",
+          "title": "Real-time process deviation alerts",
+          "description": "Feature support for Real-time process deviation alerts in CPV Tool.",
+          "keywords": [
+            "real-time",
+            "process",
+            "deviation",
+            "alerts"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "pharma_os_apqr_reporting_tool",
+      "title": "APQR Reporting Tool",
+      "subtitle": "Automated Annual Product Quality Review",
+      "description": "Automate APQR reporting with data aggregation and standardized outputs.",
+      "keywords": [
+        "apqr",
+        "reporting",
+        "tool"
+      ],
+      "aliases": [
+        "apqr reporting tool"
+      ],
+      "features": [
+        {
+          "id": "annual_product_quality_review_automation",
+          "title": "Annual Product Quality Review automation",
+          "description": "Feature support for Annual Product Quality Review automation in APQR Reporting Tool.",
+          "keywords": [
+            "annual",
+            "product",
+            "quality",
+            "review",
+            "automation"
+          ]
+        },
+        {
+          "id": "data_aggregation_and_trend_insights",
+          "title": "Data aggregation and trend insights",
+          "description": "Feature support for Data aggregation and trend insights in APQR Reporting Tool.",
+          "keywords": [
+            "data",
+            "aggregation",
+            "trend",
+            "insights"
+          ]
+        },
+        {
+          "id": "standardized_regulatory_report_outputs",
+          "title": "Standardized regulatory report outputs",
+          "description": "Feature support for Standardized regulatory report outputs in APQR Reporting Tool.",
+          "keywords": [
+            "standardized",
+            "regulatory",
+            "report",
+            "outputs"
+          ]
+        },
+        {
+          "id": "drastically_reduced_reporting_timelines",
+          "title": "Drastically reduced reporting timelines",
+          "description": "Feature support for Drastically reduced reporting timelines in APQR Reporting Tool.",
+          "keywords": [
+            "drastically",
+            "reduced",
+            "reporting",
+            "timelines"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "pharma_os_assessment_tool",
+      "title": "Assessment Tool",
+      "subtitle": "Structured quality evaluations",
+      "description": "Manage risk-based reporting and review trails with structured workflows.",
+      "keywords": [
+        "assessment",
+        "tool"
+      ],
+      "aliases": [
+        "assessment tool"
+      ],
+      "features": [
+        {
+          "id": "structured_workflows_for_quality_evaluations",
+          "title": "Structured workflows for quality evaluations",
+          "description": "Feature support for Structured workflows for quality evaluations in Assessment Tool.",
+          "keywords": [
+            "structured",
+            "workflows",
+            "quality",
+            "evaluations"
+          ]
+        },
+        {
+          "id": "risk-based_reporting_and_scoring",
+          "title": "Risk-based reporting and scoring",
+          "description": "Feature support for Risk-based reporting and scoring in Assessment Tool.",
+          "keywords": [
+            "risk-based",
+            "reporting",
+            "scoring"
+          ]
+        },
+        {
+          "id": "comprehensive_review_trails",
+          "title": "Comprehensive review trails",
+          "description": "Feature support for Comprehensive review trails in Assessment Tool.",
+          "keywords": [
+            "comprehensive",
+            "review",
+            "trails"
+          ]
+        },
+        {
+          "id": "standardized_assessment_criteria",
+          "title": "Standardized assessment criteria",
+          "description": "Feature support for Standardized assessment criteria in Assessment Tool.",
+          "keywords": [
+            "standardized",
+            "assessment",
+            "criteria"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [
+    "Faster Documentation",
+    "Compliance Readiness",
+    "Process Visibility",
+    "Consistent Worflows",
+    "Automated Reporting",
+    "Batch Reliability"
+  ],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "05_product_pharma_os.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

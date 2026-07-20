@@ -1,0 +1,78 @@
+{
+  "uuid": "f293a9c3-3d88-54b0-b278-5b3e6fce8947",
+  "id": "jewellery_brand_roi",
+  "type": "case_study",
+  "slug": "jewellery-brand-roi",
+  "name": "Jewellery Brand",
+  "title": "Jewellery Brand",
+  "tagline": "\u20b93.5 Cr+ ROI generated from a single campaign.",
+  "overview": "Improve customer engagement and maximize campaign return on investment.",
+  "description": "AI-powered WhatsApp funnel with intelligent customer engagement.",
+  "cta": "Read Case Study",
+  "url": "/case-studies/jewellery-brand-roi",
+  "search": {
+    "primary_keywords": [
+      "jewellery brand",
+      "case study"
+    ],
+    "secondary_keywords": [
+      "WhatsApp Marketing",
+      "AI",
+      "Customer Engagement",
+      "ROI"
+    ],
+    "aliases": [
+      "jewellery",
+      "jewellery brand",
+      "jewellery brand roi",
+      "jewellery case study",
+      "jewellery-brand-roi",
+      "jewellery_brand_roi"
+    ],
+    "synonyms": [
+      "success story",
+      "client project"
+    ]
+  },
+  "classification": {
+    "category": "case_study",
+    "industry": "Jewellery",
+    "domain": "CASE_STUDIES",
+    "subdomain": null
+  },
+  "target_users": [
+    "Sales Leads",
+    "Clients"
+  ],
+  "capabilities": [],
+  "workflows": [],
+  "benefits": [
+    "\u20b93.5 Cr+ ROI",
+    "98% read rate"
+  ],
+  "use_cases": [
+    "WhatsApp Marketing",
+    "AI",
+    "Customer Engagement",
+    "ROI"
+  ],
+  "faq": [],
+  "relationships": [
+    {
+      "type": "related_service",
+      "target": "whatsapp_marketing"
+    },
+    {
+      "type": "related_service",
+      "target": "ai_powered_marketing"
+    }
+  ],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "case_studies.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

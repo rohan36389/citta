@@ -1,0 +1,123 @@
+{
+  "metadata": {
+    "registry_id": "leadership_v1",
+    "registry_type": "LEADERSHIP",
+    "schema_version": "1.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-18",
+    "knowledge_date": "2026-07-18",
+    "priority": 80,
+    "capabilities": {
+      "reasoning": false,
+      "comparison": false,
+      "transformation": true,
+      "summarization": true,
+      "examples": true
+    },
+    "supported_sections": [
+      "overview"
+    ],
+    "aliases": [
+      "leadership",
+      "leaders",
+      "team",
+      "cto",
+      "ceo",
+      "coo",
+      "founder"
+    ]
+  },
+  "verified": true,
+  "source": "cittaai_master_knowledge.md",
+  "leaders": [
+    {
+      "name": "Vinay Velivela",
+      "title": "CEO of Fixity Technologies",
+      "aliases": [
+        "vinay velivela",
+        "vinay",
+        "ceo of fixity technologies",
+        "ceo",
+        "vinay-velivela",
+        "vinay_velivela"
+      ],
+      "id": "vinay_velivela"
+    },
+    {
+      "name": "Saladi Chandra Balaji",
+      "title": "Co-Founder & COO",
+      "aliases": [
+        "saladi chandra balaji",
+        "saladi",
+        "co-founder & coo",
+        "coo",
+        "saladi-chandra-balaji",
+        "saladi_chandra_balaji"
+      ],
+      "id": "saladi_chandra_balaji"
+    },
+    {
+      "name": "Akhil Reddy",
+      "title": "Co-Founder & CTO",
+      "aliases": [
+        "akhil reddy",
+        "akhil",
+        "co-founder & cto",
+        "cto",
+        "akhil-reddy",
+        "akhil_reddy"
+      ],
+      "id": "akhil_reddy"
+    }
+  ],
+  "others": [
+    {
+      "name": "Ganesh Gandhi Vadalani",
+      "title": "CMO",
+      "aliases": [
+        "ganesh gandhi vadalani",
+        "ganesh",
+        "cmo",
+        "ganesh-gandhi-vadalani",
+        "ganesh_gandhi_vadalani"
+      ],
+      "id": "ganesh_gandhi_vadalani"
+    },
+    {
+      "name": "Harish Nerati",
+      "title": "Operations and Sales Head",
+      "aliases": [
+        "harish nerati",
+        "harish",
+        "operations and sales head",
+        "harish-nerati",
+        "harish_nerati"
+      ],
+      "id": "harish_nerati"
+    },
+    {
+      "name": "Aravind Reddy",
+      "title": "E-Commerce Head",
+      "aliases": [
+        "aravind reddy",
+        "aravind",
+        "e-commerce head",
+        "aravind-reddy",
+        "aravind_reddy"
+      ],
+      "id": "aravind_reddy"
+    },
+    {
+      "name": "Parvatha Mohan",
+      "title": "Business Development Head",
+      "aliases": [
+        "parvatha mohan",
+        "parvatha",
+        "business development head",
+        "parvatha-mohan",
+        "parvatha_mohan"
+      ],
+      "id": "parvatha_mohan"
+    }
+  ]
+}

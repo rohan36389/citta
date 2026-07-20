@@ -1,0 +1,384 @@
+{
+  "metadata": {
+    "registry_id": "solutions_v1",
+    "registry_type": "SOLUTIONS",
+    "schema_version": "1.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-18",
+    "knowledge_date": "2026-07-18",
+    "priority": 80,
+    "capabilities": {
+      "reasoning": false,
+      "comparison": false,
+      "transformation": true,
+      "summarization": true,
+      "examples": true
+    },
+    "supported_sections": [
+      "overview",
+      "how_it_works",
+      "features",
+      "benefits",
+      "faq",
+      "case_studies",
+      "related_entities"
+    ],
+    "aliases": [
+      "solutions",
+      "solution",
+      "os",
+      "operating systems"
+    ]
+  },
+  "entities": [
+    {
+      "id": "ecommerce_os",
+      "name": "E-Commerce OS",
+      "category": "solution",
+      "route": "/solutions/ecommerce-os",
+      "summary": "Unified digital operating system for retail and D2C brands.",
+      "description": "An end-to-end industry operating system connecting online store channels, real-time inventory management, stock alerts, and automated customer desk messaging.",
+      "overview": {
+        "summary": "Unified digital operating system for retail and D2C brands.",
+        "description": "An end-to-end industry operating system connecting online store channels, real-time inventory management, stock alerts, and automated customer desk messaging."
+      },
+      "how_it_works": {
+        "process": "Integrates shop systems, local stock lists, and AI messaging assistants to handle transactions automatically.",
+        "steps": [
+          "E-commerce storefront integration",
+          "Real-time stock level synchronization",
+          "AI shopping assistant chatbot setup",
+          "Fulfillment and dispatch notification routing"
+        ]
+      },
+      "features": [
+        "Real-time inventory synchronization across store channels in under 1 second",
+        "AI-driven product search and recommendation agents",
+        "Automated stock level reordering and logistics fulfillment loops"
+      ],
+      "benefits": [
+        "Eliminate stock level inconsistencies across physical/digital channels",
+        "Boost catalog conversion using interactive checkout links in messaging"
+      ],
+      "best_for": [
+        "Retailers",
+        "D2C Brands",
+        "E-Commerce Merchants"
+      ],
+      "faq": [
+        {
+          "question": "Does it connect with Shopify?",
+          "answer": "Yes, Shopify and WooCommerce are fully supported out-of-the-box."
+        }
+      ],
+      "case_studies": [
+        "FMCG Brand"
+      ],
+      "related_entities": [
+        "whatsapp_marketing",
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "e commerce os",
+        "e-commerce",
+        "e-commerce os",
+        "ecommerce",
+        "ecommerce os",
+        "ecommerce-os",
+        "ecommerce_os",
+        "retail",
+        "retail os"
+      ]
+    },
+    {
+      "id": "pharma_os",
+      "name": "Pharma & Healthcare OS",
+      "category": "solution",
+      "route": "/solutions/pharma-os",
+      "summary": "Compliance-first pharmacy logistics and operations framework.",
+      "description": "Secure, audit-ready software layer coordinating patient files, medicine inventory tracking, shelf-life alarms, and doctor scheduling rosters.",
+      "overview": {
+        "summary": "Compliance-first pharmacy logistics and operations framework.",
+        "description": "Secure, audit-ready software layer coordinating patient files, medicine inventory tracking, shelf-life alarms, and doctor scheduling rosters."
+      },
+      "how_it_works": {
+        "process": "Enforces HIPAA data checks while managing drug inventory shelf life and dispatch alerts.",
+        "steps": [
+          "HIPAA/GDPR database configuration",
+          "Batch expiration date tracking setup",
+          "Clinic roster mapping",
+          "Patient alert notifications configuration"
+        ]
+      },
+      "features": [
+        "Secure clinical records database aligned with HIPAA/GDPR rules",
+        "Batch inventory tracking with predictive shell-life waste alarms",
+        "Hospital queue coordination and automated SMS/WhatsApp alerts"
+      ],
+      "benefits": [
+        "Establish regulatory audit readiness across medical desks",
+        "Reduce batch pharmaceutical waste through active inventory alerts"
+      ],
+      "best_for": [
+        "Hospitals",
+        "Clinics",
+        "Large Pharmacy Chains"
+      ],
+      "faq": [
+        {
+          "question": "Is it compliant with healthcare standards?",
+          "answer": "Yes, it is strictly audit-ready and HIPAA compliant."
+        }
+      ],
+      "case_studies": [],
+      "related_entities": [
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "healthcare",
+        "healthcare os",
+        "pharma",
+        "pharma & healthcare",
+        "pharma & healthcare os",
+        "pharma os",
+        "pharma-os",
+        "pharma_os",
+        "pharmaa",
+        "pharmaa os"
+      ]
+    },
+    {
+      "id": "smart_cities_os",
+      "name": "Smart Cities OS",
+      "category": "solution",
+      "route": "/solutions/smart-cities-os",
+      "summary": "Municipal governance and citizen utility grid middleware.",
+      "description": "Urban governance dashboard coordinating citizen registries, dispatch ticket routing, smart street monitors, and utility grid logs.",
+      "overview": {
+        "summary": "Municipal governance and citizen utility grid middleware.",
+        "description": "Urban governance dashboard coordinating citizen registries, dispatch ticket routing, smart street monitors, and utility grid logs."
+      },
+      "how_it_works": {
+        "process": "Connects city IoT sensors and citizen ticketing portals to dispatch service crews dynamically.",
+        "steps": [
+          "IoT device dashboard connection",
+          "Ticketing dispatch automation",
+          "Citizen portal verification",
+          "Energy usage logging setup"
+        ]
+      },
+      "features": [
+        "Unified citizen identity portal with verified access rules",
+        "Automated utility ticket dispatch routing based on query categories",
+        "IoT device dashboards tracking municipal lighting and waste sensors"
+      ],
+      "benefits": [
+        "Improve dispatch ticket routing speed by up to 50%",
+        "Optimize grid energy consumption via adaptive smart lighting"
+      ],
+      "best_for": [
+        "Municipal Corporations",
+        "Urban Planners",
+        "Smart Grid Operators"
+      ],
+      "faq": [
+        {
+          "question": "Which sensors are supported?",
+          "answer": "Standard urban waste, water flow, and street lighting sensors are supported."
+        }
+      ],
+      "case_studies": [],
+      "related_entities": [
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "smart cities",
+        "smart cities os",
+        "smart-cities-os",
+        "smart_cities_os"
+      ]
+    },
+    {
+      "id": "education_os",
+      "name": "Education OS",
+      "category": "solution",
+      "route": "/solutions/education-os",
+      "summary": "Centralized college administration, learning platform, and grading desks.",
+      "description": "Unified college LMS linking registrations, mentor tracking, online study classrooms, and proctoring exam desks.",
+      "overview": {
+        "summary": "Centralized college administration, learning platform, and grading desks.",
+        "description": "Unified college LMS linking registrations, mentor tracking, online study classrooms, and proctoring exam desks."
+      },
+      "how_it_works": {
+        "process": "Integrates student profile directories, course materials, and online examination modules.",
+        "steps": [
+          "Student information system provisioning",
+          "Virtual blended classroom configuration",
+          "Exam proctoring setup",
+          "Report card compilation"
+        ]
+      },
+      "features": [
+        "Central information directory for registrations, mentor groups, and departments",
+        "Virtual classroom hub supporting blended course assignments",
+        "Exam assessment platform with automated grading sheet compiled reports"
+      ],
+      "benefits": [
+        "Reduce student file administration overhead",
+        "Provide secure, 24/7 learning resources for remote student cohorts"
+      ],
+      "best_for": [
+        "Universities",
+        "Colleges",
+        "Online Education Providers"
+      ],
+      "faq": [
+        {
+          "question": "Can it integrate with standard LMS?",
+          "answer": "Yes, LTI integrations are supported."
+        }
+      ],
+      "case_studies": [],
+      "related_entities": [
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "education",
+        "education os",
+        "education-os",
+        "education_os"
+      ]
+    },
+    {
+      "id": "real_estate_os",
+      "name": "Real Estate OS",
+      "category": "solution",
+      "route": "/solutions/real-estate-os",
+      "summary": "Broker operations and inventory matching framework.",
+      "description": "Property management framework automating listing coordinates, client demand profiles, broker payouts, and legally binding digital signatures.",
+      "overview": {
+        "summary": "Broker operations and inventory matching framework.",
+        "description": "Property management framework automating listing coordinates, client demand profiles, broker payouts, and legally binding digital signatures."
+      },
+      "how_it_works": {
+        "process": "Matches buyer demand profiles with property listing attributes dynamically and runs digital sign-off loops.",
+        "steps": [
+          "Property asset directory setup",
+          "Lead-listing matching algorithm configuration",
+          "Payout rule settings",
+          "Digital contract signature loop verification"
+        ]
+      },
+      "features": [
+        "Interactive directory mapping specification search filters",
+        "Lead-to-property matching algorithm linking client requirements to active listings",
+        "Legally binding contract generation and digital signature loops"
+      ],
+      "benefits": [
+        "Lower vacancy lease latency times by up to 40%",
+        "Track broker deal payouts and sales commissions dynamically"
+      ],
+      "best_for": [
+        "Real Estate Brokerages",
+        "Property Agencies",
+        "Leasing Managers"
+      ],
+      "faq": [
+        {
+          "question": "Are the signatures legally binding?",
+          "answer": "Yes, they comply with national digital signature regulations."
+        }
+      ],
+      "case_studies": [],
+      "related_entities": [
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "broker os",
+        "estate os",
+        "property os",
+        "real estate",
+        "real estate os",
+        "real-estate",
+        "real-estate-os",
+        "real_estate_os",
+        "realestate",
+        "realestate os"
+      ]
+    },
+    {
+      "id": "enterprise_ai_os",
+      "name": "Enterprise AI OS",
+      "category": "solution",
+      "route": "/solutions/enterprise-ai-os",
+      "summary": "Cognitive middleware orchestrating database adapters and model paths.",
+      "description": "High-performance software suite serving as the intelligence layer, coordinating LLM routing, query safety checks, and secure DB connections.",
+      "overview": {
+        "summary": "Cognitive middleware orchestrating database adapters and model paths.",
+        "description": "High-performance software suite serving as the intelligence layer, coordinating LLM routing, query safety checks, and secure DB connections."
+      },
+      "how_it_works": {
+        "process": "Routes user requests to cost-efficient models while scrubbing sensitive data and running SQL mappings.",
+        "steps": [
+          "Dynamic model routing parameters setup",
+          "Enterprise DB adapters configuration",
+          "PII/data compliance checks design",
+          "Agent coordinate integration"
+        ]
+      },
+      "features": [
+        "Model routing logic dynamically matching queries to cost-efficient backends",
+        "Secure database adapters mapping enterprise SQL/NoSQL targets",
+        "Compliance check guardrails preventing sensitive PII leakage"
+      ],
+      "benefits": [
+        "Reduce API token cost structures by up to 40%",
+        "Accelerate custom AI agent deployment cycles from weeks to hours"
+      ],
+      "best_for": [
+        "Enterprise Developers",
+        "CTOs",
+        "Security Architects"
+      ],
+      "faq": [
+        {
+          "question": "How does it protect PII?",
+          "answer": "Built-in redaction rules filter out credit cards, emails, and names before sending to external model paths."
+        }
+      ],
+      "case_studies": [
+        "B2B Spices Export"
+      ],
+      "related_entities": [
+        "enterprise_agentic_ai",
+        "data_engineering"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "agentic ai os",
+        "ai os",
+        "enterprise ai",
+        "enterprise ai os",
+        "enterprise-ai-os",
+        "enterprise_ai_os"
+      ]
+    }
+  ]
+}

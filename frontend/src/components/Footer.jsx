@@ -76,8 +76,8 @@ export default function Footer() {
         <div className="mt-14 pt-8 border-t border-white/5 flex flex-wrap items-center gap-4">
           <span className="font-mono text-[11px] uppercase tracking-widest text-white/40 mr-2">Certified</span>
           {FOOTER.badges.map((b) => (
-            <div key={b.alt} className="h-14 rounded-xl bg-white/95 px-3 py-1.5 grid place-items-center" title={b.alt}>
-              <img src={b.src} alt={b.alt} className="h-full w-auto object-contain" />
+            <div key={b.alt} className="h-12 rounded-xl bg-white px-4 flex items-center justify-center" title={b.alt}>
+              <img src={b.src} alt={b.alt} className="h-7 w-auto object-contain" />
             </div>
           ))}
         </div>

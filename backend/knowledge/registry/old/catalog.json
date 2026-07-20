@@ -1,0 +1,247 @@
+{
+  "products": [
+    {
+      "id": "whatsapp_marketing",
+      "name": "WhatsApp Marketing Platform",
+      "category": "product",
+      "route": "/products/whatsapp-marketing",
+      "summary": "Enterprise-grade high-volume business messaging automation engine.",
+      "description": "A robust, high-performance messaging automation platform integrated directly with the official WhatsApp Business API, supporting broadcasts, multi-agent desks, and conversion tracking.",
+      "capabilities": [
+        "Official WhatsApp API integration and template management",
+        "Multi-agent collaborative team inbox with role routing",
+        "Automated chat broadcasts and customer sequence triggers"
+      ],
+      "benefits": [
+        "Boost message read rates up to 98% compared to standard email templates",
+        "Automate up to 75% of baseline support inquiries with logic agents"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    },
+    {
+      "id": "influencer_marketing",
+      "name": "Influencer Marketing Platform",
+      "category": "product",
+      "route": "/products/influencer-marketing",
+      "summary": "Automated campaign execution and creator relationship platform.",
+      "description": "An end-to-end influencer analytics and coordination system that streamlines creator discovery, contract management, campaign tracking, and ROI analytics.",
+      "capabilities": [
+        "Advanced creator analytics and audience demographic verification",
+        "Automated contract generation and payout tracking pipelines",
+        "Real-time ROI dashboard mapping metrics across TikTok, Instagram, and YouTube"
+      ],
+      "benefits": [
+        "Reduce creator discovery overhead by up to 60% using database filters",
+        "Verify creator metrics instantly before committing budget"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    }
+  ],
+  "services": [
+    {
+      "id": "data_engineering",
+      "name": "Data Engineering",
+      "category": "service",
+      "route": "/services/data-engineering",
+      "summary": "Robust, high-throughput cloud infrastructure and analytics data architectures.",
+      "description": "Custom delivery and architecture modeling for enterprise data warehouses, real-time analytics data pipelines, and automated ETL/ELT workflows.",
+      "capabilities": [
+        "Real-time streaming pipeline engineering (Kafka, Flink, Spark Streaming)",
+        "Enterprise data warehousing and data lake construction (BigQuery, Snowflake)",
+        "Automated pipeline orchestrations and data form modeling (dbt, Airflow)"
+      ],
+      "benefits": [
+        "Reduce analytical query overhead by 40% using optimized partitioning",
+        "Ensure pipeline ingestion latency of under 5 seconds for critical analytics"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    },
+    {
+      "id": "enterprise_agentic_ai",
+      "name": "Enterprise & Agentic AI",
+      "category": "service",
+      "route": "/services/enterprise-ai",
+      "summary": "Advanced AI automation and customized LLM architectures for enterprise workflows.",
+      "description": "Integration and development of custom large language model pipelines, multi-agent automated task suites, vector search indexing, and fine-tuning deployment pipelines.",
+      "capabilities": [
+        "Custom LLM fine-tuning and domain adaptation training workflows",
+        "Multi-agent autonomous coordination frameworks (LangGraph, CrewAI)",
+        "High-precision vector retrieval-augmented generation (RAG) implementation"
+      ],
+      "benefits": [
+        "Automate complex multi-step analysis tasks from hours to seconds",
+        "Achieve up to 99% accuracy on structured company retrieval queries"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    },
+    {
+      "id": "ai_strategy",
+      "name": "AI Strategy & Advisory",
+      "category": "service",
+      "route": "/services/ai-strategy",
+      "summary": "Executive advisory and technological feasibility roadmaps for AI transformation.",
+      "description": "High-level consulting services guiding enterprises through AI capability audits, business case prioritization, and complete AI governance policies.",
+      "capabilities": [
+        "Comprehensive AI capability audits and technical readiness reviews",
+        "AI ROI calculations and strategic use case prioritization frameworks"
+      ],
+      "benefits": [
+        "Avoid costly engineering missteps on unfeasible AI applications",
+        "Establish a concrete, phased roadmap matching capital allocations"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    },
+    {
+      "id": "ai_powered_marketing",
+      "name": "AI-Powered Marketing",
+      "category": "service",
+      "route": "/services/martech-360",
+      "summary": "AI-accelerated brand growth, advertising automation, and conversions optimization.",
+      "description": "Full-funnel digital marketing services leveraging AI automation for automated content generation, dynamic ad bidding, and WhatsApp communication loops.",
+      "capabilities": [
+        "AI-accelerated content production, copy auditing, and branding strategy",
+        "Social media campaigns optimization and dynamic creator sourcing",
+        "Automated search engine optimization (SEO) monitoring"
+      ],
+      "benefits": [
+        "Increase content throughput by 4x without sacrificing brand alignment",
+        "Improve PPC return-on-ad-spend (ROAS) by up to 35% via dynamic bid adjustments"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "ecommerce_os",
+      "name": "E-Commerce OS",
+      "category": "solution",
+      "route": "/solutions/ecommerce-os",
+      "summary": "Unified digital orchestration platform for retail and direct-to-consumer operations.",
+      "description": "An end-to-end industry operating system that connects retail store inventory, online shopping portals, and customer outreach messaging.",
+      "capabilities": [
+        "Real-time unified inventory sync across physical and digital sales channels",
+        "Automated stock level reordering and logistics fulfillment pipelines",
+        "Integrated WhatsApp checkout customer support desks"
+      ],
+      "benefits": [
+        "Eliminate out-of-stock occurrences by syncing levels in under 1 second",
+        "Increase catalog conversions by embedding checkout links in chats"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    },
+    {
+      "id": "real_estate_os",
+      "name": "Real Estate OS",
+      "category": "solution",
+      "route": "/solutions/real-estate-os",
+      "summary": "Asset management and client matching operating system for developers and agencies.",
+      "description": "A comprehensive operational platform automating property inventories, buyer matching, and contract workflows for real estate enterprises.",
+      "capabilities": [
+        "Dynamic asset directory tracking specifications, images, and maps",
+        "Automated client matching algorithms linking profile queries to property catalog",
+        "Digital contract generation and legally binding e-signature loops"
+      ],
+      "benefits": [
+        "Reduce property vacancy durations by 40% via automatic matched alerts",
+        "Eliminate rent chase overhead by automating digital payment links"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    },
+    {
+      "id": "pharma_os",
+      "name": "Pharma & Healthcare OS",
+      "category": "solution",
+      "route": "/solutions/pharma-os",
+      "summary": "Compliance-first hospital management and pharmacy distribution network platform.",
+      "description": "A highly secure, audit-ready operational hub coordinating clinical records, medicine supply levels, and doctor schedules.",
+      "capabilities": [
+        "Secure patient clinical records directory (HIPAA/GDPR compliant)",
+        "Dynamic pharmaceutical batch tracking with shelf-life alarms",
+        "Digital hospital queue coordination desks and automated patient alerts"
+      ],
+      "benefits": [
+        "Establish audit-readiness across medical operations",
+        "Prevent batch expiration waste by tracking dates automatically"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    },
+    {
+      "id": "smart_cities_os",
+      "name": "Smart Cities OS",
+      "category": "solution",
+      "route": "/solutions/smart-cities-os",
+      "summary": "Municipal governance portal and public resource optimization operating system.",
+      "description": "A high-performance dashboard coordinating citizen registries, dispatch desks, smart asset monitors, and utility grid parameters.",
+      "capabilities": [
+        "Unified citizen portal with digital identity verification",
+        "Automated ticket dispatch routing based on request keywords",
+        "Real-time municipal asset monitoring (smart lighting, waste bins)"
+      ],
+      "benefits": [
+        "Accelerate public service request resolution speeds by 50%",
+        "Reduce energy grid waste through smart adaptive infrastructure"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    },
+    {
+      "id": "education_os",
+      "name": "Education OS",
+      "category": "solution",
+      "route": "/solutions/education-os",
+      "summary": "Institutional administration, learning management, and student portal suite.",
+      "description": "A comprehensive portal syncing student registrations, course schedules, digital classrooms, and grading books.",
+      "capabilities": [
+        "Centralized student information registry and enrollment processing",
+        "Flexible digital learning management environment supporting online classes",
+        "Automated grading sheet compile routines and parent updates desk"
+      ],
+      "benefits": [
+        "Save administrative office labor by automating enrollment pipelines",
+        "Ensure instant accessibility of study resources for remote learners"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    },
+    {
+      "id": "enterprise_ai_os",
+      "name": "Enterprise AI OS",
+      "category": "solution",
+      "route": "/solutions/enterprise-ai-os",
+      "summary": "Unified middleware orchestrating models, integrations, database structures, and automation.",
+      "description": "A core, high-performance software suite acting as the underlying cognitive operating system for organizations.",
+      "capabilities": [
+        "Multi-model routing logic dynamically matching queries to models",
+        "Pre-built database integration adapters supporting SQL and NoSQL targets",
+        "Strict data privacy guardrails mapping compliance checks"
+      ],
+      "benefits": [
+        "Cut AI API cost structures by 40% through intelligent routing models",
+        "Deploy custom agentic applications within hours using standard connectors"
+      ],
+      "last_updated": "2026-07-15",
+      "verified": true,
+      "source": "Business Registry"
+    }
+  ]
+}

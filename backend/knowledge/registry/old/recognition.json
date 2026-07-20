@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "registry_id": "recognition_v1",
+    "registry_type": "RECOGNITION",
+    "schema_version": "1.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-18",
+    "knowledge_date": "2026-07-18",
+    "priority": 80,
+    "capabilities": {
+      "reasoning": false,
+      "comparison": false,
+      "transformation": true,
+      "summarization": true,
+      "examples": true
+    },
+    "supported_sections": [
+      "overview"
+    ],
+    "aliases": [
+      "recognition",
+      "awards",
+      "award",
+      "achievements",
+      "challenges"
+    ]
+  },
+  "verified": true,
+  "source": "recognition.md",
+  "recognitions": [
+    {
+      "title": "AP MSME Digital Empowerment Challenge 2025 (Double Victory)",
+      "awards": [
+        "AI-Powered DPR Preparation Solution",
+        "SaaS-Based Export Console"
+      ],
+      "organization": "Andhra Pradesh Innovation Society and APMSME Development Corp"
+    },
+    {
+      "title": "Best AI Startup of the Year 2025",
+      "organization": "HYBIZ TV",
+      "edition": "3rd Edition of Business Excellence Awards"
+    }
+  ]
+}

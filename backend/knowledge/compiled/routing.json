@@ -1,0 +1,15 @@
+{
+  "COMPANY_INFO": "company.json",
+  "LEADERSHIP": "leadership.json",
+  "CONTACT": "contact.json",
+  "LOCATION": "location.json",
+  "RECOGNITION": "recognition.json",
+  "PARTNERS": "partners.json",
+  "CASE_STUDIES": "case_studies.json",
+  "PRODUCTS": "products.json",
+  "SERVICES": "services.json",
+  "SOLUTIONS": "solutions.json",
+  "PRICING": "pricing.json",
+  "FAQ": "faq.json",
+  "metadata": {}
+}

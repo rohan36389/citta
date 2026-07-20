@@ -1,0 +1,49 @@
+{
+  "what_products": {
+    "aliases": [
+      "products",
+      "what products",
+      "offerings",
+      "what platforms",
+      "list products",
+      "flagship products"
+    ],
+    "answer": {
+      "response": "🏆 **CittaAI Flagship Products**\n\nCittaAI offers the following state-of-the-art enterprise platforms:\n\n1. **WhatsApp Marketing Platform**: Unified enterprise-grade automation integrated with the official WhatsApp Business API, supporting broadcasts, team desks, and chat automations. [Explore Product](/products/whatsapp-marketing)\n2. **Influencer Marketing Platform**: Creator analytics, contract generation, ROI dashboards, and workflow management for brand amplification campaigns. [Explore Product](/products/influencer-marketing)",
+      "source": "Golden Answers",
+      "verified": true,
+      "navigation": "/products/whatsapp-marketing"
+    }
+  },
+  "what_services": {
+    "aliases": [
+      "services",
+      "consulting",
+      "what services",
+      "list services",
+      "professional services"
+    ],
+    "answer": {
+      "response": "🛠️ **CittaAI Professional Services**\n\nCittaAI provides specialized, research-grade advisory and engineering capabilities:\n\n1. **Data Engineering**: Cloud data warehouses, dbt pipeline orchestrations, ETL workflows, and real-time Kafka streams. [Explore Service](/services/data-engineering)\n2. **Enterprise & Agentic AI**: Autonomous multi-agent coordination, local offline LLM optimization, and fine-tuning adapters. [Explore Service](/services/enterprise-ai)\n3. **AI Strategy & Advisory**: Feasibility roadmaps, capability audits, and executive advisory. [Explore Service](/services/ai-strategy)\n4. **AI-Powered Marketing**: Dynamic PPC optimization, MarTech integrations, and automation loops. [Explore Service](/services/martech-360)",
+      "source": "Golden Answers",
+      "verified": true,
+      "navigation": "/services"
+    }
+  },
+  "what_solutions": {
+    "aliases": [
+      "solutions",
+      "industry os",
+      "operating system",
+      "what solutions",
+      "list solutions",
+      "operating systems"
+    ],
+    "answer": {
+      "response": "🌐 **CittaAI Industry Operating Systems (OS)**\n\nWe deploy secure middleware orchestrating data, automation, and compliance:\n\n1. **Enterprise AI OS**: Multi-model routing, database adapters, and compliance controls. [Explore Solution](/solutions/enterprise-ai-os)\n2. **E-Commerce OS**: Live inventory synchronization, billing desks, and shopping desks. [Explore Solution](/solutions/ecommerce-os)\n3. **Pharma & Healthcare OS**: Secure clinical files, queue management, and batch tracks. [Explore Solution](/solutions/pharma-os)\n4. **Smart Cities OS**: Ticket routing, municipal monitors, and resource dashboards. [Explore Solution](/solutions/smart-cities-os)\n5. **Education OS**: Student information systems, grading workflows, and classroom modules. [Explore Solution](/solutions/education-os)\n6. **Real Estate OS**: Interactive asset directories, property leads, and contract tools. [Explore Solution](/solutions/real-estate-os)",
+      "source": "Golden Answers",
+      "verified": true,
+      "navigation": "/solutions/ecommerce-os"
+    }
+  }
+}

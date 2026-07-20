@@ -1,0 +1,445 @@
+{
+  "uuid": "c7fd33a3-2006-5dd1-ae8b-a251cb2de374",
+  "id": "influencer_marketing",
+  "type": "product",
+  "slug": "influencer-marketing",
+  "name": "Influencer Marketing Platform",
+  "title": "Influencer Marketing Platform",
+  "tagline": "Creator Collaboration OS",
+  "overview": "A marketplace + campaign management platform connecting Brands, Agencies, and Influencers, with end-to-end workflows from discovery to execution, plus affiliate tracking and analytics.",
+  "description": "A marketplace + campaign management platform connecting Brands, Agencies, and Influencers, with end-to-end workflows from discovery to execution, plus affiliate tracking and analytics.",
+  "cta": "Get Demo",
+  "url": "/products/influencer-marketing",
+  "search": {
+    "primary_keywords": [
+      "creator payouts",
+      "influencer marketing platform",
+      "influencer marketing",
+      "influencer campaigns"
+    ],
+    "secondary_keywords": [
+      "creator collaboration os",
+      "ugc assets",
+      "utm analytics",
+      "creator database"
+    ],
+    "aliases": [
+      "creator",
+      "influencer-marketing",
+      "influencer_marketing",
+      "influencer",
+      "influencer marketing",
+      "influence marketing",
+      "creator platform",
+      "creator marketing",
+      "influencer platform",
+      "creator collaboration"
+    ],
+    "synonyms": []
+  },
+  "classification": {
+    "category": "influencer_marketing",
+    "industry": "General",
+    "domain": "PRODUCTS",
+    "subdomain": null
+  },
+  "target_users": [
+    "D2C Brands",
+    "Consumer Services",
+    "Education Brands",
+    "Apps",
+    "Local Franchises"
+  ],
+  "capabilities": [
+    {
+      "id": "influencer_marketing_influencer_discovery",
+      "title": "Influencer Discovery",
+      "subtitle": "Find & Shortlist",
+      "description": "Browse influencers by category, niche, location, language, and audience type.",
+      "keywords": [
+        "influencer",
+        "discovery"
+      ],
+      "aliases": [
+        "influencer discovery"
+      ],
+      "features": [
+        {
+          "id": "search_by_reach_&_platform",
+          "title": "Search by reach & platform",
+          "description": "Feature support for Search by reach & platform in Influencer Discovery.",
+          "keywords": [
+            "search",
+            "reach",
+            "platform"
+          ]
+        },
+        {
+          "id": "wishlist___shortlists",
+          "title": "Wishlist / shortlists",
+          "description": "Feature support for Wishlist / shortlists in Influencer Discovery.",
+          "keywords": [
+            "wishlist",
+            "shortlists"
+          ]
+        },
+        {
+          "id": "side-by-side_comparison",
+          "title": "Side-by-side comparison",
+          "description": "Feature support for Side-by-side comparison in Influencer Discovery.",
+          "keywords": [
+            "side-by-side",
+            "comparison"
+          ]
+        },
+        {
+          "id": "engagement_verification",
+          "title": "Engagement verification",
+          "description": "Feature support for Engagement verification in Influencer Discovery.",
+          "keywords": [
+            "engagement",
+            "verification"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "influencer_marketing_communication_hub",
+      "title": "Communication & Hub",
+      "subtitle": "Chat & Negotiation",
+      "description": "Built-in chat for centralized communication and deal negotiation.",
+      "keywords": [
+        "communication"
+      ],
+      "aliases": [
+        "communication & hub"
+      ],
+      "features": [
+        {
+          "id": "built-in_chat_system",
+          "title": "Built-in chat system",
+          "description": "Feature support for Built-in chat system in Communication & Hub.",
+          "keywords": [
+            "built-in",
+            "chat",
+            "system"
+          ]
+        },
+        {
+          "id": "negotiation_flows",
+          "title": "Negotiation flows",
+          "description": "Feature support for Negotiation flows in Communication & Hub.",
+          "keywords": [
+            "negotiation",
+            "flows"
+          ]
+        },
+        {
+          "id": "conversation_logs",
+          "title": "Conversation logs",
+          "description": "Feature support for Conversation logs in Communication & Hub.",
+          "keywords": [
+            "conversation",
+            "logs"
+          ]
+        },
+        {
+          "id": "agreement_summaries",
+          "title": "Agreement summaries",
+          "description": "Feature support for Agreement summaries in Communication & Hub.",
+          "keywords": [
+            "agreement",
+            "summaries"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "influencer_marketing_campaign_management",
+      "title": "Campaign Management",
+      "subtitle": "Creation & Assignment",
+      "description": "Create campaigns with objectives, creative briefs, and influencer assignments.",
+      "keywords": [
+        "campaign",
+        "management"
+      ],
+      "aliases": [
+        "campaign management"
+      ],
+      "features": [
+        {
+          "id": "objective-based_campaigns",
+          "title": "Objective-based campaigns",
+          "description": "Feature support for Objective-based campaigns in Campaign Management.",
+          "keywords": [
+            "objective-based",
+            "campaigns"
+          ]
+        },
+        {
+          "id": "creative_briefs_&_guidelines",
+          "title": "Creative briefs & guidelines",
+          "description": "Feature support for Creative briefs & guidelines in Campaign Management.",
+          "keywords": [
+            "creative",
+            "briefs",
+            "guidelines"
+          ]
+        },
+        {
+          "id": "influencer_assignment",
+          "title": "Influencer assignment",
+          "description": "Feature support for Influencer assignment in Campaign Management.",
+          "keywords": [
+            "influencer",
+            "assignment"
+          ]
+        },
+        {
+          "id": "milestone_tracking",
+          "title": "Milestone tracking",
+          "description": "Feature support for Milestone tracking in Campaign Management.",
+          "keywords": [
+            "milestone",
+            "tracking"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "influencer_marketing_live_tracking",
+      "title": "Live Tracking",
+      "subtitle": "Real-time Status",
+      "description": "Live status tracking for each creator and deliverable with alerts.",
+      "keywords": [
+        "live",
+        "tracking"
+      ],
+      "aliases": [
+        "live tracking"
+      ],
+      "features": [
+        {
+          "id": "live_status_tracking",
+          "title": "Live status tracking",
+          "description": "Feature support for Live status tracking in Live Tracking.",
+          "keywords": [
+            "live",
+            "status",
+            "tracking"
+          ]
+        },
+        {
+          "id": "deadline_alerts",
+          "title": "Deadline alerts",
+          "description": "Feature support for Deadline alerts in Live Tracking.",
+          "keywords": [
+            "deadline",
+            "alerts"
+          ]
+        },
+        {
+          "id": "content_proof_collection",
+          "title": "Content proof collection",
+          "description": "Feature support for Content proof collection in Live Tracking.",
+          "keywords": [
+            "content",
+            "proof",
+            "collection"
+          ]
+        },
+        {
+          "id": "pending_approval_reminders",
+          "title": "Pending approval reminders",
+          "description": "Feature support for Pending approval reminders in Live Tracking.",
+          "keywords": [
+            "pending",
+            "approval",
+            "reminders"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "influencer_marketing_analytics_roi",
+      "title": "Analytics & ROI",
+      "subtitle": "Detailed Reporting",
+      "description": "Deep analytics on detailed reach, views, engagement, and campaign ROI.",
+      "keywords": [
+        "analytics"
+      ],
+      "aliases": [
+        "analytics & roi"
+      ],
+      "features": [
+        {
+          "id": "campaign-level_dashboards",
+          "title": "Campaign-level dashboards",
+          "description": "Feature support for Campaign-level dashboards in Analytics & ROI.",
+          "keywords": [
+            "campaign-level",
+            "dashboards"
+          ]
+        },
+        {
+          "id": "influencer_performance_breakdown",
+          "title": "Influencer performance breakdown",
+          "description": "Feature support for Influencer performance breakdown in Analytics & ROI.",
+          "keywords": [
+            "influencer",
+            "performance",
+            "breakdown"
+          ]
+        },
+        {
+          "id": "engagement_quality",
+          "title": "Engagement quality",
+          "description": "Feature support for Engagement quality in Analytics & ROI.",
+          "keywords": [
+            "engagement",
+            "quality"
+          ]
+        },
+        {
+          "id": "exportable_agency_reports",
+          "title": "Exportable agency reports",
+          "description": "Feature support for Exportable agency reports in Analytics & ROI.",
+          "keywords": [
+            "exportable",
+            "agency",
+            "reports"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "influencer_marketing_affiliate_marketing",
+      "title": "Affiliate Marketing",
+      "subtitle": "Clicks + Attribution",
+      "description": "Generate trackable links and track conversions and revenue per influencer.",
+      "keywords": [
+        "affiliate",
+        "marketing"
+      ],
+      "aliases": [
+        "affiliate marketing"
+      ],
+      "features": [
+        {
+          "id": "trackable_links_codes",
+          "title": "Trackable links/codes",
+          "description": "Feature support for Trackable links/codes in Affiliate Marketing.",
+          "keywords": [
+            "trackable",
+            "links/codes"
+          ]
+        },
+        {
+          "id": "revenue_attribution",
+          "title": "Revenue attribution",
+          "description": "Feature support for Revenue attribution in Affiliate Marketing.",
+          "keywords": [
+            "revenue",
+            "attribution"
+          ]
+        },
+        {
+          "id": "affiliate_leaderboards",
+          "title": "Affiliate leaderboards",
+          "description": "Feature support for Affiliate leaderboards in Affiliate Marketing.",
+          "keywords": [
+            "affiliate",
+            "leaderboards"
+          ]
+        },
+        {
+          "id": "performance-based_insights",
+          "title": "Performance-based insights",
+          "description": "Feature support for Performance-based insights in Affiliate Marketing.",
+          "keywords": [
+            "performance-based",
+            "insights"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "influencer_marketing_payments_compliance",
+      "title": "Payments & Compliance",
+      "subtitle": "Roadmap Ready",
+      "description": "Manage payment milestones, invoicing, and contract acceptance tracking.",
+      "keywords": [
+        "payments",
+        "compliance"
+      ],
+      "aliases": [
+        "payments & compliance"
+      ],
+      "features": [
+        {
+          "id": "payment_milestones",
+          "title": "Payment milestones",
+          "description": "Feature support for Payment milestones in Payments & Compliance.",
+          "keywords": [
+            "payment",
+            "milestones"
+          ]
+        },
+        {
+          "id": "invoicing_support",
+          "title": "Invoicing support",
+          "description": "Feature support for Invoicing support in Payments & Compliance.",
+          "keywords": [
+            "invoicing",
+            "support"
+          ]
+        },
+        {
+          "id": "payout_tracking",
+          "title": "Payout tracking",
+          "description": "Feature support for Payout tracking in Payments & Compliance.",
+          "keywords": [
+            "payout",
+            "tracking"
+          ]
+        },
+        {
+          "id": "contract_management",
+          "title": "Contract management",
+          "description": "Feature support for Contract management in Payments & Compliance.",
+          "keywords": [
+            "contract",
+            "management"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "02_product_influencer_marketing_platform.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

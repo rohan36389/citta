@@ -1,0 +1,149 @@
+{
+  "service_category": "AI Strategy & Advisory Solutions",
+  "cta_section": {
+    "heading": "Ready to scale?",
+    "subheading": "Book a consultation with our AI experts today.",
+    "cta": "Book Now"
+  },
+  "page_contents_menu": [
+    "Overview",
+    "Key Benefits",
+    "How It Works",
+    "Common Questions"
+  ],
+  "services": [
+    {
+      "title": "AI readiness assessment",
+      "subtitle": "Technical & cultural audit",
+      "overview": "Before you build, know where you stand. We evaluate your data infrastructure, talent, and processes to determine your readiness for AI adoption.",
+      "key_benefits": [
+        {
+          "title": "Clarity",
+          "description": "Know exactly where to start"
+        },
+        {
+          "title": "Risk Reduction",
+          "description": "Avoid costly failed pilots"
+        },
+        {
+          "title": "Roadmap",
+          "description": "Clear path to value"
+        }
+      ],
+      "core_capabilities": [
+        "Data maturity scoring",
+        "Infrastructure audit",
+        "Skills gap analysis",
+        "ROI projection modeling"
+      ]
+    },
+    {
+      "title": "Strategic roadmap",
+      "subtitle": "Phased implementation plans",
+      "overview": "We build comprehensive, multi-year AI roadmaps that align with your business goals, ensuring every initiative drives tangible value.",
+      "key_benefits": [
+        {
+          "title": "Alignment",
+          "description": "Business & Tech in sync"
+        },
+        {
+          "title": "Momentum",
+          "description": "Quick wins to build trust"
+        },
+        {
+          "title": "Vision",
+          "description": "Long-term competitive advantage"
+        }
+      ],
+      "core_capabilities": [
+        "Milestone planning",
+        "Resource allocation",
+        "Technology selection",
+        "KPI definition"
+      ]
+    },
+    {
+      "title": "Use case prioritization",
+      "subtitle": "Impact vs effort matrix",
+      "overview": "Not all AI ideas are equal. We help you identify and prioritize high-impact, low-effort use cases that demonstrate value quickly.",
+      "key_benefits": [
+        {
+          "title": "Focus",
+          "description": "Work on what matters"
+        },
+        {
+          "title": "Success Rate",
+          "description": "Higher probability of success"
+        },
+        {
+          "title": "Budget",
+          "description": "Efficient capital allocation"
+        }
+      ],
+      "core_capabilities": [
+        "Feasibility workshops",
+        "Value estimation",
+        "Risk assessment",
+        "Pilot definitions"
+      ]
+    },
+    {
+      "title": "AI governance",
+      "subtitle": "Ethics, safety & compliance",
+      "overview": "Scale AI responsibly. We establish governance frameworks that ensure your AI systems are ethical, compliant, and secure.",
+      "key_benefits": [
+        {
+          "title": "Trust",
+          "description": "Build automated trust"
+        },
+        {
+          "title": "Safety",
+          "description": "Prevent reputational damage"
+        },
+        {
+          "title": "Compliance",
+          "description": "Stay ahead of regulations"
+        }
+      ],
+      "core_capabilities": [
+        "Ethical guidelines",
+        "Model monitoring frameworks",
+        "Compliance auditing (EU AI Act)",
+        "Bias detection"
+      ]
+    }
+  ],
+  "site_footer": {
+    "logo": "CittaAI",
+    "tagline": "The intelligence layer for the modern enterprise. Engineering autonomy from the ground up.",
+    "certifications": [
+      "ISO 9001:2015",
+      "MSME",
+      "Startup India"
+    ],
+    "nav": {
+      "Products": [
+        "MarkTech Suite",
+        "Agentic AI Platforms",
+        "LMS & Education",
+        "Pharma AI Suite",
+        "GovTech Solutions"
+      ],
+      "Services": [
+        "Data Engineering",
+        "Enterprise AI",
+        "AI Strategy",
+        "MarTech 360",
+        "Consulting"
+      ],
+      "Company": [
+        "About Us",
+        "Case Studies",
+        "Careers",
+        "Blog",
+        "Press"
+      ]
+    }
+  },
+  "note": "Source content listed 'Use case prioritization' twice (duplicate block on the page); represented once here."
+}

@@ -1,0 +1,106 @@
+{
+  "product_name": "Pharma OS",
+  "tagline": "AI-Powered Quality, Compliance & Release Intelligence",
+  "description": "Digitizes workflows for faster, reliable batch decisions.",
+  "cta": "Talk to Sales",
+  "stats": [
+    {
+      "value": "50%",
+      "label": "Faster Reviews"
+    },
+    {
+      "value": "100%",
+      "label": "Audit Readiness"
+    },
+    {
+      "value": "ZERO",
+      "label": "Data Integrity Errors"
+    },
+    {
+      "value": "3x",
+      "label": "Faster Release"
+    }
+  ],
+  "section_heading": "Six Modules of Quality Intelligence",
+  "section_subheading": "Comprehensive tools to digitize quality and compliance workflows.",
+  "capabilities": [
+    {
+      "title": "Quality Dashboards",
+      "subtitle": "Centralized visibility for quality KPIs",
+      "description": "Central dashboards for deviations, CAPA, and trends with audit-ready visibility.",
+      "features": [
+        "Central dashboards for quality KPIs & deviations",
+        "Audit-ready visibility across plants & products",
+        "Trend analysis for proactive quality management",
+        "Real-time monitoring of quality metrics"
+      ]
+    },
+    {
+      "title": "Batch Records Review Tool",
+      "subtitle": "Digitized workflow reviews",
+      "description": "Accelerate review cycles with digitized batch record workflows and structured checklists.",
+      "features": [
+        "Digitized batch record review workflows",
+        "Faster review cycles with structured checklists",
+        "Exception handling and digital signatures",
+        "Streamlined approval processes"
+      ]
+    },
+    {
+      "title": "Protocol Preparation Tools",
+      "subtitle": "Guided creation & automated reporting",
+      "description": "Streamline protocol creation and automate summary report preparation.",
+      "features": [
+        "Guided protocol creation with templates",
+        "Automated summary report preparation",
+        "Review-ready outputs and standardization",
+        "Reduced manual documentation effort"
+      ]
+    },
+    {
+      "title": "CPV Tool",
+      "subtitle": "Continuous Process Verification",
+      "description": "Support batch release readiness with ongoing process verification and trend monitoring.",
+      "features": [
+        "Ongoing process verification with trend monitoring",
+        "Data-backed signals for batch release readiness",
+        "Statistical process control integration",
+        "Real-time process deviation alerts"
+      ]
+    },
+    {
+      "title": "APQR Reporting Tool",
+      "subtitle": "Automated Annual Product Quality Review",
+      "description": "Automate APQR reporting with data aggregation and standardized outputs.",
+      "features": [
+        "Annual Product Quality Review automation",
+        "Data aggregation and trend insights",
+        "Standardized regulatory report outputs",
+        "Drastically reduced reporting timelines"
+      ]
+    },
+    {
+      "title": "Assessment Tool",
+      "subtitle": "Structured quality evaluations",
+      "description": "Manage risk-based reporting and review trails with structured workflows.",
+      "features": [
+        "Structured workflows for quality evaluations",
+        "Risk-based reporting and scoring",
+        "Comprehensive review trails",
+        "Standardized assessment criteria"
+      ]
+    }
+  ],
+  "why_section": {
+    "heading": "Why Pharma OS?",
+    "subheading": "Faster documentation, reporting cycles, and better compliance readiness.",
+    "pillars": [
+      "Faster Documentation",
+      "Compliance Readiness",
+      "Process Visibility",
+      "Consistent Worflows",
+      "Automated Reporting",
+      "Batch Reliability"
+    ]
+  }
+}

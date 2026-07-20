@@ -1,0 +1,662 @@
+{
+  "uuid": "1ae0797c-ec1a-5fb0-8e91-665037db6f32",
+  "id": "whatsapp_marketing",
+  "type": "product",
+  "slug": "whatsapp-marketing",
+  "name": "WhatsApp Marketing Platform",
+  "title": "WhatsApp Marketing Platform",
+  "tagline": "Brand Messaging OS",
+  "overview": "A scalable WhatsApp engagement and broadcast system where we onboard brands and help them run high-volume messaging (including lakhs of messages) with compliance-friendly workflows, automation, and support.",
+  "description": "A scalable WhatsApp engagement and broadcast system where we onboard brands and help them run high-volume messaging (including lakhs of messages) with compliance-friendly workflows, automation, and support.",
+  "cta": "Get Demo",
+  "url": "/products/whatsapp-marketing",
+  "search": {
+    "primary_keywords": [
+      "whatsapp business",
+      "whatsapp marketing platform",
+      "wa campaign",
+      "whatsapp marketing"
+    ],
+    "secondary_keywords": [
+      "inbox desk",
+      "mass broadcast",
+      "brand messaging os",
+      "drip templates"
+    ],
+    "aliases": [
+      "whatsapp_marketing",
+      "wa",
+      "whatsapp-marketing",
+      "whatsapp marketing",
+      "whastapp",
+      "whatsapp"
+    ],
+    "synonyms": []
+  },
+  "classification": {
+    "category": "whatsapp_marketing",
+    "industry": "General",
+    "domain": "PRODUCTS",
+    "subdomain": null
+  },
+  "target_users": [
+    "Admin",
+    "User"
+  ],
+  "capabilities": [
+    {
+      "id": "whatsapp_marketing_brand_onboarding",
+      "title": "Brand Onboarding",
+      "subtitle": "Setup & Support",
+      "description": "Full support for WABA setup, number provisioning, and catalog optimization.",
+      "keywords": [
+        "brand",
+        "onboarding"
+      ],
+      "aliases": [
+        "brand onboarding"
+      ],
+      "features": [
+        {
+          "id": "waba_onboarding_assistance",
+          "title": "WABA onboarding assistance",
+          "description": "Feature support for WABA onboarding assistance in Brand Onboarding.",
+          "keywords": [
+            "waba",
+            "onboarding",
+            "assistance"
+          ]
+        },
+        {
+          "id": "number_setup_&_approvals",
+          "title": "Number setup & approvals",
+          "description": "Feature support for Number setup & approvals in Brand Onboarding.",
+          "keywords": [
+            "number",
+            "setup",
+            "approvals"
+          ]
+        },
+        {
+          "id": "catalog_optimization",
+          "title": "Catalog optimization",
+          "description": "Feature support for Catalog optimization in Brand Onboarding.",
+          "keywords": [
+            "catalog",
+            "optimization"
+          ]
+        },
+        {
+          "id": "business_profile_setup",
+          "title": "Business profile setup",
+          "description": "Feature support for Business profile setup in Brand Onboarding.",
+          "keywords": [
+            "business",
+            "profile",
+            "setup"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "whatsapp_marketing_message_types",
+      "title": "Message Types",
+      "subtitle": "Utility & Promotional",
+      "description": "Support for utility, promotional, and engagement messages across the lifecycle.",
+      "keywords": [
+        "message",
+        "types"
+      ],
+      "aliases": [
+        "message types"
+      ],
+      "features": [
+        {
+          "id": "utility_messages_(otp,_updates)",
+          "title": "Utility messages (OTP, updates)",
+          "description": "Feature support for Utility messages (OTP, updates) in Message Types.",
+          "keywords": [
+            "utility",
+            "messages",
+            "(otp,",
+            "updates)"
+          ]
+        },
+        {
+          "id": "promotional_offers_&_sales",
+          "title": "Promotional offers & sales",
+          "description": "Feature support for Promotional offers & sales in Message Types.",
+          "keywords": [
+            "promotional",
+            "offers",
+            "sales"
+          ]
+        },
+        {
+          "id": "engagement_(polls,_nps)",
+          "title": "Engagement (Polls, NPS)",
+          "description": "Feature support for Engagement (Polls, NPS) in Message Types.",
+          "keywords": [
+            "engagement",
+            "(polls,",
+            "nps)"
+          ]
+        },
+        {
+          "id": "rich_media_support",
+          "title": "Rich media support",
+          "description": "Feature support for Rich media support in Message Types.",
+          "keywords": [
+            "rich",
+            "media",
+            "support"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "whatsapp_marketing_mass_scale_broadcasting",
+      "title": "Mass Scale Broadcasting",
+      "subtitle": "High Volume Campaigns",
+      "description": "Run bulk campaigns with distinct queues, retry logic, and smart rate control.",
+      "keywords": [
+        "mass",
+        "scale",
+        "broadcasting"
+      ],
+      "aliases": [
+        "mass scale broadcasting"
+      ],
+      "features": [
+        {
+          "id": "bulk_high-volume_campaigns",
+          "title": "Bulk high-volume campaigns",
+          "description": "Feature support for Bulk high-volume campaigns in Mass Scale Broadcasting.",
+          "keywords": [
+            "bulk",
+            "high-volume",
+            "campaigns"
+          ]
+        },
+        {
+          "id": "smart_rate_control",
+          "title": "Smart rate control",
+          "description": "Feature support for Smart rate control in Mass Scale Broadcasting.",
+          "keywords": [
+            "smart",
+            "rate",
+            "control"
+          ]
+        },
+        {
+          "id": "delivery_scheduling",
+          "title": "Delivery scheduling",
+          "description": "Feature support for Delivery scheduling in Mass Scale Broadcasting.",
+          "keywords": [
+            "delivery",
+            "scheduling"
+          ]
+        },
+        {
+          "id": "load_balancing",
+          "title": "Load balancing",
+          "description": "Feature support for Load balancing in Mass Scale Broadcasting.",
+          "keywords": [
+            "load",
+            "balancing"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "whatsapp_marketing_segmentation_targeting",
+      "title": "Segmentation & Targeting",
+      "subtitle": "Audience Cohorts",
+      "description": "Target specific audience segments based on tags, behavior, and cohorts.",
+      "keywords": [
+        "segmentation",
+        "targeting"
+      ],
+      "aliases": [
+        "segmentation & targeting"
+      ],
+      "features": [
+        {
+          "id": "audience_lists_&_tags",
+          "title": "Audience lists & tags",
+          "description": "Feature support for Audience lists & tags in Segmentation & Targeting.",
+          "keywords": [
+            "audience",
+            "lists",
+            "tags"
+          ]
+        },
+        {
+          "id": "high_intent_cohorts",
+          "title": "High intent cohorts",
+          "description": "Feature support for High intent cohorts in Segmentation & Targeting.",
+          "keywords": [
+            "high",
+            "intent",
+            "cohorts"
+          ]
+        },
+        {
+          "id": "personalization_fields",
+          "title": "Personalization fields",
+          "description": "Feature support for Personalization fields in Segmentation & Targeting.",
+          "keywords": [
+            "personalization",
+            "fields"
+          ]
+        },
+        {
+          "id": "behavioral_targeting",
+          "title": "Behavioral targeting",
+          "description": "Feature support for Behavioral targeting in Segmentation & Targeting.",
+          "keywords": [
+            "behavioral",
+            "targeting"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "whatsapp_marketing_automation_journeys",
+      "title": "Automation & Journeys",
+      "subtitle": "Drip Sequences",
+      "description": "Build triggered flows for welcome, nurture, and conversion.",
+      "keywords": [
+        "automation",
+        "journeys"
+      ],
+      "aliases": [
+        "automation & journeys"
+      ],
+      "features": [
+        {
+          "id": "welcome_&_nurture_drips",
+          "title": "Welcome & Nurture drips",
+          "description": "Feature support for Welcome & Nurture drips in Automation & Journeys.",
+          "keywords": [
+            "welcome",
+            "nurture",
+            "drips"
+          ]
+        },
+        {
+          "id": "trigger-based_flows",
+          "title": "Trigger-based flows",
+          "description": "Feature support for Trigger-based flows in Automation & Journeys.",
+          "keywords": [
+            "trigger-based",
+            "flows"
+          ]
+        },
+        {
+          "id": "abandoned_cart_recovery",
+          "title": "Abandoned cart recovery",
+          "description": "Feature support for Abandoned cart recovery in Automation & Journeys.",
+          "keywords": [
+            "abandoned",
+            "cart",
+            "recovery"
+          ]
+        },
+        {
+          "id": "reactivation_sequences",
+          "title": "Reactivation sequences",
+          "description": "Feature support for Reactivation sequences in Automation & Journeys.",
+          "keywords": [
+            "reactivation",
+            "sequences"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "whatsapp_marketing_two-way_inbox",
+      "title": "Two-Way Inbox",
+      "subtitle": "Support Workflows",
+      "description": "Shared team inbox for handling customer replies and support tickets.",
+      "keywords": [
+        "two-way",
+        "inbox"
+      ],
+      "aliases": [
+        "two-way inbox"
+      ],
+      "features": [
+        {
+          "id": "shared_team_inbox",
+          "title": "Shared team inbox",
+          "description": "Feature support for Shared team inbox in Two-Way Inbox.",
+          "keywords": [
+            "shared",
+            "team",
+            "inbox"
+          ]
+        },
+        {
+          "id": "quick_replies_&_notes",
+          "title": "Quick replies & notes",
+          "description": "Feature support for Quick replies & notes in Two-Way Inbox.",
+          "keywords": [
+            "quick",
+            "replies",
+            "notes"
+          ]
+        },
+        {
+          "id": "sla_tracking",
+          "title": "SLA tracking",
+          "description": "Feature support for SLA tracking in Two-Way Inbox.",
+          "keywords": [
+            "tracking"
+          ]
+        },
+        {
+          "id": "escalation_workflows",
+          "title": "Escalation workflows",
+          "description": "Feature support for Escalation workflows in Two-Way Inbox.",
+          "keywords": [
+            "escalation",
+            "workflows"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "whatsapp_marketing_templates_management",
+      "title": "Templates Management",
+      "subtitle": "Approvals & Versioning",
+      "description": "Manage message templates with versioning and category mapping.",
+      "keywords": [
+        "templates",
+        "management"
+      ],
+      "aliases": [
+        "templates management"
+      ],
+      "features": [
+        {
+          "id": "template_library",
+          "title": "Template library",
+          "description": "Feature support for Template library in Templates Management.",
+          "keywords": [
+            "template",
+            "library"
+          ]
+        },
+        {
+          "id": "category_mapping",
+          "title": "Category mapping",
+          "description": "Feature support for Category mapping in Templates Management.",
+          "keywords": [
+            "category",
+            "mapping"
+          ]
+        },
+        {
+          "id": "approval_tracking",
+          "title": "Approval tracking",
+          "description": "Feature support for Approval tracking in Templates Management.",
+          "keywords": [
+            "approval",
+            "tracking"
+          ]
+        },
+        {
+          "id": "versioning_support",
+          "title": "Versioning support",
+          "description": "Feature support for Versioning support in Templates Management.",
+          "keywords": [
+            "versioning",
+            "support"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "whatsapp_marketing_analytics_reporting",
+      "title": "Analytics & Reporting",
+      "subtitle": "Performance Insights",
+      "description": "Deep analytics on delivery, read rates, CTR, and conversions.",
+      "keywords": [
+        "analytics",
+        "reporting"
+      ],
+      "aliases": [
+        "analytics & reporting"
+      ],
+      "features": [
+        {
+          "id": "delivery_&_read_rates",
+          "title": "Delivery & Read rates",
+          "description": "Feature support for Delivery & Read rates in Analytics & Reporting.",
+          "keywords": [
+            "delivery",
+            "read",
+            "rates"
+          ]
+        },
+        {
+          "id": "ctr_&_conversion_events",
+          "title": "CTR & Conversion events",
+          "description": "Feature support for CTR & Conversion events in Analytics & Reporting.",
+          "keywords": [
+            "conversion",
+            "events"
+          ]
+        },
+        {
+          "id": "campaign_performance",
+          "title": "Campaign performance",
+          "description": "Feature support for Campaign performance in Analytics & Reporting.",
+          "keywords": [
+            "campaign",
+            "performance"
+          ]
+        },
+        {
+          "id": "segment-wise_analysis",
+          "title": "Segment-wise analysis",
+          "description": "Feature support for Segment-wise analysis in Analytics & Reporting.",
+          "keywords": [
+            "segment-wise",
+            "analysis"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "whatsapp_marketing_integrations",
+      "title": "Integrations",
+      "subtitle": "CRM & API",
+      "description": "Seamless integration with CRMs, e-commerce platforms, and APIs.",
+      "keywords": [
+        "integrations"
+      ],
+      "aliases": [
+        "integrations"
+      ],
+      "features": [
+        {
+          "id": "crm_lead_sync",
+          "title": "CRM lead sync",
+          "description": "Feature support for CRM lead sync in Integrations.",
+          "keywords": [
+            "lead",
+            "sync"
+          ]
+        },
+        {
+          "id": "e-commerce_events",
+          "title": "E-commerce events",
+          "description": "Feature support for E-commerce events in Integrations.",
+          "keywords": [
+            "e-commerce",
+            "events"
+          ]
+        },
+        {
+          "id": "webhooks_&_api_access",
+          "title": "Webhooks & API access",
+          "description": "Feature support for Webhooks & API access in Integrations.",
+          "keywords": [
+            "webhooks",
+            "access"
+          ]
+        },
+        {
+          "id": "click_tracking_+_utm",
+          "title": "Click tracking + UTM",
+          "description": "Feature support for Click tracking + UTM in Integrations.",
+          "keywords": [
+            "click",
+            "tracking"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "whatsapp_marketing_compliance_safety",
+      "title": "Compliance & Safety",
+      "subtitle": "Brand Protection",
+      "description": "Maintain high domain health with built-in compliance tools.",
+      "keywords": [
+        "compliance",
+        "safety"
+      ],
+      "aliases": [
+        "compliance & safety"
+      ],
+      "features": [
+        {
+          "id": "opt-in_opt-out_management",
+          "title": "Opt-in/Opt-out management",
+          "description": "Feature support for Opt-in/Opt-out management in Compliance & Safety.",
+          "keywords": [
+            "opt-in/opt-out",
+            "management"
+          ]
+        },
+        {
+          "id": "frequency_capping",
+          "title": "Frequency capping",
+          "description": "Feature support for Frequency capping in Compliance & Safety.",
+          "keywords": [
+            "frequency",
+            "capping"
+          ]
+        },
+        {
+          "id": "list_hygiene",
+          "title": "List hygiene",
+          "description": "Feature support for List hygiene in Compliance & Safety.",
+          "keywords": [
+            "list",
+            "hygiene"
+          ]
+        },
+        {
+          "id": "spam_perception_reduction",
+          "title": "Spam perception reduction",
+          "description": "Feature support for Spam perception reduction in Compliance & Safety.",
+          "keywords": [
+            "spam",
+            "perception",
+            "reduction"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    },
+    {
+      "id": "whatsapp_marketing_managed_services",
+      "title": "Managed Services",
+      "subtitle": "Expert Support Add-on",
+      "description": "Dedicated support for campaign planning, copywriting, and optimization.",
+      "keywords": [
+        "managed",
+        "services"
+      ],
+      "aliases": [
+        "managed services"
+      ],
+      "features": [
+        {
+          "id": "campaign_planning",
+          "title": "Campaign planning",
+          "description": "Feature support for Campaign planning in Managed Services.",
+          "keywords": [
+            "campaign",
+            "planning"
+          ]
+        },
+        {
+          "id": "copywriting_&_templates",
+          "title": "Copywriting & templates",
+          "description": "Feature support for Copywriting & templates in Managed Services.",
+          "keywords": [
+            "copywriting",
+            "templates"
+          ]
+        },
+        {
+          "id": "support_operations",
+          "title": "Support operations",
+          "description": "Feature support for Support operations in Managed Services.",
+          "keywords": [
+            "support",
+            "operations"
+          ]
+        },
+        {
+          "id": "monthly_performance_reviews",
+          "title": "Monthly performance reviews",
+          "description": "Feature support for Monthly performance reviews in Managed Services.",
+          "keywords": [
+            "monthly",
+            "performance",
+            "reviews"
+          ]
+        }
+      ],
+      "benefits": [],
+      "relationships": []
+    }
+  ],
+  "workflows": [],
+  "benefits": [],
+  "use_cases": [],
+  "faq": [],
+  "relationships": [],
+  "metadata": {
+    "schema_version": "2.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-19",
+    "source": "01_product_whatsapp_marketing_platform.json",
+    "confidence": 1.0,
+    "language": "en"
+  }
+}

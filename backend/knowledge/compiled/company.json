@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "registry_id": "company_v1",
+    "registry_type": "COMPANY_INFO",
+    "schema_version": "1.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-18",
+    "knowledge_date": "2026-07-18",
+    "priority": 70,
+    "capabilities": {
+      "reasoning": false,
+      "comparison": false,
+      "transformation": true,
+      "summarization": true,
+      "examples": true
+    },
+    "supported_sections": [
+      "overview"
+    ],
+    "aliases": [
+      "citta",
+      "cittaai",
+      "citta ai",
+      "company",
+      "about"
+    ]
+  },
+  "verified": true,
+  "source": "Official CittaAI Master Knowledge",
+  "name": "CittaAI",
+  "tagline": "Elevate. Innovate. Captivate.",
+  "founded": "2022",
+  "description": "CittaAI is a full-service Enterprise AI consultancy delivering customized intelligence solutions worldwide.",
+  "vision": "Research-Grade Intelligence. Enterprise-Ready Scale.",
+  "mission": "Empower modern organizations with agentic enterprise OS, data integration, and deterministic AI architectures."
+}

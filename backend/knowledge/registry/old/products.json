@@ -1,0 +1,157 @@
+{
+  "metadata": {
+    "registry_id": "products_v1",
+    "registry_type": "PRODUCTS",
+    "schema_version": "1.0",
+    "content_version": "1.0",
+    "last_updated": "2026-07-18",
+    "knowledge_date": "2026-07-18",
+    "priority": 90,
+    "capabilities": {
+      "reasoning": false,
+      "comparison": false,
+      "transformation": true,
+      "summarization": true,
+      "examples": true
+    },
+    "supported_sections": [
+      "overview",
+      "how_it_works",
+      "features",
+      "benefits",
+      "faq",
+      "case_studies",
+      "related_entities"
+    ],
+    "aliases": [
+      "products",
+      "product",
+      "platform",
+      "platforms"
+    ]
+  },
+  "entities": [
+    {
+      "id": "whatsapp_marketing",
+      "name": "WhatsApp Marketing Platform",
+      "category": "product",
+      "route": "/products/whatsapp-marketing",
+      "summary": "Enterprise-grade high-volume business messaging automation engine.",
+      "description": "Unified direct-to-customer messaging platform integrated with the official WhatsApp Business API, supporting broadcasts, CRM segments, and multi-agent shared inboxes.",
+      "overview": {
+        "summary": "Enterprise-grade high-volume business messaging automation engine.",
+        "description": "Unified direct-to-customer messaging platform integrated with the official WhatsApp Business API, supporting broadcasts, CRM segments, and multi-agent shared inboxes."
+      },
+      "how_it_works": {
+        "process": "Connects directly via the official WhatsApp Business API to run high-volume broadcasts with built-in compliance controls.",
+        "steps": [
+          "Official WhatsApp Business API verification",
+          "Dynamic audience cohort segmentation",
+          "Mass broadcasting with smart rate limit controls",
+          "Two-way agent desk shared inbox routing"
+        ]
+      },
+      "features": [
+        "Official WhatsApp Business API verified sender integration",
+        "Mass broadcasting campaigns with opt-in and DND compliance controls",
+        "Unified shared inbox for multi-agent collaborative desks",
+        "Cohort segmentation targeting based on CRM behavior rules"
+      ],
+      "benefits": [
+        "Achieve up to 98% message open rates",
+        "Reduce lead acquisition/support response latency by 75%"
+      ],
+      "best_for": [
+        "D2C Brands",
+        "Retail Enterprises",
+        "Customer Support Teams"
+      ],
+      "faq": [
+        {
+          "question": "Is it compliant with WhatsApp policies?",
+          "answer": "Yes, it enforces strict opt-in/opt-out rules and rate limits to keep your sender number healthy."
+        }
+      ],
+      "case_studies": [
+        "Jewellery Brand"
+      ],
+      "related_entities": [
+        "ecommerce_os",
+        "ai_powered_marketing"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "wa",
+        "whastapp",
+        "whatsapp",
+        "whatsapp marketing",
+        "whatsapp marketing platform",
+        "whatsapp platform",
+        "whatsapp-marketing",
+        "whatsapp_marketing"
+      ]
+    },
+    {
+      "id": "influencer_marketing",
+      "name": "Influencer Marketing Platform",
+      "category": "product",
+      "route": "/products/influencer-marketing",
+      "summary": "Automated campaign execution and creator relationship platform.",
+      "description": "Workspace for planning creator collaborations, managing payouts, verifying creator demographic audience metrics, and tracking campaign sales lift ROI.",
+      "overview": {
+        "summary": "Automated campaign execution and creator relationship platform.",
+        "description": "Workspace for planning creator collaborations, managing payouts, verifying creator demographic audience metrics, and tracking campaign sales lift ROI."
+      },
+      "how_it_works": {
+        "process": "Streamlines creator discovery, contract automation, payout tracking, and cross-platform campaign analytics.",
+        "steps": [
+          "Search and verify creators in demographic database",
+          "Generate contract and payout terms automatically",
+          "Launch campaigns and track UTM/sales conversions",
+          "Compile performance reports dynamically"
+        ]
+      },
+      "features": [
+        "Creator demographic analytics and verification database filters",
+        "Automated payout cycles, TDS tax processing, and legally binding contract loops",
+        "Real-time ROI dashboard mapping metrics across TikTok, Instagram, and YouTube"
+      ],
+      "benefits": [
+        "Cut creator discovery overhead by up to 60%",
+        "Establish measurable ROI for UGC brand awareness campaigns"
+      ],
+      "best_for": [
+        "Brand Marketers",
+        "D2C Marketing Executives",
+        "Influencer Agencies"
+      ],
+      "faq": [
+        {
+          "question": "Which social platforms are supported?",
+          "answer": "TikTok, Instagram, and YouTube are fully integrated for real-time tracking."
+        }
+      ],
+      "case_studies": [
+        "FMCG Brand"
+      ],
+      "related_entities": [
+        "ecommerce_os",
+        "ai_powered_marketing"
+      ],
+      "last_updated": "2026-07-18",
+      "verified": true,
+      "source": "cittaai_products_services.md",
+      "aliases": [
+        "influencer",
+        "influencer marketing",
+        "influencer marketing platform",
+        "influencer platform",
+        "influencer-marketing",
+        "influencer_marketing",
+        "influncer"
+      ]
+    }
+  ]
+}

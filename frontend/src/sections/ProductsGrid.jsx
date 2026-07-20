@@ -11,6 +11,8 @@ export default function ProductsGrid() {
   return (
     <section id="products" className="relative section-light py-28 overflow-hidden" data-testid="products-section">
       <div className="absolute inset-0 grid-bg-light opacity-60" />
+      {/* Continuing glowing energy conduit line from Stack section */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-brand-blue to-transparent opacity-50 pointer-events-none hidden lg:block" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <SectionHeader eyebrow={P.eyebrow} title={P.title} theme="light" />
