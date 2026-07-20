@@ -54,14 +54,32 @@ async def root_health_check():
     return {"status": "healthy"}
 
 
-# CORS middleware
+# Production & Local CORS Middleware Configuration
+cors_env = os.environ.get('CORS_ORIGINS', '').strip()
+default_origins = [
+    "https://citta-ten-sable.vercel.app",
+    "https://citta-jbi1az638-rohanchilukuri06-8472s-projects.vercel.app",
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://localhost:8000"
+]
+
+if cors_env and cors_env != "*":
+    env_origins = [origin.strip() for origin in cors_env.split(",") if origin.strip()]
+    allowed_origins = list(dict.fromkeys(default_origins + env_origins))
+else:
+    allowed_origins = default_origins
+
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_origin_regex=r"https:\/\/.*\.vercel\.app",
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
+
 
 api_router = APIRouter(prefix="/api")
 
