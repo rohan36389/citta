@@ -49,6 +49,11 @@ app = FastAPI(title="CittaAI Backend", version="1.0.0")
 async def root_redirect():
     return RedirectResponse(url="/docs")
 
+@app.get("/health")
+async def root_health_check():
+    return {"status": "healthy"}
+
+
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
@@ -492,6 +497,7 @@ async def run_chat_background_tasks(
             res_ent = metrics.get("resolved_entity")
             res_sec = metrics.get("resolved_section")
             rt_path = metrics.get("routing_path", "unknown")
+            source_val = metrics.get("source", "unknown")
             expl = metrics.get("explainability", "{}")
             
             norm_ms = metrics.get("normalizer_ms", 0.0)

@@ -293,21 +293,46 @@ Set the environment variable in the host UI:
 REACT_APP_BACKEND_URL=https://api.your-domain.com
 ```
 
-### Backend (Fly.io / Railway / Render / AWS / any Docker host)
+### Backend Docker & Railway Deployment
 
-Minimal Dockerfile for backend:
-
-```dockerfile
-FROM python:3.11-slim
-WORKDIR /app
-COPY backend/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY backend/ .
-EXPOSE 8001
-CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8001"]
+#### 1. Docker Build
+Build the production-ready FastAPI backend Docker image:
+```bash
+docker build -t citta-backend .
 ```
 
-Provide `MONGO_URL`, `DB_NAME`, `CORS_ORIGINS` at runtime.
+#### 2. Docker Run
+Run the container locally with environment variables:
+```bash
+docker run -d -p 8000:8000 --env-file backend/.env --name citta-backend citta-backend
+```
+Test health endpoints:
+```bash
+curl http://localhost:8000/health
+curl http://localhost:8000/api/health
+```
+
+#### 3. Docker Compose
+Start the complete production backend environment using Docker Compose:
+```bash
+docker compose up -d
+```
+Stop the services:
+```bash
+docker compose down
+```
+
+#### 4. Deploying to Railway
+1. **Connect Repository**: Link `https://github.com/rohan36389/citta` in your Railway Dashboard.
+2. **Build Strategy**: Select **Dockerfile** (Railway automatically detects the root `Dockerfile`).
+3. **Environment Variables**: Add required runtime variables in Railway's Variables panel:
+   - `LLM_PROVIDER=nvidia`
+   - `NVIDIA_API_KEY=your_nvidia_api_key`
+   - `NVIDIA_MODEL=meta/llama-3.1-70b-instruct`
+   - `CORS_ORIGINS=*`
+4. **Port Handling**: Railway automatically injects the `PORT` variable. The container's startup command `uvicorn server:app --host 0.0.0.0 --port ${PORT:-8000}` binds dynamically.
+5. **Health Checks**: Configure Railway health check path to `/health` or `/api/health`.
+
 
 ---
 

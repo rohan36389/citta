@@ -1,0 +1,22 @@
+# Docker Ignore File for CittaAI Backend
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite
+*.sqlite3
+.env
+.env.*
+!.env.example
+.pytest_cache/
+node_modules/
+.git/
+.gitignore
+tests/
+test_reports/
+*.log
+.vscode/
+.idea/
+*.zip
+*.tar.gz
