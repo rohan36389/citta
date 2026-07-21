@@ -33,7 +33,20 @@ async def build_vector_database(
     Reads content.js, generates embeddings, validates integrity, and writes metadata.
     """
     if not content_js_path:
-        content_js_path = os.path.join(ROOT_DIR, "..", "frontend", "src", "data", "content.js")
+        candidates = [
+            os.path.join(ROOT_DIR, "..", "frontend", "src", "data", "content.js"),
+            os.path.join(ROOT_DIR, "data", "content.js"),
+            os.path.join(ROOT_DIR, "content.js"),
+            "/app/frontend/src/data/content.js",
+            "/app/data/content.js",
+            "/app/content.js",
+        ]
+        for c in candidates:
+            if os.path.exists(c):
+                content_js_path = c
+                break
+        else:
+            content_js_path = os.path.join(ROOT_DIR, "..", "frontend", "src", "data", "content.js")
     content_js_path = os.path.abspath(content_js_path)
 
     if not db_path:

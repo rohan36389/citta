@@ -7,6 +7,8 @@ FROM python:3.11-slim
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PORT=8000 \
+    ENVIRONMENT=production \
+    DEBUG=false \
     PYTHONPATH=/app
 
 WORKDIR /app
@@ -23,6 +25,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy backend source code
 COPY . .
+
+# Build offline vector database during Docker container build phase (Content-Hash Gated)
+RUN python scripts/build_vector_db.py
+
+# Verify build-time vector database artifact & print chunk count
+RUN ls -lh vector_store.db && \
+    python -c "import sqlite3; conn=sqlite3.connect('vector_store.db'); print('Build-time DB Chunk Count:', conn.execute('select count(*) from chunks').fetchone()[0]); conn.close()"
 
 EXPOSE 8000
 
