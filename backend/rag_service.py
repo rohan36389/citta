@@ -133,16 +133,15 @@ class RAGService:
         self.transform_cache = LRUCacheWithTTL(capacity=200, ttl_seconds=1800)
         self.transformer = ResponseTransformer(self.provider)
         
-        logger.info(f"Loading local embedding model: {config.EMBEDDING_MODEL}")
-        from sentence_transformers import SentenceTransformer
-        self.embedding_model = SentenceTransformer(config.EMBEDDING_MODEL)
+        import asyncio
+        self._model_lock = asyncio.Lock()
+        self._embedding_model = None
+        self._reranker = None
         
-        init_anchor_embeddings(self.embedding_model)
-        self.intent_classifier = get_intent_classifier(self.embedding_model)
+        self.intent_classifier = get_intent_classifier()
         self.query_expander = get_semantic_query_expander()
         self.entity_extractor = get_entity_extractor()
         self.context_manager = get_context_manager()
-        self.reranker = get_retrieval_reranker(self.vector_store)
         self.confidence_router = get_confidence_router()
 
         from response_planner import get_response_planner
@@ -152,6 +151,32 @@ class RAGService:
 
         self.unindexed_routes: Dict[str, str] = {}
         self._build_unindexed_routes_registry()
+
+    async def get_embedding_model(self):
+        if self._embedding_model is None:
+            async with self._model_lock:
+                if self._embedding_model is None:
+                    logger.info(f"Loading local embedding model lazily: {config.EMBEDDING_MODEL}")
+                    from sentence_transformers import SentenceTransformer
+                    self._embedding_model = SentenceTransformer(config.EMBEDDING_MODEL)
+                    try:
+                        init_anchor_embeddings(self._embedding_model)
+                    except Exception as e:
+                        logger.warning(f"Anchor embeddings init failed: {e}")
+        return self._embedding_model
+
+    def is_embedding_model_loaded(self) -> bool:
+        return self._embedding_model is not None
+
+    async def get_reranker(self):
+        if self._reranker is None:
+            async with self._model_lock:
+                if self._reranker is None:
+                    self._reranker = get_retrieval_reranker(self.vector_store)
+        return self._reranker
+
+    def is_reranker_loaded(self) -> bool:
+        return self._reranker is not None
 
     def _build_unindexed_routes_registry(self):
         try:
@@ -200,10 +225,11 @@ class RAGService:
             
         try:
             import asyncio
+            model = await self.get_embedding_model()
             loop = asyncio.get_event_loop()
             embedding = await loop.run_in_executor(
                 None,
-                lambda: self.embedding_model.encode(processed_text, normalize_embeddings=True).tolist()
+                lambda: model.encode(processed_text, normalize_embeddings=True).tolist()
             )
             return embedding
         except Exception:
@@ -215,9 +241,6 @@ class RAGService:
             self.vector_store.warmup()
         except Exception as e:
             logger.warning(f"Vector store warmup failed: {e}")
-        try:
-            _ = await self.get_embedding("warmup query", input_type="query")
-        except Exception as e:
             logger.warning(f"Embedding model warmup failed: {e}")
 
     async def chat_stream(
@@ -547,7 +570,7 @@ class RAGService:
             return
         
         # 5. Intent Classification Check
-        cls_res = classify_query(message, self.embedding_model)
+        cls_res = classify_query(message, await self.get_embedding_model())
         query_type = cls_res["query_type"]
         state["active_intent"] = query_type
 

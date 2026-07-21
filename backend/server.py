@@ -306,30 +306,8 @@ async def perform_reindex():
     """Extracts website chunks from content.js, generates embeddings, and indexes them."""
     logging.info("Starting website content re-indexing...")
     try:
-        # 1. Parse content.js
-        chunks = vector_store.parse_content_js(CONTENT_JS_PATH)
-        if not chunks:
-            logging.warning("No chunks found during content.js parsing.")
-            return False
-
-        # 2. Clear old website chunks from DB
-        vstore.delete_document("content.js")
-
-        # 3. Create embeddings and insert chunks
-        rag_serv = get_rag_service()
-        
-        logging.info(f"Generating embeddings for {len(chunks)} chunks...")
-        for i, chunk in enumerate(chunks):
-            chunk_id = f"content_js_{i}"
-            emb = await rag_serv.get_embedding(chunk["content"], input_type="passage")
-            vstore.add_chunk(
-                chunk_id=chunk_id,
-                content=chunk["content"],
-                embedding=emb,
-                metadata=chunk["metadata"]
-            )
-        logging.info("Re-indexing completed successfully.")
-        return True
+        from vector_indexer import build_vector_database
+        return await build_vector_database(force=True)
     except Exception:
         logging.exception("Error during perform_reindex")
         return False
@@ -369,29 +347,27 @@ async def lifespan(app: FastAPI):
     # Configure logging
     logging.basicConfig(level=logging.INFO)
     
-    # 1. Run reindex on start if vector DB is empty
-    count = vstore.get_chunk_count()
-    if count == 0:
-        logging.info("Vector database is empty. Running initial content.js ingestion...")
-        asyncio.create_task(perform_reindex())
+    # 1. Validate vector database integrity on startup (Zero AI model loading)
+    val = vstore.validate_database_integrity()
+    if not val.get("valid"):
+        logging.warning(f"Vector database warning: {val.get('reason')}. Please run scripts/build_vector_db.py before deployment.")
     else:
-        logging.info(f"Vector database active with {count} chunks.")
-        
-    # 2. Warm up vector database and LLM provider
-    try:
-        rag_serv = get_rag_service()
-        provider_model = get_config("llm_model", config.MODEL_NAME)
-        await rag_serv.warmup(provider_model)
-    except Exception as e:
-        logging.warning(f"Failed to run startup warmups: {e}")
+        count = val.get("count", 0)
+        logging.info(f"Vector database active with {count} chunks. DB Version: {val.get('metadata', {}).get('version', '1.0.0')}")
 
-    # 3. Launch background auto-reindexing filesystem watcher
-    watcher_task = asyncio.create_task(watch_content_js_changes())
+    # 2. Launch background auto-reindexing watcher ONLY in development
+    watcher_task = None
+    if getattr(config, "ENVIRONMENT", "production").lower() == "development":
+        logging.info("Development environment detected: starting content.js filesystem watcher.")
+        watcher_task = asyncio.create_task(watch_content_js_changes())
+    else:
+        logging.info("Production environment detected: filesystem watcher disabled.")
     
     yield
     
     # Shutdown tasks
-    watcher_task.cancel()
+    if watcher_task:
+        watcher_task.cancel()
     client.close()
 
 app.router.lifespan_context = lifespan
@@ -740,11 +716,40 @@ async def process_document_background(filename: str, page: str, section: str, ti
         )
     logging.info(f"Successfully processed and indexed {len(chunks)} chunks from {filename} in background.")
 
-@api_router.post("/admin/reindex")
+@api_router.get("/health")
+async def health_check() -> Dict[str, Any]:
+    """Production health & diagnostic status endpoint."""
+    meta = vstore.get_metadata()
+    count = vstore.get_chunk_count()
+    rag = _rag_service_instance
+    emb_loaded = rag.is_embedding_model_loaded() if rag else False
+    reranker_loaded = rag.is_reranker_loaded() if rag else False
+    
+    return {
+        "status": "healthy",
+        "database": "ready" if count > 0 else "missing_or_empty",
+        "chunk_count": count,
+        "embedding_model_loaded": emb_loaded,
+        "reranker_loaded": reranker_loaded,
+        "database_version": meta.get("version", "1.0.0"),
+        "schema_version": meta.get("schema_version", "1.0.0"),
+        "parser_version": meta.get("parser_version", "1.0.0"),
+        "application_version": meta.get("application_version", "1.0.0"),
+        "content_hash": meta.get("content_hash", ""),
+        "created_at": meta.get("created_at", ""),
+        "environment": getattr(config, "ENVIRONMENT", "production")
+    }
+
+@api_router.post("/admin/reindex", status_code=202)
 async def admin_reindex(background_tasks: BackgroundTasks):
-    """Manual re-index API."""
+    """Manual async background re-index API."""
+    job_id = str(uuid.uuid4())
     background_tasks.add_task(perform_reindex)
-    return {"message": "Website re-indexing started in the background."}
+    return {
+        "status": "accepted",
+        "job_id": job_id,
+        "state": "running"
+    }
 
 @api_router.post("/admin/upload")
 async def admin_upload(

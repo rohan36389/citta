@@ -9,6 +9,11 @@ import config
 
 DB_PATH = config.VECTOR_DB_PATH
 
+def atomic_replace_database(tmp_db_path: str, target_db_path: str):
+    if not os.path.exists(tmp_db_path):
+        raise FileNotFoundError(f"Temporary database file {tmp_db_path} does not exist")
+    os.replace(tmp_db_path, target_db_path)
+
 class VectorStore:
     def __init__(self, db_path: str = DB_PATH):
         self.db_path = db_path
@@ -27,6 +32,13 @@ class VectorStore:
                 source TEXT NOT NULL
             )
         """)
+        # Create metadata table
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS vector_db_metadata (
+                key TEXT PRIMARY KEY,
+                value TEXT NOT NULL
+            )
+        """)
         conn.commit()
         conn.close()
 
@@ -34,9 +46,49 @@ class VectorStore:
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         cursor.execute("DROP TABLE IF EXISTS chunks")
+        cursor.execute("DROP TABLE IF EXISTS vector_db_metadata")
         conn.commit()
         conn.close()
         self._init_db()
+
+    def get_metadata(self) -> Dict[str, str]:
+        if not os.path.exists(self.db_path):
+            return {}
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        try:
+            cursor.execute("SELECT key, value FROM vector_db_metadata")
+            rows = cursor.fetchall()
+            return {row[0]: row[1] for row in rows}
+        except Exception:
+            return {}
+        finally:
+            conn.close()
+
+    def write_metadata(self, metadata: Dict[str, Any]):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        try:
+            for k, v in metadata.items():
+                cursor.execute(
+                    "INSERT OR REPLACE INTO vector_db_metadata (key, value) VALUES (?, ?)",
+                    (str(k), str(v))
+                )
+            conn.commit()
+        finally:
+            conn.close()
+
+    def validate_database_integrity(self) -> Dict[str, Any]:
+        if not os.path.exists(self.db_path):
+            return {"valid": False, "reason": "Database file missing"}
+        try:
+            count = self.get_chunk_count()
+            if count == 0:
+                return {"valid": False, "reason": "Database has 0 chunks"}
+            meta = self.get_metadata()
+            return {"valid": True, "count": count, "metadata": meta}
+        except Exception as e:
+            return {"valid": False, "reason": f"Database error: {e}"}
 
     def warmup(self):
         """Execute a dummy query to warm up the SQLite vector database."""
