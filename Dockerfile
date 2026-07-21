@@ -7,6 +7,8 @@ FROM python:3.11-slim
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PORT=8000 \
+    ENVIRONMENT=production \
+    DEBUG=false \
     PYTHONPATH=/app/backend
 
 WORKDIR /app
@@ -31,6 +33,10 @@ COPY frontend/src/data/content.js /app/frontend/src/data/content.js
 
 # Build offline vector database during Docker container build phase (Content-Hash Gated)
 RUN python /app/backend/scripts/build_vector_db.py
+
+# Verify build-time vector database artifact & print chunk count
+RUN ls -lh /app/backend/vector_store.db && \
+    python -c "import sqlite3; conn=sqlite3.connect('/app/backend/vector_store.db'); print('Build-time DB Chunk Count:', conn.execute('select count(*) from chunks').fetchone()[0]); conn.close()"
 
 # Set working directory to backend
 WORKDIR /app/backend

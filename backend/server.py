@@ -45,6 +45,23 @@ db = client[db_name]
 # Setup FastAPI App
 app = FastAPI(title="CittaAI Backend", version="1.0.0")
 
+# Startup Runtime Database Diagnostic Logging
+vdb_path = getattr(config, "VECTOR_DB_PATH", vector_store.DB_PATH)
+vdb_abs = os.path.abspath(vdb_path)
+vdb_exists = os.path.exists(vdb_abs)
+vdb_size = os.path.getsize(vdb_abs) if vdb_exists else 0
+
+logging.info(f"=== VECTOR DATABASE RUNTIME DIAGNOSTIC ===")
+logging.info(f"Target DB Path (Config): {vdb_path}")
+logging.info(f"Absolute DB Path: {vdb_abs}")
+logging.info(f"File Exists: {vdb_exists}")
+logging.info(f"File Size: {vdb_size} bytes")
+if vdb_exists:
+    tmp_store = vector_store.VectorStore(vdb_abs)
+    logging.info(f"Runtime DB Chunk Count: {tmp_store.get_chunk_count()}")
+    logging.info(f"Runtime DB Metadata: {tmp_store.get_metadata()}")
+logging.info(f"==========================================")
+
 @app.get("/")
 async def root_redirect():
     return RedirectResponse(url="/docs")
