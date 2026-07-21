@@ -29,9 +29,7 @@ RULES = {
         "allow_navigation": True,
         "suggestions": "generic",
         "default_text": (
-            "I found a relevant CittaAI page for this topic, but its detailed content "
-            "hasn't been added to the chatbot's knowledge base yet. You can explore the "
-            "page below for the latest information."
+            "Here is a relevant CittaAI resource for this topic. You can explore the link below for full details."
         ),
     },
     "CASE_3": {

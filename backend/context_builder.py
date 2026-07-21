@@ -164,10 +164,15 @@ class ContextBuilder:
 
             context_parts.append("\n".join(ent_lines))
 
-        # 3. Evidence Chunks (RAG retrieved passages)
+        # 3. Evidence Chunks (RAG retrieved passages with Context Compressor)
         if evidence_chunks:
+            try:
+                from context_compressor import get_context_compressor
+                compressed = get_context_compressor().compress(evidence_chunks)
+            except Exception:
+                compressed = evidence_chunks
             retrieved_text = []
-            for chunk in evidence_chunks:
+            for chunk in compressed:
                 content = chunk.get("content") if isinstance(chunk, dict) else str(chunk)
                 if content:
                     retrieved_text.append(content)

@@ -128,7 +128,7 @@ class DeterministicEngine:
             if understanding.requires_clarification:
                 options_str = "\n".join([f"• **{opt['label']}**" for opt in understanding.clarification_options])
                 return {
-                    "response": f"I found several matching enterprise options for your request. Did you mean:\n\n{options_str}\n\nPlease select an option or specify your topic.",
+                    "response": f"Here are several relevant options for your request. Did you mean:\n\n{options_str}\n\nPlease select an option or specify your topic.",
                     "source": "Clarification Engine",
                     "verified": True,
                     "confidence": understanding.confidence,
@@ -231,8 +231,7 @@ class DeterministicEngine:
                         if capabilities:
                             cap_bullets = "\n" + "\n".join([f"• **{cap.title}**: {cap.description}" for cap in capabilities[:4]])
                         resp_md = (
-                            f"I found **{title}**, but a dedicated step-by-step workflow section isn't available in our documentation yet. "
-                            f"Here is how the solution works overview:\n\n{overview}{cap_bullets}"
+                            f"Regarding **{title}**, here is an overview of how the solution works:\n\n{overview}{cap_bullets}"
                         )
 
                     target_url = obj.url
@@ -473,6 +472,10 @@ class DeterministicEngine:
                     "metrics": {"resolved_entity": "NONE", "resolved_registry": res_reg}
                 }
 
+            # Pass known entities to RAGService entity resolver instead of generic fallback
+            if q_lower in self.ks.reg.entity_lookup or q_lower in self.ks.reg.unified_vocabulary:
+                return None
+
             # General Fallback Intercept (Fix Issue 8: Graceful Fallbacks & Suggestions)
             close_matches = []
             try:
@@ -488,14 +491,17 @@ class DeterministicEngine:
             if close_matches:
                 did_you_mean_str = "\n".join([f"• **{m}**" for m in close_matches])
                 fallback_md = (
-                    f"I searched our enterprise registry for **{query.strip()}** but couldn't find an exact match.\n\n"
+                    f"I couldn't find an exact match for **{query.strip()}** in our knowledge base.\n\n"
                     f"**Did you mean**:\n\n{did_you_mean_str}\n\n"
                     f"Alternatively, you can explore our **Solutions**, **Products**, or **Services**."
                 )
                 sugs = [f"Explain {m}" for m in close_matches[:3]]
+                for fallback_sug in ["Show Solutions", "Show Products", "Show Services"]:
+                    if len(sugs) < 2 and fallback_sug not in sugs:
+                        sugs.append(fallback_sug)
             else:
                 fallback_md = (
-                    f"I searched our enterprise registry for **{query.strip()}** but couldn't find a direct match.\n\n"
+                    f"I couldn't find a direct match for **{query.strip()}**.\n\n"
                     f"Here are the core sections of our AI platform you can explore:\n\n"
                     f"• **Solutions**: Enterprise OS (Education, Real Estate, Pharma, E-Commerce)\n"
                     f"• **Products**: WhatsApp Marketing & Influencer Marketing Platforms\n"

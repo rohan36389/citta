@@ -51,9 +51,10 @@ SYNONYM_MAP = {
     "leaders": "leadership",
     "founder": "leadership",
     "founders": "leadership",
-    "ceo": "leadership",
-    "cto": "leadership",
-    "coo": "leadership",
+    "ceo": "ceo",
+    "cto": "cto",
+    "coo": "coo",
+    "cmo": "cmo",
     
     "products": "products",
     "platforms": "products",

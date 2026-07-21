@@ -26,6 +26,12 @@ try:
     from greeting_detector import detect_greeting
     from context_builder import build_structured_context
     from explainability_logger import create_explainability_log, log_explainability
+    from intent_classifier import get_intent_classifier
+    from semantic_query_expander import get_semantic_query_expander
+    from entity_extractor import get_entity_extractor
+    from conversation_context import get_context_manager
+    from retrieval_reranker import get_retrieval_reranker
+    from confidence_router import get_confidence_router
 except ImportError:
     from backend.llm_provider import LLMProvider
     from backend.vector_store import VectorStore
@@ -43,6 +49,12 @@ except ImportError:
     from backend.section_resolver import resolve_section_dynamic
     from backend.knowledge_router import route_query
     from backend.greeting_detector import detect_greeting
+    from backend.intent_classifier import get_intent_classifier
+    from backend.semantic_query_expander import get_semantic_query_expander
+    from backend.entity_extractor import get_entity_extractor
+    from backend.conversation_context import get_context_manager
+    from backend.retrieval_reranker import get_retrieval_reranker
+    from backend.confidence_router import get_confidence_router
 
 logger = logging.getLogger(__name__)
 
@@ -126,6 +138,18 @@ class RAGService:
         self.embedding_model = SentenceTransformer(config.EMBEDDING_MODEL)
         
         init_anchor_embeddings(self.embedding_model)
+        self.intent_classifier = get_intent_classifier(self.embedding_model)
+        self.query_expander = get_semantic_query_expander()
+        self.entity_extractor = get_entity_extractor()
+        self.context_manager = get_context_manager()
+        self.reranker = get_retrieval_reranker(self.vector_store)
+        self.confidence_router = get_confidence_router()
+
+        from response_planner import get_response_planner
+        from response_postprocessor import get_response_postprocessor
+        self.response_planner = get_response_planner()
+        self.response_postprocessor = get_response_postprocessor()
+
         self.unindexed_routes: Dict[str, str] = {}
         self._build_unindexed_routes_registry()
 
@@ -240,6 +264,53 @@ class RAGService:
             }
             return
  
+        # 1.5 Pre-Retrieval Out-Of-Domain Intercept
+        plan_res = self.response_planner.plan(message)
+        if plan_res.is_out_of_domain:
+            try:
+                from knowledge_gap_logger import log_knowledge_gap
+                log_knowledge_gap(
+                    query=message,
+                    intent="OUT_OF_DOMAIN",
+                    confidence=0.0,
+                    retrieval_score=0.0,
+                    reason="Out of Domain Query"
+                )
+            except Exception as e:
+                logger.warning(f"Failed to log gap: {e}")
+
+            ood_text = plan_res.out_of_domain_response
+            yield {"text": ood_text, "done": False}
+            yield {
+                "done": True,
+                "citations": [],
+                "suggested_questions": [],
+                "redirect": None,
+                "source": "Out-of-Domain Guardrail",
+                "verified": True,
+                "confidence": 0.0,
+                "attribution": {
+                    "source": "Out-of-Domain Guardrail",
+                    "knowledge_file": "ood_filter.json",
+                    "entity": "None",
+                    "confidence": 0.0,
+                    "verified": True
+                },
+                "metrics": {
+                    "intent_time": 0.0,
+                    "cache_hit": 0,
+                    "cache_time": 0.0,
+                    "embedding_time": 0.0,
+                    "retrieval_time": 0.0,
+                    "llm_time": 0.0,
+                    "streaming_time": 0.0,
+                    "total_time": time.time() - start_time,
+                    "prompt_tokens": 0,
+                    "completion_tokens": len(ood_text) // 4
+                }
+            }
+            return
+
         # Initialize memory structures
         if session_id not in self.session_memory:
             self.session_memory[session_id] = []
@@ -789,7 +860,11 @@ class RAGService:
             f"You are the CittaAI Enterprise AI Consultant, a professional advisor representing CittaAI.\n"
             f"Active Mode: {mode}\n"
             "Answer the query professionally. Your response must be entirely factual, structured, and grounded in context.\n"
-            "STRICT CATEGORY BOUNDS CONSTRAINTS:\n"
+            "ADAPTIVE RESPONSE LENGTH & STYLE:\n"
+            "- For simple, direct questions (e.g., 'Where are you located?', 'Who is the CEO?'), provide a concise 1-sentence answer.\n"
+            "- For broad, overview questions (e.g., 'Tell me about Enterprise AI OS', 'What services do you offer?'), provide a structured response with sections: Overview, Capabilities/Features, Benefits, Use Cases.\n"
+            "ENTERPRISE CONSTRAINTS & ZERO EXPOSURE:\n"
+            "- Never say 'I searched', 'I found', 'according to the database', 'in the registry', or 'retrieved chunks'. Speak as an expert enterprise consultant.\n"
             "- You must NOT mix Products with Solutions or Services.\n"
             "- WhatsApp Marketing and Influencer Marketing are Products.\n"
             "- Operating Systems (e.g. ecommerce-os, pharma-os) are Solutions.\n"
@@ -920,6 +995,24 @@ class RAGService:
             complete_response = verified_text_retry
             yield {"text": "\n\n*Validation checks applied:* " + complete_response, "done": False}
 
+        # Apply Response Postprocessor
+        complete_response = self.response_postprocessor.process(complete_response)
+
+        # Knowledge Gap Analytics Logging
+        if max_score < 0.50 or not val_ok:
+            try:
+                from knowledge_gap_logger import log_knowledge_gap
+                log_knowledge_gap(
+                    query=message,
+                    intent=query_type,
+                    entity=res_entity,
+                    confidence=max_score,
+                    retrieval_score=max_score,
+                    reason="Low Confidence or Validation Warning"
+                )
+            except Exception as e:
+                logger.warning(f"Failed to log knowledge gap: {e}")
+
         self.session_memory[session_id].append({"role": "user", "content": message})
         self.session_memory[session_id].append({"role": "assistant", "content": complete_response})
         
@@ -928,7 +1021,10 @@ class RAGService:
         state["last_source"] = "hybrid_rag"
         state["confidence"] = max_score
         
-        sugs = STATIC_SUGGESTIONS.get(res_registry or "COMPANY_INFO", ["How do I contact support?"])
+        if plan_res.allows_follow_up_suggestions:
+            sugs = STATIC_SUGGESTIONS.get(res_registry or "COMPANY_INFO", ["How do I contact support?"])
+        else:
+            sugs = []
         nav_link = None
         if res_entity:
             ent = reg.get_entity(res_entity)

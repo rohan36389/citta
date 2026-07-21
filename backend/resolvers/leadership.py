@@ -28,11 +28,11 @@ class LeadershipResolver:
     def get_all_members(self) -> List[Dict[str, Any]]:
         """Loads leadership members strictly from leadership_info.json."""
         lead_obj = self.reg.registry_by_id.get("leadership_info")
-        members = getattr(lead_obj, "members", []) if lead_obj else []
+        members = (getattr(lead_obj, "members", None) or getattr(lead_obj, "capabilities", None) or []) if lead_obj else []
         
         if not members and "LEADERSHIP" in self.reg.registry_index:
             lead_idx = self.reg.registry_index["LEADERSHIP"]
-            members = lead_idx.get("leaders", []) + lead_idx.get("others", [])
+            members = lead_idx.get("members", []) or lead_idx.get("capabilities", []) or lead_idx.get("leaders", []) + lead_idx.get("others", [])
             
         if not members:
             # Fallback list matching leadership_info.json structure exactly

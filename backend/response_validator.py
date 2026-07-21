@@ -214,6 +214,16 @@ def validate_response(
                 metrics["valid"] = False
                 metrics["reasons"].append(f"Solution '{sol['name']}' misclassified as product/service.")
 
+    # 9. Internal Exposure Check
+    internal_exposure_keywords = ["i searched", "i found", "retrieved chunks", "vector store", "in the database", "in the registry"]
+    if any(k in text_lower for k in internal_exposure_keywords):
+        metrics["valid"] = False
+        metrics["reasons"].append("Internal exposure phrasing detected in response.")
+
+    # Quality Score Calculation (0.0 to 1.0)
+    deductions = len(metrics["reasons"]) * 0.2
+    metrics["quality_score"] = max(0.0, min(1.0, 1.0 - deductions))
+
     # Determine Output Text & Handling
     if not metrics["valid"]:
         if retry_count >= 1:
