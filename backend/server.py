@@ -725,9 +725,11 @@ async def health_check() -> Dict[str, Any]:
     emb_loaded = rag.is_embedding_model_loaded() if rag else False
     reranker_loaded = rag.is_reranker_loaded() if rag else False
     
+    val = vstore.validate_database_integrity()
     return {
         "status": "healthy",
         "database": "ready" if count > 0 else "missing_or_empty",
+        "database_valid": val.get("valid", False),
         "chunk_count": count,
         "embedding_model_loaded": emb_loaded,
         "reranker_loaded": reranker_loaded,

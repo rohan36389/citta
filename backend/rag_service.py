@@ -956,9 +956,7 @@ class RAGService:
                     f"--- STRICT GUARDRAIL RULES ---\n"
                     f"You must ONLY discuss entities belonging to the {res_registry} category. "
                     f"Do not mention any entities from other domains under any circumstance.\n\n"
-                    f"--- KNOWLEDGE REGISTRY CONTEXT ---\n{company_ctx}\n"
-                    f"--- STRUCTURED ENTITY DB ---\n{entity_ctx}\n"
-                    f"--- RAG EVIDENCE CHUNKS ---\n{retrieved_evidence}\n"
+                    f"--- FACTUAL STRUCTURED CONTEXT ---\n{structured_context}\n"
                 )
                 llm_messages[0]["content"] = strict_prompt
                 

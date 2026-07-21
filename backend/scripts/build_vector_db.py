@@ -22,17 +22,25 @@ async def main():
     success = await build_vector_database(force=force_build)
     
     if not success:
-        logger.error("❌ Vector database build failed.")
-        sys.exit(1)
+        raise RuntimeError("Vector database build failed during ingestion or model encoding.")
         
     vstore = VectorStore()
+    if not os.path.exists(vstore.db_path):
+        raise RuntimeError(f"Vector database build failed: database file '{vstore.db_path}' was not created.")
+
+    val = vstore.validate_database_integrity()
+    if not val.get("valid"):
+        raise RuntimeError(f"Vector database build failed: integrity check failed ({val.get('reason')}).")
+
     chunk_count = vstore.get_chunk_count()
-    if chunk_count == 0:
-        logger.error("❌ Integrity Check Failed: vector database chunk count is 0.")
-        sys.exit(1)
-        
+    if chunk_count <= 0:
+        raise RuntimeError("Vector database build failed: 0 chunks were indexed.")
+
     meta = vstore.get_metadata()
-    logger.info(f"✓ CI Integrity Verified: {chunk_count} chunks indexed successfully.")
+    if not meta.get("content_hash"):
+        raise RuntimeError("Vector database build failed: metadata content_hash is missing.")
+
+    logger.info(f"✓ Build & Integrity Verified: {chunk_count} chunks indexed successfully.")
     logger.info(f"✓ Metadata: {meta}")
     sys.exit(0)
 
