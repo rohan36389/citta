@@ -9,6 +9,7 @@ ENV PYTHONUNBUFFERED=1 \
     PORT=8000 \
     ENVIRONMENT=production \
     DEBUG=false \
+    VECTOR_DB_PATH=/app/vector_store.db \
     PYTHONPATH=/app
 
 WORKDIR /app

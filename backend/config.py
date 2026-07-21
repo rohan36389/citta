@@ -32,8 +32,14 @@ CONFIDENCE_THRESHOLD = float(os.environ.get("CONFIDENCE_THRESHOLD", "0.45"))
 # Embedding parameters
 EMBEDDING_MODEL = os.environ.get("EMBEDDING_MODEL", "BAAI/bge-base-en-v1.5")
 
-# Paths
-VECTOR_DB_PATH = os.path.abspath(os.path.join(ROOT_DIR, os.environ.get("VECTOR_DB_PATH", "vector_store.db")))
+# Paths with deterministic database discovery fallback
+_target_vector_path = os.path.abspath(os.path.join(ROOT_DIR, os.environ.get("VECTOR_DB_PATH", "vector_store.db")))
+_root_vector_path = os.path.abspath(os.path.join(ROOT_DIR, "vector_store.db"))
+
+if not os.path.exists(_target_vector_path) and os.path.exists(_root_vector_path):
+    VECTOR_DB_PATH = _root_vector_path
+else:
+    VECTOR_DB_PATH = _target_vector_path
 SQLITE_DB_PATH = os.path.abspath(os.path.join(ROOT_DIR, os.environ.get("SQLITE_DB_PATH", "analytics.db")))
 
 # Environment flags
