@@ -3,7 +3,7 @@ import httpx
 import asyncio
 
 async def test_chat():
-    url = "http://localhost:8001/api/chat"
+    url = "http://localhost:8000/api/chat"
     payload = {
         "session_id": "test_verification_session",
         "message": "What is the Pharma OS solution offered by CittaAI?"
