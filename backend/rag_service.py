@@ -813,6 +813,17 @@ class RAGService:
         retrieval_time = time.time() - retrieval_start
         max_score = unique_chunks[0]["score"] if unique_chunks else 0.0
 
+        top_title = unique_chunks[0].get("metadata", {}).get("title", "N/A") if unique_chunks else "N/A"
+        top_category = unique_chunks[0].get("metadata", {}).get("category", "N/A") if unique_chunks else "N/A"
+        will_fallback = (max_score < 0.30 or not unique_chunks)
+
+        logger.info(f"[DEBUG] MAX SCORE: {max_score:.4f}")
+        logger.info(f"[DEBUG] NUMBER OF UNIQUE CHUNKS: {len(unique_chunks)}")
+        logger.info(f"[DEBUG] CONFIDENCE THRESHOLD: 0.30")
+        logger.info(f"[DEBUG] FALLBACK TRIGGERED: {will_fallback}")
+        logger.info(f"[DEBUG] TOP RETRIEVED CHUNK TITLE: {top_title}")
+        logger.info(f"[DEBUG] TOP RETRIEVED CHUNK CATEGORY: {top_category}")
+
         if max_score < 0.30 or not unique_chunks:
             logger.warning(f"RAG search confidence {max_score:.4f} below absolute threshold (0.30).")
             unavail_msg = "I couldn't find verified information about this topic in the current knowledge base."

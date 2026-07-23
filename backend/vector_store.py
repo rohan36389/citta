@@ -2,10 +2,14 @@ import os
 import sqlite3
 import json
 import re
+import time
+import logging
 import numpy as np
 from typing import List, Dict, Any, Tuple
 
 import config
+
+logger = logging.getLogger(__name__)
 
 DB_PATH = config.VECTOR_DB_PATH
 
@@ -14,13 +18,59 @@ def atomic_replace_database(tmp_db_path: str, target_db_path: str):
         raise FileNotFoundError(f"Temporary database file {tmp_db_path} does not exist")
     os.replace(tmp_db_path, target_db_path)
 
+def _resolve_db_path(db_path: str) -> str:
+    """Resolve database path relative to CWD, backend directory, or root workspace, prioritizing non-empty DB files."""
+    if not db_path:
+        db_path = config.VECTOR_DB_PATH
+
+    # If already absolute and exists with content, return it
+    if os.path.isabs(db_path) and os.path.exists(db_path) and os.path.getsize(db_path) > 0:
+        return os.path.abspath(db_path)
+
+    backend_dir = os.path.dirname(os.path.abspath(__file__))
+    root_dir = os.path.dirname(backend_dir)
+
+    candidates = [
+        db_path,
+        os.path.abspath(db_path),
+        os.path.join(backend_dir, db_path),
+        os.path.join(root_dir, db_path),
+        os.path.join("/app", os.path.basename(db_path)),
+        os.path.join("/app", db_path),
+        os.path.join(backend_dir, os.path.basename(db_path)),
+        os.path.join(root_dir, os.path.basename(db_path)),
+    ]
+
+    for candidate in candidates:
+        if candidate and os.path.exists(candidate) and os.path.isfile(candidate):
+            if os.path.getsize(candidate) > 0:
+                return os.path.abspath(candidate)
+
+    # Fallback to absolute candidate path
+    if os.path.isabs(db_path):
+        return db_path
+    return os.path.abspath(os.path.join(backend_dir, os.path.basename(db_path)))
+
 class VectorStore:
     def __init__(self, db_path: str = DB_PATH):
-        self.db_path = db_path
+        self.raw_db_path = db_path
+        self.db_path = _resolve_db_path(db_path)
         self._init_db()
 
+    def _get_resolved_path(self) -> str:
+        if hasattr(self, "db_path") and self.db_path and os.path.exists(self.db_path) and os.path.getsize(self.db_path) > 0:
+            return self.db_path
+        resolved = _resolve_db_path(self.raw_db_path)
+        self.db_path = resolved
+        return resolved
+
     def _init_db(self):
-        conn = sqlite3.connect(self.db_path)
+        target_path = self._get_resolved_path()
+        db_dir = os.path.dirname(target_path)
+        if db_dir and not os.path.exists(db_dir):
+            os.makedirs(db_dir, exist_ok=True)
+
+        conn = sqlite3.connect(target_path, timeout=10.0)
         cursor = conn.cursor()
         # Create documents table
         cursor.execute("""
@@ -43,7 +93,8 @@ class VectorStore:
         conn.close()
 
     def rebuild_db(self):
-        conn = sqlite3.connect(self.db_path)
+        target_path = self._get_resolved_path()
+        conn = sqlite3.connect(target_path, timeout=10.0)
         cursor = conn.cursor()
         cursor.execute("DROP TABLE IF EXISTS chunks")
         cursor.execute("DROP TABLE IF EXISTS vector_db_metadata")
@@ -52,21 +103,24 @@ class VectorStore:
         self._init_db()
 
     def get_metadata(self) -> Dict[str, str]:
-        if not os.path.exists(self.db_path):
+        target_path = self._get_resolved_path()
+        if not os.path.exists(target_path):
             return {}
-        conn = sqlite3.connect(self.db_path)
+        conn = sqlite3.connect(target_path, timeout=10.0)
         cursor = conn.cursor()
         try:
             cursor.execute("SELECT key, value FROM vector_db_metadata")
             rows = cursor.fetchall()
             return {row[0]: row[1] for row in rows}
-        except Exception:
+        except Exception as e:
+            logger.warning(f"[VectorStore] Failed to read metadata: {e}")
             return {}
         finally:
             conn.close()
 
     def write_metadata(self, metadata: Dict[str, Any]):
-        conn = sqlite3.connect(self.db_path)
+        target_path = self._get_resolved_path()
+        conn = sqlite3.connect(target_path, timeout=10.0)
         cursor = conn.cursor()
         try:
             for k, v in metadata.items():
@@ -79,14 +133,15 @@ class VectorStore:
             conn.close()
 
     def validate_database_integrity(self) -> Dict[str, Any]:
-        if not os.path.exists(self.db_path):
-            return {"valid": False, "reason": "Database file missing"}
+        target_path = self._get_resolved_path()
+        if not os.path.exists(target_path):
+            return {"valid": False, "reason": f"Database file missing at {target_path}"}
         try:
             count = self.get_chunk_count()
             if count == 0:
-                return {"valid": False, "reason": "Database has 0 chunks"}
+                return {"valid": False, "reason": f"Database at {target_path} has 0 chunks"}
             meta = self.get_metadata()
-            return {"valid": True, "count": count, "metadata": meta}
+            return {"valid": True, "count": count, "metadata": meta, "path": target_path}
         except Exception as e:
             return {"valid": False, "reason": f"Database error: {e}"}
 
@@ -95,11 +150,12 @@ class VectorStore:
         dummy_vector = [0.0] * 768
         try:
             _ = self.query_hybrid("warmup", dummy_vector, top_k=1)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.warning(f"[VectorStore] Warmup query exception: {e}")
 
     def add_chunk(self, chunk_id: str, content: str, embedding: List[float], metadata: Dict[str, Any]):
-        conn = sqlite3.connect(self.db_path)
+        target_path = self._get_resolved_path()
+        conn = sqlite3.connect(target_path, timeout=10.0)
         cursor = conn.cursor()
         emb_blob = np.array(embedding, dtype=np.float32).tobytes()
         metadata_str = json.dumps(metadata)
@@ -113,7 +169,8 @@ class VectorStore:
         conn.close()
 
     def delete_document(self, source_name: str) -> int:
-        conn = sqlite3.connect(self.db_path)
+        target_path = self._get_resolved_path()
+        conn = sqlite3.connect(target_path, timeout=10.0)
         cursor = conn.cursor()
         cursor.execute("DELETE FROM chunks WHERE source = ?", (source_name,))
         rows_deleted = cursor.rowcount
@@ -122,7 +179,8 @@ class VectorStore:
         return rows_deleted
 
     def get_all_documents(self) -> List[Dict[str, Any]]:
-        conn = sqlite3.connect(self.db_path)
+        target_path = self._get_resolved_path()
+        conn = sqlite3.connect(target_path, timeout=10.0)
         cursor = conn.cursor()
         cursor.execute("SELECT source, COUNT(*), MAX(metadata) FROM chunks GROUP BY source")
         rows = cursor.fetchall()
@@ -145,7 +203,8 @@ class VectorStore:
         return docs
 
     def get_chunk_count(self) -> int:
-        conn = sqlite3.connect(self.db_path)
+        target_path = self._get_resolved_path()
+        conn = sqlite3.connect(target_path, timeout=10.0)
         cursor = conn.cursor()
         cursor.execute("SELECT COUNT(*) FROM chunks")
         count = cursor.fetchone()[0]
@@ -153,7 +212,8 @@ class VectorStore:
         return count
 
     def get_chunk_count_for_page(self, page_url: str) -> int:
-        conn = sqlite3.connect(self.db_path)
+        target_path = self._get_resolved_path()
+        conn = sqlite3.connect(target_path, timeout=10.0)
         cursor = conn.cursor()
         cursor.execute(
             "SELECT COUNT(*) FROM chunks WHERE json_extract(metadata, '$.page') = ? OR json_extract(metadata, '$.url') = ?",
@@ -164,7 +224,8 @@ class VectorStore:
         return count
 
     def get_all_chunks(self) -> List[Dict[str, Any]]:
-        conn = sqlite3.connect(self.db_path)
+        target_path = self._get_resolved_path()
+        conn = sqlite3.connect(target_path, timeout=10.0)
         cursor = conn.cursor()
         cursor.execute("SELECT id, content, metadata, source FROM chunks")
         rows = cursor.fetchall()
@@ -193,100 +254,288 @@ class VectorStore:
         top_k: int = 5,
         domain: str = None
     ) -> List[Dict[str, Any]]:
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        cursor.execute("SELECT id, content, embedding, metadata, source FROM chunks")
-        rows = cursor.fetchall()
-        conn.close()
+        start_time = time.time()
+        target_path = self._get_resolved_path()
+
+        logger.info(f"[DEBUG] DATABASE PATH: {target_path}")
+        logger.info(f"[DEBUG] DATABASE EXISTS: {os.path.exists(target_path)}")
+        logger.info(f"[DEBUG] DATABASE SIZE: {os.path.getsize(target_path) if os.path.exists(target_path) else 0} bytes")
+        logger.info(f"[DEBUG] CURRENT WORKING DIRECTORY: {os.getcwd()}")
+
+        logger.debug(
+            f"[VectorStore] query_hybrid called target_path={target_path}, "
+            f"query_text='{query_text[:50] if query_text else ''}', domain={domain}, intent={intent}, top_k={top_k}"
+        )
+
+        if not os.path.exists(target_path):
+            logger.error(f"[VectorStore] DB file missing at resolved path: {target_path}")
+            return []
+
+        rows = []
+        try:
+            db_uri = f"file:{os.path.abspath(target_path)}?mode=ro"
+            conn = sqlite3.connect(db_uri, uri=True, timeout=10.0)
+            cursor = conn.cursor()
+            cursor.execute("SELECT id, content, embedding, metadata, source FROM chunks")
+            rows = cursor.fetchall()
+            conn.close()
+        except sqlite3.Error as se:
+            try:
+                conn = sqlite3.connect(target_path, timeout=10.0)
+                cursor = conn.cursor()
+                cursor.execute("SELECT id, content, embedding, metadata, source FROM chunks")
+                rows = cursor.fetchall()
+                conn.close()
+            except Exception as e:
+                logger.error(f"[VectorStore] Failed to query SQLite database at {target_path}: {e}")
+                return []
+        except Exception as e:
+            logger.error(f"[VectorStore] Failed to query SQLite database at {target_path}: {e}")
+            return []
+
+        logger.info(f"[DEBUG] TOTAL CHUNKS LOADED: {len(rows)}")
 
         if not rows:
+            logger.warning(f"[VectorStore] 0 chunks returned from DB at {target_path}")
+            return []
+
+        # Validate query embedding
+        if query_embedding is None or len(query_embedding) == 0:
+            logger.error("[VectorStore] Provided query_embedding is None or empty.")
             return []
 
         query_vector = np.array(query_embedding, dtype=np.float32)
-        query_terms = set(re.findall(r"\w+", query_text.lower()))
+        if np.isnan(query_vector).any() or np.isinf(query_vector).any():
+            logger.error("[VectorStore] Query embedding contains NaN or Inf values.")
+            return []
+
+        query_norm = float(np.linalg.norm(query_vector))
+        expected_dim = len(query_vector)
+
+        logger.info(f"[DEBUG] USER QUERY: {query_text}")
+        logger.info(f"[DEBUG] DOMAIN: {domain}")
+        logger.info(f"[DEBUG] INTENT: {intent}")
+        logger.info(f"[DEBUG] QUERY EMBEDDING DIMENSION: {expected_dim}")
+
+        # Stopwords set for token extraction
+        STOPWORDS = {
+            "a", "an", "the", "is", "are", "was", "were", "be", "been", "being",
+            "in", "on", "at", "to", "for", "with", "about", "against", "between",
+            "into", "through", "during", "before", "after", "above", "below",
+            "from", "up", "down", "out", "off", "over", "under",
+            "again", "further", "then", "once", "here", "there", "when", "where",
+            "why", "how", "all", "any", "both", "each", "few", "more", "most",
+            "other", "some", "such", "no", "nor", "not", "only", "own", "same",
+            "so", "than", "too", "very", "s", "t", "can", "will", "just", "don",
+            "should", "now", "what", "which", "who", "whom", "this", "that", "these", "those"
+        }
+
+        # Tokenize query text safely
+        all_query_tokens = re.findall(r"\w+", query_text.lower()) if query_text else []
+        query_terms = [t for t in all_query_tokens if t not in STOPWORDS and len(t) > 1]
+        if not query_terms:
+            query_terms = all_query_tokens  # Fallback if query was only stopwords
+
+        # Domain Alias Mapping for CittaAI Registries & Categories
+        DOMAIN_ALIASES = {
+            "whatsapp": ["whatsapp", "product", "products", "whatsapp-marketing", "marketing"],
+            "influencer": ["influencer", "product", "products", "influencer-marketing"],
+            "ecommerce": ["ecommerce", "solution", "solutions", "ecommerce-os"],
+            "realestate": ["realestate", "real-estate", "real estate", "solution", "solutions", "real-estate-os"],
+            "pharma": ["pharma", "solution", "solutions", "pharma-os"],
+            "smartcities": ["smartcities", "smart-cities", "smart cities", "solution", "solutions", "smart-cities-os"],
+            "education": ["education", "solution", "solutions", "education-os"],
+            "enterpriseai": ["enterpriseai", "enterprise-ai", "enterprise ai", "solution", "solutions", "enterprise-ai-os"],
+            "products": ["product", "products", "whatsapp", "influencer"],
+            "services": ["service", "services", "solution", "solutions"],
+            "solutions": ["solution", "solutions", "ecommerce", "realestate", "pharma", "smartcities", "education", "enterpriseai"],
+            "company_info": ["about", "company", "brand", "history", "story"],
+            "legal_compliance": ["legal", "compliance", "terms", "privacy"],
+            "customer_stories": ["casestudies", "case-studies", "case studies", "cases"],
+            "recognition_awards": ["recognition", "awards", "award"]
+        }
+
+        target_domain_clean = domain.strip().lower() if domain else None
+        target_aliases = set()
+        if target_domain_clean:
+            target_aliases.add(target_domain_clean)
+            target_aliases.add(target_domain_clean.replace("-", "").replace("_", "").replace(" ", ""))
+            if target_domain_clean in DOMAIN_ALIASES:
+                target_aliases.update(DOMAIN_ALIASES[target_domain_clean])
 
         results = []
+        valid_chunks_count = 0
+        corrupted_chunks_count = 0
+        domain_match_count = 0
+
+        logger.info("[DEBUG] Beginning Retrieval...")
+
         for row in rows:
             chunk_id, content, emb_bytes, metadata_str, source = row
-            try:
-                metadata = json.loads(metadata_str)
-            except Exception:
-                metadata = {}
 
-            # 0. Domain Filter
-            if domain:
-                chunk_domain = metadata.get("domain", "").upper()
-                if chunk_domain != domain.upper():
-                    continue
+            # 1. Parse Metadata safely
+            metadata = {}
+            if metadata_str:
+                try:
+                    metadata = json.loads(metadata_str)
+                except Exception as e:
+                    logger.warning(f"[VectorStore] Failed to parse JSON metadata for chunk {chunk_id}: {e}")
+                    metadata = {}
 
-            # 1. Intent Category Filtering
-            # If intent classification is specific, we prioritize relevant sections
+            # 2. Intelligent Domain & Category Derivation
+            chunk_category = str(metadata.get("category", "")).strip().lower()
+            chunk_domain = str(metadata.get("domain", "")).strip().lower()
+
+            if not chunk_domain or chunk_domain in ["general", "unknown"]:
+                if chunk_category:
+                    chunk_domain = chunk_category
+                elif "page" in metadata and metadata["page"]:
+                    page_val = str(metadata["page"]).strip().lower().strip("/")
+                    chunk_domain = page_val.split("/")[0] if page_val else "general"
+                elif "url" in metadata and metadata["url"]:
+                    url_val = str(metadata["url"]).strip().lower().strip("/")
+                    chunk_domain = url_val.split("/")[0] if url_val else "general"
+                elif source:
+                    chunk_domain = str(source).replace(".js", "").replace(".json", "").strip().lower()
+                else:
+                    chunk_domain = "general"
+
+            title_clean = str(metadata.get("title", "")).strip().lower()
+            source_clean = str(source).strip().lower()
+            page_clean = str(metadata.get("page", "")).strip().lower()
+
+            # 3. Soft Domain Matching via Alias Expansion
+            is_domain_match = False
+            if target_aliases:
+                chunk_terms = {chunk_domain, chunk_category, title_clean, source_clean, page_clean}
+                chunk_terms_clean = {t.replace("-", "").replace("_", "").replace(" ", "") for t in chunk_terms if t}
+                
+                for alias in target_aliases:
+                    alias_clean = alias.replace("-", "").replace("_", "").replace(" ", "")
+                    if any(alias_clean in term for term in chunk_terms_clean if term):
+                        is_domain_match = True
+                        domain_match_count += 1
+                        break
+
+            # 4. Soft Intent Matching
+            is_intent_match = False
             if intent and intent.lower() != "generalai":
-                chunk_category = metadata.get("category", "").lower()
-                # Skip chunks that don't match intent category if it's a specific intent search
-                # e.g., if intent is 'legal', search only legal category
-                if intent.lower() == "legal" and chunk_category != "legal":
-                    continue
-                if intent.lower() == "products" and chunk_category not in ["product", "solution"]:
-                    continue
-                if intent.lower() == "services" and chunk_category not in ["service", "solution"]:
-                    continue
-                if intent.lower() == "service_pricing" and chunk_category not in ["product", "service", "solution"]:
-                    continue
-                if intent.lower() == "recognition" and chunk_category != "recognition":
-                    continue
-                if intent.lower() == "casestudies" and chunk_category != "casestudies":
-                    continue
-                if intent.lower() == "contact" and chunk_category != "contact":
-                    continue
+                intent_clean = intent.lower()
+                if (intent_clean == "legal" and chunk_category == "legal") or \
+                   (intent_clean == "products" and chunk_category in ["product", "solution"]) or \
+                   (intent_clean == "services" and chunk_category in ["service", "solution"]) or \
+                   (intent_clean == "service_pricing" and chunk_category in ["product", "service", "solution"]) or \
+                   (intent_clean == "recognition" and chunk_category == "recognition") or \
+                   (intent_clean == "casestudies" and chunk_category in ["casestudies", "cases"]) or \
+                   (intent_clean == "contact" and chunk_category == "contact"):
+                    is_intent_match = True
 
-            # 2. Semantic Score (Cosine Similarity)
-            chunk_vector = np.frombuffer(emb_bytes, dtype=np.float32)
-            dot_product = np.dot(query_vector, chunk_vector)
-            query_norm = np.linalg.norm(query_vector)
-            chunk_norm = np.linalg.norm(chunk_vector)
-            
+            # 5. Embedding Unpacking & Dimension Validation
             semantic_score = 0.0
-            if query_norm > 0 and chunk_norm > 0:
-                # Cosine similarity range from -1 to 1, normalized to 0 to 1
-                cosine_sim = dot_product / (query_norm * chunk_norm)
-                semantic_score = float((cosine_sim + 1.0) / 2.0)
+            try:
+                if isinstance(emb_bytes, (bytes, memoryview)):
+                    chunk_vector = np.frombuffer(emb_bytes, dtype=np.float32)
+                else:
+                    chunk_vector = np.array(emb_bytes, dtype=np.float32)
 
-            # 3. Keyword Match Score (Simple TF-IDF overlap)
-            content_lower = content.lower()
-            content_terms = re.findall(r"\w+", content_lower)
-            term_count = len(content_terms)
+                if len(chunk_vector) != expected_dim:
+                    logger.warning(
+                        f"[VectorStore] Chunk {chunk_id} dimension mismatch: expected {expected_dim}, got {len(chunk_vector)}."
+                    )
+                    corrupted_chunks_count += 1
+                    chunk_vector = None
+                elif np.isnan(chunk_vector).any() or np.isinf(chunk_vector).any():
+                    logger.warning(f"[VectorStore] Chunk {chunk_id} contains NaN/Inf embeddings.")
+                    corrupted_chunks_count += 1
+                    chunk_vector = None
+                else:
+                    valid_chunks_count += 1
+
+                if chunk_vector is not None:
+                    chunk_norm = float(np.linalg.norm(chunk_vector))
+                    if query_norm > 1e-9 and chunk_norm > 1e-9:
+                        dot_product = float(np.dot(query_vector, chunk_vector))
+                        raw_cosine = dot_product / (query_norm * chunk_norm)
+                        raw_cosine = float(np.clip(raw_cosine, -1.0, 1.0))
+                        semantic_score = max(0.0, raw_cosine)
+            except Exception as e:
+                logger.warning(f"[VectorStore] Failed to process embedding for chunk {chunk_id}: {e}")
+                corrupted_chunks_count += 1
+
+            # 6. Keyword Match Score
+            content_lower = content.lower() if content else ""
+            content_words = set(re.findall(r"\w+", content_lower))
             
             keyword_score = 0.0
-            if term_count > 0 and query_terms:
-                matched_terms = [t for t in query_terms if t in content_lower]
-                # Give higher weight to longer matches, normalize by query size and content size log
-                overlap = sum(len(t) for t in matched_terms)
-                total_query_len = sum(len(t) for t in query_terms)
-                if total_query_len > 0:
-                    keyword_score = overlap / total_query_len
-                    # Adjust for length normalization to avoid penalizing medium docs
-                    keyword_score = keyword_score * (1.0 / (1.0 + np.log1p(term_count / 100.0)))
+            if query_terms and content_words:
+                matching_words = set(query_terms) & content_words
+                denom = len(set(query_terms))
+                word_overlap_ratio = len(matching_words) / denom if denom > 0 else 0.0
+                phrase_bonus = 0.20 if (query_text and query_text.lower() in content_lower) else 0.0
+                keyword_score = min(1.0, word_overlap_ratio + phrase_bonus)
 
-            # 4. Score Fusion (40% Semantic + 20% Keyword + 40% Simulated Cross-Encoder Sequence Matcher)
-            from difflib import SequenceMatcher
-            cross_encoder_score = SequenceMatcher(None, query_text.lower(), content.lower()).ratio()
-            
-            fusion_score = (0.4 * semantic_score) + (0.2 * keyword_score) + (0.4 * cross_encoder_score)
+            # 7. Robust Score Fusion: Hybrid Convex Blend
+            if keyword_score > 0:
+                fusion_score = (0.70 * semantic_score) + (0.30 * keyword_score)
+            else:
+                fusion_score = semantic_score * 0.90
+
+            if is_domain_match:
+                fusion_score += 0.15
+            if is_intent_match:
+                fusion_score += 0.05
+
+            fusion_score = float(min(1.0, max(0.0, fusion_score)))
 
             results.append({
-                "id": chunk_id,
+                "id": str(chunk_id),
                 "content": content,
                 "metadata": metadata,
                 "source": source,
                 "score": fusion_score,
-                "semantic_score": semantic_score,
-                "keyword_score": keyword_score,
-                "cross_encoder_score": cross_encoder_score
+                "semantic_score": float(semantic_score),
+                "keyword_score": float(keyword_score),
+                "domain_match": is_domain_match,
+                "intent_match": is_intent_match,
+                "derived_domain": chunk_domain
             })
 
-        # Sort by hybrid score descending
-        results.sort(key=lambda x: x["score"], reverse=True)
+        # 8. Deterministic Ranking: (score DESC, semantic_score DESC, id ASC)
+        results.sort(key=lambda x: (-x["score"], -x["semantic_score"], str(x["id"])))
+        
+        # Log details for Top 5 highest scored chunks
+        logger.info("[DEBUG] --- TOP 5 HIGHEST SCORED CHUNKS ---")
+        for idx, chunk in enumerate(results[:5], start=1):
+            chunk_title = chunk.get("metadata", {}).get("title", "N/A")
+            chunk_cat = chunk.get("metadata", {}).get("category", "N/A")
+            logger.info(
+                f"[DEBUG] Top Chunk #{idx} | "
+                f"Chunk ID: {chunk['id']} | "
+                f"Title: {chunk_title} | "
+                f"Category: {chunk_cat} | "
+                f"Derived Domain: {chunk.get('derived_domain')} | "
+                f"Source: {chunk['source']} | "
+                f"Semantic Score: {chunk['semantic_score']:.4f} | "
+                f"Keyword Score: {chunk['keyword_score']:.4f} | "
+                f"Domain Match: {chunk['domain_match']} | "
+                f"Intent Match: {chunk['intent_match']} | "
+                f"Final Score: {chunk['score']:.4f}"
+            )
+
+        max_score = results[0]["score"] if results else 0.0
+        elapsed_ms = (time.time() - start_time) * 1000.0
+
+        logger.info(f"[DEBUG] Maximum Score: {max_score:.4f}")
+        logger.info(f"[DEBUG] Top K: {top_k}")
+        logger.info(f"[DEBUG] Number of Results Returned: {len(results[:top_k])}")
+        logger.info(f"[DEBUG] Elapsed Retrieval Time: {elapsed_ms:.2f}ms")
+        
+        logger.info(
+            f"[VectorStore] Query hybrid finished in {elapsed_ms:.2f}ms. "
+            f"Scanned: {len(rows)}, Valid: {valid_chunks_count}, Corrupted: {corrupted_chunks_count}, "
+            f"Domain matches: {domain_match_count}, Max Score: {max_score:.4f}, Returning top {min(top_k, len(results))} chunks."
+        )
+
         return results[:top_k]
 
 
@@ -301,16 +550,12 @@ def clean_js_comments(text: str) -> str:
 
 def parse_javascript_object(js_code: str, var_name: str) -> Dict[str, Any]:
     """Helper to extract a variable declaration as dict if simple, or return chunks of key text."""
-    # Find the object block: export const VAR_NAME = { ... };
     pattern = rf"export\s+const\s+{var_name}\s*=\s*([\s\S]*?);"
     match = re.search(pattern, js_code)
     if not match:
         return {}
     
     obj_body = match.group(1).strip()
-    
-    # We will return key lines as a list of strings for granular chunking
-    # This is safer than eval() or simple JSON parse since content.js contains JS templates
     lines = [line.strip() for line in obj_body.split("\n") if line.strip()]
     return {"raw_lines": lines}
 
@@ -326,8 +571,6 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
     chunks = []
     timestamp = str(os.path.getmtime(file_path))
 
-    # Define the objects we want to parse
-    # Products & Solutions
     sections_to_parse = [
         ("WHATSAPP", "product", "/products/whatsapp-marketing"),
         ("INFLUENCER", "product", "/products/influencer-marketing"),
@@ -340,12 +583,10 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
     ]
 
     for var_name, kind, url in sections_to_parse:
-        # Extract variables from content
         pattern = rf"export\s+const\s+{var_name}\s*=\s*\{{([\s\S]*?)\}};"
         match = re.search(pattern, content)
         if match:
             body = match.group(1)
-            # Find name/eyebrow/hero/subtitle
             name_m = re.search(r"name:\s*\"([^\"]+)\"", body)
             hero_m = re.search(r"hero:\s*\"([^\"]+)\"", body)
             subtitle_m = re.search(r"subtitle:\s*\"([^\"]+)\"", body)
@@ -354,7 +595,6 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
             hero = hero_m.group(1) if hero_m else ""
             subtitle = subtitle_m.group(1) if subtitle_m else ""
 
-            # Core chunk for the product/solution main details
             main_text = f"CittaAI {kind.capitalize()} - {name}: {hero} {subtitle}"
             chunks.append({
                 "content": main_text,
@@ -364,13 +604,13 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
                     "section": "hero",
                     "title": name,
                     "category": kind,
+                    "domain": kind,
                     "url": url,
                     "last_updated": timestamp,
                     "doc_type": "web_copy"
                 }
             })
 
-            # Extract capabilities array: capabilities: [ { t: "Title", d: "Desc" } ]
             cap_pattern = r"\{\s*t:\s*\"([^\"]+)\"\s*,\s*d:\s*\"([^\"]+)\"\s*\}"
             capabilities = re.findall(cap_pattern, body)
             for title, desc in capabilities:
@@ -382,18 +622,18 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
                         "section": "capabilities",
                         "title": f"{name} - {title}",
                         "category": kind,
+                        "domain": kind,
                         "url": url,
                         "last_updated": timestamp,
                         "doc_type": "web_copy"
                     }
                 })
 
-    # Ingest RECOGNITION (Awards)
+    # Ingest RECOGNITION
     rec_pattern = r"export\s+const\s+RECOGNITION\s*=\s*\{([\s\S]*?)\};"
     rec_match = re.search(rec_pattern, content)
     if rec_match:
         body = rec_match.group(1)
-        # Find award objects: { name: "...", subtitle: "...", body: "...", org: "..." }
         award_blocks = re.findall(r"\{\s*name:\s*\"([^\"]+)\"\s*,\s*subtitle:\s*\"([^\"]+)\"\s*,\s*body:\s*\"([^\"]+)\"\s*,\s*org:\s*\"([^\"]+)\"", body)
         for name, subtitle, award_body, org in award_blocks:
             chunks.append({
@@ -404,6 +644,7 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
                     "section": "awards",
                     "title": name,
                     "category": "recognition",
+                    "domain": "recognition",
                     "url": "/recognition",
                     "last_updated": timestamp,
                     "doc_type": "web_copy"
@@ -425,6 +666,7 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
                     "section": "cases",
                     "title": f"Case Study: {brand}",
                     "category": "casestudies",
+                    "domain": "casestudies",
                     "url": "/case-studies",
                     "last_updated": timestamp,
                     "doc_type": "web_copy"
@@ -448,6 +690,7 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
                     "section": "about_lead",
                     "title": "About CittaAI",
                     "category": "about",
+                    "domain": "about",
                     "url": "/about",
                     "last_updated": timestamp,
                     "doc_type": "web_copy"
@@ -463,13 +706,13 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
                     "section": "about_story",
                     "title": "Our Story",
                     "category": "about",
+                    "domain": "about",
                     "url": "/about",
                     "last_updated": timestamp,
                     "doc_type": "web_copy"
                 }
             })
             
-        # Ingest why CittaAI
         why_items = re.findall(r"\{\s*t:\s*\"([^\"]+)\"\s*,\s*d:\s*\"([^\"]+)\"\s*\}", body)
         for title, desc in why_items:
             chunks.append({
@@ -480,13 +723,14 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
                     "section": "why_us",
                     "title": f"Why Choose Us: {title}",
                     "category": "about",
+                    "domain": "about",
                     "url": "/about",
                     "last_updated": timestamp,
                     "doc_type": "web_copy"
                 }
             })
 
-    # Ingest BRAND constants (Vision, driven by Fixity)
+    # Ingest BRAND constants
     brand_pattern = r"export\s+const\s+BRAND\s*=\s*\{([\s\S]*?)\};"
     brand_match = re.search(brand_pattern, content)
     if brand_match:
@@ -508,6 +752,7 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
                 "section": "brand",
                 "title": "CittaAI Brand Info",
                 "category": "company",
+                "domain": "company",
                 "url": "/",
                 "last_updated": timestamp,
                 "doc_type": "web_copy"
@@ -536,6 +781,7 @@ def parse_content_js(file_path: str) -> List[Dict[str, Any]]:
                 "section": "contact_info",
                 "title": "Contact Information",
                 "category": "contact",
+                "domain": "contact",
                 "url": "/contact",
                 "last_updated": timestamp,
                 "doc_type": "web_copy"
