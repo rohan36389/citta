@@ -56,10 +56,29 @@ class ConversationManager:
         context = self.context_engine.get_or_create_context(session_id)
         timings["context_ms"] = (time.perf_counter() - t_start) * 1000.0
 
+        from backend.conversation.coreference_engine import get_coreference_engine
+        from backend.conversation.memory_engine import get_memory_manager, MemoryEvent
+
+        mem_mgr = get_memory_manager(session_id)
+
+        # 1b. Coreference & Anaphora Resolution
+        coref_result = get_coreference_engine().resolve(
+            query, mem_mgr.working_memory, turn=context.turn_count + 1
+        )
+        
+        if coref_result.requires_clarification:
+            return ResponseComposition(
+                text="Could you please clarify which product or solution you are referring to?",
+                suggestions=[{"label": "Explore Solutions", "action": "explore_solutions"}],
+                metadata={"requires_clarification": True}
+            )
+
+        effective_query = coref_result.resolved_query
+
         # 2. Understanding Engine analyzes intent & discovery indicators
         t_now = time.perf_counter()
-        intent = self.understanding_engine.analyze_intent(query, context)
-        discovery = self.understanding_engine.run_discovery(query, intent, context)
+        intent = self.understanding_engine.analyze_intent(effective_query, context)
+        discovery = self.understanding_engine.run_discovery(effective_query, intent, context)
         lead_qual = self.understanding_engine.qualify_lead(discovery)
         timings["understanding_ms"] = (time.perf_counter() - t_now) * 1000.0
 

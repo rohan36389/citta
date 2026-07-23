@@ -103,6 +103,74 @@ class IntentSource(Enum):
     KNOWLEDGE_BASE = "Knowledge Base"
 
 @dataclass
+class EntityNode:
+    entity_id: str
+    name: str
+    registry: str
+    mention_count: int
+    first_turn: int
+    last_turn: int
+
+@dataclass
+class CoreferenceCandidate:
+    entity: EntityNode
+    confidence: float
+    reason: str
+
+@dataclass
+class CoreferenceResult:
+    original_query: str
+    resolved_query: str
+    selected_entity: Optional[EntityNode]
+    candidates: List[CoreferenceCandidate]
+    pronouns_detected: List[str]
+    confidence: float
+    requires_clarification: bool = False
+
+@dataclass
+class QuestionSignature:
+    entity_id: str
+    intent: str
+    signature_hash: str
+    answered_turn: int
+
+@dataclass
+class FollowUpOpportunity:
+    topic: str
+    priority: float
+    reason: str
+    suggested_turn: int
+
+@dataclass
+class WorkingMemory:
+    current_entity: Optional[EntityNode] = None
+    active_registry: Optional[str] = None
+    last_intent: Optional[str] = None
+    recent_entities: List[EntityNode] = field(default_factory=list)
+
+@dataclass
+class CustomerFacts:
+    industry: Optional[str] = None
+    company_size: Optional[str] = None
+    timeline: Optional[str] = None
+    budget: Optional[str] = None
+    goals: List[str] = field(default_factory=list)
+
+@dataclass
+class BusinessMemory:
+    customer_facts: CustomerFacts = field(default_factory=CustomerFacts)
+    objections_raised: List[str] = field(default_factory=list)
+    recommendations_given: List[str] = field(default_factory=list)
+    questions_answered: List[QuestionSignature] = field(default_factory=list)
+    follow_up_opportunities: List[FollowUpOpportunity] = field(default_factory=list)
+
+@dataclass
+class MemoryEvent:
+    event_type: str    # ENTITY_DETECTED, GOAL_IDENTIFIED, OBJECTION_RAISED, RECOMMENDATION_GIVEN, QUESTION_ANSWERED
+    payload: Dict[str, Any]
+    turn: int
+
+@dataclass
 class Signal:
     signal_type: str        # KeywordSignal, EntitySignal, ConversationSignal, MemorySignal
     source: IntentSource

@@ -28,11 +28,14 @@ class MemoryStore(IMemoryStore):
 
     def clear_memory(self, session_id: str) -> None:
         """
-        Clears message history for a given session.
+        Clears message history and memory manager state for a given session.
         """
         if session_id in self._stores:
             del self._stores[session_id]
-            logger.info(f"Cleared memory store for session {session_id}")
+        from backend.conversation.memory_engine import _managers
+        if session_id in _managers:
+            del _managers[session_id]
+        logger.info(f"Cleared memory store and manager state for session {session_id}")
 
 def get_memory_store() -> IMemoryStore:
     return MemoryStore()
