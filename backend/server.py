@@ -733,8 +733,8 @@ async def process_document_background(filename: str, page: str, section: str, ti
         )
     logging.info(f"Successfully processed and indexed {len(chunks)} chunks from {filename} in background.")
 
-@api_router.get("/health")
-async def health_check() -> Dict[str, Any]:
+@api_router.get("/health/details")
+async def detailed_health_check() -> Dict[str, Any]:
     """Production health & diagnostic status endpoint."""
     meta = vstore.get_metadata()
     count = vstore.get_chunk_count()
