@@ -220,6 +220,30 @@ class SuggestionResult:
     total_candidates_generated: int = 0
     selection_reasoning: str = ""
 
+class ValidationSeverity(Enum):
+    INFO = "INFO"
+    WARNING = "WARNING"
+    CRITICAL = "CRITICAL"
+
+@dataclass
+class ValidationRuleResult:
+    rule_name: str
+    passed: bool
+    severity: ValidationSeverity
+    message: str
+    repair_action: Optional[str] = None
+
+@dataclass
+class ValidationReport:
+    is_valid: bool
+    score: float                         # 0.0 to 1.0 quality score
+    rule_results: List[ValidationRuleResult] = field(default_factory=list)
+    original_text: str = ""
+    repaired_text: str = ""
+    is_repaired: bool = False
+    is_fallback_triggered: bool = False
+    summary_reasoning: str = ""
+
 @dataclass
 class Signal:
     signal_type: str        # KeywordSignal, EntitySignal, ConversationSignal, MemorySignal
