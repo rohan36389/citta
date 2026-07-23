@@ -257,7 +257,10 @@ class EntityResolver:
 
 @lru_cache(maxsize=2048)
 def _resolve_cached(query: str) -> Dict[str, Any]:
-    from knowledge_registry import get_registry
+    try:
+        from knowledge_registry import get_registry
+    except ImportError:
+        from backend.knowledge_registry import get_registry
     registry = get_registry()
     resolver = EntityResolver(registry)
     return resolver.resolve(query)
@@ -265,6 +268,9 @@ def _resolve_cached(query: str) -> Dict[str, Any]:
 def resolve(query: str, debug: bool = False) -> Dict[str, Any]:
     """Expose simple public resolve API using cached resolver."""
     if debug:
-        from knowledge_registry import get_registry
+        try:
+            from knowledge_registry import get_registry
+        except ImportError:
+            from backend.knowledge_registry import get_registry
         return EntityResolver(get_registry()).resolve(query, debug=True)
     return _resolve_cached(query)

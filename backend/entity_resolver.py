@@ -30,9 +30,15 @@ def resolve_entity_dynamic(
     Resolves the canonical entity ID using the single canonical entity_lookup and strict precedence order.
     Supports USE_NEW_ENTITY_RESOLVER rollout feature flag wrapping new core.entity_resolver.
     """
-    import config
+    try:
+        import config
+    except ImportError:
+        from backend import config
     if getattr(config, "USE_NEW_ENTITY_RESOLVER", True):
-        import core.entity_resolver as core_resolver
+        try:
+            import core.entity_resolver as core_resolver
+        except ImportError:
+            from backend.core import entity_resolver as core_resolver
         res = core_resolver.resolve(query)
         # Handle context pronoun override if new resolver didn't find one but pronouns match
         if not res["entity_id"] and active_entity and contains_pronouns(query):

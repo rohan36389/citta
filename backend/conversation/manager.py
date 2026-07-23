@@ -75,6 +75,28 @@ class ConversationManager:
 
         effective_query = coref_result.resolved_query
 
+        # 1c. Entity Resolver & Memory Event Generation
+        try:
+            from backend.knowledge_registry import KnowledgeRegistry
+            from backend.entity_resolver import resolve_entity_dynamic
+            kr = KnowledgeRegistry()
+            ent_id, conf, match, _ = resolve_entity_dynamic(
+                effective_query, kr.entities, kr.entity_lookup, kr.aliases, kr.unified_vocabulary
+            )
+            if ent_id:
+                ent_obj = kr.entities.get(ent_id, {})
+                ent_name = ent_obj.get("name", ent_id) if isinstance(ent_obj, dict) else ent_id
+                ent_reg = ent_obj.get("registry", "SOLUTIONS") if isinstance(ent_obj, dict) else "SOLUTIONS"
+                context.active_entity_id = ent_id
+                context.active_registry = ent_reg
+                mem_mgr.apply_event(MemoryEvent(
+                    event_type="ENTITY_DETECTED",
+                    payload={"entity_id": ent_id, "name": ent_name, "registry": ent_reg},
+                    turn=context.turn_count + 1
+                ))
+        except Exception as e:
+            logger.warning(f"EntityResolver invocation error in manager.py: {e}")
+
         # 2. Understanding Engine analyzes intent & discovery indicators
         t_now = time.perf_counter()
         intent = self.understanding_engine.analyze_intent(effective_query, context)
