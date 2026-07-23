@@ -65,9 +65,10 @@ class ConversationManager:
 
         # 3. Context Engine evaluates stage transition
         t_now = time.perf_counter()
-        if intent.primary_intent == "demo_scheduling":
+        p_intent = intent.primary_intent.lower()
+        if p_intent in ["demo_scheduling", "demo request"]:
             self.context_engine.transition_stage(context, "Demo Scheduling")
-        elif intent.primary_intent == "pricing_inquiry":
+        elif p_intent in ["pricing_inquiry", "pricing"]:
             self.context_engine.transition_stage(context, "Objection Handling")
         elif context.current_stage == "Greeting":
             self.context_engine.transition_stage(context, "Discovery")

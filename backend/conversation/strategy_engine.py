@@ -32,11 +32,12 @@ class StrategyEngine(IStrategyEngine):
             length = "Medium"
             
         # Determine strategy from primary intent
-        if intent.primary_intent == "pricing_inquiry":
+        p_intent = intent.primary_intent.lower()
+        if p_intent in ["pricing_inquiry", "pricing"]:
             strat = "Objection"
             checklist = ["Handle commercial objections using custom quotes recommendation", "Suggest demo scheduling"]
             active_rules = ["Never guess custom pricing parameters"]
-        elif intent.primary_intent == "technical_validation":
+        elif p_intent in ["technical_validation", "integration", "architecture", "features", "workflow"]:
             strat = "Educational"
             audience = "Developer"
             checklist = ["Provide system components overview", "Recommend technical sandbox session"]

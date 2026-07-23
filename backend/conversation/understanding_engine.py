@@ -6,39 +6,31 @@ from backend.conversation.config import LEAD_QUALIFICATION_WEIGHTS
 
 logger = logging.getLogger(__name__)
 
+from backend.conversation.intent_engine import get_enterprise_intent_engine
+
 class UnderstandingEngine(IUnderstandingEngine):
     """
     Decodes user intent (multi-intent), customer discovery indicators, 
     and applies lead qualification rules.
     """
     def __init__(self):
-        pass
+        self.intent_engine = get_enterprise_intent_engine()
 
     def analyze_intent(self, query: str, context: ConversationContext) -> IntentAnalysis:
         """
-        Extracts primary and secondary user intents dynamically.
+        Extracts primary and secondary user intents dynamically via EnterpriseIntentEngine.
         """
-        q = query.lower()
-        primary = "general_inquiry"
-        secondary: List[str] = []
+        rich_res = self.intent_engine.analyze(query, context)
         
-        # Simple rule-based classification stubs
-        if "compare" in q or "vs" in q or "difference" in q:
-            primary = "comparison"
-        elif "price" in q or "cost" in q or "budget" in q or "quote" in q:
-            primary = "pricing_inquiry"
-        elif "how to" in q or "api" in q or "integrate" in q or "architecture" in q or "setup" in q:
-            primary = "technical_validation"
-        elif "demo" in q or "schedule" in q or "talk to sales" in q or "meeting" in q:
-            primary = "demo_scheduling"
-        elif "who" in q or "founder" in q or "ceo" in q or "team" in q:
-            primary = "leadership_lookup"
-            
-        # Detect secondary indicators
-        if "manufacturing" in q or "retail" in q or "healthcare" in q or "finance" in q:
-            secondary.append("industry_filtering")
-            
-        return IntentAnalysis(primary_intent=primary, secondary_intents=secondary)
+        primary_str = rich_res.primary_intent.intent.value.lower()
+        secondary_strs = [s.intent.value.lower() for s in rich_res.secondary_intents]
+        
+        return IntentAnalysis(
+            primary_intent=primary_str,
+            secondary_intents=secondary_strs,
+            confidence=rich_res.primary_intent.overall_confidence,
+            rich_result=rich_res
+        )
 
     def run_discovery(self, query: str, intent: IntentAnalysis, context: ConversationContext) -> DiscoveryState:
         """

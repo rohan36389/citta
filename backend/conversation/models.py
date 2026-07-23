@@ -12,12 +12,82 @@ class ConversationContext:
     active_registry: Optional[str] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
 
+from enum import Enum
+from typing import Dict, Any, List, Optional, Union
+
+class BusinessIntent(Enum):
+    OVERVIEW = "Overview"
+    AVAILABILITY = "Availability"
+    FEATURES = "Features"
+    BENEFITS = "Benefits"
+    WORKFLOW = "Workflow"
+    ARCHITECTURE = "Architecture"
+    PRICING = "Pricing"
+    INTEGRATION = "Integration"
+    COMPARISON = "Comparison"
+    INDUSTRIES = "Industries"
+    CASE_STUDIES = "Case Studies"
+    IMPLEMENTATION = "Implementation"
+    SUPPORT = "Support"
+    CONTACT = "Contact"
+    LEADERSHIP = "Leadership"
+    DEMO_REQUEST = "Demo Request"
+    REQUIREMENT_GATHERING = "Requirement Gathering"
+    RECOMMENDATION = "Recommendation"
+    PROBLEM_STATEMENT = "Problem Statement"
+    COMPLIANCE = "Compliance"
+    SECURITY = "Security"
+    MIGRATION = "Migration"
+    LICENSING = "Licensing"
+    SCALABILITY = "Scalability"
+    UNKNOWN = "Unknown"
+
+class ConversationalIntent(Enum):
+    GREETING = "Greeting"
+    CONFIRMATION = "Confirmation"
+    CLARIFICATION = "Clarification"
+    CONTINUE_TOPIC = "Continue Previous Topic"
+    GOODBYE = "Goodbye"
+    SMALL_TALK = "Small Talk"
+    NONE = "None"
+
+class IntentSource(Enum):
+    MESSAGE = "Message"
+    MEMORY = "Memory"
+    CONVERSATION_CONTEXT = "Conversation Context"
+    KNOWLEDGE_BASE = "Knowledge Base"
+
+@dataclass
+class Signal:
+    signal_type: str        # KeywordSignal, EntitySignal, ConversationSignal, MemorySignal
+    source: IntentSource
+    value: str
+    weight: float
+
+@dataclass
+class IntentCandidate:
+    intent: Union[BusinessIntent, ConversationalIntent]
+    signals: List[Signal]
+    detection_confidence: float
+    ranking_confidence: float
+    overall_confidence: float
+    reasoning: str
+
+@dataclass
+class EnterpriseIntentResult:
+    primary_intent: IntentCandidate
+    secondary_intents: List[IntentCandidate]
+    conversational_intent: Optional[IntentCandidate]
+    raw_query: str
+    normalized_query: str
+
 @dataclass
 class IntentAnalysis:
     primary_intent: str
     secondary_intents: List[str] = field(default_factory=list)
     confidence: float = 1.0
     entities: List[Dict[str, Any]] = field(default_factory=list)
+    rich_result: Optional[EnterpriseIntentResult] = None
 
 @dataclass
 class DiscoveryState:

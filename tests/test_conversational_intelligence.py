@@ -24,7 +24,7 @@ class TestConversationalIntelligence(unittest.TestCase):
         self.assertIsNotNone(res.text)
         self.assertGreater(len(res.suggestions), 0)
         self.assertIsNotNone(res.explainability)
-        self.assertEqual(res.explainability.intent, "general_inquiry")
+        self.assertEqual(res.explainability.intent, "unknown")
         self.assertEqual(res.explainability.stage, "Discovery")
         
         # Discovery variables should have been modified/prepared
@@ -47,7 +47,7 @@ class TestConversationalIntelligence(unittest.TestCase):
         res = manager.process_turn("Can CittaAI integrate with our custom CRM APIs?", "session_tech")
         
         self.assertIsInstance(res, ResponseComposition)
-        self.assertEqual(res.explainability.intent, "technical_validation")
+        self.assertEqual(res.explainability.intent, "integration")
         self.assertEqual(res.explainability.strategy, "Educational")
 
 if __name__ == "__main__":
