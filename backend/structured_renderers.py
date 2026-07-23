@@ -306,6 +306,28 @@ def render_section(obj: Any, section: str) -> str:
     sec = (section or "").lower().strip()
     if sec in ["best_for", "target", "audience"]:
         return render_target_users(obj)
+    if sec in ["how_it_works", "workflow", "workflows"]:
+        workflows = getattr(obj, "workflows", [])
+        if not workflows and isinstance(obj, dict):
+            workflows = obj.get("workflows", [])
+        if workflows:
+            title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
+            steps = []
+            for step in workflows:
+                if hasattr(step, "step"):
+                    steps.append(f"{step.step}. **{clean_val(step.title)}**: {clean_val(step.description)}")
+                else:
+                    steps.append(f"{step.get('step', '')}. **{clean_val(step.get('title'))}**: {clean_val(step.get('description'))}")
+            wf_str = "\n".join(steps)
+            return sanitize_conversational_text(f"### How {title} Works\n\n{wf_str}")
+    if sec in ["benefits", "benefit", "advantages"]:
+        benefits = getattr(obj, "benefits", [])
+        if not benefits and isinstance(obj, dict):
+            benefits = obj.get("benefits", [])
+        if benefits:
+            title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
+            ben_bullets = "\n".join([f"• {clean_val(b)}" for b in benefits if clean_val(b)])
+            return sanitize_conversational_text(f"### Key Benefits of {title}\n\n{ben_bullets}")
     return render_by_type(obj)
 
 def render_by_type(obj: Any) -> str:

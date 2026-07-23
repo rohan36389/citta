@@ -45,3 +45,7 @@ SQLITE_DB_PATH = os.path.abspath(os.path.join(ROOT_DIR, os.environ.get("SQLITE_D
 # Environment flags
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "development")
 DEBUG = os.environ.get("DEBUG", "true").lower() in ("true", "1", "yes")
+
+# Feature flags
+USE_NEW_ENTITY_RESOLVER = os.environ.get("USE_NEW_ENTITY_RESOLVER", "true").lower() in ("true", "1", "yes")
+

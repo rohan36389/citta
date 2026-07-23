@@ -206,120 +206,117 @@ class DeterministicEngine:
                         "metrics": {"resolved_entity": "NONE", "resolved_registry": "CASE_STUDIES"}
                     }
 
-            # Issue 4: Product Understanding Graceful Fallback ("How Pharma OS works")
-            if any(w in q_lower for w in ["how", "work", "workflow"]) and any(p in q_lower for p in ["pharma", "education", "real estate", "realestate", "ecommerce", "whatsapp", "influencer"]):
-                matched_id = None
-                if "pharma" in q_lower: matched_id = "solution_pharma_os"
-                elif "education" in q_lower: matched_id = "solution_education_os"
-                elif "real estate" in q_lower or "realestate" in q_lower: matched_id = "solution_real_estate_os"
-                elif "ecommerce" in q_lower: matched_id = "solution_ecommerce_os"
-                elif "whatsapp" in q_lower: matched_id = "product_whatsapp_marketing"
-                elif "influencer" in q_lower: matched_id = "product_influencer_marketing"
+            import config
+            if getattr(config, "USE_NEW_ENTITY_RESOLVER", True):
+                import core.entity_resolver as core_resolver
+                res = core_resolver.resolve(query)
+                resolved_entity_id = res["entity_id"]
+                entity_confidence = res["entity_confidence"]
+                routing_confidence = res["routing_confidence"]
+                confidence_level = res["confidence_level"]
+                res_source = res["source"]
 
-                if matched_id and matched_id in self.ks.reg.registry_by_id:
-                    obj = self.ks.reg.registry_by_id[matched_id]
-                    title = clean_val(obj.title or obj.name)
-                    overview = clean_val(obj.overview or obj.description)
-                    capabilities = getattr(obj, "capabilities", [])
-                    workflows = getattr(obj, "workflows", [])
+                # Handle dynamic contacts alias if resolver missed it but keywords match
+                if not resolved_entity_id and any(w in q_lower for w in ["email", "phone", "contact", "address", "office"]):
+                    resolved_entity_id = "contact_info"
 
-                    if workflows:
-                        wf_str = "\n".join([f"{step.step}. **{step.title}**: {step.description}" for step in workflows])
-                        resp_md = f"### How {title} Works\n\n{wf_str}"
-                    else:
-                        cap_bullets = ""
-                        if capabilities:
-                            cap_bullets = "\n" + "\n".join([f"• **{cap.title}**: {cap.description}" for cap in capabilities[:4]])
-                        resp_md = (
-                            f"Regarding **{title}**, here is an overview of how the solution works:\n\n{overview}{cap_bullets}"
-                        )
+                if resolved_entity_id:
+                    obj = self.ks.reg.registry_by_id.get(resolved_entity_id)
+                    if obj and obj.type.value in ["product", "solution", "service", "case_study", "contact", "award", "faq"]:
+                        import structured_renderers
+                        sec = "best_for" if any(w in q_lower for w in ["who is it for", "who is it designed for", "target audience", "intended users", "designed for"]) else ("how_it_works" if any(w in q_lower for w in ["how", "work", "workflow"]) else ("benefits" if any(w in q_lower for w in ["benefit", "advantage"]) else "overview"))
+                        rendered_md = structured_renderers.render_section(obj, sec)
+                        target_url = obj.url
+                        nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, target_url, entity_name=obj.name, entity_type=obj.type.value.upper())
+                        sugs = self.follow_engine.generate_suggestions(entity_id=obj.id, registry_type=obj.type.value.upper())
+                        
+                        return {
+                            "response": rendered_md,
+                            "source": f"Registry Object Match: {obj.id}",
+                            "verified": True,
+                            "confidence": entity_confidence,
+                            "navigation": nav_link,
+                            "action_choices": action_choices,
+                            "suggestions": sugs,
+                            "metrics": {
+                                "resolved_entity": obj.id,
+                                "resolved_registry": obj.type.value.upper(),
+                                "resolved_section": sec,
+                                "entity_confidence": entity_confidence,
+                                "routing_confidence": routing_confidence,
+                                "confidence_level": confidence_level,
+                                "resolution_source": res_source
+                            }
+                        }
+            else:
+                # Legacy intercepts
+                # Issue 4: Product Understanding Graceful Fallback ("How Pharma OS works")
+                if any(w in q_lower for w in ["how", "work", "workflow"]) and any(p in q_lower for p in ["pharma", "education", "real estate", "realestate", "ecommerce", "whatsapp", "influencer"]):
+                    matched_id = None
+                    if "pharma" in q_lower: matched_id = "solution_pharma_os"
+                    elif "education" in q_lower: matched_id = "solution_education_os"
+                    elif "real estate" in q_lower or "realestate" in q_lower: matched_id = "solution_real_estate_os"
+                    elif "ecommerce" in q_lower: matched_id = "solution_ecommerce_os"
+                    elif "whatsapp" in q_lower: matched_id = "product_whatsapp_marketing"
+                    elif "influencer" in q_lower: matched_id = "product_influencer_marketing"
 
-                    target_url = obj.url
-                    nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, target_url, entity_name=obj.name, entity_type=obj.type.value.upper())
-                    sugs = self.follow_engine.generate_suggestions(entity_id=obj.id, registry_type=obj.type.value.upper())
-                    return {
-                        "response": resp_md,
-                        "source": f"Registry Object: {obj.id}",
-                        "verified": True,
-                        "confidence": 1.0,
-                        "navigation": nav_link,
-                        "action_choices": action_choices,
-                        "suggestions": sugs,
-                        "metrics": {"resolved_entity": obj.id, "resolved_registry": obj.type.value.upper(), "resolved_section": "how_it_works"}
-                    }
+                    if matched_id and matched_id in self.ks.reg.registry_by_id:
+                        obj = self.ks.reg.registry_by_id[matched_id]
+                        title = clean_val(obj.title or obj.name)
+                        overview = clean_val(obj.overview or obj.description)
+                        capabilities = getattr(obj, "capabilities", [])
+                        workflows = getattr(obj, "workflows", [])
 
-            # Catalog List Intercept for generic catalog queries
-            if any(k in q_lower for k in ["solution", "product", "service"]) and not any(p in q_lower for p in ["pharma", "education", "real estate", "realestate", "ecommerce", "whatsapp", "influencer", "data engineering", "agentic", "strategy", "martech"]):
-                if "solution" in q_lower:
-                    solutions = self.ks.list_entities(tenant_id, "SOLUTIONS")
-                    items_str = "\n".join([f"• **{s.get('name')}**: {s.get('summary') or s.get('overview') or s.get('tagline') or s.get('description', '')}" for s in solutions])
-                    target_url = "/solutions"
-                    nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, target_url, entity_type="SOLUTIONS")
-                    return {
-                        "response": f"⚙️ **{tenant.name} Solutions Catalog**\n\n{items_str}",
-                        "source": "Solutions Registry",
-                        "verified": True,
-                        "confidence": 1.0,
-                        "navigation": nav_link,
-                        "action_choices": action_choices,
-                        "suggestions": ["Explain E-Commerce OS", "Explain Real Estate OS", "Explain Pharma OS"],
-                        "metrics": {"resolved_entity": None, "resolved_registry": "SOLUTIONS"}
-                    }
-                elif "product" in q_lower:
-                    products = self.ks.list_entities(tenant_id, "PRODUCTS")
-                    items_str = "\n".join([f"• **{p.get('name')}**: {p.get('summary') or p.get('overview') or p.get('tagline') or p.get('description', '')}" for p in products])
-                    target_url = "/products"
-                    nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, target_url, entity_type="PRODUCTS")
-                    return {
-                        "response": f"🏆 **{tenant.name} Products Catalog**\n\n{items_str}",
-                        "source": "Products Registry",
-                        "verified": True,
-                        "confidence": 1.0,
-                        "navigation": nav_link,
-                        "action_choices": action_choices,
-                        "suggestions": ["Explain WhatsApp Marketing Platform", "Explain Influencer Marketing Platform"],
-                        "metrics": {"resolved_entity": None, "resolved_registry": "PRODUCTS"}
-                    }
-                elif "service" in q_lower:
-                    services = self.ks.list_entities(tenant_id, "SERVICES")
-                    items_str = "\n".join([f"• **{s.get('name')}**: {s.get('summary') or s.get('overview') or s.get('tagline') or s.get('description', '')}" for s in services])
-                    target_url = "/services"
-                    nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, target_url, entity_type="SERVICES")
-                    return {
-                        "response": f"🛠️ **{tenant.name} Services Catalog**\n\n{items_str}",
-                        "source": "Services Registry",
-                        "verified": True,
-                        "confidence": 1.0,
-                        "navigation": nav_link,
-                        "action_choices": action_choices,
-                        "suggestions": ["What does Data Engineering include?", "Explain Enterprise & Agentic AI service"],
-                        "metrics": {"resolved_entity": None, "resolved_registry": "SERVICES"}
-                    }
+                        if workflows:
+                            wf_str = "\n".join([f"{step.step}. **{step.title}**: {step.description}" for step in workflows])
+                            resp_md = f"### How {title} Works\n\n{wf_str}"
+                        else:
+                            cap_bullets = ""
+                            if capabilities:
+                                cap_bullets = "\n" + "\n".join([f"• **{cap.title}**: {cap.description}" for cap in capabilities[:4]])
+                            resp_md = (
+                                f"Regarding **{title}**, here is an overview of how the solution works:\n\n{overview}{cap_bullets}"
+                            )
 
-            # Contact / Location / Email / Phone Query Intercept
-            if any(w in q_lower for w in ["email", "phone", "contact", "address", "office"]):
-                matched_entity_id = "contact_info"
+                        target_url = obj.url
+                        nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, target_url, entity_name=obj.name, entity_type=obj.type.value.upper())
+                        sugs = self.follow_engine.generate_suggestions(entity_id=obj.id, registry_type=obj.type.value.upper())
+                        return {
+                            "response": resp_md,
+                            "source": f"Registry Object: {obj.id}",
+                            "verified": True,
+                            "confidence": 1.0,
+                            "navigation": nav_link,
+                            "action_choices": action_choices,
+                            "suggestions": sugs,
+                            "metrics": {"resolved_entity": obj.id, "resolved_registry": obj.type.value.upper(), "resolved_section": "how_it_works"}
+                        }
 
-            # Matched Entity Fact Intercept
-            if matched_entity_id and matched_entity_id.lower() not in ["none", ""]:
-                obj = self.ks.reg.registry_by_id.get(matched_entity_id)
-                if obj:
-                    import structured_renderers
-                    sec = "best_for" if any(w in q_lower for w in ["who is it for", "who is it designed for", "target audience", "intended users", "designed for"]) else ("how_it_works" if any(w in q_lower for w in ["how", "work", "workflow"]) else ("benefits" if any(w in q_lower for w in ["benefit", "advantage"]) else "overview"))
-                    rendered_md = structured_renderers.render_section(obj, sec)
-                    target_url = obj.url
-                    nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, target_url, entity_name=obj.name, entity_type=obj.type.value.upper())
-                    sugs = self.follow_engine.generate_suggestions(entity_id=obj.id, registry_type=obj.type.value.upper())
-                    return {
-                        "response": rendered_md,
-                        "source": f"Registry Object Match: {obj.id}",
-                        "verified": True,
-                        "confidence": 1.0,
-                        "navigation": nav_link,
-                        "action_choices": action_choices,
-                        "suggestions": sugs,
-                        "metrics": {"resolved_entity": obj.id, "resolved_registry": obj.type.value.upper(), "resolved_section": sec}
-                    }
+                # Contact / Location / Email / Phone Query Intercept
+                matched_id_val = matched_entity_id
+                if any(w in q_lower for w in ["email", "phone", "contact", "address", "office"]):
+                    matched_id_val = "contact_info"
+
+                # Matched Entity Fact Intercept
+                if matched_id_val and matched_id_val.lower() not in ["none", ""]:
+                    obj = self.ks.reg.registry_by_id.get(matched_id_val)
+                    if obj:
+                        import structured_renderers
+                        sec = "best_for" if any(w in q_lower for w in ["who is it for", "who is it designed for", "target audience", "intended users", "designed for"]) else ("how_it_works" if any(w in q_lower for w in ["how", "work", "workflow"]) else ("benefits" if any(w in q_lower for w in ["benefit", "advantage"]) else "overview"))
+                        rendered_md = structured_renderers.render_section(obj, sec)
+                        target_url = obj.url
+                        nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, target_url, entity_name=obj.name, entity_type=obj.type.value.upper())
+                        sugs = self.follow_engine.generate_suggestions(entity_id=obj.id, registry_type=obj.type.value.upper())
+                        return {
+                            "response": rendered_md,
+                            "source": f"Registry Object Match: {obj.id}",
+                            "verified": True,
+                            "confidence": 1.0,
+                            "navigation": nav_link,
+                            "action_choices": action_choices,
+                            "suggestions": sugs,
+                            "metrics": {"resolved_entity": obj.id, "resolved_registry": obj.type.value.upper(), "resolved_section": sec}
+                        }
 
             # Registry Search Intercept
             if intent != IntentType.COUNT:

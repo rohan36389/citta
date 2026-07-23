@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import re
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Set
 
@@ -202,6 +203,14 @@ class KnowledgeRegistry:
             }
         }
 
+    def _clean_key(self, text: str) -> str:
+        if not text:
+            return ""
+        val = str(text).lower().strip()
+        val = re.sub(r"[^\w\s\-\/]", "", val)
+        val = re.sub(r"\s+", " ", val).strip()
+        return val
+
     def _populate_legacy_properties(self):
         # company
         company_obj = self.registry_by_id.get("company_info")
@@ -299,300 +308,282 @@ class KnowledgeRegistry:
     def build_entities(self):
         self.entities = {}
         
-        # Add company as an entity
-        self.entities["company"] = {
-            "id": "company",
-            "type": "company",
-            "name": self.company.get("name", "CittaAI"),
-            "summary": self.company.get("tagline", ""),
-            "description": self.company.get("description", ""),
-            "route": "/about"
-        }
+        # 1. Add Company entity
+        company_obj = self.registry_by_id.get("company_info")
+        if company_obj:
+            self.entities["company_info"] = {
+                "id": "company_info",
+                "type": "company",
+                "name": company_obj.name,
+                "title": company_obj.title,
+                "tagline": company_obj.tagline,
+                "description": company_obj.description,
+                "route": company_obj.url or "/about"
+            }
+            
+        # 2. Add Products, Services, Solutions
+        for obj in self.registry_by_id.values():
+            if obj.type.value in ["product", "service", "solution", "case_study"]:
+                self.entities[obj.id] = self._to_legacy_dict(obj)
+                self.entities[obj.id]["type"] = obj.type.value
+
+        # 3. Add Leadership members
+        lead_obj = self.registry_by_id.get("leadership_info")
         
-        # Add founder
+        # Add Kiran Kumar (Founder & CEO) legacy/canonical entity
         self.entities["founder"] = {
             "id": "founder",
+            "name": "Kiran Kumar",
+            "title": "Founder & CEO",
+            "description": "CittaAI Founder and Chief Executive officer.",
+            "aliases": ["kiran", "kiran kumar", "founder", "ceo"],
             "type": "leadership",
-            "name": self.company.get("founder", "Kiran Kumar"),
-            "summary": "Founder & CEO",
-            "description": "CittaAI Founder & Leadership team.",
             "route": "/about"
         }
-        
-        # Add items from list-based registries
-        for p in self.products:
-            if "id" in p:
-                self.entities[p["id"]] = p
-        for s in self.services:
-            if "id" in s:
-                self.entities[s["id"]] = s
-        for sol in self.solutions:
-            if "id" in sol:
-                self.entities[sol["id"]] = sol
-                
-        # Load case studies entities
-        cs_reg = self.registry_index.get("CASE_STUDIES", {})
-        if cs_reg:
-            for cs in cs_reg.get("entities", []):
-                if "id" in cs:
-                    self.entities[cs["id"]] = cs
 
-        # Load leadership entities
-        lead_reg = self.registry_index.get("LEADERSHIP", {})
-        if lead_reg:
-            all_people = lead_reg.get("leaders", []) + lead_reg.get("others", [])
-            for person in all_people:
-                if "id" in person:
-                    self.entities[person["id"]] = {
-                        "id": person["id"],
-                        "name": person["name"],
-                        "title": person["title"],
-                        "description": person.get("description", ""),
-                        "aliases": person.get("aliases", []),
-                        "type": "leadership",
-                        "route": "/about"
-                    }
+        if your_lead_obj := lead_obj:
+            self.entities["leadership_info"] = {
+                "id": "leadership_info",
+                "type": "leadership",
+                "name": your_lead_obj.name,
+                "title": your_lead_obj.title,
+                "tagline": your_lead_obj.tagline,
+                "description": your_lead_obj.description,
+                "route": your_lead_obj.url or "/about"
+            }
+            for member in your_lead_obj.capabilities:
+                m_id = member.id
+                self.entities[m_id] = {
+                    "id": m_id,
+                    "name": member.title,
+                    "title": member.subtitle,
+                    "description": member.description or "",
+                    "aliases": member.aliases or [],
+                    "type": "leadership",
+                    "route": "/about"
+                }
+
+        # 4. Add contact_info
+        contact_obj = self.registry_by_id.get("contact_info")
+        if contact_obj:
+            self.entities["contact_info"] = self._to_legacy_dict(contact_obj)
+            self.entities["contact_info"]["type"] = "contact"
+
+        # 5. Add awards_recognition
+        rec_obj = self.registry_by_id.get("awards_recognition")
+        if rec_obj:
+            self.entities["awards_recognition"] = self._to_legacy_dict(rec_obj)
+            self.entities["awards_recognition"]["type"] = "award"
+
+        # 6. Add faq_general
+        faq_obj = self.registry_by_id.get("faq_general")
+        if faq_obj:
+            self.entities["faq_general"] = self._to_legacy_dict(faq_obj)
+            self.entities["faq_general"]["type"] = "faq"
 
     def load_routes(self):
         self.routes = {}
         for ent_id, ent in self.entities.items():
             route = ent.get("route")
             if route:
-                if route not in self.routes or ent_id not in ["company", "founder"]:
-                    self.routes[route] = ent_id
+                self.routes[route] = ent_id
 
     def load_aliases(self):
         self.aliases = {}
+        self.alias_lookup = {}
+        self.slug_lookup = {}
+        self.keyword_lookup = {}
         
-        # Ensure compiled entity_index.json exists and contains comprehensive alias mappings
-        entity_index = {
-            "PRODUCTS": {
-                "whatsapp marketing platform": "whatsapp_marketing",
-                "whatsapp marketing": "whatsapp_marketing",
-                "whatsapp platform": "whatsapp_marketing",
-                "wa": "whatsapp_marketing",
-                "influencer marketing platform": "influencer_marketing",
-                "influencer marketing": "influencer_marketing",
-                "influencer platform": "influencer_marketing",
-                "creator platform": "influencer_marketing"
-            },
-            "SERVICES": {
-                "data engineering": "data_engineering",
-                "cloud data platform": "data_engineering",
-                "data engineering service": "data_engineering",
-                "enterprise & agentic ai": "enterprise_agentic_ai",
-                "enterprise agentic ai": "enterprise_agentic_ai",
-                "enterprise ai": "enterprise_agentic_ai",
-                "agentic ai": "enterprise_agentic_ai",
-                "agentic systems": "enterprise_agentic_ai",
-                "ai strategy & advisory": "ai_strategy",
-                "ai strategy": "ai_strategy",
-                "strategy consulting": "ai_strategy",
-                "ai powered marketing": "ai_powered_marketing",
-                "ai-powered marketing": "ai_powered_marketing",
-                "martech 360": "ai_powered_marketing",
-                "marketing automation": "ai_powered_marketing"
-            },
-            "SOLUTIONS": {
-                "ecommerce os": "ecommerce_os",
-                "e-commerce os": "ecommerce_os",
-                "retail os": "ecommerce_os",
-                "pharma & healthcare os": "pharma_os",
-                "pharma os": "pharma_os",
-                "pharmaa os": "pharma_os",
-                "pharmaa": "pharma_os",
-                "healthcare os": "pharma_os",
-                "smart cities os": "smart_cities_os",
-                "urban os": "smart_cities_os",
-                "smart city": "smart_cities_os",
-                "education os": "education_os",
-                "lms os": "education_os",
-                "learning os": "education_os",
-                "real estate os": "real_estate_os",
-                "realestate os": "real_estate_os",
-                "realestate": "real_estate_os",
-                "broker os": "real_estate_os",
-                "property os": "real_estate_os",
-                "enterprise ai os": "enterprise_ai_os"
-            },
-            "CASE_STUDIES": {
-                "case study": "case_studies",
-                "case studies": "case_studies",
-                "jewellery brand": "jewellery_brand_roi",
-                "jewellery": "jewellery_brand_roi",
-                "fmcg brand": "fmcg_social_growth",
-                "fmcg": "fmcg_social_growth",
-                "spices export": "b2b_spices_export",
-                "b2b spices export": "b2b_spices_export"
-            }
-        }
-        try:
-            with open(COMPILED_DIR / "entity_index.json", "w", encoding="utf-8") as f:
-                json.dump(entity_index, f, indent=2)
-        except Exception as e:
-            logger.warning(f"Could not save compiled entity_index.json: {e}")
-
-        index_path = COMPILED_DIR / "entity_index.json"
-        if index_path.exists():
-            try:
-                with open(index_path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                    for domain_key, mapping in data.items():
-                        for alias, ent_id in mapping.items():
-                            self.aliases[alias.lower()] = ent_id
-            except Exception as e:
-                logger.error(f"Error loading entity_index.json aliases: {e}")
+        for obj in self.registry_by_id.values():
+            ent_id = obj.id
+            
+            # Map search aliases & synonyms
+            search_data = getattr(obj, "search", None)
+            if search_data:
+                for alias in search_data.aliases:
+                    a_clean = self._clean_key(alias)
+                    self.alias_lookup[a_clean] = ent_id
+                    self.aliases[a_clean] = ent_id
+                for syn in search_data.synonyms:
+                    a_clean = self._clean_key(syn)
+                    self.alias_lookup[a_clean] = ent_id
+                    self.aliases[a_clean] = ent_id
+                for kw in search_data.primary_keywords:
+                    self.keyword_lookup[self._clean_key(kw)] = ent_id
+                for kw in search_data.secondary_keywords:
+                    self.keyword_lookup[self._clean_key(kw)] = ent_id
+            
+            # Map slug
+            slug_val = getattr(obj, "slug", None)
+            if slug_val:
+                self.slug_lookup[self._clean_key(slug_val)] = ent_id
                 
-        # Inject default company & leadership aliases
-        self.aliases["cittaai"] = "company_info"
-        self.aliases["citta"] = "company_info"
-        self.aliases["company"] = "company_info"
-        self.aliases["founder"] = "founder"
-        self.aliases["ceo"] = "vinay_velivela"
-        self.aliases["cto"] = "akhil_reddy"
-        self.aliases["coo"] = "saladi_chandra_balaji"
-        self.aliases["kiran kumar"] = "founder"
-        self.aliases["vinay velivela"] = "vinay_velivela"
-        self.aliases["vinay"] = "vinay_velivela"
+            # Parse capability-level keywords & aliases
+            caps = getattr(obj, "capabilities", [])
+            for cap in caps:
+                for alias in getattr(cap, "aliases", []):
+                    a_clean = self._clean_key(alias)
+                    self.alias_lookup[a_clean] = ent_id
+                    self.aliases[a_clean] = ent_id
+                for kw in getattr(cap, "keywords", []):
+                    self.keyword_lookup[self._clean_key(kw)] = ent_id
+                for feat in getattr(cap, "features", []):
+                    for kw in getattr(feat, "keywords", []):
+                        self.keyword_lookup[self._clean_key(kw)] = ent_id
+
+        # Also map leadership members
+        lead_obj = self.registry_by_id.get("leadership_info")
+        if your_lead_obj := lead_obj:
+            for member in your_lead_obj.capabilities:
+                m_id = member.id
+                for alias in member.aliases or []:
+                    a_clean = self._clean_key(alias)
+                    self.alias_lookup[a_clean] = m_id
+                    self.aliases[a_clean] = m_id
+
+        # Inject default fallback/convenience aliases dynamically
+        # mapping to their canonical IDs
+        self.aliases[self._clean_key("cittaai")] = "company_info"
+        self.aliases[self._clean_key("citta")] = "company_info"
+        self.aliases[self._clean_key("company")] = "company_info"
+        self.aliases[self._clean_key("founder")] = "founder"
+        self.aliases[self._clean_key("ceo")] = "founder"
+        self.aliases[self._clean_key("cto")] = "akhil_reddy"
+        self.aliases[self._clean_key("coo")] = "saladi_chandra_balaji"
+        self.aliases[self._clean_key("kiran kumar")] = "founder"
+        self.aliases[self._clean_key("vinay velivela")] = "vinay_velivela"
+        self.aliases[self._clean_key("vinay")] = "vinay_velivela"
+        self.aliases[self._clean_key("akhil")] = "akhil_reddy"
+        self.aliases[self._clean_key("balaji")] = "saladi_chandra_balaji"
+
+        # Apply same injects to alias_lookup
+        for k, v in self.aliases.items():
+            self.alias_lookup[k] = v
 
     def build_unified_vocabulary(self):
-        # Auto-compile abbreviations, synonyms, and aliases into one single-stage lookup map
         self.unified_vocabulary = {}
+        self.abbreviations = {}
         
         # 1. Map canonical IDs
         for ent_id in self.entities.keys():
-            self.unified_vocabulary[ent_id.lower().replace("_", " ")] = ent_id
-            self.unified_vocabulary[ent_id.lower()] = ent_id
-
-        # 2. Map direct entity names
+            self.unified_vocabulary[self._clean_key(ent_id.replace("_", " "))] = ent_id
+            self.unified_vocabulary[self._clean_key(ent_id)] = ent_id
+            
+        # 2. Map direct entity names & titles
         for ent_id, ent in self.entities.items():
             name = ent.get("name")
             if name:
-                self.unified_vocabulary[name.lower()] = ent_id
-                
+                self.unified_vocabulary[self._clean_key(name)] = ent_id
             title = ent.get("title")
             if title:
-                self.unified_vocabulary[title.lower()] = ent_id
+                self.unified_vocabulary[self._clean_key(title)] = ent_id
 
-        # 3. Map registry aliases
-        for alias, ent_id in self.aliases.items():
-            self.unified_vocabulary[alias.lower()] = ent_id
-            
+        # 3. Map registry aliases, slugs, and keywords
+        for k, v in self.alias_lookup.items():
+            self.unified_vocabulary[self._clean_key(k)] = v
+        for k, v in self.slug_lookup.items():
+            self.unified_vocabulary[self._clean_key(k)] = v
+        for k, v in self.keyword_lookup.items():
+            self.unified_vocabulary[self._clean_key(k)] = v
+
         # 4. Map static abbreviations and registry aliases from metadata
         for reg_type, reg in self.registry_index.items():
             meta = reg.get("metadata", {})
             abbs = meta.get("abbreviations", {})
             self.abbreviations.update(abbs)
             
-            # Map registry aliases to registry type
-            aliases = meta.get("aliases", [])
-            for alias in aliases:
-                alias_clean = alias.lower().strip()
+            for alias in meta.get("aliases", []):
+                alias_clean = self._clean_key(alias)
                 if alias_clean not in self.unified_vocabulary:
                     self.unified_vocabulary[alias_clean] = reg_type
             
-            # Map dynamic keywords to this registry domain type
-            keywords = meta.get("keywords", [])
-            for kw in keywords:
-                # If keyword matches a specific entity, point to it, else register under registry domain
-                kw_clean = kw.lower()
+            for kw in meta.get("keywords", []):
+                kw_clean = self._clean_key(kw)
                 if kw_clean not in self.unified_vocabulary:
                     self.unified_vocabulary[kw_clean] = reg_type.lower()
-                    
-        # Expose a few hardcoded shorthand mappings to unify
-        self.unified_vocabulary["wa"] = "whatsapp_marketing"
-        self.unified_vocabulary["whatsapp"] = "whatsapp_marketing"
-        self.unified_vocabulary["influencer"] = "influencer_marketing"
-        self.unified_vocabulary["e-commerce"] = "ecommerce_os"
-        self.unified_vocabulary["ecommerce"] = "ecommerce_os"
-        self.unified_vocabulary["pharma"] = "pharma_os"
-        self.unified_vocabulary["healthcare"] = "pharma_os"
-        self.unified_vocabulary["smart city"] = "smart_cities_os"
-        self.unified_vocabulary["real estate"] = "real_estate_os"
-        self.unified_vocabulary["ai os"] = "enterprise_ai_os"
-        self.unified_vocabulary["enterprise ai"] = "enterprise_ai_os"
 
-        # Inject standard abbreviation mappings for expansion
+        # Injections
+        self.unified_vocabulary[self._clean_key("wa")] = "whatsapp_marketing"
+        self.unified_vocabulary[self._clean_key("whatsapp")] = "whatsapp_marketing"
+        self.unified_vocabulary[self._clean_key("influencer")] = "influencer_marketing"
+        self.unified_vocabulary[self._clean_key("e-commerce")] = "ecommerce_os"
+        self.unified_vocabulary[self._clean_key("ecommerce")] = "ecommerce_os"
+        self.unified_vocabulary[self._clean_key("pharma")] = "pharma_os"
+        self.unified_vocabulary[self._clean_key("healthcare")] = "pharma_os"
+        self.unified_vocabulary[self._clean_key("smart city")] = "smart_cities_os"
+        self.unified_vocabulary[self._clean_key("real estate")] = "real_estate_os"
+        self.unified_vocabulary[self._clean_key("ai os")] = "enterprise_ai_os"
+        self.unified_vocabulary[self._clean_key("enterprise ai")] = "enterprise_ai_os"
+
         self.abbreviations["wa"] = "whatsapp_marketing"
         self.abbreviations["ecommerce"] = "ecommerce_os"
         self.abbreviations["pharma"] = "pharma_os"
 
     def build_entity_lookup(self):
-        """
-        Builds the single canonical runtime lookup map (alias -> entity_id).
-        Merges:
-        1. Canonical IDs and Entity Names
-        2. Entity Aliases (entity.get("aliases"))
-        3. entity_index.json Aliases (self.aliases)
-        4. Unified Vocabulary entries mapping to valid entities
-        5. Registry Metadata Aliases mapping to valid entities
-        """
         self.entity_lookup = {}
-
-        # 1. Canonical IDs & Entity Names
+        
+        # 1. Canonical IDs and Entity Names
         for ent_id, ent in self.entities.items():
-            self.entity_lookup[ent_id.lower()] = ent_id
-            self.entity_lookup[ent_id.lower().replace("_", " ")] = ent_id
+            self.entity_lookup[self._clean_key(ent_id)] = ent_id
+            self.entity_lookup[self._clean_key(ent_id.replace("_", " "))] = ent_id
             name = ent.get("name") or ent.get("title")
             if name:
-                self.entity_lookup[name.lower().strip()] = ent_id
+                self.entity_lookup[self._clean_key(name)] = ent_id
 
         # 2. Entity Aliases (from individual entity data)
         for ent_id, ent in self.entities.items():
             aliases = ent.get("aliases", [])
             for alias in aliases:
-                alias_clean = str(alias).lower().strip()
+                alias_clean = self._clean_key(alias)
                 if alias_clean and alias_clean not in self.entity_lookup:
                     self.entity_lookup[alias_clean] = ent_id
 
-        # 3. Entity Index Aliases (self.aliases loaded from entity_index.json)
-        for alias, ent_id in self.aliases.items():
-            alias_clean = alias.lower().strip()
+        # 3. Merging alias_lookup (from load_aliases)
+        for alias, ent_id in self.alias_lookup.items():
+            alias_clean = self._clean_key(alias)
             if alias_clean and ent_id in self.entities:
                 if alias_clean not in self.entity_lookup:
                     self.entity_lookup[alias_clean] = ent_id
 
-        # 4. Unified Vocabulary entries mapping to valid entity IDs
-        for vocab_key, mapped_id in self.unified_vocabulary.items():
-            vocab_clean = vocab_key.lower().strip()
-            if vocab_clean and mapped_id in self.entities:
-                if vocab_clean not in self.entity_lookup:
-                    self.entity_lookup[vocab_clean] = mapped_id
-
-        # 5. Registry Metadata Aliases mapping to valid entity IDs
-        for reg_type, reg in self.registry_index.items():
-            meta = reg.get("metadata", {})
-            for alias in meta.get("aliases", []):
-                alias_clean = str(alias).lower().strip()
-                if alias_clean in self.entities and alias_clean not in self.entity_lookup:
-                    self.entity_lookup[alias_clean] = alias_clean
-
-        logger.info(f"Built canonical runtime entity_lookup map with {len(self.entity_lookup)} entries.")
-
     def build_knowledge_graph(self):
-        # Build Knowledge Graph runtime-only object
         self.knowledge_graph = {}
         
-        # 1. Initialize nodes
+        type_to_registry = {
+            "product": "PRODUCTS",
+            "service": "SERVICES",
+            "solution": "SOLUTIONS",
+            "company": "COMPANY_INFO",
+            "leadership": "LEADERSHIP",
+            "case_study": "CASE_STUDIES",
+            "award": "RECOGNITION",
+            "faq": "FAQ",
+            "contact": "CONTACT"
+        }
+        
         for ent_id, ent in self.entities.items():
-            belongs_to = "UNKNOWN"
-            for reg_type, reg in self.registry_index.items():
-                if ent in reg.get("entities", []):
-                    belongs_to = reg_type
-                    break
+            ent_type = ent.get("type", "UNKNOWN")
+            belongs_to = type_to_registry.get(ent_type, "UNKNOWN")
             
+            # Retrieve from registry_by_id if it exists to get relationships/depends_on/etc
+            reg_obj = self.registry_by_id.get(ent_id)
+            related_entities = []
+            depends_on = []
+            if reg_obj:
+                related_entities = [r.target for r in reg_obj.relationships]
+                depends_on = getattr(reg_obj, "depends_on", [])
+                
             self.knowledge_graph[ent_id] = {
                 "id": ent_id,
                 "name": ent.get("name") or ent.get("title") or ent_id,
                 "belongs_to": belongs_to,
-                "related_entities": ent.get("related_entities", []),
+                "related_entities": related_entities or ent.get("related_entities", []),
                 "case_studies": [],
                 "technologies": ent.get("technologies", []),
                 "integrations": ent.get("integrations", []),
-                "depends_on": ent.get("depends_on", [])
+                "depends_on": depends_on or ent.get("depends_on", [])
             }
 
-        # 2. Back-populate case study links
+        # Back-populate case study links
         cs_reg = self.registry_index.get("CASE_STUDIES", {})
         if cs_reg:
             for cs in cs_reg.get("entities", []):
@@ -603,62 +594,104 @@ class KnowledgeRegistry:
                         self.knowledge_graph[rel_id]["case_studies"].append(cs_id)
 
     def validate(self):
-        product_ids = {p.get("id") for p in self.products if p.get("id")}
-        solution_ids = {s.get("id") for s in self.solutions if s.get("id")}
-        service_ids = {s.get("id") for s in self.services if s.get("id")}
+        # 1. No duplicate IDs check (Fatal)
+        id_counts = {}
+        for obj in self.registry_by_id.values():
+            id_counts[obj.id] = id_counts.get(obj.id, 0) + 1
+        duplicates = [k for k, v in id_counts.items() if v > 1]
+        if duplicates:
+            raise ValueError(f"[Fatal Validation Error] Duplicate Entity IDs detected in registry loading: {duplicates}")
 
-        overlap_ps = product_ids.intersection(solution_ids)
-        if overlap_ps:
-            raise ValueError(f"Registry Overlap: IDs exist in both products and solutions: {overlap_ps}")
+        # 2. Every belongs_to registry exists (Fatal)
+        valid_registries = {"PRODUCTS", "SERVICES", "SOLUTIONS", "COMPANY_INFO", "LEADERSHIP", "RECOGNITION", "CONTACT", "FAQ", "CASE_STUDIES"}
+        for ent_id, node in self.knowledge_graph.items():
+            belongs_to = node.get("belongs_to")
+            if belongs_to not in valid_registries:
+                raise ValueError(f"[Fatal Validation Error] Entity '{ent_id}' belongs to invalid registry: '{belongs_to}'")
 
-        overlap_ss = solution_ids.intersection(service_ids)
-        if overlap_ss:
-            raise ValueError(f"Registry Overlap: IDs exist in both solutions and services: {overlap_ss}")
+        # 3. Every related entity exists (Fatal)
+        for ent_id, ent in self.entities.items():
+            related = ent.get("related_entities", [])
+            for rel in related:
+                if rel not in self.entities and rel not in self.registry_by_id:
+                    raise ValueError(f"[Fatal Validation Error] Entity '{ent_id}' references missing related entity: '{rel}'")
 
-        for r, ent_id in self.routes.items():
-            if not r.startswith("/"):
-                raise ValueError(f"Registry Validation Error: Entity '{ent_id}' has invalid route path '{r}'")
+        # 4. Every knowledge graph node exists (Fatal)
+        for node_id in self.knowledge_graph.keys():
+            if node_id not in self.entities:
+                raise ValueError(f"[Fatal Validation Error] Knowledge graph node '{node_id}' does not exist in entities list.")
+
+        # 5. Every alias points to existing entity (Fatal)
+        for alias, ent_id in self.alias_lookup.items():
+            if ent_id not in self.entities:
+                raise ValueError(f"[Fatal Validation Error] Alias '{alias}' points to missing entity ID: '{ent_id}'")
+
+        # 6. Check duplicate aliases (Warning, not fatal)
+        alias_to_ids = {}
+        for alias, ent_id in self.alias_lookup.items():
+            alias_to_ids.setdefault(alias, set()).add(ent_id)
+        duplicate_aliases = {k: list(v) for k, v in alias_to_ids.items() if len(v) > 1}
+        if duplicate_aliases:
+            logger.warning(f"[Validation Warning] Duplicate aliases detected: {duplicate_aliases}")
+
+        # 7. Consistency Cross-Check: every entity in entities has lookup and KG node, is resolvable
+        for ent_id, ent in self.entities.items():
+            name = ent.get("name") or ent.get("title")
+            if name:
+                name_clean = name.lower().strip()
+                # Ensure either the ID or the name is resolvable
+                if name_clean not in self.entity_lookup and ent_id.lower() not in self.entity_lookup:
+                    raise ValueError(f"[Fatal Validation Error] Entity '{ent_id}' is not resolvable by ID or name '{name}' in entity_lookup.")
+            if ent_id not in self.knowledge_graph:
+                raise ValueError(f"[Fatal Validation Error] Entity '{ent_id}' is missing from the knowledge_graph node list.")
 
     def print_diagnostics(self):
         try:
-            reg_count = len(self.registry_index)
+            # Manifest hash
+            REGISTRY_DIR = BACKEND_DIR / "knowledge" / "registry"
+            manifest_path = REGISTRY_DIR / "manifest.json"
+            manifest_hash = "N/A"
+            if manifest_path.exists():
+                import hashlib
+                hasher = hashlib.sha256()
+                with open(manifest_path, "rb") as f:
+                    hasher.update(f.read())
+                manifest_hash = hasher.hexdigest()[:16]
+
+            # Manifest / Registry version
+            meta_version = "1.0.0"
+            comp = self.registry_by_id.get("company_info")
+            if comp and hasattr(comp, "metadata") and comp.metadata:
+                meta_version = getattr(comp.metadata, "content_version", "1.0.0")
+
+            reg_count = len(self.registry_by_id)
             entity_count = len(self.entities)
-            alias_count = len(self.aliases)
-            syn_count = 212 # Preconfigured synonym count
-            
-            cs_reg = self.registry_index.get("CASE_STUDIES", {})
-            cs_count = len(cs_reg.get("entities", [])) if cs_reg else 0
-            
-            faq_reg = self.registry_index.get("FAQ", {})
-            faq_count = len(faq_reg.get("entities", [])) if faq_reg else 0
-            
-            tech_set = set()
-            for ent in self.entities.values():
-                for t in ent.get("technologies", []):
-                    tech_set.add(t)
-            tech_count = len(tech_set) if tech_set else 27
-            
-            chunk_count = 0
-            try:
-                # Lazy load VectorStore to get SQLite chunks count
-                from vector_store import VectorStore
-                vstore = VectorStore()
-                chunk_count = vstore.get_chunk_count()
-            except Exception:
-                chunk_count = 412
-                
-            print("\n" + "="*40)
-            print(" CITTAAI KNOWLEDGE REGISTRY DIAGNOSTICS")
-            print("="*40)
-            print(f" Loaded Registries   : {reg_count}")
-            print(f" Entities            : {entity_count}")
+            alias_count = len(self.alias_lookup)
+            kw_count = len(self.keyword_lookup)
+            slug_count = len(self.slug_lookup)
+            vocab_size = len(self.unified_vocabulary)
+            kg_nodes = len(self.knowledge_graph)
+
+            # Warnings count
+            alias_to_ids = {}
+            for alias, ent_id in self.alias_lookup.items():
+                alias_to_ids.setdefault(alias, set()).add(ent_id)
+            dup_alias_count = sum(1 for v in alias_to_ids.values() if len(v) > 1)
+
+            print("\n========== ENTITY DIAGNOSTICS ==========")
+            print(f" Registry Version    : {meta_version}")
+            print(f" Registry Hash       : {manifest_hash}")
+            print(f" Total Registries    : {reg_count}")
+            print(f" Total Entities      : {entity_count}")
+            print(f" Canonical IDs       : {entity_count}")
+            print(f" Slugs               : {slug_count}")
             print(f" Aliases             : {alias_count}")
-            print(f" Synonyms            : {syn_count}")
-            print(f" Case Studies        : {cs_count}")
-            print(f" FAQs                : {faq_count}")
-            print(f" Technologies        : {tech_count}")
-            print(f" Vector Chunks       : {chunk_count}")
-            print("="*40 + "\n")
+            print(f" Keywords            : {kw_count}")
+            print(f" Synonyms            : {len(self.aliases)}")
+            print(f" Vocabulary Size     : {vocab_size}")
+            print(f" Knowledge Graph Nodes: {kg_nodes}")
+            print(f" Duplicate Aliases  : {dup_alias_count}")
+            print("========================================\n")
         except Exception as e:
             logger.error(f"Error printing diagnostics: {e}")
 

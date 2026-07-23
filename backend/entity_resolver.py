@@ -27,15 +27,19 @@ def resolve_entity_dynamic(
 ) -> Tuple[Optional[str], float, Optional[str], Optional[Dict[str, Any]]]:
     """
     Entity Resolver:
-    Resolves the canonical entity ID using the single canonical entity_lookup and strict precedence order:
-    1. Active Context Pronoun
-    2. Exact ID match
-    3. Exact Name match
-    4. Entity Name Substring match
-    5. Canonical Entity Lookup match (entity_lookup)
-    6. RapidFuzz match (threshold configurable)
-    7. Semantic fallback
+    Resolves the canonical entity ID using the single canonical entity_lookup and strict precedence order.
+    Supports USE_NEW_ENTITY_RESOLVER rollout feature flag wrapping new core.entity_resolver.
     """
+    import config
+    if getattr(config, "USE_NEW_ENTITY_RESOLVER", True):
+        import core.entity_resolver as core_resolver
+        res = core_resolver.resolve(query)
+        # Handle context pronoun override if new resolver didn't find one but pronouns match
+        if not res["entity_id"] and active_entity and contains_pronouns(query):
+            logger.info(f"Re-using active entity from context pronouns: {active_entity}")
+            return active_entity, 1.0, "active_context_pronoun", None
+        return res["entity_id"], res["entity_confidence"], res["matched_alias"], None
+
     if not registry_entities:
         return None, 0.0, None, None
         

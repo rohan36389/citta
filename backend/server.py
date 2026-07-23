@@ -372,6 +372,15 @@ async def lifespan(app: FastAPI):
         count = val.get("count", 0)
         logging.info(f"Vector database active with {count} chunks. DB Version: {val.get('metadata', {}).get('version', '1.0.0')}")
 
+    # Initialize and validate Knowledge Registry startup consistency checks
+    try:
+        from knowledge_registry import get_registry
+        registry = get_registry()
+        logging.info("Registry startup consistency validation checks and diagnostics PASSED successfully.")
+    except Exception as e:
+        logging.critical(f"FATAL: Registry startup validation failed: {e}")
+        raise e
+
     # 2. Launch background auto-reindexing watcher ONLY in development
     watcher_task = None
     if getattr(config, "ENVIRONMENT", "production").lower() == "development":

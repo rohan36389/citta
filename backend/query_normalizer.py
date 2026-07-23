@@ -282,11 +282,18 @@ def normalize_query_pipeline(
     syn_expanded = expand_synonyms(expanded_abbr)
     
     # 5. Canonical entity lookup
-    final_query, canonical_entity = canonical_entity_lookup(
-        syn_expanded,
-        entity_lookup=entity_lookup,
-        vocabulary=vocabulary
-    )
+    import config
+    if getattr(config, "USE_NEW_ENTITY_RESOLVER", True):
+        import core.entity_resolver as core_resolver
+        res = core_resolver.resolve(syn_expanded)
+        canonical_entity = res["entity_id"]
+        final_query = syn_expanded
+    else:
+        final_query, canonical_entity = canonical_entity_lookup(
+            syn_expanded,
+            entity_lookup=entity_lookup,
+            vocabulary=vocabulary
+        )
     
     return {
         "original_query": query,
