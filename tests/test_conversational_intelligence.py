@@ -38,7 +38,7 @@ class TestConversationalIntelligence(unittest.TestCase):
         res = manager.process_turn("How much does CittaAI cost?", "session_price")
         
         self.assertIsInstance(res, ResponseComposition)
-        self.assertIn("objection", res.explainability.strategy.lower())
+        self.assertIn("sales conversation", res.explainability.strategy.lower())
         self.assertEqual(res.metadata.get("interest_level"), "LOW")
         self.assertEqual(res.explainability.stage, "Objection Handling")
 
@@ -48,7 +48,7 @@ class TestConversationalIntelligence(unittest.TestCase):
         
         self.assertIsInstance(res, ResponseComposition)
         self.assertEqual(res.explainability.intent, "integration")
-        self.assertEqual(res.explainability.strategy, "Educational")
+        self.assertEqual(res.explainability.strategy, "Technical Deep Dive")
 
 if __name__ == "__main__":
     unittest.main()

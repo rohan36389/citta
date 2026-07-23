@@ -170,6 +170,39 @@ class MemoryEvent:
     payload: Dict[str, Any]
     turn: int
 
+class ResponseStrategyType(Enum):
+    EXECUTIVE_SUMMARY = "Executive Summary"
+    TECHNICAL_DEEP_DIVE = "Technical Deep Dive"
+    COMPARISON = "Comparison"
+    SALES_CONVERSATION = "Sales Conversation"
+    CONSULTATIVE_DISCUSSION = "Consultative Discussion"
+    EDUCATIONAL = "Educational"
+    RECOMMENDATION = "Recommendation"
+    REQUIREMENTS_DISCOVERY = "Requirements Discovery"
+    FAQ = "FAQ"
+    STEP_BY_STEP = "Step-by-Step"
+    IMPLEMENTATION_GUIDE = "Implementation Guide"
+    TROUBLESHOOTING = "Troubleshooting"
+    CASE_STUDY = "Case Study"
+
+@dataclass
+class ResponseSectionBlueprint:
+    title: str
+    purpose: str
+    key_points: List[str] = field(default_factory=list)
+
+@dataclass
+class ResponsePlan:
+    strategy_type: ResponseStrategyType
+    tone: str                       # Strategic, Technical, Consultative, Persuasive, Educational, Direct
+    depth: str                      # High-Level Executive, Deep Technical, Functional Overview, Step-by-Step
+    sections: List[ResponseSectionBlueprint] = field(default_factory=list)
+    length: str = "Balanced"        # Concise, Balanced, Comprehensive
+    follow_up: str = ""             # Strategic follow-up prompt suggestion
+    cta: str = ""                   # Call-to-Action
+    target_entity: Optional[str] = None
+    selection_reasoning: str = ""
+
 @dataclass
 class Signal:
     signal_type: str        # KeywordSignal, EntitySignal, ConversationSignal, MemorySignal

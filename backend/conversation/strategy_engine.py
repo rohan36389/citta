@@ -6,13 +6,15 @@ from backend.conversation.config import OBJECTION_TEMPLATES
 
 logger = logging.getLogger(__name__)
 
+from backend.conversation.planning_engine import get_response_planning_engine
+
 class StrategyEngine(IStrategyEngine):
     """
     Formulates conversation planning, applies pre-sales business policies,
-    and maps objection handling procedures.
+    and maps objection handling procedures via ResponsePlanningEngine.
     """
     def __init__(self):
-        pass
+        self.planning_engine = get_response_planning_engine()
 
     def formulate_strategy(
         self,
@@ -21,36 +23,20 @@ class StrategyEngine(IStrategyEngine):
         context: ConversationContext
     ) -> ResponseStrategy:
         """
-        Adapts response strategy and parameters.
+        Adapts response strategy and parameters via ResponsePlanningEngine.
         """
-        # Determine audience profile from company details
-        if discovery.company_size == "Enterprise":
-            audience = "CEO"
-            length = "Detailed"
-        else:
-            audience = "General"
-            length = "Medium"
-            
-        # Determine strategy from primary intent
-        p_intent = intent.primary_intent.lower()
-        if p_intent in ["pricing_inquiry", "pricing"]:
-            strat = "Objection"
-            checklist = ["Handle commercial objections using custom quotes recommendation", "Suggest demo scheduling"]
-            active_rules = ["Never guess custom pricing parameters"]
-        elif p_intent in ["technical_validation", "integration", "architecture", "features", "workflow"]:
-            strat = "Educational"
-            audience = "Developer"
-            checklist = ["Provide system components overview", "Recommend technical sandbox session"]
-            active_rules = ["Ground technical integration capabilities check"]
-        else:
-            strat = "Consultative"
-            checklist = ["Present solution benefits overview", "Qualify missing details: budget, timeline"]
-            active_rules = ["Highlight client ROI metrics"]
-            
+        persona_profile = context.variables.get("persona_profile")
+        response_plan = self.planning_engine.plan(intent, persona_profile, context)
+        context.variables["response_plan"] = response_plan
+
+        strat_name = response_plan.strategy_type.value
+        checklist = [sec.title for sec in response_plan.sections]
+        active_rules = [f"Maintain tone: {response_plan.tone}", f"CTA: {response_plan.cta}"]
+
         return ResponseStrategy(
-            selected_strategy=strat,
-            audience_level=audience,
-            response_length=length,
+            selected_strategy=strat_name,
+            audience_level=response_plan.depth,
+            response_length=response_plan.length,
             checklist=checklist,
             active_rules=active_rules
         )
