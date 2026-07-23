@@ -51,6 +51,51 @@ class ConversationalIntent(Enum):
     SMALL_TALK = "Small Talk"
     NONE = "None"
 
+class RolePersona(Enum):
+    EXECUTIVE_DECISION_MAKER = "Executive Decision-Maker"
+    TECHNICAL_ARCHITECT = "Technical Architect"
+    DEVELOPER = "Developer"
+    BUSINESS_FUNCTIONAL = "Business Functional"
+    OPERATIONS = "Operations"
+    MARKETING = "Marketing"
+    ACADEMIC_STUDENT = "Academic / Student"
+    RECRUITER = "Recruiter"
+    INVESTOR = "Investor"
+    UNKNOWN = "Unknown / General"
+
+class RelationshipPersona(Enum):
+    PROSPECTIVE_CUSTOMER = "Prospective Customer"
+    EXISTING_CUSTOMER = "Existing Customer"
+    PARTNER = "Partner"
+    UNKNOWN = "Unknown"
+
+@dataclass
+class PersonaSignal:
+    provider: str        # LanguageProvider, TerminologyProvider, QuestionStyleProvider, HistoryProvider
+    feature: str
+    weight: float        # Positive for supporting, negative for contradictory
+    source_turn: int
+
+@dataclass
+class CommunicationPreferences:
+    technical_depth: str       # Executive, Deep Technical, Functional, Introductory
+    executive_focus: float     # 0.0 to 1.0 (ROI / Business Outcome priority)
+    detail_density: str        # Concise, Balanced, Detailed
+    prefer_code_snippets: bool = False
+    prefer_case_studies: bool = False
+
+@dataclass
+class PersonaProfile:
+    role_probabilities: Dict[RolePersona, float]
+    primary_role: RolePersona
+    relationship: RelationshipPersona
+    relationship_confidence: float
+    communication_preferences: CommunicationPreferences
+    profile_stability: float   # 0.0 (Uncertain) to 1.0 (Highly Settled)
+    reasoning: str
+    detected_signals: List[PersonaSignal] = field(default_factory=list)
+    turn_history: List[Dict[str, Any]] = field(default_factory=list)
+
 class IntentSource(Enum):
     MESSAGE = "Message"
     MEMORY = "Memory"

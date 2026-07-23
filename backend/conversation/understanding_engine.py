@@ -7,14 +7,16 @@ from backend.conversation.config import LEAD_QUALIFICATION_WEIGHTS
 logger = logging.getLogger(__name__)
 
 from backend.conversation.intent_engine import get_enterprise_intent_engine
+from backend.conversation.persona_engine import get_customer_persona_engine
 
 class UnderstandingEngine(IUnderstandingEngine):
     """
     Decodes user intent (multi-intent), customer discovery indicators, 
-    and applies lead qualification rules.
+    persona detection, and applies lead qualification rules.
     """
     def __init__(self):
         self.intent_engine = get_enterprise_intent_engine()
+        self.persona_engine = get_customer_persona_engine()
 
     def analyze_intent(self, query: str, context: ConversationContext) -> IntentAnalysis:
         """
@@ -34,8 +36,12 @@ class UnderstandingEngine(IUnderstandingEngine):
 
     def run_discovery(self, query: str, intent: IntentAnalysis, context: ConversationContext) -> DiscoveryState:
         """
-        Discovers pre-sales indicators in conversation history & query text.
+        Discovers pre-sales indicators in conversation history, query text, and runs Persona Engine.
         """
+        # Run Customer Persona Engine
+        persona_profile = self.persona_engine.process(query, context)
+        context.variables["persona_profile"] = persona_profile
+
         # Read existing variables from context
         variables = context.variables
         disc_data = variables.get("discovery_state", {})
