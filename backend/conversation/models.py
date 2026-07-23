@@ -204,6 +204,23 @@ class ResponsePlan:
     selection_reasoning: str = ""
 
 @dataclass
+class SuggestionCandidate:
+    label: str                   # Human-readable button text (e.g., "What integrations are supported?")
+    action: str                  # Action key for UI dispatch
+    confidence: float            # 0.0 to 1.0
+    ranking_score: float
+    reasoning: str               # Why this suggestion was generated
+    target_intent: Optional[str] = None
+    target_entity: Optional[str] = None
+
+@dataclass
+class SuggestionResult:
+    suggestions: List[SuggestionCandidate] = field(default_factory=list)
+    top_suggestion: Optional[SuggestionCandidate] = None
+    total_candidates_generated: int = 0
+    selection_reasoning: str = ""
+
+@dataclass
 class Signal:
     signal_type: str        # KeywordSignal, EntitySignal, ConversationSignal, MemorySignal
     source: IntentSource

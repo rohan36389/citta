@@ -1,16 +1,18 @@
 import logging
-from typing import List, Dict
+from typing import List, Dict, Any
 from backend.conversation.models import ConversationContext, ResponseStrategy, DraftResponse
 from backend.conversation.interfaces import IResponseEngine
 
 logger = logging.getLogger(__name__)
+
+from backend.conversation.suggestion_engine import get_suggestion_engine
 
 class ResponseEngine(IResponseEngine):
     """
     Drafts natural conversation responses and formats dynamic suggestion chips.
     """
     def __init__(self):
-        pass
+        self.suggestion_engine = get_suggestion_engine()
 
     def compose_draft(
         self,
@@ -38,26 +40,23 @@ class ResponseEngine(IResponseEngine):
             citations=["KnowledgeRegistry:CittaAI_Overview"]
         )
 
-    def generate_suggestions(self, draft: DraftResponse, context: ConversationContext) -> List[Dict[str, str]]:
+    def generate_suggestions(self, draft: DraftResponse, context: ConversationContext) -> List[Dict[str, Any]]:
         """
-        Creates suggestion chips tailored to conversation context and stage.
+        Creates dynamic suggestion chips via SuggestionEngine.
         """
-        stage = context.current_stage
+        persona_profile = context.variables.get("persona_profile")
+        intent = context.variables.get("intent")
         
-        if stage == "Greeting":
-            return [
-                {"label": "Explore Solutions", "action": "explore_solutions"},
-                {"label": "What is CittaAI?", "action": "learn_about_citta"}
-            ]
-        elif stage == "Discovery":
-            return [
-                {"label": "Schedule Technical Demo", "action": "request_demo"},
-                {"label": "Obtain Integration Specs", "action": "get_specs"}
-            ]
-            
+        sug_res = self.suggestion_engine.generate(intent, persona_profile, context)
+        
         return [
-            {"label": "Contact Sales Team", "action": "contact_sales"},
-            {"label": "Go Back to Start", "action": "go_home"}
+            {
+                "label": s.label,
+                "action": s.action,
+                "confidence": s.confidence,
+                "reasoning": s.reasoning
+            }
+            for s in sug_res.suggestions
         ]
 
 def get_response_engine() -> IResponseEngine:
