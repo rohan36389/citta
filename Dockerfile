@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED=1 \
     ENVIRONMENT=production \
     DEBUG=false \
     VECTOR_DB_PATH=/app/backend/vector_store.db \
-    PYTHONPATH=/app/backend
+    PYTHONPATH=/app:/app/backend
 
 WORKDIR /app
 
