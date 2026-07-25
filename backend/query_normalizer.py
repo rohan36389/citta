@@ -24,10 +24,7 @@ SYNONYM_MAP = {
     "clients": "partners",
     "customer": "partners",
     "customers": "partners",
-    "business": "partners",
-    "businesses": "partners",
-    "enterprise": "partners",
-    "enterprises": "partners",
+
     "partner": "partners",
     
     "award": "recognition",
