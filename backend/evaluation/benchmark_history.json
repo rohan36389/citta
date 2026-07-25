@@ -1,0 +1,101 @@
+[
+  {
+    "timestamp": "2026-07-23T10:25:07.184528+00:00",
+    "version": "1.0",
+    "total_scenarios": 5,
+    "passed_scenarios": 0,
+    "scenario_pass_rate": 0.0,
+    "conv_quality_score": 15.384615384615385,
+    "pipeline_quality_score": 100.0,
+    "overall_quality_score": 57.69230769230769,
+    "release_gate_status": "BLOCKED"
+  },
+  {
+    "timestamp": "2026-07-23T10:28:31.533333+00:00",
+    "version": "1.0",
+    "total_scenarios": 5,
+    "passed_scenarios": 0,
+    "scenario_pass_rate": 0.0,
+    "conv_quality_score": 15.384615384615385,
+    "pipeline_quality_score": 75.0,
+    "overall_quality_score": 45.19230769230769,
+    "release_gate_status": "BLOCKED"
+  },
+  {
+    "timestamp": "2026-07-23T10:29:17.785287+00:00",
+    "version": "1.0",
+    "total_scenarios": 5,
+    "passed_scenarios": 0,
+    "scenario_pass_rate": 0.0,
+    "conv_quality_score": 15.384615384615385,
+    "pipeline_quality_score": 75.0,
+    "overall_quality_score": 45.19230769230769,
+    "release_gate_status": "BLOCKED"
+  },
+  {
+    "timestamp": "2026-07-23T10:30:29.598541+00:00",
+    "version": "1.0",
+    "total_scenarios": 5,
+    "passed_scenarios": 0,
+    "scenario_pass_rate": 0.0,
+    "conv_quality_score": 15.384615384615385,
+    "pipeline_quality_score": 75.0,
+    "overall_quality_score": 45.19230769230769,
+    "release_gate_status": "BLOCKED"
+  },
+  {
+    "timestamp": "2026-07-23T11:30:26.599926+00:00",
+    "version": "1.0",
+    "total_scenarios": 516,
+    "passed_scenarios": 471,
+    "scenario_pass_rate": 91.27906976744185,
+    "conv_quality_score": 90.28571428571428,
+    "pipeline_quality_score": 75.0,
+    "overall_quality_score": 82.64285714285714,
+    "release_gate_status": "BLOCKED"
+  },
+  {
+    "timestamp": "2026-07-23T11:49:41.321602+00:00",
+    "version": "1.0",
+    "total_scenarios": 516,
+    "passed_scenarios": 471,
+    "scenario_pass_rate": 91.27906976744185,
+    "conv_quality_score": 90.28571428571428,
+    "pipeline_quality_score": 75.0,
+    "overall_quality_score": 82.64285714285714,
+    "release_gate_status": "BLOCKED"
+  },
+  {
+    "timestamp": "2026-07-23T11:51:34.521131+00:00",
+    "version": "1.0",
+    "total_scenarios": 516,
+    "passed_scenarios": 471,
+    "scenario_pass_rate": 91.27906976744185,
+    "conv_quality_score": 90.28571428571428,
+    "pipeline_quality_score": 75.0,
+    "overall_quality_score": 82.64285714285714,
+    "release_gate_status": "BLOCKED"
+  },
+  {
+    "timestamp": "2026-07-23T11:52:27.691918+00:00",
+    "version": "1.0",
+    "total_scenarios": 516,
+    "passed_scenarios": 471,
+    "scenario_pass_rate": 91.27906976744185,
+    "conv_quality_score": 90.28571428571428,
+    "pipeline_quality_score": 75.0,
+    "overall_quality_score": 82.64285714285714,
+    "release_gate_status": "BLOCKED"
+  },
+  {
+    "timestamp": "2026-07-23T12:06:27.317208+00:00",
+    "version": "1.0",
+    "total_scenarios": 516,
+    "passed_scenarios": 471,
+    "scenario_pass_rate": 91.27906976744185,
+    "conv_quality_score": 90.28571428571428,
+    "pipeline_quality_score": 75.0,
+    "overall_quality_score": 82.64285714285714,
+    "release_gate_status": "BLOCKED"
+  }
+]

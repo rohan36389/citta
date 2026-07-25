@@ -66,6 +66,59 @@ class SuggestionEngine:
         candidates: List[SuggestionCandidate] = []
         p_intent = intent_str.lower()
         
+        # 0. Conversation Stage Evolving Chips
+        stage = getattr(context, "conversation_stage", None)
+        stage_str = stage.value if hasattr(stage, "value") else str(stage or "Discovery")
+        
+        if stage_str in ["Discovery", "Qualification"]:
+            candidates.append(SuggestionCandidate(
+                label="How many store locations or seats do you operate?",
+                action="qualification_stores",
+                confidence=0.95,
+                ranking_score=0.95,
+                reasoning="Discovery stage qualification chip for business context",
+                target_intent="qualification",
+                target_entity=entity_name
+            ))
+            candidates.append(SuggestionCandidate(
+                label="What ERP system do you currently use?",
+                action="qualification_erp",
+                confidence=0.92,
+                ranking_score=0.93,
+                reasoning="Discovery stage ERP integration discovery chip",
+                target_intent="qualification",
+                target_entity=entity_name
+            ))
+        elif stage_str in ["Evaluation", "Technical Review"]:
+            candidates.append(SuggestionCandidate(
+                label=f"What security standards apply to {entity_name}?",
+                action="query_security",
+                confidence=0.90,
+                ranking_score=0.91,
+                reasoning="Technical evaluation stage security compliance chip",
+                target_intent="security",
+                target_entity=entity_name
+            ))
+            candidates.append(SuggestionCandidate(
+                label="How does integration work with our existing stack?",
+                action="query_integration",
+                confidence=0.88,
+                ranking_score=0.89,
+                reasoning="Evaluation stage integration architecture chip",
+                target_intent="integration",
+                target_entity=entity_name
+            ))
+        elif stage_str in ["Commercial", "Decision"]:
+            candidates.append(SuggestionCandidate(
+                label="Connect with sales team on Contact page",
+                action="contact_redirection",
+                confidence=0.96,
+                ranking_score=0.96,
+                reasoning="Commercial stage Contact page redirection option",
+                target_intent="pricing",
+                target_entity=entity_name
+            ))
+
         # 1. Logical Next-Intent Candidates
         next_intents = NEXT_INTENT_MAP.get(p_intent, NEXT_INTENT_MAP["overview"])
         for text, target_intent, weight in next_intents:

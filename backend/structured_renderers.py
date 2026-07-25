@@ -13,12 +13,18 @@ def clean_val(val: Any) -> str:
 def sanitize_conversational_text(text: str) -> str:
     """
     Transforms website-style markdown responses into clean, conversational chat responses optimized for desktop and mobile.
-    Strips markdown links, internal URLs, arrows, webpage heading artifacts, and broken CTA buttons.
+    Enforces Enterprise Reasoning Engine rules:
+    - Strips raw navigation phrases ("Redirecting...", "Opening...", "Taking you...")
+    - Ensures Click-Only Navigation (only optional Contact links)
+    - Strips broken links, webpage heading artifacts, and redundant bullet dumps.
     """
     if not text:
         return ""
 
     t = text
+
+    # 0. Strip forced redirection phrases (Click-Only Navigation Rule)
+    t = re.sub(r"\b(redirecting|opening|taking you|navigating to)\b[^\.\n]*[\.\n]?", "", t, flags=re.IGNORECASE)
 
     # 1. Strip markdown links with internal URLs or action text: e.g. [View Solution →](/solutions/ecommerce-os)
     action_phrases = ["explore", "view", "learn more", "read more", "get started", "consult ai", "click here", "show"]
@@ -49,7 +55,7 @@ def sanitize_conversational_text(text: str) -> str:
     t = re.sub(r"###\s*Summary\b", "**Summary**:", t, flags=re.IGNORECASE)
     t = re.sub(r"###\s*(Core Capabilities|Capabilities & Methodology|System Modules & Capabilities)\b", "**Key Highlights**:", t, flags=re.IGNORECASE)
     t = re.sub(r"###\s*(Key Benefits|Service Outcomes|Strategic Value|Client Benefits)\b", "**Core Value**:", t, flags=re.IGNORECASE)
-    t = re.sub(r"###\s*(Implementation Workflow|System Architecture & Workflow)\b", "How It Works (Workflow):", t, flags=re.IGNORECASE)
+    t = re.sub(r"###\s*(Implementation Workflow|System Architecture & Workflow)\b", "**Workflow & Mechanics**:", t, flags=re.IGNORECASE)
     t = re.sub(r"###\s*(Ideal Use Cases|Target Audience)\b", "**Target Audience**:", t, flags=re.IGNORECASE)
     t = re.sub(r"###\s*", "**", t)
 
@@ -301,33 +307,157 @@ def render_target_users(obj: Any) -> str:
         return f"🎯 **Target Audience for {title}**:\n\n{title} is designed for **{user_str}**."
     return f"🎯 **Target Audience for {title}**:\n\n{title} is designed for Enterprises, Technical Leaders, and Decision Makers seeking production-ready AI solutions."
 
+def render_features(obj: Any) -> str:
+    """Renders feature list for an object across capabilities or features list."""
+    title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
+    feats = []
+    caps = getattr(obj, "capabilities", []) or []
+    for cap in caps:
+        c_title = clean_val(getattr(cap, "title", ""))
+        c_feats = getattr(cap, "features", []) or []
+        for f in c_feats:
+            f_title = clean_val(getattr(f, "title", ""))
+            f_desc = clean_val(getattr(f, "description", ""))
+            if f_title:
+                feats.append(f"• **{f_title}** ({c_title}): {f_desc}" if (f_desc and c_title) else (f"• **{f_title}**: {f_desc}" if f_desc else f"• **{f_title}**"))
+    if not feats and isinstance(obj, dict):
+        raw_feats = obj.get("features", [])
+        for f in raw_feats:
+            if isinstance(f, dict):
+                feats.append(f"• **{clean_val(f.get('title'))}**: {clean_val(f.get('description'))}")
+            elif isinstance(f, str):
+                feats.append(f"• {clean_val(f)}")
+    if feats:
+        feat_str = "\n".join(feats[:8])
+        return sanitize_conversational_text(f"✨ **Key Features of {title}**\n\n{feat_str}")
+    return render_by_type(obj)
+
+def render_capabilities_list(obj: Any) -> str:
+    """Renders capability list for an object."""
+    title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
+    caps = getattr(obj, "capabilities", []) or []
+    if not caps and isinstance(obj, dict):
+        caps = obj.get("capabilities", [])
+    if caps:
+        cap_bullets = []
+        for cap in caps:
+            if hasattr(cap, "title"):
+                c_title = clean_val(cap.title)
+                c_desc = clean_val(cap.description)
+            elif isinstance(cap, dict):
+                c_title = clean_val(cap.get("title"))
+                c_desc = clean_val(cap.get("description"))
+            else:
+                c_title = clean_val(cap)
+                c_desc = ""
+            if c_title:
+                cap_bullets.append(f"• **{c_title}**: {c_desc}" if c_desc else f"• **{c_title}**")
+        if cap_bullets:
+            cap_str = "\n".join(cap_bullets)
+            return sanitize_conversational_text(f"⚡ **Capabilities Provided by {title}**\n\n{cap_str}")
+    return render_by_type(obj)
+
+def render_faq_section(obj: Any) -> str:
+    """Renders FAQ section for an object."""
+    title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
+    faqs = getattr(obj, "faq", []) or []
+    if not faqs and isinstance(obj, dict):
+        faqs = obj.get("faq", [])
+    if faqs:
+        parts = [f"❓ **Frequently Asked Questions for {title}**\n"]
+        for item in faqs[:5]:
+            if hasattr(item, "question"):
+                q = clean_val(item.question)
+                a = clean_val(item.answer)
+            elif isinstance(item, dict):
+                q = clean_val(item.get("question"))
+                a = clean_val(item.get("answer"))
+            else:
+                continue
+            if q and a:
+                parts.append(f"**Q: {q}**\n*A: {a}*\n")
+        return "\n".join(parts).strip()
+    return render_by_type(obj)
+
+def render_pricing_section(obj: Any) -> str:
+    """Renders pricing section for an object."""
+    title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
+    return (
+        f"💳 **Pricing & Licensing for {title}**\n\n"
+        f"CittaAI offers customized enterprise licensing and transparent annual subscriptions for **{title}** based on deployable modules, volume, and SLA tier requirements.\n\n"
+        f"• **Starter / Pilot Tier**: Fixed-fee PoC deployment.\n"
+        f"• **Enterprise Tier**: Annual subscription with 99.9% uptime SLA.\n"
+        f"• **Custom Advisory**: Time-and-materials or milestone-based consulting.\n\n"
+        f"Contact our team to get a detailed quote tailored to your architecture."
+    )
+
+def render_relationships_section(obj: Any) -> str:
+    """Renders linked entities / related services section."""
+    title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
+    rels = getattr(obj, "relationships", []) or []
+    if not rels and isinstance(obj, dict):
+        rels = obj.get("relationships", [])
+    if rels:
+        rel_str = ", ".join([clean_val(r.target if hasattr(r, "target") else r.get("target")) for r in rels if r])
+        return f"🔗 **Related Offerings for {title}**:\n\n{title} integrates cleanly with: **{rel_str}**."
+    return f"🔗 **Related Offerings for {title}**:\n\n{title} seamlessly connects with CittaAI Data Engineering and Enterprise AI OS middleware."
+
 def render_section(obj: Any, section: str) -> str:
     """Renders specific section for an object."""
     sec = (section or "").lower().strip()
-    if sec in ["best_for", "target", "audience"]:
+    if sec in ["best_for", "target", "audience", "industries", "target_audience"]:
         return render_target_users(obj)
-    if sec in ["how_it_works", "workflow", "workflows"]:
+    if sec in ["how_it_works", "workflow", "workflows", "process"]:
         workflows = getattr(obj, "workflows", [])
         if not workflows and isinstance(obj, dict):
             workflows = obj.get("workflows", [])
+        title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
+        steps = []
         if workflows:
-            title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
-            steps = []
             for step in workflows:
                 if hasattr(step, "step"):
-                    steps.append(f"{step.step}. **{clean_val(step.title)}**: {clean_val(step.description)}")
+                    steps.append(f"Step {step.step}. **{clean_val(step.title)}**: {clean_val(step.description)}")
                 else:
-                    steps.append(f"{step.get('step', '')}. **{clean_val(step.get('title'))}**: {clean_val(step.get('description'))}")
+                    steps.append(f"Step {step.get('step', '')}. **{clean_val(step.get('title'))}**: {clean_val(step.get('description'))}")
+        else:
+            caps = getattr(obj, "capabilities", []) or []
+            for idx, cap in enumerate(caps[:4], 1):
+                c_title = clean_val(getattr(cap, "title", None) if hasattr(cap, "title") else (cap.get("title") if isinstance(cap, dict) else str(cap)))
+                c_desc = clean_val(getattr(cap, "description", None) if hasattr(cap, "description") else (cap.get("description") if isinstance(cap, dict) else ""))
+                steps.append(f"Step {idx}. **{c_title}**: {c_desc}" if c_desc else f"Step {idx}. **{c_title}**")
+        if steps:
             wf_str = "\n".join(steps)
-            return sanitize_conversational_text(f"### How {title} Works\n\n{wf_str}")
+            return sanitize_conversational_text(f"⚙️ **System Workflow & Architecture for {title}**\n\n{wf_str}")
     if sec in ["benefits", "benefit", "advantages"]:
         benefits = getattr(obj, "benefits", [])
         if not benefits and isinstance(obj, dict):
             benefits = obj.get("benefits", [])
+        title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
+        ben_bullets = []
         if benefits:
-            title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
-            ben_bullets = "\n".join([f"• {clean_val(b)}" for b in benefits if clean_val(b)])
-            return sanitize_conversational_text(f"### Key Benefits of {title}\n\n{ben_bullets}")
+            ben_bullets = [f"• {clean_val(b)}" for b in benefits if clean_val(b)]
+        else:
+            caps = getattr(obj, "capabilities", []) or []
+            for cap in caps[:5]:
+                c_title = clean_val(getattr(cap, "title", None) if hasattr(cap, "title") else (cap.get("title") if isinstance(cap, dict) else str(cap)))
+                c_desc = clean_val(getattr(cap, "description", None) if hasattr(cap, "description") else (cap.get("description") if isinstance(cap, dict) else ""))
+                if c_title:
+                    ben_bullets.append(f"• **{c_title}**: {c_desc}" if c_desc else f"• **{c_title}**")
+        if ben_bullets:
+            b_str = "\n".join(ben_bullets)
+            return sanitize_conversational_text(f"### Key Benefits of {title}\n\n{b_str}")
+    if sec in ["features", "modules", "functions"]:
+        return render_features(obj)
+    if sec in ["capabilities", "capability"]:
+        return render_capabilities_list(obj)
+    if sec in ["faq", "faqs", "questions"]:
+        return render_faq_section(obj)
+    if sec in ["pricing", "price", "cost"]:
+        return render_pricing_section(obj)
+    if sec in ["related_entities", "relationships", "related"]:
+        return render_relationships_section(obj)
+    if sec in ["contact", "address"]:
+        return render_contact(obj)
     return render_by_type(obj)
 
 def render_by_type(obj: Any) -> str:

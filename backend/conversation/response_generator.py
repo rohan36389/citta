@@ -134,5 +134,59 @@ class AdaptiveResponseGenerator:
             import structured_renderers
             return structured_renderers.render_by_type(obj)
 
+    def generate_workflow_response(self, title: str, steps: List[Any]) -> str:
+        """Explains sequential operational workflows for 'HOW' inquiries."""
+        res = f"⚙️ **How {title} Works (Operational Workflow)**\n\n"
+        res += f"{title} operates through a structured, multi-step pipeline:\n\n"
+        for idx, step in enumerate(steps, 1):
+            s_title = getattr(step, "title", str(step))
+            s_desc = getattr(step, "description", "")
+            res += f"**Step {idx} — {s_title}**: {s_desc}\n" if s_desc else f"**Step {idx}**: {s_title}\n"
+        res += "\nThis unified workflow eliminates operational friction and manual handoffs."
+        return res.strip()
+
+    def generate_grouped_benefits_response(self, title: str, benefits: List[str]) -> str:
+        """Groups benefits logically into Business, Operational, and Technical categories."""
+        res = f"🎯 **Key Value & Benefits of {title}**\n\n"
+        
+        biz_bens = []
+        op_bens = []
+        tech_bens = []
+        
+        for b in benefits:
+            b_str = str(b)
+            if any(k in b_str.lower() for k in ["cost", "roi", "revenue", "growth", "commercial", "time-to-market"]):
+                biz_bens.append(b_str)
+            elif any(k in b_str.lower() for k in ["api", "security", "cloud", "integration", "compliance", "scale"]):
+                tech_bens.append(b_str)
+            else:
+                op_bens.append(b_str)
+
+        if biz_bens:
+            res += "**Business & Financial Benefits**:\n" + "\n".join([f"• {b}" for b in biz_bens]) + "\n\n"
+        if op_bens:
+            res += "**Operational & Efficiency Benefits**:\n" + "\n".join([f"• {b}" for b in op_bens]) + "\n\n"
+        if tech_bens:
+            res += "**Technical & Architecture Benefits**:\n" + "\n".join([f"• {b}" for b in tech_bens]) + "\n\n"
+            
+        if not (biz_bens or op_bens or tech_bens):
+            res += "\n".join([f"• {b}" for b in benefits])
+
+        return res.strip()
+
+    def generate_comparative_response(self, entity_a: Dict[str, Any], entity_b: Dict[str, Any]) -> str:
+        """Renders an objective comparative matrix table for retrieved entities."""
+        name_a = entity_a.get("name", "Solution A")
+        name_b = entity_b.get("name", "Solution B")
+        
+        res = f"📊 **Comparative Evaluation: {name_a} vs. {name_b}**\n\n"
+        res += f"| Dimension | **{name_a}** | **{name_b}** |\n"
+        res += "| :--- | :--- | :--- |\n"
+        res += f"| **Core Focus** | {entity_a.get('tagline', 'Enterprise Operating System')} | {entity_b.get('tagline', 'Enterprise Operating System')} |\n"
+        res += f"| **Target Vertical** | {entity_a.get('domain', 'Enterprise Operations')} | {entity_b.get('domain', 'Enterprise Operations')} |\n"
+        res += f"| **Primary Capability** | {entity_a.get('capabilities', ['Unified Desk'])[0]} | {entity_b.get('capabilities', ['Unified Desk'])[0]} |\n\n"
+        res += f"Both solutions leverage CittaAI's shared enterprise data engine and security architecture."
+        return res.strip()
+
 def get_response_generator() -> AdaptiveResponseGenerator:
     return AdaptiveResponseGenerator()

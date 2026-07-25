@@ -236,6 +236,23 @@ class ConversationValidationEngine:
             message="Follow-up prompt is relevant."
         )
 
+    def check_click_only_redirection(self, redirect_payload: Optional[Dict[str, Any]]) -> ValidationRuleResult:
+        """Rule 11: Verify redirection is NEVER forced automatically without explicit user click."""
+        if redirect_payload and redirect_payload.get("auto_redirect") is True:
+            return ValidationRuleResult(
+                rule_name="ClickOnlyRedirectionRule",
+                passed=False,
+                severity=ValidationSeverity.CRITICAL,
+                message="Automatic browser redirection detected! Redirection MUST be click-only.",
+                repair_action="Disable auto_redirect"
+            )
+        return ValidationRuleResult(
+            rule_name="ClickOnlyRedirectionRule",
+            passed=True,
+            severity=ValidationSeverity.INFO,
+            message="Click-only redirection rule verified."
+        )
+
     def generate_graceful_fallback(self, query: str, entity_id: Optional[str]) -> str:
         """Generates a safe, professional fallback presales explanation."""
         ent = entity_id or "CittaAI Enterprise Platform"

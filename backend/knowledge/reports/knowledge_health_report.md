@@ -1,6 +1,6 @@
 # Knowledge Health & Compilation Report
 
-Generated at: `2026-07-18 12:30:38`
+Generated at: `2026-07-23 09:54:49`
 Knowledge Base Version: `1.0.0`
 
 ## System Health Metrics
@@ -13,8 +13,8 @@ Knowledge Base Version: `1.0.0`
 - **Partners Registered**      : ✅ 13 Enterprise Partners (100% Retention Rate)
 - **Static FAQs**              : ✅ 3 Compiled Questions
 - **Golden Answers**           : ✅ 8 Deterministic Questions
-- **Resolved Aliases**          : ✅ 46 Synonyms
-- **Vector Database Chunks**   : ✅ 9 Chunks Ingested
+- **Resolved Aliases**          : ✅ 52 Synonyms
+- **Vector Database Chunks**   : ✅ 83 Chunks Ingested
 
 ## Domain Integrity Coverage
 - **Company Information**      : 100% Verified
@@ -26,11 +26,11 @@ Knowledge Base Version: `1.0.0`
 - **Contact & Location Details**: 100% Verified
 
 ## Benchmark Gate Verification
-- **Total Tests Conducted**    : 149 Golden Questions
-- **Type Routing Score**       : 98.7%
-- **Domain Mapping Score**     : 99.3%
-- **Entity Resolution Score**   : 98.0%
-- **Failed Questions Count**   : 6
+- **Total Tests Conducted**    : 162 Golden Questions
+- **Type Routing Score**       : 93.8%
+- **Domain Mapping Score**     : 96.9%
+- **Entity Resolution Score**   : 97.5%
+- **Failed Questions Count**   : 19
 - **Routing Gate Pass**        : ✅ PASS
 
 ## Platform Status

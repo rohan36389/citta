@@ -15,24 +15,22 @@ def validate_response(
     text: str,
     resolved_entity: Optional[str] = None,
     resolved_section: Optional[str] = None,
+    requested_entities: Optional[List[str]] = None,
     registry: Optional[Any] = None,
     retry_count: int = 0,
     return_metrics: bool = False
 ) -> Union[Tuple[bool, str], Tuple[bool, str, Dict[str, Any]]]:
     """
     Production Response Validator:
-    Verifies LLM response against strict grounding constraints:
+    Verifies LLM response against strict grounding and completeness constraints:
     1. Resolved entity matches response
     2. Requested section matches response
-    3. No unsupported products
-    4. No unsupported technologies
-    5. No fake pricing
-    6. No unsupported case studies
-    7. No unsupported statistics
-    
-    If validation fails and retry_count < 1, indicates retry required.
-    If retry_count >= 1 and validation fails again, returns FALLBACK_MESSAGE ("I don't have enough verified information to answer that.").
-    Never loops indefinitely.
+    3. Response completeness across all requested entities
+    4. No unsupported products
+    5. No unsupported technologies
+    6. No fake pricing
+    7. No unsupported case studies
+    8. No unsupported statistics
     """
     from knowledge_registry import get_registry
     reg = registry or get_registry()
@@ -47,6 +45,7 @@ def validate_response(
         "unsupported_statistics": [],
         "entity_matched": True,
         "section_matched": True,
+        "completeness_matched": True,
         "retry_count": retry_count
     }
 
@@ -94,6 +93,22 @@ def validate_response(
             metrics["section_matched"] = False
             metrics["valid"] = False
             metrics["reasons"].append(f"Response does not match requested section '{resolved_section}'")
+
+    # 2.1 Multi-Entity Response Completeness Validation
+    if requested_entities and len(requested_entities) > 1:
+        missing_ents = []
+        for req_ent in requested_entities:
+            req_name = str(req_ent).lower()
+            if hasattr(reg, "get_entity"):
+                ent_obj = reg.get_entity(req_ent)
+                if ent_obj:
+                    req_name = (ent_obj.get("name") or ent_obj.get("title") or req_ent).lower()
+            if req_name not in text_lower:
+                missing_ents.append(str(req_ent))
+        if missing_ents:
+            metrics["completeness_matched"] = False
+            metrics["valid"] = False
+            metrics["reasons"].append(f"Response incomplete: missing requested entity/entities '{', '.join(missing_ents)}'")
 
     # 3. Unsupported Products Check
     # Verify product mentions in text against reg.entities and reg.products
@@ -220,21 +235,52 @@ def validate_response(
         metrics["valid"] = False
         metrics["reasons"].append("Internal exposure phrasing detected in response.")
 
+    # 10. Evidence Coverage Evaluation & Claim Traceability
+    # Distinguish between Missing Evidence and Low Confidence. Low confidence alone must NEVER trigger a disclaimer.
+    # EvidenceCoverage values: SUPPORTED, PARTIALLY_SUPPORTED, UNSUPPORTED
+    if metrics["valid"]:
+        metrics["evidence_coverage"] = "SUPPORTED"
+    elif any(r for r in metrics["reasons"] if "does not match requested section" in r or "unsupported_pricing" in r or "unsupported_statistics" in r):
+        # Specific requested aspect or detail missing from evidence
+        metrics["evidence_coverage"] = "PARTIALLY_SUPPORTED"
+    else:
+        metrics["evidence_coverage"] = "UNSUPPORTED"
+
     # Quality Score Calculation (0.0 to 1.0)
     deductions = len(metrics["reasons"]) * 0.2
     metrics["quality_score"] = max(0.0, min(1.0, 1.0 - deductions))
 
-    # Determine Output Text & Handling
-    if not metrics["valid"]:
+    # Determine Output Text & Handling based on EvidenceCoverage
+    if metrics["evidence_coverage"] == "SUPPORTED":
+        final_text = text
+    elif metrics["evidence_coverage"] == "PARTIALLY_SUPPORTED":
+        if retry_count >= 1:
+            # Append concise disclaimer explaining ONLY what information is unavailable
+            missing_details = []
+            if metrics.get("unsupported_pricing"):
+                missing_details.append("specific pricing")
+            if metrics.get("unsupported_statistics"):
+                missing_details.append("specific performance statistics")
+            if not metrics.get("section_matched"):
+                missing_details.append(f"details for section '{resolved_section}'")
+            
+            missing_str = ", ".join(missing_details) if missing_details else "some of the requested details"
+            disclaimer = f"\n\n*Note:* Information regarding {missing_str} is currently unavailable in the verified records."
+            if not text.endswith(disclaimer):
+                final_text = text + disclaimer
+            else:
+                final_text = text
+        else:
+            final_text = text
+    else:  # UNSUPPORTED
         if retry_count >= 1:
             logger.warning(f"Response Validation Failed on retry {retry_count}. Returning fallback message. Reasons: {metrics['reasons']}")
             final_text = FALLBACK_MESSAGE
         else:
             logger.warning(f"Response Validation Failed on initial check. Single retry indicated. Reasons: {metrics['reasons']}")
             final_text = text
-    else:
-        final_text = text
 
     if return_metrics:
         return metrics["valid"], final_text, metrics
     return metrics["valid"], final_text
+

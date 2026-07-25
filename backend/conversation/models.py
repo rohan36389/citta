@@ -1,15 +1,39 @@
 from dataclasses import dataclass, field
 from typing import Dict, Any, List, Optional
 
+from enum import Enum
+
+class ConversationStage(Enum):
+    DISCOVERY = "Discovery"
+    QUALIFICATION = "Qualification"
+    EVALUATION = "Evaluation"
+    TECHNICAL_REVIEW = "Technical Review"
+    COMMERCIAL = "Commercial"
+    DECISION = "Decision"
+
 @dataclass
 class ConversationContext:
     session_id: str
     turn_count: int = 0
-    current_stage: str = "Greeting"
+    current_stage: str = "Discovery"
+    conversation_stage: ConversationStage = ConversationStage.DISCOVERY
     history: List[Dict[str, str]] = field(default_factory=list)
     variables: Dict[str, Any] = field(default_factory=dict)
+    
+    # 10-Point Memory Schema
+    active_entity: Optional[str] = None
     active_entity_id: Optional[str] = None
+    previous_entity: Optional[str] = None
     active_registry: Optional[str] = None
+    conversation_goal: Optional[str] = None
+    business_context: Optional[str] = None
+    current_topic: Optional[str] = None
+    clarification_state: Optional[str] = None
+    answered_topics: List[str] = field(default_factory=list)
+    pending_questions: List[str] = field(default_factory=list)
+    discovered_requirements: List[str] = field(default_factory=list)
+    user_role: Optional[str] = None
+    
     metadata: Dict[str, Any] = field(default_factory=dict)
 
 from enum import Enum

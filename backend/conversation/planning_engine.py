@@ -15,6 +15,35 @@ logger = logging.getLogger(__name__)
 
 # Strategy Blueprints Definition
 STRATEGY_TEMPLATES: Dict[ResponseStrategyType, Dict[str, Any]] = {
+    ResponseStrategyType.CONSULTATIVE_DISCUSSION: {
+        "tone": "Empathetic, Insightful & Advisory",
+        "depth": "Consultative Alignment",
+        "length": "Balanced (150-250w)",
+        "sections": [
+            ResponseSectionBlueprint(
+                title="Overview",
+                purpose="Direct summary answer providing immediate clarity",
+                key_points=["Direct answer statement", "Core solution positioning"]
+            ),
+            ResponseSectionBlueprint(
+                title="Business Context & Impact",
+                purpose="Explain operational relevance and business ROI",
+                key_points=["Efficiency drivers", "Operational value"]
+            ),
+            ResponseSectionBlueprint(
+                title="Relevant Capabilities",
+                purpose="Present key capabilities aligned to user inquiry",
+                key_points=["Primary capability 1", "Primary capability 2"]
+            ),
+            ResponseSectionBlueprint(
+                title="Qualification & Discovery",
+                purpose="Ask targeted qualification question to guide enterprise fit",
+                key_points=["Operational scale discovery", "System integration context"]
+            )
+        ],
+        "follow_up": "What is your primary operational objective or current system setup?",
+        "cta": "Speak with a CittaAI enterprise solution consultant."
+    },
     ResponseStrategyType.EXECUTIVE_SUMMARY: {
         "tone": "Strategic, Direct & Outcome-Oriented",
         "depth": "High-Level Executive",

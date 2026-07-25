@@ -48,7 +48,7 @@
         "ecommerce_os",
         "ai_powered_marketing"
       ],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -109,7 +109,7 @@
         "ecommerce_os",
         "ai_powered_marketing"
       ],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -176,7 +176,7 @@
         "real_estate_os",
         "enterprise_ai_os"
       ],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -231,7 +231,7 @@
       "related_entities": [
         "enterprise_ai_os"
       ],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -283,7 +283,7 @@
       ],
       "case_studies": [],
       "related_entities": [],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -341,7 +341,7 @@
         "whatsapp_marketing",
         "influencer_marketing"
       ],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -400,7 +400,7 @@
         "whatsapp_marketing",
         "data_engineering"
       ],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -459,7 +459,7 @@
       "related_entities": [
         "data_engineering"
       ],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -519,14 +519,23 @@
       "related_entities": [
         "data_engineering"
       ],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
+        "civic tech",
         "smart cities",
         "smart cities os",
+        "smart cities platform",
+        "smart cities services",
+        "smart city",
+        "smart city os",
+        "smart city services",
+        "smart-cities",
         "smart-cities-os",
-        "smart_cities_os"
+        "smart_cities_os",
+        "smartcities",
+        "urban os"
       ]
     },
     {
@@ -573,14 +582,19 @@
       "related_entities": [
         "data_engineering"
       ],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
+        "college lms",
         "education",
         "education os",
+        "education platform",
+        "education services",
         "education-os",
-        "education_os"
+        "education_os",
+        "learning os",
+        "lms os"
       ]
     },
     {
@@ -627,7 +641,7 @@
       "related_entities": [
         "data_engineering"
       ],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -690,7 +704,7 @@
         "enterprise_agentic_ai",
         "data_engineering"
       ],
-      "last_updated": "2026-07-18",
+      "last_updated": "2026-07-23",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [

@@ -1,0 +1,169 @@
+[
+  {
+    "memory_id": "mem_preference_2f2b57fa",
+    "type": "PREFERENCE",
+    "owner_user_id": "user_john",
+    "organization_id": "acme_corp",
+    "visibility": "PRIVATE_USER",
+    "content": "I always prefer PDF reports.",
+    "entity_id": null,
+    "intent": null,
+    "workflow_id": null,
+    "initial_confidence": 1.0,
+    "half_life_days": 180.0,
+    "provenance": {
+      "source_type": "MANUAL_USER_INPUT",
+      "source_id": "src_2f2b57fa",
+      "created_at_iso": "2026-07-25T15:41:03.896560+00:00",
+      "context_query": null
+    },
+    "version_history": [],
+    "created_at_ms": 1784994063896.51,
+    "updated_at_ms": 1784994063896.51,
+    "expires_at_ms": null,
+    "is_archived": false,
+    "is_deleted": false
+  },
+  {
+    "memory_id": "mem_preference_296175f7",
+    "type": "PREFERENCE",
+    "owner_user_id": "user_sarah",
+    "organization_id": "acme_corp",
+    "visibility": "PRIVATE_USER",
+    "content": "I prefer Markdown report format.",
+    "entity_id": null,
+    "intent": null,
+    "workflow_id": null,
+    "initial_confidence": 1.0,
+    "half_life_days": 180.0,
+    "provenance": {
+      "source_type": "MANUAL_USER_INPUT",
+      "source_id": "src_296175f7",
+      "created_at_iso": "2026-07-25T15:41:03.911495+00:00",
+      "context_query": null
+    },
+    "version_history": [
+      {
+        "version": 1,
+        "content": "I prefer PDF report format.",
+        "updated_at_iso": "2026-07-25T15:41:03.913851+00:00",
+        "updated_by": "user_sarah"
+      },
+      {
+        "version": 2,
+        "content": "I prefer Markdown report format.",
+        "updated_at_iso": "2026-07-25T15:41:21.050308+00:00",
+        "updated_by": "user_sarah"
+      },
+      {
+        "version": 3,
+        "content": "I prefer PDF report format.",
+        "updated_at_iso": "2026-07-25T15:41:21.051313+00:00",
+        "updated_by": "user_sarah"
+      },
+      {
+        "version": 4,
+        "content": "I prefer Markdown report format.",
+        "updated_at_iso": "2026-07-25T15:42:04.563862+00:00",
+        "updated_by": "user_sarah"
+      },
+      {
+        "version": 5,
+        "content": "I prefer PDF report format.",
+        "updated_at_iso": "2026-07-25T15:42:04.564980+00:00",
+        "updated_by": "user_sarah"
+      },
+      {
+        "version": 6,
+        "content": "I prefer Markdown report format.",
+        "updated_at_iso": "2026-07-25T15:50:48.023793+00:00",
+        "updated_by": "user_sarah"
+      },
+      {
+        "version": 7,
+        "content": "I prefer PDF report format.",
+        "updated_at_iso": "2026-07-25T15:50:48.024869+00:00",
+        "updated_by": "user_sarah"
+      },
+      {
+        "version": 8,
+        "content": "I prefer Markdown report format.",
+        "updated_at_iso": "2026-07-25T15:51:05.328236+00:00",
+        "updated_by": "user_sarah"
+      },
+      {
+        "version": 9,
+        "content": "I prefer PDF report format.",
+        "updated_at_iso": "2026-07-25T15:51:05.329252+00:00",
+        "updated_by": "user_sarah"
+      },
+      {
+        "version": 10,
+        "content": "I prefer Markdown report format.",
+        "updated_at_iso": "2026-07-25T16:03:30.129124+00:00",
+        "updated_by": "user_sarah"
+      },
+      {
+        "version": 11,
+        "content": "I prefer PDF report format.",
+        "updated_at_iso": "2026-07-25T16:03:30.130279+00:00",
+        "updated_by": "user_sarah"
+      }
+    ],
+    "created_at_ms": 1784994063911.42,
+    "updated_at_ms": 1784995410130.26,
+    "expires_at_ms": null,
+    "is_archived": false,
+    "is_deleted": false
+  },
+  {
+    "memory_id": "mem_org_22ee2879",
+    "type": "ORG",
+    "owner_user_id": "user_admin",
+    "organization_id": "acme_corp",
+    "visibility": "ADMIN_ONLY",
+    "content": "Sensitive Admin Security Protocol",
+    "entity_id": null,
+    "intent": null,
+    "workflow_id": null,
+    "initial_confidence": 1.0,
+    "half_life_days": 180.0,
+    "provenance": {
+      "source_type": "MANUAL_USER_INPUT",
+      "source_id": "src_22ee2879",
+      "created_at_iso": "2026-07-25T15:41:03.918283+00:00",
+      "context_query": null
+    },
+    "version_history": [],
+    "created_at_ms": 1784994063918.24,
+    "updated_at_ms": 1784994063918.24,
+    "expires_at_ms": null,
+    "is_archived": false,
+    "is_deleted": false
+  },
+  {
+    "memory_id": "mem_action_539a802c",
+    "type": "ACTION",
+    "owner_user_id": "user_john",
+    "organization_id": "acme_corp",
+    "visibility": "ORGANIZATION",
+    "content": "Workflow Completed: Schedule Demo - Calendar Event Scheduled (evt_99) + CRM Lead Created (lead_12)",
+    "entity_id": null,
+    "intent": null,
+    "workflow_id": null,
+    "initial_confidence": 1.0,
+    "half_life_days": 180.0,
+    "provenance": {
+      "source_type": "WORKFLOW",
+      "source_id": "src_539a802c",
+      "created_at_iso": "2026-07-25T15:41:03.922520+00:00",
+      "context_query": null
+    },
+    "version_history": [],
+    "created_at_ms": 1784994063922.48,
+    "updated_at_ms": 1784994063922.48,
+    "expires_at_ms": 1800546063922.48,
+    "is_archived": false,
+    "is_deleted": false
+  }
+]

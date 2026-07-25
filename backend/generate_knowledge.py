@@ -72,6 +72,10 @@ def generate_aliases_for_entity(ent: Dict[str, Any]) -> List[str]:
         aliases.update(["influencer", "influencer marketing", "influencer platform", "influncer"])
     elif ent_id == "enterprise_ai_os":
         aliases.update(["enterprise ai", "enterprise ai os", "ai os", "agentic ai os"])
+    elif ent_id == "smart_cities_os":
+        aliases.update(["smart cities", "smart city", "smart-cities", "smartcities", "smart cities os", "smart city os", "urban os", "smart cities services", "smart city services", "smart cities platform", "civic tech"])
+    elif ent_id == "education_os":
+        aliases.update(["education", "education os", "education services", "college lms", "learning os", "lms os", "education platform"])
     elif ent_id == "jewellery_brand_roi":
         aliases.update(["jewellery brand", "jewellery", "jewellery case study"])
     elif ent_id == "fmcg_social_growth":
@@ -1290,9 +1294,15 @@ def compile_registries():
             "pharma os": "pharma_os",
             "healthcare os": "pharma_os",
             "smart cities os": "smart_cities_os",
-            "urban os": "smart_cities_os",
+            "smart cities": "smart_cities_os",
             "smart city": "smart_cities_os",
+            "smart cities services": "smart_cities_os",
+            "smart city services": "smart_cities_os",
+            "smart cities platform": "smart_cities_os",
+            "urban os": "smart_cities_os",
             "education os": "education_os",
+            "education": "education_os",
+            "education services": "education_os",
             "lms os": "education_os",
             "learning os": "education_os",
             "real estate os": "real_estate_os",
@@ -1398,106 +1408,34 @@ def compile_registries():
     }
     save_json(routing, COMPILED_DIR / "routing.json")
 
-    # 20. manifest.json (AUTO-GENERATED LIST OF REGISTRIES)
+    # 20. manifest.json (AUTO-GENERATED LIST OF V2 REGISTRIES)
     manifest = {
         "registries": [
-            {
-                "name": "company",
-                "enabled": True,
-                "priority": 70,
-                "registry_id": "company_v1",
-                "registry_type": "COMPANY_INFO",
-                "content": "company.json"
-            },
-            {
-                "name": "products",
-                "enabled": True,
-                "priority": 90,
-                "registry_id": "products_v1",
-                "registry_type": "PRODUCTS",
-                "content": "products.json"
-            },
-            {
-                "name": "services",
-                "enabled": True,
-                "priority": 80,
-                "registry_id": "services_v1",
-                "registry_type": "SERVICES",
-                "content": "services.json"
-            },
-            {
-                "name": "solutions",
-                "enabled": True,
-                "priority": 80,
-                "registry_id": "solutions_v1",
-                "registry_type": "SOLUTIONS",
-                "content": "solutions.json"
-            },
-            {
-                "name": "case_studies",
-                "enabled": True,
-                "priority": 85,
-                "registry_id": "case_studies_v1",
-                "registry_type": "CASE_STUDIES",
-                "content": "case_studies.json"
-            },
-            {
-                "name": "leadership",
-                "enabled": True,
-                "priority": 80,
-                "registry_id": "leadership_v1",
-                "registry_type": "LEADERSHIP",
-                "content": "leadership.json"
-            },
-            {
-                "name": "recognition",
-                "enabled": True,
-                "priority": 80,
-                "registry_id": "recognition_v1",
-                "registry_type": "RECOGNITION",
-                "content": "recognition.json"
-            },
-            {
-                "name": "partners",
-                "enabled": True,
-                "priority": 80,
-                "registry_id": "partners_v1",
-                "registry_type": "PARTNERS",
-                "content": "partners.json"
-            },
-            {
-                "name": "contact",
-                "enabled": True,
-                "priority": 80,
-                "registry_id": "contact_v1",
-                "registry_type": "CONTACT",
-                "content": "contact.json"
-            },
-            {
-                "name": "location",
-                "enabled": True,
-                "priority": 80,
-                "registry_id": "location_v1",
-                "registry_type": "LOCATION",
-                "content": "location.json"
-            },
-            {
-                "name": "faq",
-                "enabled": True,
-                "priority": 75,
-                "registry_id": "faq_v1",
-                "registry_type": "FAQ",
-                "content": "faq.json"
-            },
-            {
-                "name": "pricing",
-                "enabled": True,
-                "priority": 80,
-                "registry_id": "pricing_v1",
-                "registry_type": "PRICING",
-                "content": "pricing.json"
-            }
-        ]
+            {"name": "company_info", "enabled": True, "priority": 95, "registry_id": "company_info_v2", "registry_type": "COMPANY_INFO", "content": "new/company_info.json"},
+            {"name": "product_whatsapp_marketing", "enabled": True, "priority": 90, "registry_id": "whatsapp_marketing_v2", "registry_type": "PRODUCTS", "content": "new/product_whatsapp_marketing.json"},
+            {"name": "product_influencer_marketing", "enabled": True, "priority": 90, "registry_id": "influencer_marketing_v2", "registry_type": "PRODUCTS", "content": "new/product_influencer_marketing.json"},
+            {"name": "solution_ecommerce_os", "enabled": True, "priority": 85, "registry_id": "ecommerce_os_v2", "registry_type": "SOLUTIONS", "content": "new/solution_ecommerce_os.json"},
+            {"name": "solution_real_estate_os", "enabled": True, "priority": 85, "registry_id": "real_estate_os_v2", "registry_type": "SOLUTIONS", "content": "new/solution_real_estate_os.json"},
+            {"name": "solution_pharma_os", "enabled": True, "priority": 85, "registry_id": "pharma_os_v2", "registry_type": "SOLUTIONS", "content": "new/solution_pharma_os.json"},
+            {"name": "solution_smart_cities_os", "enabled": True, "priority": 85, "registry_id": "smart_cities_os_v2", "registry_type": "SOLUTIONS", "content": "new/solution_smart_cities_os.json"},
+            {"name": "solution_education_os", "enabled": True, "priority": 85, "registry_id": "education_os_v2", "registry_type": "SOLUTIONS", "content": "new/solution_education_os.json"},
+            {"name": "solution_enterprise_ai_os", "enabled": True, "priority": 85, "registry_id": "enterprise_ai_os_v2", "registry_type": "SOLUTIONS", "content": "new/solution_enterprise_ai_os.json"},
+            {"name": "service_data_engineering", "enabled": True, "priority": 80, "registry_id": "data_engineering_v2", "registry_type": "SERVICES", "content": "new/service_data_engineering.json"},
+            {"name": "service_enterprise_agentic_ai", "enabled": True, "priority": 80, "registry_id": "enterprise_agentic_ai_v2", "registry_type": "SERVICES", "content": "new/service_enterprise_agentic_ai.json"},
+            {"name": "service_ai_strategy", "enabled": True, "priority": 80, "registry_id": "ai_strategy_v2", "registry_type": "SERVICES", "content": "new/service_ai_strategy.json"},
+            {"name": "service_ai_powered_marketing", "enabled": True, "priority": 80, "registry_id": "ai_powered_marketing_v2", "registry_type": "SERVICES", "content": "new/service_ai_powered_marketing.json"},
+            {"name": "awards_recognition", "enabled": True, "priority": 75, "registry_id": "awards_recognition_v2", "registry_type": "RECOGNITION", "content": "new/awards_recognition.json"},
+            {"name": "leadership_info", "enabled": True, "priority": 75, "registry_id": "leadership_info_v2", "registry_type": "LEADERSHIP", "content": "new/leadership_info.json"},
+            {"name": "contact_info", "enabled": True, "priority": 70, "registry_id": "contact_info_v2", "registry_type": "CONTACT", "content": "new/contact_info.json"},
+            {"name": "faq_general", "enabled": True, "priority": 65, "registry_id": "faq_general_v2", "registry_type": "FAQ", "content": "new/faq_general.json"},
+            {"name": "case_study_jewellery_brand_roi", "enabled": True, "priority": 60, "registry_id": "case_study_jewellery_v2", "registry_type": "CASE_STUDIES", "content": "new/case_study_jewellery_brand_roi.json"},
+            {"name": "case_study_fmcg_social_growth", "enabled": True, "priority": 60, "registry_id": "case_study_fmcg_v2", "registry_type": "CASE_STUDIES", "content": "new/case_study_fmcg_social_growth.json"},
+            {"name": "case_study_b2b_spices_export", "enabled": True, "priority": 60, "registry_id": "case_study_spices_v2", "registry_type": "CASE_STUDIES", "content": "new/case_study_b2b_spices_export.json"}
+        ],
+        "metadata": {
+            "schema_version": "2.0",
+            "content_version": "1.0"
+        }
     }
     save_json(manifest, COMPILED_DIR / "manifest.json")
     save_json(manifest, REGISTRY_DIR / "manifest.json")

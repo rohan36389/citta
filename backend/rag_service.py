@@ -32,6 +32,8 @@ try:
     from conversation_context import get_context_manager
     from retrieval_reranker import get_retrieval_reranker
     from confidence_router import get_confidence_router
+    from phase2_orchestrator import get_phase2_orchestrator
+    from unknown_entity_handler import get_unknown_entity_handler
 except ImportError:
     from backend.llm_provider import LLMProvider
     from backend.vector_store import VectorStore
@@ -143,6 +145,11 @@ class RAGService:
         self.entity_extractor = get_entity_extractor()
         self.context_manager = get_context_manager()
         self.confidence_router = get_confidence_router()
+        self.phase2_orchestrator = get_phase2_orchestrator()
+        from phase3_reasoning_engine import get_phase3_reasoning_engine
+        self.phase3_reasoning_engine = get_phase3_reasoning_engine(provider=self.provider)
+        from phase4_action_engine import get_phase4_action_engine
+        self.phase4_action_engine = get_phase4_action_engine()
 
         from response_planner import get_response_planner
         from response_postprocessor import get_response_postprocessor
@@ -432,7 +439,103 @@ class RAGService:
             }
             return
 
-        # 4. Deterministic Intercept Engine Check (Zero-LLM latency, strictly grounded in leadership_info.json)
+        # 4. Phase 2 Enterprise Intent Understanding & Execution Strategy Orchestration
+        p2_ctx = self.phase2_orchestrator.orchestrate(session_id, message, normalized_q)
+
+        # Dispatch 4.1: Out-of-Domain Guardrail (Zero-LLM)
+        if p2_ctx.is_out_of_domain:
+            ood_text = p2_ctx.response_text or "I specialize in CittaAI's enterprise software catalog..."
+            yield {"text": ood_text, "done": False}
+            yield {
+                "done": True,
+                "citations": [],
+                "suggested_questions": ["Tell me about Education OS", "What products do you offer?"],
+                "redirect": None,
+                "source": "Out-of-Domain Guardrail",
+                "verified": True,
+                "confidence": 1.0,
+                "metrics": p2_ctx.metrics
+            }
+            return
+
+        # Dispatch 4.2: Ambiguity Candidate Selection (Zero-LLM)
+        if p2_ctx.is_ambiguous:
+            candidates_str = "\n".join([f"• **{c.replace('_', ' ').title()}**" for c in p2_ctx.matched_entity_ids])
+            amb_text = (
+                f"Your query matches multiple CittaAI catalog offerings:\n\n{candidates_str}\n\n"
+                f"Which offering would you like to explore in detail?"
+            )
+            yield {"text": amb_text, "done": False}
+            yield {
+                "done": True,
+                "citations": [],
+                "suggested_questions": [f"Explain {c.replace('_', ' ').title()}" for c in p2_ctx.matched_entity_ids[:3]],
+                "redirect": None,
+                "source": "Ambiguity Resolver",
+                "verified": True,
+                "confidence": 0.7,
+                "metrics": p2_ctx.metrics
+            }
+            return
+
+        # Dispatch 4.3: Unknown Entity Catalog Fallback (Zero-LLM)
+        if p2_ctx.is_unknown_entity:
+            unk_resp = get_unknown_entity_handler().build_unknown_entity_response(p2_ctx)
+            yield {"text": unk_resp["text"], "done": False}
+            yield {
+                "done": True,
+                "citations": [],
+                "suggested_questions": unk_resp["suggestions"],
+                "redirect": None,
+                "source": unk_resp["source"],
+                "verified": True,
+                "confidence": 1.0,
+                "metrics": p2_ctx.metrics
+            }
+            return
+
+        # Dispatch 4.4: Phase 3 Evidence-Grounded Reasoning Engine (REASONING & CONSULTATIVE)
+        from orchestration_context import ExecutionStrategy
+        if p2_ctx.execution_strategy in [ExecutionStrategy.REASONING, ExecutionStrategy.CONSULTATIVE]:
+            reasoning_res = await self.phase3_reasoning_engine.execute_reasoning(p2_ctx, model=model)
+            resp_text = reasoning_res["text"]
+            self.session_memory[session_id].append({"role": "user", "content": message})
+            self.session_memory[session_id].append({"role": "assistant", "content": resp_text})
+            
+            yield {"text": resp_text, "done": False}
+            yield {
+                "done": True,
+                "citations": [],
+                "suggested_questions": reasoning_res.get("suggestions", []),
+                "redirect": None,
+                "source": reasoning_res.get("source", "Enterprise Reasoning Engine"),
+                "verified": reasoning_res.get("verified", True),
+                "confidence": reasoning_res.get("confidence", 0.95),
+                "metrics": p2_ctx.metrics
+            }
+            return
+
+        # Dispatch 4.5: Phase 4 Enterprise Action Engine (ACTION Strategy)
+        if p2_ctx.execution_strategy == ExecutionStrategy.ACTION:
+            action_res = await self.phase4_action_engine.execute_action_pipeline(p2_ctx)
+            resp_text = action_res["text"]
+            self.session_memory[session_id].append({"role": "user", "content": message})
+            self.session_memory[session_id].append({"role": "assistant", "content": resp_text})
+            
+            yield {"text": resp_text, "done": False}
+            yield {
+                "done": True,
+                "citations": [],
+                "suggested_questions": action_res.get("suggestions", []),
+                "redirect": None,
+                "source": action_res.get("source", "Enterprise Action Platform"),
+                "verified": action_res.get("verified", True),
+                "confidence": 1.0,
+                "metrics": p2_ctx.metrics
+            }
+            return
+
+        # 5. Deterministic Intercept Engine Check (Zero-LLM latency)
         from intent_analyzer import get_intent_analyzer
         from deterministic_engine import get_deterministic_engine
         from structured_renderers import sanitize_conversational_text
@@ -894,6 +997,12 @@ class RAGService:
             f"You are the CittaAI Enterprise AI Consultant, a professional advisor representing CittaAI.\n"
             f"Active Mode: {mode}\n"
             "Answer the query professionally. Your response must be entirely factual, structured, and grounded in context.\n"
+            "STRICT GROUNDING & CLAIM TRACEABILITY RULES:\n"
+            "Every claim must be traceable to the supplied attributed evidence.\n"
+            "If evidence does not support a business benefit, do not generate it.\n"
+            "Summarization is allowed.\n"
+            "Hallucination is not.\n"
+            "Do NOT invent secondary benefits, marketing claims, enterprise capabilities, ROI, cost savings, reputation improvements, flexibility, or scalability unless explicitly supported by retrieved evidence.\n"
             "ADAPTIVE RESPONSE LENGTH & STYLE:\n"
             "- For simple, direct questions (e.g., 'Where are you located?', 'Who is the CEO?'), provide a concise 1-sentence answer.\n"
             "- For broad, overview questions (e.g., 'Tell me about Enterprise AI OS', 'What services do you offer?'), provide a structured response with sections: Overview, Capabilities/Features, Benefits, Use Cases.\n"
@@ -998,13 +1107,6 @@ class RAGService:
                 except Exception:
                     logger.exception("Failed to run guardrail regeneration.")
 
-        # Apply soft confidence disclaimer brackets
-        if 0.30 <= max_score < 0.60:
-            disclaimer_prefix = "Based on the available CittaAI information, "
-            if not complete_response.startswith(disclaimer_prefix):
-                complete_response = disclaimer_prefix + complete_response
-                yield {"text": "\n\n*Applied disclaimer:* " + complete_response, "done": False}
-                    
         # Apply output validation with grounding & facts verification
         val_ok, verified_text, val_metrics = validate_response(
             complete_response,

@@ -112,4 +112,27 @@ def run_evaluation():
     print(f"\nFull validation report saved to: {report_file}")
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Run CittaAI Accuracy Benchmark & ECQF Framework")
+    parser.add_argument("--ecqf", action="store_true", help="Run Enterprise Conversation Quality Framework (ECQF)")
+    parser.add_argument("--repeat", type=int, default=1, help="Repeat count for determinism testing")
+    parser.add_argument("--dashboard", action="store_true", help="Generate HTML Dashboard report")
+    args = parser.parse_args()
+
     run_evaluation()
+
+    if args.ecqf:
+        try:
+            from evaluation.eval_framework import run_ecqf_suite
+        except ImportError:
+            from eval_framework import run_ecqf_suite
+        print("\n================ RUNNING ECQF v1.0 QUALITY FRAMEWORK ================")
+        ecqf_res = run_ecqf_suite(repeat_count=args.repeat)
+
+    if args.dashboard or args.ecqf:
+        try:
+            from evaluation.generate_dashboard import generate_html_dashboard
+        except ImportError:
+            from generate_dashboard import generate_html_dashboard
+        generate_html_dashboard()
+

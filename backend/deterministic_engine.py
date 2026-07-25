@@ -85,6 +85,219 @@ class DeterministicEngine:
                             "metrics": {"resolved_entity": "NONE", "resolved_registry": "PRODUCTS"}
                         }
 
+            # Category Listing Intercepts (SERVICES, PRODUCTS, SOLUTIONS)
+            svc_triggers = {
+                "services", "what are the services", "what services do you offer", "what services", 
+                "list services", "show services", "our services", "services offered", 
+                "what services does cittaai provide", "what services are available",
+                "what are the services provided", "services provided", "what are the srevices provided",
+                "srevices", "srevices provided", "srevice", "serivces"
+            }
+            if q_lower in svc_triggers or (("service" in q_lower or "services" in q_lower or "srevice" in q_lower or "srevices" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer", "tell me about"]) and not any(e in q_lower for e in ["smart", "data engineering", "pharma", "real estate", "ecommerce", "whatsapp", "influencer", "strategy", "agentic", "martech", "belong", "parent", "is ", "category", "offering"])):
+                services_resp = (
+                    "### CittaAI Enterprise Services\n\n"
+                    "#### 1. Data Engineering\n"
+                    "**Capabilities:**\n"
+                    "• Real-time Data Pipelines\n"
+                    "• Cloud Data Warehouse\n"
+                    "• Data Lake Architecture\n"
+                    "• Master Data Management\n\n"
+                    "#### 2. Enterprise & Agentic AI\n"
+                    "**Capabilities:**\n"
+                    "• Custom LLM Fine-tuning\n"
+                    "• Multi-Agent Systems\n"
+                    "• RAG Solutions\n"
+                    "• Conversational AI\n\n"
+                    "#### 3. AI Strategy & Advisory\n"
+                    "**Capabilities:**\n"
+                    "• AI Readiness Assessment\n"
+                    "• Strategic Roadmap\n"
+                    "• Use Case Prioritization\n"
+                    "• AI Governance\n\n"
+                    "#### 4. AI-Powered Marketing\n"
+                    "**Capabilities:**\n"
+                    "• Branding & Strategy\n"
+                    "• Social Media Marketing\n"
+                    "• Content & Design\n"
+                    "• SEO\n"
+                    "• PPC Advertising\n"
+                    "• E-commerce Growth\n"
+                    "• WhatsApp Marketing Automation\n"
+                    "• Influencer Marketing\n\n"
+                    "Which service would you like to explore in detail?"
+                )
+                nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, tenant.routes.get("services", "/services"), entity_type="SERVICES")
+                return {
+                    "response": services_resp,
+                    "source": "Services Registry",
+                    "verified": True,
+                    "confidence": 1.0,
+                    "navigation": nav_link,
+                    "action_choices": action_choices,
+                    "suggestions": ["Explain Data Engineering", "Explain Enterprise & Agentic AI", "Explain AI Strategy"],
+                    "metrics": {"resolved_entity": "NONE", "resolved_registry": "SERVICES"}
+                }
+
+            prod_triggers = {"products", "what are the products", "what products do you offer", "what products", "list products", "show products", "our products", "products offered", "what products does cittaai provide", "what products are available"}
+            if q_lower in prod_triggers or (("product" in q_lower or "products" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer", "tell me about"]) and not any(e in q_lower for e in ["whatsapp", "influencer", "smart", "pharma", "real estate", "ecommerce", "education"])):
+                products = self.ks.list_entities(tenant_id, "PRODUCTS")
+                if products:
+                    items_str = "\n".join([f"• **{p.get('name') or p.get('title')}**: {p.get('overview') or p.get('description') or p.get('summary') or 'Flagship Product'}" for p in products])
+                else:
+                    items_str = (
+                        "• **WhatsApp Marketing Platform**: Scalable WhatsApp engagement and bulk broadcast automation.\n"
+                        "• **Influencer Marketing Platform**: Creator discovery, campaign analytics, and ROI optimization."
+                    )
+                nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, tenant.routes.get("products", "/products"), entity_type="PRODUCTS")
+                return {
+                    "response": (
+                        f"🏆 **CittaAI Flagship Products**\n\n"
+                        f"CittaAI offers the following enterprise SaaS platforms:\n\n{items_str}\n\n"
+                        f"Would you like to learn more about one of these platforms?"
+                    ),
+                    "source": "Products Registry",
+                    "verified": True,
+                    "confidence": 1.0,
+                    "navigation": nav_link,
+                    "action_choices": action_choices,
+                    "suggestions": ["Explain WhatsApp Marketing Platform", "Explain Influencer Marketing Platform"],
+                    "metrics": {"resolved_entity": "NONE", "resolved_registry": "PRODUCTS"}
+                }
+
+            sol_triggers = {"solutions", "what are the solutions", "what solutions do you offer", "what solutions", "list solutions", "show solutions", "our solutions", "solutions offered", "industry os", "operating systems", "what solutions does cittaai provide"}
+            if q_lower in sol_triggers or (("solution" in q_lower or "solutions" in q_lower or "operating system" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer", "tell me about"]) and not any(e in q_lower for e in ["smart", "pharma", "real estate", "ecommerce", "education", "enterprise ai os", "rag", "fine-tuning", "governance"])):
+                solutions = self.ks.list_entities(tenant_id, "SOLUTIONS")
+                if solutions:
+                    items_str = "\n".join([f"• **{s.get('name') or s.get('title')}**: {s.get('overview') or s.get('description') or s.get('summary') or 'Industry OS'}" for s in solutions])
+                else:
+                    items_str = (
+                        "• **Enterprise AI OS**: Multi-model routing and compliance controls.\n"
+                        "• **E-Commerce OS**: Live inventory sync, billing desks, and shopping desks.\n"
+                        "• **Pharma & Healthcare OS**: Clinical files, queue management, and batch tracks.\n"
+                        "• **Smart Cities OS**: Ticket routing, municipal monitors, and resource dashboards.\n"
+                        "• **Education OS**: Student information systems, grading workflows, and classroom modules.\n"
+                        "• **Real Estate OS**: Interactive asset directories, property leads, and contract tools."
+                    )
+                nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, tenant.routes.get("solutions", "/solutions"), entity_type="SOLUTIONS")
+                return {
+                    "response": (
+                        f"🌐 **CittaAI Industry Operating Systems (OS)**\n\n"
+                        f"We deploy secure middleware orchestrating data, automation, and compliance:\n\n{items_str}\n\n"
+                        f"Which solution OS fits your industry requirements?"
+                    ),
+                    "source": "Solutions Registry",
+                    "verified": True,
+                    "confidence": 1.0,
+                    "navigation": nav_link,
+                    "action_choices": action_choices,
+                    "suggestions": ["Explain E-Commerce OS", "Explain Smart Cities OS", "Explain Pharma & Healthcare OS"],
+                    "metrics": {"resolved_entity": "NONE", "resolved_registry": "SOLUTIONS"}
+                }
+
+            # Global Capability Listing Intercept ("list capabilities", "what capabilities do you offer")
+            cap_list_triggers = {"capabilities", "list capabilities", "list all capabilities", "what capabilities do you offer", "what capabilities are available", "show capabilities", "our capabilities", "capabilities offered"}
+            if q_lower in cap_list_triggers or (("capability" in q_lower or "capabilities" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer"]) and not any(e in q_lower for e in ["smart", "pharma", "real estate", "ecommerce", "education", "data engineering", "enterprise & agentic ai", "agentic", "strategy"])):
+                cap_summary = (
+                    "⚡ **CittaAI Enterprise Capabilities Catalog**\n\n"
+                    "Capabilities belong to our four professional Services:\n\n"
+                    "• **Enterprise & Agentic AI**:\n"
+                    "  - Custom LLM Fine-tuning\n"
+                    "  - Multi-Agent Systems\n"
+                    "  - RAG Solutions\n"
+                    "  - Conversational AI\n\n"
+                    "• **Data Engineering**:\n"
+                    "  - Real-time Data Pipelines\n"
+                    "  - Cloud Data Warehouse\n"
+                    "  - Data Lake Architecture\n"
+                    "  - Master Data Management\n\n"
+                    "• **AI Strategy & Advisory**:\n"
+                    "  - AI Readiness Assessment\n"
+                    "  - Strategic Roadmap\n"
+                    "  - Use Case Prioritization\n"
+                    "  - AI Governance\n\n"
+                    "• **AI-Powered Marketing**:\n"
+                    "  - Branding & Strategy | SEO | PPC Advertising\n"
+                    "  - Social Media Marketing | Content & Design\n"
+                    "  - WhatsApp Marketing Automation | Influencer Marketing | E-commerce Growth\n\n"
+                    "Which capability or parent service would you like to explore?"
+                )
+                return {
+                    "response": cap_summary,
+                    "source": "Capabilities Registry",
+                    "verified": True,
+                    "confidence": 1.0,
+                    "suggestions": ["Show Enterprise & Agentic AI capabilities", "Show Data Engineering capabilities", "What service does RAG Solutions belong to?"],
+                    "metrics": {"resolved_entity": "NONE", "resolved_registry": "CAPABILITIES"}
+                }
+
+            # Taxonomy Classification Queries Intercept ("Is [X] a [Product/Service/Solution/Capability]?", "What category is [X]?")
+            import re
+            classif_match = re.search(r"^(is|what category is|what type of offering is)\s+(?:the\s+)?(.+?)\s*(?:a|an)?\s*(product|service|solution|capability)?\??$", q_lower)
+            if classif_match:
+                prefix_word = classif_match.group(1)
+                entity_phrase = classif_match.group(2).strip()
+                queried_cat = (classif_match.group(3) or "").upper()
+                entity_phrase = re.sub(r"^(a|an|the)\s+", "", entity_phrase).strip()
+
+                import core.entity_resolver as core_resolver
+                res = core_resolver.resolve(entity_phrase)
+                if res and res.get("entity_id"):
+                    obj = self.ks.reg.registry_by_id.get(res["entity_id"])
+                    if obj or res.get("entity_category") == "CAPABILITY":
+                        ent_name = res.get("matched_capability") or (obj.name if obj else entity_phrase.title())
+                        true_cat = res.get("entity_category") or (obj.type.value.upper() if obj else "UNKNOWN")
+
+                        cat_descriptions = {
+                            "PRODUCT": "a **Product** (ready-made software platform)",
+                            "SOLUTION": "a **Solution** (Industry-specific Enterprise Operating System)",
+                            "SERVICE": "a **Service** (professional consulting, engineering, implementation, & advisory service)",
+                            "CAPABILITY": "a **Capability** (specialized sub-service belonging to a parent service)"
+                        }
+
+                        if queried_cat:
+                            if true_cat == queried_cat:
+                                resp_text = f"Yes. **{ent_name}** is {cat_descriptions.get(true_cat, f'a **{true_cat}**')}."
+                            else:
+                                resp_text = f"No. **{ent_name}** is {cat_descriptions.get(true_cat, f'a **{true_cat}**')} rather than a {queried_cat.title()}."
+                        else:
+                            resp_text = f"**{ent_name}** is classified as {cat_descriptions.get(true_cat, f'a **{true_cat}**')}."
+
+                        if true_cat == "CAPABILITY" and res.get("parent_service"):
+                            resp_text += f"\n\nIt belongs to the **{res['parent_service']}** service."
+                        elif obj and hasattr(obj, "overview") and obj.overview:
+                            resp_text += f"\n\n*{obj.overview}*"
+
+                        return {
+                            "response": resp_text,
+                            "source": "Catalog Classification Registry",
+                            "verified": True,
+                            "confidence": 1.0,
+                            "suggestions": [f"Explain {ent_name}", f"List {true_cat.lower()}s"],
+                            "metrics": {"resolved_entity": res.get("entity_id") or "CAPABILITY", "resolved_registry": true_cat}
+                        }
+
+            # Parent Relationship Queries Intercept ("What service does [X] belong to?", "Which service includes [X]?")
+            parent_rel_match = re.search(r"\b(what|which)\s+service\s+(?:does|includes)\s+(.+?)\s+(?:belong to|part of|included in|have)\b", q_lower) or re.search(r"\bparent\s+service\s+of\s+(.+)\b", q_lower)
+            if parent_rel_match:
+                cap_phrase = parent_rel_match.group(2) if parent_rel_match.lastindex and parent_rel_match.lastindex >= 2 else parent_rel_match.group(1)
+                cap_phrase = re.sub(r"^(a|an|the)\s+", "", cap_phrase.strip()).strip()
+
+                import core.entity_resolver as core_resolver
+                res = core_resolver.resolve(cap_phrase)
+                cap_entry = self.ks.reg.registry_by_capability.get(cap_phrase.lower())
+                
+                if cap_entry or (res and res.get("parent_service")):
+                    parent_svc = (cap_entry["parent"].name if cap_entry else res.get("parent_service"))
+                    cap_name = (cap_entry["capability"].title if cap_entry else (res.get("matched_capability") or cap_phrase.title()))
+                    return {
+                        "response": f"**{cap_name}** is a specialized capability offered under CittaAI's **{parent_svc}** service.",
+                        "source": "Catalog Parent Relationship Registry",
+                        "verified": True,
+                        "confidence": 1.0,
+                        "suggestions": [f"Explain {cap_name}", f"Capabilities of {parent_svc}"],
+                        "metrics": {"resolved_entity": cap_name, "resolved_registry": "CAPABILITY"}
+                    }
+
             # Issue 7: Statistics & Metrics Queries Intercept
             if understanding.intent == "statistics" or any(w in q_lower for w in ["clients", "users served", "statistics", "metrics", "how many clients", "client count"]):
                 resp_md = (
@@ -223,9 +436,47 @@ class DeterministicEngine:
                 if resolved_entity_id:
                     obj = self.ks.reg.registry_by_id.get(resolved_entity_id)
                     if obj and obj.type.value in ["product", "solution", "service", "case_study", "contact", "award", "faq"]:
+                        from intent_classifier import classify_requested_category, format_category_mismatch_explanation
+                        req_cat, req_conf, is_ambig = classify_requested_category(query)
+                        ent_cat = obj.type.value.upper()
+
+                        if is_ambig and "or" not in q_lower and res.get("entity_category") != "CAPABILITY":
+                            return {
+                                "response": f"Could you please specify whether you are looking for an enterprise software product/solution or professional consulting services for {obj.name}?",
+                                "source": "Category Ambiguity Clarification",
+                                "verified": True,
+                                "confidence": 0.8,
+                                "navigation": None,
+                                "suggestions": [f"Explain {obj.name} Solution", f"Services for {obj.name}"],
+                                "metrics": {"resolved_entity": obj.id, "resolved_registry": ent_cat}
+                            }
+
                         import structured_renderers
-                        sec = "best_for" if any(w in q_lower for w in ["who is it for", "who is it designed for", "target audience", "intended users", "designed for"]) else ("how_it_works" if any(w in q_lower for w in ["how", "work", "workflow"]) else ("benefits" if any(w in q_lower for w in ["benefit", "advantage"]) else "overview"))
-                        rendered_md = structured_renderers.render_section(obj, sec)
+                        sec = (
+                            "best_for" if any(w in q_lower for w in ["who is it for", "who is it designed for", "target audience", "intended users", "designed for", "industries", "who should use", "customers"])
+                            else ("how_it_works" if any(w in q_lower for w in ["how", "work", "workflow", "process", "pipeline", "steps", "mechanism"])
+                            else ("benefits" if any(w in q_lower for w in ["benefit", "benefits", "advantage", "advantages", "value", "roi", "pros"])
+                            else ("features" if any(w in q_lower for w in ["feature", "features", "module", "modules", "functions", "specs"])
+                            else ("capabilities" if any(w in q_lower for w in ["capability", "capabilities"])
+                            else ("faq" if any(w in q_lower for w in ["faq", "faqs", "questions", "question", "q&a"])
+                            else ("pricing" if any(w in q_lower for w in ["price", "pricing", "cost", "fee", "rate", "plan"])
+                            else ("contact" if any(w in q_lower for w in ["contact", "address", "phone", "email", "office"])
+                            else ("relationships" if any(w in q_lower for w in ["related", "relationship", "relationships", "dependencies"])
+                            else "overview")))))))))
+                        
+                        if res.get("entity_category") == "CAPABILITY" and res.get("capability_entry"):
+                            cap_entry = res["capability_entry"]
+                            cap_title = res.get("matched_capability") or cap_entry["capability"].title
+                            parent_service = res.get("parent_service") or cap_entry["parent"].name
+                            prefix = f"**{cap_title}** is a specialized capability offered under CittaAI's **{parent_service}** service."
+                            cap_md = structured_renderers.render_capability(cap_entry)
+                            rendered_md = f"{prefix}\n\n{cap_md}"
+                        else:
+                            rendered_md = structured_renderers.render_section(obj, sec)
+                            if req_cat != "UNKNOWN" and req_cat != ent_cat:
+                                prefix = format_category_mismatch_explanation(obj.name, ent_cat, req_cat)
+                                rendered_md = f"{prefix}\n\n{rendered_md}"
+
                         target_url = obj.url
                         nav_link, action_choices = self.nav_ctrl.process_navigation(understanding.navigation_intent, target_url, entity_name=obj.name, entity_type=obj.type.value.upper())
                         sugs = self.follow_engine.generate_suggestions(entity_id=obj.id, registry_type=obj.type.value.upper())

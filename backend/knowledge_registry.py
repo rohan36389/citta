@@ -146,7 +146,8 @@ class KnowledgeRegistry:
                 self.registry_by_capability[cap.id] = cap_entry
                 self.registry_by_capability[cap.title.lower()] = cap_entry
                 for kw in cap.keywords:
-                    self.registry_by_capability[kw.lower()] = cap_entry
+                    if len(kw) > 8 and kw.lower() not in ["strategy", "marketing", "data", "design", "analytics", "systems"]:
+                        self.registry_by_capability[kw.lower()] = cap_entry
                 for alias in cap.aliases:
                     self.registry_by_capability[alias.lower()] = cap_entry
                     
@@ -505,7 +506,10 @@ class KnowledgeRegistry:
                 if kw_clean not in self.unified_vocabulary:
                     self.unified_vocabulary[kw_clean] = reg_type.lower()
 
-        # Injections
+        self.unified_vocabulary[self._clean_key("data engineering")] = "data_engineering"
+        self.unified_vocabulary[self._clean_key("enterprise & agentic ai")] = "enterprise_agentic_ai"
+        self.unified_vocabulary[self._clean_key("ai strategy & advisory")] = "ai_strategy"
+        self.unified_vocabulary[self._clean_key("ai-powered marketing")] = "ai_powered_marketing"
         self.unified_vocabulary[self._clean_key("wa")] = "whatsapp_marketing"
         self.unified_vocabulary[self._clean_key("whatsapp")] = "whatsapp_marketing"
         self.unified_vocabulary[self._clean_key("influencer")] = "influencer_marketing"
@@ -514,6 +518,12 @@ class KnowledgeRegistry:
         self.unified_vocabulary[self._clean_key("pharma")] = "pharma_os"
         self.unified_vocabulary[self._clean_key("healthcare")] = "pharma_os"
         self.unified_vocabulary[self._clean_key("smart city")] = "smart_cities_os"
+        self.unified_vocabulary[self._clean_key("smart cities")] = "smart_cities_os"
+        self.unified_vocabulary[self._clean_key("smart cities services")] = "smart_cities_os"
+        self.unified_vocabulary[self._clean_key("smart city services")] = "smart_cities_os"
+        self.unified_vocabulary[self._clean_key("smart cities platform")] = "smart_cities_os"
+        self.unified_vocabulary[self._clean_key("education")] = "education_os"
+        self.unified_vocabulary[self._clean_key("education services")] = "education_os"
         self.unified_vocabulary[self._clean_key("real estate")] = "real_estate_os"
         self.unified_vocabulary[self._clean_key("ai os")] = "enterprise_ai_os"
         self.unified_vocabulary[self._clean_key("enterprise ai")] = "enterprise_ai_os"
@@ -547,6 +557,13 @@ class KnowledgeRegistry:
             if alias_clean and ent_id in self.entities:
                 if alias_clean not in self.entity_lookup:
                     self.entity_lookup[alias_clean] = ent_id
+
+        self.entity_lookup[self._clean_key("data engineering")] = "data_engineering"
+        self.entity_lookup[self._clean_key("enterprise & agentic ai")] = "enterprise_agentic_ai"
+        self.entity_lookup[self._clean_key("enterprise agentic ai")] = "enterprise_agentic_ai"
+        self.entity_lookup[self._clean_key("ai strategy & advisory")] = "ai_strategy"
+        self.entity_lookup[self._clean_key("ai strategy")] = "ai_strategy"
+        self.entity_lookup[self._clean_key("ai-powered marketing")] = "ai_powered_marketing"
 
     def build_knowledge_graph(self):
         self.knowledge_graph = {}

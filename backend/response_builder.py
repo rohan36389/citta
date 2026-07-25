@@ -759,8 +759,38 @@ def build_deterministic_response(
                 "suggestions": STATIC_SUGGESTIONS["PRODUCTS"]
             }
         elif domain == "SERVICES":
-            items_str = "\n".join([f"- **{s['name']}**: {s['summary']} [Explore Service →]({s['route']})" for s in reg.services])
-            resp = templates.get("services_list", "").format(items=items_str)
+            resp = (
+                "### CittaAI Enterprise Services\n\n"
+                "#### 1. Data Engineering\n"
+                "**Capabilities:**\n"
+                "• Real-time Data Pipelines\n"
+                "• Cloud Data Warehouse\n"
+                "• Data Lake Architecture\n"
+                "• Master Data Management\n\n"
+                "#### 2. Enterprise & Agentic AI\n"
+                "**Capabilities:**\n"
+                "• Custom LLM Fine-tuning\n"
+                "• Multi-Agent Systems\n"
+                "• RAG Solutions\n"
+                "• Conversational AI\n\n"
+                "#### 3. AI Strategy & Advisory\n"
+                "**Capabilities:**\n"
+                "• AI Readiness Assessment\n"
+                "• Strategic Roadmap\n"
+                "• Use Case Prioritization\n"
+                "• AI Governance\n\n"
+                "#### 4. AI-Powered Marketing\n"
+                "**Capabilities:**\n"
+                "• Branding & Strategy\n"
+                "• Social Media Marketing\n"
+                "• Content & Design\n"
+                "• SEO\n"
+                "• PPC Advertising\n"
+                "• E-commerce Growth\n"
+                "• WhatsApp Marketing Automation\n"
+                "• Influencer Marketing\n\n"
+                "Which service would you like to explore in detail?"
+            )
             return {
                 "response": apply_response_profile(resp, profile_name),
                 "source": "Business Registry",

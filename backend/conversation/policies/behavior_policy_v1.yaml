@@ -1,0 +1,52 @@
+version: "1.0"
+policy_name: "Enterprise Conversation Playbook v1.0 Policy"
+description: "Authoritative behavioral policy for pre-sales enterprise assistant operations."
+
+behavior_rules:
+  progressive_disclosure: true
+  consultative_mode: true
+  pricing_guardrail: "STRICT_NO_SPECULATION"
+  ambiguity_first: true
+  followup_required: true
+  max_information_density: "MEDIUM_250_WORDS"
+  enterprise_persona: true
+  auto_redirect: false # Strict Click-Only Redirection (Never force browser redirects)
+
+target_word_count:
+  min_words: 100
+  max_words: 250
+  ideal_words: 180
+
+stage_progression:
+  - DISCOVERY
+  - QUALIFICATION
+  - EVALUATION
+  - TECHNICAL_REVIEW
+  - COMMERCIAL
+  - DECISION
+
+strategy_flow_blueprints:
+  ENTERPRISE_CONSULTING:
+    - Overview
+    - Business Value
+    - Capabilities
+    - Qualification
+    - Follow-up
+  TECHNICAL:
+    - Architecture
+    - Components
+    - Integration
+    - Limitations
+  SECURITY:
+    - Overview
+    - Security & Compliance
+    - Encryption
+    - Deployment
+  PRICING:
+    - Transparency
+    - Contact Option
+    - Continue Helping
+  RECOVERY:
+    - Acknowledge Correction
+    - Correct Context
+    - Continue

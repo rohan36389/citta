@@ -69,8 +69,8 @@ class EntityEngine:
                 res_id = string_to_entity_id[matched_str]
                 return res_id, score / 100.0, None
 
-        # 5. Active Context Fallback
-        if active_entity_id:
+        # 5. Active Context Fallback (only if query contains contextual pronouns)
+        if active_entity_id and (q_lower in CONTEXT_PRONOUNS or any(p in q_lower for p in CONTEXT_PRONOUNS)):
             return active_entity_id, 0.5, None
 
         return None, 0.0, None

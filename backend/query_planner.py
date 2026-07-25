@@ -119,7 +119,12 @@ def rewrite_query(query: str) -> str:
         r"\bpharma os\b": "Pharma & Healthcare OS",
         r"\brealestate os\b": "Real Estate OS",
         r"\breal estate os\b": "Real Estate OS",
+        r"\breal estate\b(?! os)": "Real Estate OS",
+        r"\brealestate\b(?! os)": "Real Estate OS",
+        r"\becommerce\b(?! os)": "E-Commerce OS",
         r"\baddress\b": "office location",
+        r"\bai consulting\b": "AI Strategy & Advisory",
+        r"\bai advisory\b": "AI Strategy & Advisory",
         r"\bceo\b": "leadership",
         r"\bfounder\b": "leadership",
         r"\bclients\b": "partners"

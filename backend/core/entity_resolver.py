@@ -18,6 +18,11 @@ class EntityResolver:
         
         # 1. Clean / Normalize base text
         t_norm_start = time.perf_counter()
+        try:
+            from query_planner import rewrite_query
+            query = rewrite_query(query)
+        except Exception:
+            pass
         q_clean = query.lower().strip()
         # strip punctuation except hyphens/slashes
         q_clean = re.sub(r"[^\w\s\-\/]", "", q_clean)
@@ -99,8 +104,65 @@ class EntityResolver:
                 "timings": timings
             }
 
+        # Step 3.1: Substring Match against Canonical Entity Lookup
+        sorted_entity_keys = sorted(self.registry.entity_lookup.keys(), key=len, reverse=True)
+        for e_key in sorted_entity_keys:
+            if len(e_key) > 3 and re.search(r"\b" + re.escape(e_key) + r"\b", q_clean):
+                ent_id = self.registry.entity_lookup[e_key]
+                belongs_to = self.registry.knowledge_graph.get(ent_id, {}).get("belongs_to", "UNKNOWN")
+                trace.append(f"entity_substring_match='{e_key}' -> {ent_id}")
+                timings["lookup_ms"] = (time.perf_counter() - t_lookup_start) * 1000.0
+                return {
+                    "entity_id": ent_id,
+                    "registry": belongs_to,
+                    "entity_confidence": 0.95,
+                    "routing_confidence": 0.90,
+                    "confidence_level": "HIGH",
+                    "matched_alias": e_key,
+                    "normalized_query": q_clean,
+                    "source": "entity_substring",
+                    "trace": trace,
+                    "timings": timings
+                }
+
+        # Step 3.5: Capability & Sub-service Lookup Match
+        if hasattr(self.registry, "registry_by_capability") and self.registry.registry_by_capability:
+            sorted_cap_keys = sorted(self.registry.registry_by_capability.keys(), key=len, reverse=True)
+            for cap_key in sorted_cap_keys:
+                if len(cap_key) > 3 and cap_key not in self.registry.entity_lookup and cap_key not in self.registry.alias_lookup and (q_clean == cap_key or re.search(r"\b" + re.escape(cap_key) + r"\b", q_clean)):
+                    cap_entry = self.registry.registry_by_capability[cap_key]
+                    parent_obj = cap_entry["parent"]
+                    cap_obj = cap_entry["capability"]
+                    trace.append(f"capability_match='{cap_key}' -> {parent_obj.id} (Capability: {cap_obj.title})")
+                    timings["lookup_ms"] = (time.perf_counter() - t_lookup_start) * 1000.0
+                    return {
+                        "entity_id": parent_obj.id,
+                        "registry": "SERVICES",
+                        "entity_confidence": 0.95,
+                        "routing_confidence": 0.90,
+                        "confidence_level": "HIGH",
+                        "matched_alias": cap_key,
+                        "matched_capability": cap_obj.title,
+                        "parent_service": parent_obj.name,
+                        "entity_category": "CAPABILITY",
+                        "capability_entry": cap_entry,
+                        "normalized_query": q_clean,
+                        "source": "capability",
+                        "trace": trace,
+                        "timings": timings
+                    }
+
+        GENERIC_WORDS = {
+            "marketing", "platform", "platforms", "system", "systems", "os", 
+            "service", "services", "solution", "solutions", "product", "products", 
+            "engineering", "ai", "team", "leaders", "leadership", "about", "contact", 
+            "info", "overview", "offer", "offers", "offering", "offerings", "managed", 
+            "management", "analytics", "reporting", "automation", "integration", "integrations", 
+            "data", "suite", "suites"
+        }
+
         # Step 4: Exact Keyword Match
-        if q_clean in self.registry.keyword_lookup:
+        if q_clean in self.registry.keyword_lookup and q_clean not in GENERIC_WORDS:
             ent_id = self.registry.keyword_lookup[q_clean]
             belongs_to = self.registry.knowledge_graph.get(ent_id, {}).get("belongs_to", "UNKNOWN")
             trace.append(f"keyword_exact_match='{q_clean}' -> {ent_id}")
@@ -119,8 +181,6 @@ class EntityResolver:
             }
 
         # Step 5: Substring phrase lookup (Word boundary searches)
-        GENERIC_WORDS = {"marketing", "platform", "system", "os", "service", "solution", "engineering", "ai", "team", "leaders", "about", "contact"}
-        
         # Check canonicals
         for key in sorted(self.registry.entity_lookup.keys(), key=len, reverse=True):
             if key in GENERIC_WORDS:
@@ -192,7 +252,7 @@ class EntityResolver:
             if key in GENERIC_WORDS:
                 continue
             if len(key) > 3 and re.search(r"\b" + re.escape(key) + r"\b", q_clean):
-                ent_id = self.registry.keyword_lookup[key]
+                ent_id = self.registry.entity_lookup.get(key) or self.registry.keyword_lookup[key]
                 belongs_to = self.registry.knowledge_graph.get(ent_id, {}).get("belongs_to", "UNKNOWN")
                 trace.append(f"keyword_substring_match='{key}' -> {ent_id}")
                 timings["lookup_ms"] = (time.perf_counter() - t_lookup_start) * 1000.0

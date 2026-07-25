@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "corpus_name": "CittaAI Golden Enterprise Conversation Corpus",
+  "description": "Multi-turn enterprise scenario dataset across 20 categories.",
+  "total_categories": 20,
+  "total_scenarios": 510,
+  "category_distribution": {
+    "01_products": 50,
+    "02_solutions": 50,
+    "03_services": 50,
+    "04_company": 20,
+    "05_leadership": 20,
+    "06_technologies": 20,
+    "07_security": 20,
+    "08_integrations": 20,
+    "09_pricing": 20,
+    "10_comparisons": 20,
+    "11_demo_sales": 20,
+    "12_unknown_queries": 20,
+    "13_memory": 30,
+    "14_coreference": 30,
+    "15_clarifications": 20,
+    "16_small_talk": 20,
+    "17_objections": 20,
+    "18_competitors": 20,
+    "19_recovery": 20,
+    "20_stress_tests": 20
+  }
+}

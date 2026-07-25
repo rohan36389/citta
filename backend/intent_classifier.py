@@ -1,7 +1,7 @@
 import re
 import logging
 import numpy as np
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 from dataclasses import dataclass
 
 logger = logging.getLogger(__name__)
@@ -204,4 +204,77 @@ def get_intent_classifier(embedding_model=None) -> IntentClassifier:
     if _classifier_instance is None:
         _classifier_instance = IntentClassifier(embedding_model=embedding_model)
     return _classifier_instance
+
+def classify_requested_category(query: str) -> Tuple[str, float, bool]:
+    """
+    Classifies requested category from query prior to retrieval.
+    Categories: PRODUCT, SERVICE, SOLUTION, TECHNOLOGY, COMPANY, ACHIEVEMENT, CONTACT.
+    Returns: (category_name, confidence, is_ambiguous)
+    """
+    q_lower = query.lower().strip()
+
+    has_service = bool(re.search(r"\b(services?|consulting|advisory|managed\s+services?)\b", q_lower))
+    has_product = bool(re.search(r"\b(products?|platforms?|saas|app|tools?)\b", q_lower))
+    has_solution = bool(re.search(r"\b(solutions?|operating\s+systems?|os)\b", q_lower))
+    has_tech = bool(re.search(r"\b(technology|technologies|tech\s+stack|framework|architecture|llm|rag)\b", q_lower))
+    has_company = bool(re.search(r"\b(company|about\s+cittaai|about\s+us|company\s+overview|company\s+history|vision|mission)\b", q_lower))
+    has_achievement = bool(re.search(r"\b(awards?|recognitions?|achievements?|certifications?)\b", q_lower))
+    has_contact = bool(re.search(r"\b(contact|email|phone|location|address|office)\b", q_lower))
+
+    matched_cats = []
+    if has_service: matched_cats.append("SERVICE")
+    if has_product: matched_cats.append("PRODUCT")
+    if has_solution: matched_cats.append("SOLUTION")
+    if has_tech: matched_cats.append("TECHNOLOGY")
+    if has_company: matched_cats.append("COMPANY")
+    if has_achievement: matched_cats.append("ACHIEVEMENT")
+    if has_contact: matched_cats.append("CONTACT")
+
+    if len(matched_cats) > 1:
+        return matched_cats[0], 0.7, True
+    elif len(matched_cats) == 1:
+        return matched_cats[0], 0.95, False
+
+    return "UNKNOWN", 0.0, False
+
+def format_category_mismatch_explanation(
+    entity_name: str,
+    entity_category: str,
+    requested_category: str
+) -> str:
+    """
+    Generic Category Relationship Template:
+    Formats a natural explanation when requested category differs from retrieved entity category.
+    """
+    ent_cat = str(entity_category).upper()
+    req_cat = str(requested_category).upper()
+
+    category_labels = {
+        "PRODUCT": "enterprise software product",
+        "SERVICE": "professional consulting service",
+        "SOLUTION": "enterprise software product solution",
+        "TECHNOLOGY": "core technology platform",
+        "COMPANY": "company overview",
+        "ACHIEVEMENT": "company achievement or recognition",
+        "CONTACT": "contact information",
+        "UNKNOWN": "offering"
+    }
+
+    ent_label = category_labels.get(ent_cat, ent_cat.lower())
+    req_label = category_labels.get(req_cat, req_cat.lower())
+
+    if ent_cat in ["SOLUTION", "PRODUCT"] and req_cat == "SERVICE":
+        return (
+            f"CittaAI offers {entity_name}, which is an enterprise software product for real estate operations.\n"
+            f"Based on the available information, this appears to be a product solution rather than a professional consulting service."
+        ) if "real estate" in entity_name.lower() else (
+            f"CittaAI offers {entity_name}, which is an {ent_label}.\n"
+            f"Based on the available information, this appears to be a product solution rather than a professional consulting service."
+        )
+
+    return (
+        f"CittaAI offers {entity_name}, which is an {ent_label}.\n"
+        f"Based on the available information, this appears to be a {ent_label} rather than a {req_label}."
+    )
+
 
