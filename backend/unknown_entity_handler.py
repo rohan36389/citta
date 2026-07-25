@@ -10,7 +10,12 @@ KNOWN_TAXONOMY_TERMS = {
     "education os", "pharma os", "real estate os", "smart cities os", "enterprise ai os", "e-commerce os", "ecommerce os",
     "whatsapp marketing platform", "influencer marketing platform", "data engineering", "enterprise & agentic ai", "agentic ai",
     "ai strategy & advisory", "ai strategy", "martech 360", "jewellery brand", "fmcg brand", "spices export", "cittaai",
-    "cittaai.", "cittaai's", "citta"
+    "cittaai.", "cittaai's", "citta",
+    "real-time data pipelines", "cloud data warehouse", "data lake architecture", "master data management",
+    "custom llm fine-tuning", "multi-agent systems", "rag solutions", "conversational ai",
+    "ai readiness assessment", "strategic roadmap", "use case prioritization", "ai governance",
+    "branding & strategy", "branding and strategy", "social media marketing", "content & design", "content and design",
+    "seo", "ppc advertising", "ppc", "e-commerce growth", "whatsapp marketing automation"
 }
 
 GENERIC_ENTITIES = {"company_info", "faq_general"}

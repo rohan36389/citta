@@ -205,10 +205,45 @@
       "relationships": []
     }
   ],
-  "workflows": [],
-  "benefits": [],
+  "workflows": [
+    {
+      "step": 1,
+      "title": "Architecture & Ingestion Design",
+      "description": "Analyze source data streams, schemas, and volume to design real-time Kafka/Flink pipelines and cloud warehouse landing zones."
+    },
+    {
+      "step": 2,
+      "title": "Stream & Warehouse Implementation",
+      "description": "Deploy low-latency ETL/ELT pipelines, Delta Lake / Iceberg storage formats, and Star/Snowflake schema modeling."
+    },
+    {
+      "step": 3,
+      "title": "Governance & MDM Firewalls",
+      "description": "Configure entity resolution, data quality monitoring, RBAC security, and master data golden records."
+    },
+    {
+      "step": 4,
+      "title": "Continuous Optimization & SLA Assurance",
+      "description": "Automate cost-optimization policies, query performance tuning, and continuous 99.99% uptime monitoring."
+    }
+  ],
+  "benefits": [
+    "Sub-second query responses across enterprise cloud data warehouses",
+    "99.99% uptime SLAs for mission-critical streaming pipelines",
+    "360-degree golden record view eliminating duplicate master data",
+    "Economical long-term storage for unstructured ML datasets"
+  ],
   "use_cases": [],
-  "faq": [],
+  "faq": [
+    {
+      "question": "Which cloud data warehouses do you support?",
+      "answer": "We specialize in Snowflake, Google BigQuery, and AWS Redshift with Star/Snowflake schema modeling and RBAC security."
+    },
+    {
+      "question": "How do you ensure high reliability for real-time streaming?",
+      "answer": "We implement Apache Kafka & Flink architectures with automated retry queues, data quality firewalls, and 99.99% uptime SLAs."
+    }
+  ],
   "relationships": [],
   "metadata": {
     "schema_version": "2.0",

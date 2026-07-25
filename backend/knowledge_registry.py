@@ -204,7 +204,11 @@ class KnowledgeRegistry:
             ],
             "how_it_works": {
                 "steps": [f"{w.title}: {w.description}" if w.description else w.title for w in obj.workflows]
-            }
+            },
+            "workflows": [
+                {"step": w.step, "title": w.title, "description": w.description}
+                for w in obj.workflows
+            ]
         }
 
     def _clean_key(self, text: str) -> str:

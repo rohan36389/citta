@@ -24,7 +24,7 @@ class AmbiguityDetector:
             return ctx
 
         for kw, candidates in AMBIGUOUS_KEYWORDS.items():
-            if kw in words or q_lower == f"tell me about {kw}" or q_lower == kw:
+            if q_lower == kw or q_lower == f"tell me about {kw}" or q_lower == f"what is {kw}" or q_lower == f"explain {kw}":
                 ctx.is_ambiguous = True
                 ctx.matched_entity_ids = candidates
                 ctx.resolved_entity_id = None

@@ -50,7 +50,8 @@
         "strategy"
       ],
       "aliases": [
-        "branding & strategy"
+        "branding & strategy",
+        "branding strategy"
       ],
       "features": [
         {
@@ -155,7 +156,8 @@
         "design"
       ],
       "aliases": [
-        "content & design"
+        "content & design",
+        "content design"
       ],
       "features": [
         {
@@ -403,10 +405,58 @@
       "relationships": []
     }
   ],
-  "workflows": [],
-  "benefits": [],
+  "workflows": [
+    {
+      "step": 1,
+      "title": "Discovery & Signal Ingest",
+      "description": "We ingest data from search, competitors, and audience behavior to map the market landscape."
+    },
+    {
+      "step": 2,
+      "title": "Predictive Modeling & Scenario Simulation",
+      "description": "AI simulates positioning scenarios, demand curves, and content variants to identify high-value opportunities."
+    },
+    {
+      "step": 3,
+      "title": "Strategy & Generative Execution",
+      "description": "We build the core brand operating system, value proposition, offer architecture, and multi-variant creative content."
+    },
+    {
+      "step": 4,
+      "title": "Iterative Validation & Growth Loops",
+      "description": "Continuous A/B testing, performance scoring, and automated optimization loops based on real-world engagement."
+    }
+  ],
+  "benefits": [
+    "310%+ reach growth & 4.1x website clicks within 30 days",
+    "Up to 34% lower CPA & 2.2x ROAS on performance ad spend",
+    "3.6x increase in qualified organic leads via predictive SEO compounding",
+    "1.8x - 2.4x expansion in customer LTV and appointment bookings",
+    "Automated audience modeling and intent-based conversational recovery"
+  ],
   "use_cases": [],
-  "faq": [],
+  "faq": [
+    {
+      "question": "How is AI-Powered Marketing different from traditional marketing?",
+      "answer": "We do not rely on guesswork or static posting calendars. Our strategies run on behavioral evidence, intent signals, predictive intelligence, and automated creative experimentation loops."
+    },
+    {
+      "question": "What data sources do you analyze?",
+      "answer": "We analyze multi-source signals including search intent, competitor messaging, audience micro-behaviors (watch time, saves, shares), conversion patterns, and sentiment."
+    },
+    {
+      "question": "Do you post content manually or is it automated?",
+      "answer": "Strategy and creative direction are human-led, while scheduling, multi-variant testing, hook generation, and initial intent routing are automated for maximum efficiency."
+    },
+    {
+      "question": "How fast will I see SEO and campaign results?",
+      "answer": "Paid campaigns and social growth loops deliver initial wins within 30 days. Predictive SEO yields quick wins in 3-4 months with exponential compounding thereafter."
+    },
+    {
+      "question": "What platforms do you support?",
+      "answer": "We manage campaigns across Google, Meta (Facebook/Instagram), LinkedIn, WhatsApp API, TikTok, and modern e-commerce stacks (Shopify, WooCommerce, Magento)."
+    }
+  ],
   "relationships": [],
   "metadata": {
     "schema_version": "2.0",

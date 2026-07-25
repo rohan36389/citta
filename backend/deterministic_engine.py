@@ -440,7 +440,7 @@ class DeterministicEngine:
                         req_cat, req_conf, is_ambig = classify_requested_category(query)
                         ent_cat = obj.type.value.upper()
 
-                        if is_ambig and "or" not in q_lower and res.get("entity_category") != "CAPABILITY":
+                        if is_ambig and "or" not in q_lower and res.get("entity_category") != "CAPABILITY" and entity_confidence < 0.9:
                             return {
                                 "response": f"Could you please specify whether you are looking for an enterprise software product/solution or professional consulting services for {obj.name}?",
                                 "source": "Category Ambiguity Clarification",

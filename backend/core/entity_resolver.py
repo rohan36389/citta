@@ -10,6 +10,32 @@ class EntityResolver:
     def __init__(self, registry):
         self.registry = registry
 
+    def _enrich_result(self, res: Dict[str, Any], q_clean: Optional[Any] = None) -> Dict[str, Any]:
+        if not res or not isinstance(res, dict) or not res.get("entity_id") or not hasattr(self.registry, "registry_by_capability"):
+            return res
+        if res.get("entity_category") == "CAPABILITY":
+            return res
+        
+        candidate = None
+        if q_clean and isinstance(q_clean, str) and q_clean.lower().strip() in self.registry.registry_by_capability:
+            candidate = q_clean.lower().strip()
+        else:
+            matched_alias = res.get("matched_alias")
+            if isinstance(matched_alias, (list, tuple)) and matched_alias:
+                matched_alias = matched_alias[0]
+            if isinstance(matched_alias, str) and matched_alias.lower().strip() in self.registry.registry_by_capability:
+                candidate = matched_alias.lower().strip()
+            
+        if candidate:
+            cap_entry = self.registry.registry_by_capability[candidate]
+            parent_obj = cap_entry["parent"]
+            cap_obj = cap_entry["capability"]
+            res["entity_category"] = "CAPABILITY"
+            res["capability_entry"] = cap_entry
+            res["matched_capability"] = cap_obj.title
+            res["parent_service"] = parent_obj.name
+        return res
+
     def resolve(self, query: str, debug: bool = False) -> Dict[str, Any]:
         t_start = time.perf_counter()
         
@@ -46,6 +72,15 @@ class EntityResolver:
             }
 
         t_lookup_start = time.perf_counter()
+
+        GENERIC_WORDS = {
+            "marketing", "platform", "platforms", "system", "systems", "os", 
+            "service", "services", "solution", "solutions", "product", "products", 
+            "engineering", "ai", "team", "leaders", "leadership", "about", "contact", 
+            "info", "overview", "offer", "offers", "offering", "offerings", "managed", 
+            "management", "analytics", "reporting", "automation", "integration", "integrations", 
+            "data", "suite", "suites"
+        }
 
         # Step 1: Exact Canonical ID or Name Match
         if q_clean in self.registry.entity_lookup:
@@ -107,7 +142,9 @@ class EntityResolver:
         # Step 3.1: Substring Match against Canonical Entity Lookup
         sorted_entity_keys = sorted(self.registry.entity_lookup.keys(), key=len, reverse=True)
         for e_key in sorted_entity_keys:
-            if len(e_key) > 3 and re.search(r"\b" + re.escape(e_key) + r"\b", q_clean):
+            if e_key in GENERIC_WORDS:
+                continue
+            if len(e_key) >= 3 and re.search(r"\b" + re.escape(e_key) + r"\b", q_clean):
                 ent_id = self.registry.entity_lookup[e_key]
                 belongs_to = self.registry.knowledge_graph.get(ent_id, {}).get("belongs_to", "UNKNOWN")
                 trace.append(f"entity_substring_match='{e_key}' -> {ent_id}")
@@ -129,7 +166,7 @@ class EntityResolver:
         if hasattr(self.registry, "registry_by_capability") and self.registry.registry_by_capability:
             sorted_cap_keys = sorted(self.registry.registry_by_capability.keys(), key=len, reverse=True)
             for cap_key in sorted_cap_keys:
-                if len(cap_key) > 3 and cap_key not in self.registry.entity_lookup and cap_key not in self.registry.alias_lookup and (q_clean == cap_key or re.search(r"\b" + re.escape(cap_key) + r"\b", q_clean)):
+                if len(cap_key) >= 3 and cap_key not in self.registry.entity_lookup and cap_key not in self.registry.alias_lookup and (q_clean == cap_key or re.search(r"\b" + re.escape(cap_key) + r"\b", q_clean)):
                     cap_entry = self.registry.registry_by_capability[cap_key]
                     parent_obj = cap_entry["parent"]
                     cap_obj = cap_entry["capability"]
@@ -151,15 +188,6 @@ class EntityResolver:
                         "trace": trace,
                         "timings": timings
                     }
-
-        GENERIC_WORDS = {
-            "marketing", "platform", "platforms", "system", "systems", "os", 
-            "service", "services", "solution", "solutions", "product", "products", 
-            "engineering", "ai", "team", "leaders", "leadership", "about", "contact", 
-            "info", "overview", "offer", "offers", "offering", "offerings", "managed", 
-            "management", "analytics", "reporting", "automation", "integration", "integrations", 
-            "data", "suite", "suites"
-        }
 
         # Step 4: Exact Keyword Match
         if q_clean in self.registry.keyword_lookup and q_clean not in GENERIC_WORDS:
@@ -185,7 +213,7 @@ class EntityResolver:
         for key in sorted(self.registry.entity_lookup.keys(), key=len, reverse=True):
             if key in GENERIC_WORDS:
                 continue
-            if len(key) > 3 and re.search(r"\b" + re.escape(key) + r"\b", q_clean):
+            if len(key) >= 3 and re.search(r"\b" + re.escape(key) + r"\b", q_clean):
                 ent_id = self.registry.entity_lookup[key]
                 belongs_to = self.registry.knowledge_graph.get(ent_id, {}).get("belongs_to", "UNKNOWN")
                 trace.append(f"canonical_substring_match='{key}' -> {ent_id}")
@@ -207,7 +235,7 @@ class EntityResolver:
         for key in sorted(self.registry.alias_lookup.keys(), key=len, reverse=True):
             if key in GENERIC_WORDS:
                 continue
-            if len(key) > 3 and re.search(r"\b" + re.escape(key) + r"\b", q_clean):
+            if len(key) >= 3 and re.search(r"\b" + re.escape(key) + r"\b", q_clean):
                 ent_id = self.registry.alias_lookup[key]
                 belongs_to = self.registry.knowledge_graph.get(ent_id, {}).get("belongs_to", "UNKNOWN")
                 trace.append(f"alias_substring_match='{key}' -> {ent_id}")
@@ -327,10 +355,19 @@ def _resolve_cached(query: str) -> Dict[str, Any]:
 
 def resolve(query: str, debug: bool = False) -> Dict[str, Any]:
     """Expose simple public resolve API using cached resolver."""
+    try:
+        from knowledge_registry import get_registry
+    except ImportError:
+        from knowledge_registry import get_registry
+    registry = get_registry()
+    resolver = EntityResolver(registry)
+    
+    q_clean = query.lower().strip()
+    q_clean = re.sub(r"[^\w\s\-\/]", "", q_clean)
+    q_clean = re.sub(r"\s+", " ", q_clean).strip()
+    
     if debug:
-        try:
-            from knowledge_registry import get_registry
-        except ImportError:
-            from knowledge_registry import get_registry
-        return EntityResolver(get_registry()).resolve(query, debug=True)
-    return _resolve_cached(query)
+        res = resolver.resolve(query, debug=True)
+    else:
+        res = _resolve_cached(query)
+    return resolver._enrich_result(res, q_clean=q_clean)

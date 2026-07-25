@@ -609,6 +609,8 @@ class RAGService:
 
         # Fast Exact Query Cache Lookup (< 5ms hit latency)
         cache_query_key = f"exact_query:{message.strip().lower()}"
+        if state.get("active_entity"):
+            cache_query_key += f"_ctx:{state['active_entity']}"
         cached_entry = self.cache.get(cache_query_key)
         if cached_entry:
             resp_text = cached_entry["response"]
@@ -833,7 +835,11 @@ class RAGService:
                 "intent": query_type
             }
             self.cache.set(cache_key, payload)
-            self.cache.set(f"exact_query:{message.strip().lower()}", payload)
+            
+            cache_query_key_save = f"exact_query:{message.strip().lower()}"
+            if state.get("active_entity"):
+                cache_query_key_save += f"_ctx:{state['active_entity']}"
+            self.cache.set(cache_query_key_save, payload)
             
             exp_log = create_explainability_log(
                 query=message,

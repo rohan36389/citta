@@ -199,10 +199,45 @@
       "relationships": []
     }
   ],
-  "workflows": [],
-  "benefits": [],
+  "workflows": [
+    {
+      "step": 1,
+      "title": "Use Case & Framework Selection",
+      "description": "Define objectives for multi-agent swarms, RAG document pipelines, or domain-specific LLM fine-tuning."
+    },
+    {
+      "step": 2,
+      "title": "Dataset Preparation & Model Fine-Tuning",
+      "description": "Prepare domain-specific datasets, perform parameter-efficient tuning (LoRA), and integrate vector databases."
+    },
+    {
+      "step": 3,
+      "title": "Agent Orchestration & Protocol Design",
+      "description": "Deploy AutoGen/CrewAI agent roles, inter-agent communication, and RBAC-aware document retrieval pipelines."
+    },
+    {
+      "step": 4,
+      "title": "Evaluation Benchmarks & Deployment",
+      "description": "Benchmark model accuracy, eliminate hallucinations, and deploy omnichannel voice & text AI agents with human-in-the-loop workflows."
+    }
+  ],
+  "benefits": [
+    "Eliminate AI hallucinations with hybrid search vector RAG",
+    "Automate complex non-linear business tasks using multi-agent swarms",
+    "Maintain 100% data privacy within your private cloud VPC",
+    "24/7 omnichannel conversational voice & text deflection"
+  ],
   "use_cases": [],
-  "faq": [],
+  "faq": [
+    {
+      "question": "How do you prevent AI hallucinations?",
+      "answer": "We use Retrieval Augmented Generation (RAG) with hybrid search algorithms, strict document attribution, and source citations."
+    },
+    {
+      "question": "Which frameworks do you use for multi-agent systems?",
+      "answer": "We deploy AutoGen and CrewAI frameworks with role-based agent design and human-in-the-loop safety controls."
+    }
+  ],
   "relationships": [],
   "metadata": {
     "schema_version": "2.0",

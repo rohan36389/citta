@@ -402,82 +402,103 @@ def render_relationships_section(obj: Any) -> str:
         return f"🔗 **Related Offerings for {title}**:\n\n{title} integrates cleanly with: **{rel_str}**."
     return f"🔗 **Related Offerings for {title}**:\n\n{title} seamlessly connects with CittaAI Data Engineering and Enterprise AI OS middleware."
 
+def map_schema_to_response_object(obj: Any, section: str = "overview") -> "ResponseObject":
+    from backend.presentation.models.response_object import ResponseObject
+    
+    # Extract title, tagline, overview safely
+    title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "Entity")
+    tagline = clean_val(getattr(obj, "tagline", None))
+    
+    overview_val = getattr(obj, "overview", None) or getattr(obj, "description", None)
+    overview = [clean_val(overview_val)] if overview_val else None
+    
+    # Map capabilities to list of strings
+    caps = getattr(obj, "capabilities", [])
+    cap_strs = []
+    for c in caps:
+        c_title = clean_val(getattr(c, "title", None))
+        c_desc = clean_val(getattr(c, "description", None))
+        if c_title and c_desc:
+            cap_strs.append(f"**{c_title}**: {c_desc}")
+        elif c_title:
+            cap_strs.append(c_title)
+            
+    # Map workflows to list of dicts
+    wfs = getattr(obj, "workflows", [])
+    wf_dicts = []
+    for w in wfs:
+        wf_dicts.append({
+            "step": getattr(w, "step", ""),
+            "title": clean_val(getattr(w, "title", "")),
+            "description": clean_val(getattr(w, "description", ""))
+        })
+        
+    # Map actions
+    actions = []
+    domain_type = obj.type.value if hasattr(obj, "type") else "default"
+    if getattr(obj, "route", None):
+        if domain_type == "product":
+            actions.append("explore_products")
+        elif domain_type == "service":
+            actions.append("our_process")
+            
+    if wf_dicts:
+        actions.append("how_it_works")
+    actions.append("request_demo")
+    
+    # Map FAQs
+    faqs = getattr(obj, "faq", [])
+    faq_dicts = []
+    for f in faqs:
+        faq_dicts.append({
+            "question": clean_val(getattr(f, "question", "")),
+            "answer": clean_val(getattr(f, "answer", ""))
+        })
+        
+    return ResponseObject(
+        type=section,
+        domain=domain_type,
+        title=title,
+        tagline=tagline,
+        overview=overview,
+        capabilities=cap_strs if cap_strs else None,
+        workflows=wf_dicts if wf_dicts else None,
+        faq=faq_dicts if faq_dicts else None,
+        benefits=[clean_val(b) for b in getattr(obj, "benefits", [])] or None,
+        actions=actions
+    )
+
 def render_section(obj: Any, section: str) -> str:
-    """Renders specific section for an object."""
+    """Renders specific section for an object using the new Presentation Layer."""
+    from backend.presentation.formatters.dispatcher import ResponseFormatterDispatcher
+    
     sec = (section or "").lower().strip()
+    
+    # Route section correctly
     if sec in ["best_for", "target", "audience", "industries", "target_audience"]:
-        return render_target_users(obj)
-    if sec in ["how_it_works", "workflow", "workflows", "process"]:
-        workflows = getattr(obj, "workflows", [])
-        if not workflows and isinstance(obj, dict):
-            workflows = obj.get("workflows", [])
-        title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
-        steps = []
-        if workflows:
-            for step in workflows:
-                if hasattr(step, "step"):
-                    steps.append(f"Step {step.step}. **{clean_val(step.title)}**: {clean_val(step.description)}")
-                else:
-                    steps.append(f"Step {step.get('step', '')}. **{clean_val(step.get('title'))}**: {clean_val(step.get('description'))}")
-        else:
-            caps = getattr(obj, "capabilities", []) or []
-            for idx, cap in enumerate(caps[:4], 1):
-                c_title = clean_val(getattr(cap, "title", None) if hasattr(cap, "title") else (cap.get("title") if isinstance(cap, dict) else str(cap)))
-                c_desc = clean_val(getattr(cap, "description", None) if hasattr(cap, "description") else (cap.get("description") if isinstance(cap, dict) else ""))
-                steps.append(f"Step {idx}. **{c_title}**: {c_desc}" if c_desc else f"Step {idx}. **{c_title}**")
-        if steps:
-            wf_str = "\n".join(steps)
-            return sanitize_conversational_text(f"⚙️ **System Workflow & Architecture for {title}**\n\n{wf_str}")
-    if sec in ["benefits", "benefit", "advantages"]:
-        benefits = getattr(obj, "benefits", [])
-        if not benefits and isinstance(obj, dict):
-            benefits = obj.get("benefits", [])
-        title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "CittaAI")
-        ben_bullets = []
-        if benefits:
-            ben_bullets = [f"• {clean_val(b)}" for b in benefits if clean_val(b)]
-        else:
-            caps = getattr(obj, "capabilities", []) or []
-            for cap in caps[:5]:
-                c_title = clean_val(getattr(cap, "title", None) if hasattr(cap, "title") else (cap.get("title") if isinstance(cap, dict) else str(cap)))
-                c_desc = clean_val(getattr(cap, "description", None) if hasattr(cap, "description") else (cap.get("description") if isinstance(cap, dict) else ""))
-                if c_title:
-                    ben_bullets.append(f"• **{c_title}**: {c_desc}" if c_desc else f"• **{c_title}**")
-        if ben_bullets:
-            b_str = "\n".join(ben_bullets)
-            return sanitize_conversational_text(f"### Key Benefits of {title}\n\n{b_str}")
-    if sec in ["features", "modules", "functions"]:
-        return render_features(obj)
-    if sec in ["capabilities", "capability"]:
-        return render_capabilities_list(obj)
-    if sec in ["faq", "faqs", "questions"]:
-        return render_faq_section(obj)
-    if sec in ["pricing", "price", "cost"]:
-        return render_pricing_section(obj)
-    if sec in ["related_entities", "relationships", "related"]:
-        return render_relationships_section(obj)
-    if sec in ["contact", "address"]:
-        return render_contact(obj)
-    return render_by_type(obj)
+        target_section = "overview" # best_for is part of overview
+    elif sec in ["how_it_works", "workflow", "workflows", "process"]:
+        target_section = "workflow"
+    elif sec in ["benefits", "benefit", "advantages"]:
+        target_section = "overview"
+    elif sec in ["features", "modules", "functions"]:
+        target_section = "overview"
+    elif sec in ["capabilities", "capability"]:
+        target_section = "overview"
+    elif sec in ["faq", "faqs", "questions"]:
+        target_section = "faq"
+    elif sec in ["pricing", "price", "cost"]:
+        target_section = "pricing"
+    elif sec in ["related_entities", "relationships", "related"]:
+        target_section = "overview"
+    elif sec in ["contact", "address"]:
+        target_section = "contact"
+    else:
+        target_section = "overview"
+        
+    response_obj = map_schema_to_response_object(obj, section=target_section)
+    return ResponseFormatterDispatcher.dispatch(response_obj)
 
 def render_by_type(obj: Any) -> str:
-    """Helper dispatcher to render any schema object by KnowledgeType."""
-    t = obj.type.value
-    if t == "product":
-        return render_product(obj)
-    elif t == "service":
-        return render_service(obj)
-    elif t == "solution":
-        return render_solution(obj)
-    elif t == "company":
-        return render_company(obj)
-    elif t == "case_study":
-        return render_case_study(obj)
-    elif t == "award":
-        return render_award(obj)
-    elif t == "faq":
-        return render_faq(obj)
-    elif t == "contact":
-        return render_contact(obj)
-    else:
-        return f"**{clean_val(obj.title)}**\n{clean_val(obj.description)}"
+    """Helper dispatcher to render any schema object by KnowledgeType using the new Presentation Layer."""
+    return render_section(obj, "overview")

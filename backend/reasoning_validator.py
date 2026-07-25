@@ -21,11 +21,14 @@ class ReasoningValidator:
     def __init__(self):
         self.reg = get_registry()
 
-    def validate(self, response_text: str, selected_evidence: SelectedEvidencePackage) -> ReasoningValidationResult:
+    def validate(self, response_text: Any, selected_evidence: SelectedEvidencePackage) -> ReasoningValidationResult:
         reasons = []
         is_valid = True
 
-        if not response_text or len(response_text.strip()) < 20:
+        if isinstance(response_text, tuple):
+            response_text = response_text[0] if response_text else ""
+
+        if not response_text or not isinstance(response_text, str) or len(response_text.strip()) < 20:
             return ReasoningValidationResult(
                 is_valid=False,
                 reasoning_confidence=0.0,

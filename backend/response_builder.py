@@ -828,33 +828,115 @@ def build_deterministic_response(
                 "suggestions": ["Show Jewellery Brand case study", "Show FMCG Brand case study", "Show Spices Export case study"]
             }
 
-    # Handle DETAIL Query Type with section-specific builders
+    # Handle DETAIL Query Type with the new Presentation Layer
     if query_type == "DETAIL" and matched_entity_id and entity:
-        builder_map = {
-            "overview": build_overview,
-            "how_it_works": build_how_it_works,
-            "features": build_features,
-            "benefits": build_benefits,
-            "best_for": build_best_for,
-            "implementation": build_implementation,
-            "integrations": build_integrations,
-            "faq": build_faq,
-            "case_studies": build_case_studies,
-            "technologies": build_technologies,
-            "examples": build_examples,
-            "related_entities": build_related_entities
-        }
+        from backend.presentation.models.response_object import ResponseObject
+        from backend.presentation.formatters.dispatcher import ResponseFormatterDispatcher
         
         target_section = section.lower() if section else "overview"
-        if target_section not in builder_map:
-            target_section = "overview"
+        
+        # Map raw entity dict to ResponseObject
+        dom_val = domain.lower()
+        if dom_val.endswith('s'): 
+            dom_val = dom_val[:-1] # e.g., PRODUCTS -> product
             
-        builder = builder_map[target_section]
-        raw_text = builder(entity)
+        title = entity.get("name") or entity.get("title") or "Entity"
+        tagline = entity.get("overview", {}).get("summary") if isinstance(entity.get("overview"), dict) else None
+        
+        # Determine actions
+        actions = []
+        if entity.get("route"):
+            if dom_val == "product":
+                actions.append("explore_products")
+            elif dom_val == "service":
+                actions.append("our_process")
+        
+        if entity.get("workflows"):
+            actions.append("how_it_works")
+        actions.append("request_demo")
+        
+        # Extract features/capabilities safely and flatten dicts
+        def flatten_items(items):
+            if not items: return None
+            res = []
+            for item in items:
+                if isinstance(item, dict):
+                    c_title = item.get("title") or item.get("name")
+                    c_desc = item.get("description") or item.get("summary")
+                    if c_title and c_desc:
+                        res.append(f"**{c_title}**: {c_desc}")
+                    elif c_title:
+                        res.append(c_title)
+                    elif c_desc:
+                        res.append(c_desc)
+                else:
+                    res.append(str(item))
+            return res if res else None
+
+        features = flatten_items(entity.get("features"))
+        capabilities = flatten_items(entity.get("capabilities"))
+        if not features and capabilities:
+            features = capabilities
+            
+        overview_text = None
+        if isinstance(entity.get("overview"), dict):
+            overview_text = [entity["overview"].get("description") or ""]
+        elif entity.get("overview"):
+            overview_text = [entity["overview"]]
+            
+        workflows = entity.get("workflows")
+        if not workflows and target_section in ["how_it_works", "workflows", "process"]:
+            fallback_items = capabilities or features
+            if fallback_items:
+                import re
+                workflows = []
+                for i, item in enumerate(fallback_items):
+                    if isinstance(item, dict):
+                        w_title = item.get("title", f"Step {i+1}")
+                        w_desc = item.get("description", "")
+                    else:
+                        match = re.match(r"\*\*(.*?)\*\*(?::\s*(.*))?", str(item))
+                        if match:
+                            w_title = match.group(1).strip()
+                            w_desc = match.group(2).strip() if match.group(2) else ""
+                        else:
+                            w_title = f"Step {i+1}"
+                            w_desc = str(item).strip()
+                    workflows.append({
+                        "step": i+1, 
+                        "title": w_title, 
+                        "description": w_desc,
+                        "synthesized": True
+                    })
+            
+        response_obj = ResponseObject(
+            type=target_section,
+            domain=dom_val,
+            title=title,
+            tagline=tagline,
+            overview=overview_text,
+            best_for=entity.get("best_for") if isinstance(entity.get("best_for"), list) else ([entity.get("best_for")] if entity.get("best_for") else None),
+            capabilities=capabilities,
+            features=features,
+            modules=entity.get("modules"),
+            services_included=entity.get("services_included") or entity.get("services"),
+            benefits=entity.get("benefits"),
+            advantages=entity.get("advantages"),
+            technology_stack=entity.get("technologies") or entity.get("technology_stack"),
+            integrations=entity.get("integrations"),
+            industries=entity.get("industries"),
+            deployment=entity.get("deployment"),
+            used_in=entity.get("used_in"),
+            workflows=workflows,
+            faq=entity.get("faq"),
+            actions=actions
+        )
+        
+        raw_text = ResponseFormatterDispatcher.dispatch(response_obj)
         
         if raw_text:
             sugs = []
-            entity_name = entity.get("name") or entity.get("title") or "Entity"
+            entity_name = title
             if domain == "PRODUCTS":
                 sugs = [f"What capabilities does {entity_name} offer?", f"How does {entity_name} work?", "Compare WhatsApp and Influencer Platforms"]
             elif domain == "SERVICES":

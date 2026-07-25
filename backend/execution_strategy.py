@@ -61,7 +61,7 @@ class ExecutionStrategySelector:
 
         # Rule 3: Reasoning (Comparison, Suitability, Integration, or Multi-entity synthesis)
         is_multi_entity = len(ctx.session_state.recently_compared_entities) >= 2 or (ctx.matched_entity_ids and len(ctx.matched_entity_ids) >= 2)
-        if ctx.intent in [EnterpriseIntent.COMPARISON.value, EnterpriseIntent.SUITABILITY.value, EnterpriseIntent.INTEGRATION.value] or is_multi_entity:
+        if (ctx.intent in [EnterpriseIntent.COMPARISON.value, EnterpriseIntent.SUITABILITY.value, EnterpriseIntent.INTEGRATION.value] or is_multi_entity) and not (ctx.resolved_entity_id and ctx.confidence >= 0.9):
             ctx.execution_strategy = ExecutionStrategy.REASONING
             ctx.confidence = 0.95
             ctx.reason = f"Query intent '{ctx.intent}' requires evidence-grounded reasoning engine synthesis."
