@@ -29,8 +29,6 @@ RUN pip install --no-cache-dir -r /app/backend/requirements.txt
 # Copy backend source code
 COPY backend/ /app/backend/
 
-# Copy frontend content asset if existing
-COPY frontend/src/data/content.js /app/frontend/src/data/content.js
 
 # Build offline vector database during Docker container build phase (Content-Hash Gated)
 RUN python /app/backend/scripts/build_vector_db.py
