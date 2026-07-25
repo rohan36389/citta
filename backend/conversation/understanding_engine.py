@@ -1,13 +1,17 @@
 import logging
 from typing import Dict, Any, List
-from backend.conversation.models import ConversationContext, IntentAnalysis, DiscoveryState, LeadQualification
-from backend.conversation.interfaces import IUnderstandingEngine
-from backend.conversation.config import LEAD_QUALIFICATION_WEIGHTS
-
-logger = logging.getLogger(__name__)
-
-from backend.conversation.intent_engine import get_enterprise_intent_engine
-from backend.conversation.persona_engine import get_customer_persona_engine
+try:
+    from backend.conversation.models import ConversationContext, IntentAnalysis, DiscoveryState, LeadQualification
+    from backend.conversation.interfaces import IUnderstandingEngine
+    from backend.conversation.config import LEAD_QUALIFICATION_WEIGHTS
+    from backend.conversation.intent_engine import get_enterprise_intent_engine
+    from backend.conversation.persona_engine import get_customer_persona_engine
+except ImportError:
+    from conversation.models import ConversationContext, IntentAnalysis, DiscoveryState, LeadQualification
+    from conversation.interfaces import IUnderstandingEngine
+    from conversation.config import LEAD_QUALIFICATION_WEIGHTS
+    from conversation.intent_engine import get_enterprise_intent_engine
+    from conversation.persona_engine import get_customer_persona_engine
 
 class UnderstandingEngine(IUnderstandingEngine):
     """

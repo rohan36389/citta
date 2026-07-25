@@ -1,8 +1,13 @@
 import logging
 from typing import Dict, Any
-from backend.conversation.models import ConversationContext
-from backend.conversation.interfaces import IContextEngine, IMemoryStore
-from backend.conversation.config import STAGE_TRANSITIONS
+try:
+    from backend.conversation.models import ConversationContext
+    from backend.conversation.interfaces import IContextEngine, IMemoryStore
+    from backend.conversation.config import STAGE_TRANSITIONS
+except ImportError:
+    from conversation.models import ConversationContext
+    from conversation.interfaces import IContextEngine, IMemoryStore
+    from conversation.config import STAGE_TRANSITIONS
 
 logger = logging.getLogger(__name__)
 

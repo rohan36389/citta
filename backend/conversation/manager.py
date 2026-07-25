@@ -2,20 +2,36 @@ import time
 import logging
 from typing import Dict, Any, Optional
 
-from backend.conversation.models import (
-    ConversationContext,
-    ResponseComposition
-)
-from backend.conversation.interfaces import (
-    IContextEngine,
-    IUnderstandingEngine,
-    IKnowledgeEngine,
-    IStrategyEngine,
-    IPromptEngine,
-    IResponseEngine,
-    IQualityEngine,
-    IAnalyticsEngine
-)
+try:
+    from backend.conversation.models import (
+        ConversationContext,
+        ResponseComposition
+    )
+    from backend.conversation.interfaces import (
+        IContextEngine,
+        IUnderstandingEngine,
+        IKnowledgeEngine,
+        IStrategyEngine,
+        IPromptEngine,
+        IResponseEngine,
+        IQualityEngine,
+        IAnalyticsEngine
+    )
+except ImportError:
+    from conversation.models import (
+        ConversationContext,
+        ResponseComposition
+    )
+    from conversation.interfaces import (
+        IContextEngine,
+        IUnderstandingEngine,
+        IKnowledgeEngine,
+        IStrategyEngine,
+        IPromptEngine,
+        IResponseEngine,
+        IQualityEngine,
+        IAnalyticsEngine
+    )
 
 logger = logging.getLogger(__name__)
 

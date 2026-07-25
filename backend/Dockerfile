@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED=1 \
     ENVIRONMENT=production \
     DEBUG=false \
     VECTOR_DB_PATH=/app/vector_store.db \
-    PYTHONPATH=/app
+    PYTHONPATH=/app:/app/backend
 
 WORKDIR /app
 
@@ -26,6 +26,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy backend source code
 COPY . .
+
+# Create symlink alias /app/backend -> /app for backward compatibility with 'backend.xxx' imports
+RUN ln -s /app /app/backend
 
 # Build offline vector database during Docker container build phase (Content-Hash Gated)
 RUN python scripts/build_vector_db.py
