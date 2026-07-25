@@ -1,8 +1,8 @@
 import logging
 from typing import Dict, Any, Optional
-from backend.conversation.models import PersonaProfile, ConversationContext
-from backend.conversation.interfaces import IPersonaEngine
-from backend.conversation.persona_engine import get_customer_persona_engine
+from conversation.models import PersonaProfile, ConversationContext
+from conversation.interfaces import IPersonaEngine
+from conversation.persona_engine import get_customer_persona_engine
 
 logger = logging.getLogger(__name__)
 

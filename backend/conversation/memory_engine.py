@@ -1,7 +1,7 @@
 import hashlib
 import logging
 from typing import Dict, Any, List, Optional
-from backend.conversation.models import (
+from conversation.models import (
     EntityNode,
     WorkingMemory,
     CustomerFacts,

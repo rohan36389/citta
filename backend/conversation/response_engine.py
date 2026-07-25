@@ -1,11 +1,11 @@
 import logging
 from typing import List, Dict, Any
-from backend.conversation.models import ConversationContext, ResponseStrategy, DraftResponse
-from backend.conversation.interfaces import IResponseEngine
+from conversation.models import ConversationContext, ResponseStrategy, DraftResponse
+from conversation.interfaces import IResponseEngine
 
 logger = logging.getLogger(__name__)
 
-from backend.conversation.suggestion_engine import get_suggestion_engine
+from conversation.suggestion_engine import get_suggestion_engine
 
 class ResponseEngine(IResponseEngine):
     """

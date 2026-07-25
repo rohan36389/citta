@@ -3,11 +3,11 @@ import logging
 from typing import Dict, Any, Optional
 
 try:
-    from backend.conversation.models import (
+    from conversation.models import (
         ConversationContext,
         ResponseComposition
     )
-    from backend.conversation.interfaces import (
+    from conversation.interfaces import (
         IContextEngine,
         IUnderstandingEngine,
         IKnowledgeEngine,
@@ -72,8 +72,8 @@ class ConversationManager:
         context = self.context_engine.get_or_create_context(session_id)
         timings["context_ms"] = (time.perf_counter() - t_start) * 1000.0
 
-        from backend.conversation.coreference_engine import get_coreference_engine
-        from backend.conversation.memory_engine import get_memory_manager, MemoryEvent
+        from conversation.coreference_engine import get_coreference_engine
+        from conversation.memory_engine import get_memory_manager, MemoryEvent
 
         mem_mgr = get_memory_manager(session_id)
 

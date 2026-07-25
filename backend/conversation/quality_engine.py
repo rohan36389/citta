@@ -1,7 +1,7 @@
 import logging
 import time
 from typing import Dict, Any
-from backend.conversation.models import (
+from conversation.models import (
     ConversationContext,
     IntentAnalysis,
     ResponseStrategy,
@@ -9,11 +9,11 @@ from backend.conversation.models import (
     CriticReview,
     ExplainabilityRecord
 )
-from backend.conversation.interfaces import IQualityEngine
+from conversation.interfaces import IQualityEngine
 
 logger = logging.getLogger(__name__)
 
-from backend.conversation.validation_engine import get_conversation_validation_engine
+from conversation.validation_engine import get_conversation_validation_engine
 
 class QualityEngine(IQualityEngine):
     """

@@ -1,6 +1,6 @@
 import logging
-from backend.conversation.models import ConversationContext, ResponseComposition
-from backend.conversation.interfaces import IAnalyticsEngine
+from conversation.models import ConversationContext, ResponseComposition
+from conversation.interfaces import IAnalyticsEngine
 
 logger = logging.getLogger(__name__)
 

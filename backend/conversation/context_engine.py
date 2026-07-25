@@ -1,9 +1,9 @@
 import logging
 from typing import Dict, Any
 try:
-    from backend.conversation.models import ConversationContext
-    from backend.conversation.interfaces import IContextEngine, IMemoryStore
-    from backend.conversation.config import STAGE_TRANSITIONS
+    from conversation.models import ConversationContext
+    from conversation.interfaces import IContextEngine, IMemoryStore
+    from conversation.config import STAGE_TRANSITIONS
 except ImportError:
     from conversation.models import ConversationContext
     from conversation.interfaces import IContextEngine, IMemoryStore

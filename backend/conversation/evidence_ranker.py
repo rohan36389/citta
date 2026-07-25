@@ -1,6 +1,6 @@
 import logging
 from typing import List, Dict, Any
-from backend.conversation.reasoning_packet import Evidence
+from conversation.reasoning_packet import Evidence
 
 logger = logging.getLogger(__name__)
 

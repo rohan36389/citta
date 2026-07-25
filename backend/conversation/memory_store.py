@@ -1,6 +1,6 @@
 import logging
 from typing import List, Dict
-from backend.conversation.interfaces import IMemoryStore
+from conversation.interfaces import IMemoryStore
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +32,7 @@ class MemoryStore(IMemoryStore):
         """
         if session_id in self._stores:
             del self._stores[session_id]
-        from backend.conversation.memory_engine import _managers
+        from conversation.memory_engine import _managers
         if session_id in _managers:
             del _managers[session_id]
         logger.info(f"Cleared memory store and manager state for session {session_id}")

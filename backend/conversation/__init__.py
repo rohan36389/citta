@@ -11,7 +11,7 @@ if BACKEND_DIR not in sys.path:
 import logging
 
 try:
-    from backend.conversation.interfaces import (
+    from conversation.interfaces import (
         IContextEngine,
         IUnderstandingEngine,
         IKnowledgeEngine,
@@ -22,16 +22,16 @@ try:
         IAnalyticsEngine,
         IMemoryStore
     )
-    from backend.conversation.memory_store import get_memory_store
-    from backend.conversation.context_engine import get_context_engine
-    from backend.conversation.understanding_engine import get_understanding_engine
-    from backend.conversation.knowledge_engine import get_knowledge_engine
-    from backend.conversation.strategy_engine import get_strategy_engine
-    from backend.conversation.prompt_engine import get_prompt_engine
-    from backend.conversation.response_engine import get_response_engine
-    from backend.conversation.quality_engine import get_quality_engine
-    from backend.conversation.analytics_engine import get_analytics_engine
-    from backend.conversation.manager import ConversationManager
+    from conversation.memory_store import get_memory_store
+    from conversation.context_engine import get_context_engine
+    from conversation.understanding_engine import get_understanding_engine
+    from conversation.knowledge_engine import get_knowledge_engine
+    from conversation.strategy_engine import get_strategy_engine
+    from conversation.prompt_engine import get_prompt_engine
+    from conversation.response_engine import get_response_engine
+    from conversation.quality_engine import get_quality_engine
+    from conversation.analytics_engine import get_analytics_engine
+    from conversation.manager import ConversationManager
 except ImportError:
     from conversation.interfaces import (
         IContextEngine,

@@ -1,12 +1,12 @@
 import logging
 from typing import List
-from backend.conversation.models import ConversationContext, IntentAnalysis, DiscoveryState, ResponseStrategy
-from backend.conversation.interfaces import IStrategyEngine
-from backend.conversation.config import OBJECTION_TEMPLATES
+from conversation.models import ConversationContext, IntentAnalysis, DiscoveryState, ResponseStrategy
+from conversation.interfaces import IStrategyEngine
+from conversation.config import OBJECTION_TEMPLATES
 
 logger = logging.getLogger(__name__)
 
-from backend.conversation.planning_engine import get_response_planning_engine
+from conversation.planning_engine import get_response_planning_engine
 
 class StrategyEngine(IStrategyEngine):
     """

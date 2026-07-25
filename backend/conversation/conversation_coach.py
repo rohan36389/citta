@@ -1,6 +1,6 @@
 import logging
 from typing import Dict, Any, List, Optional
-from backend.conversation.behavior_policy import get_behavior_policy, BehaviorPolicy
+from conversation.behavior_policy import get_behavior_policy, BehaviorPolicy
 
 logger = logging.getLogger(__name__)
 

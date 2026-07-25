@@ -1,6 +1,6 @@
 import logging
 from typing import Dict, Any, List, Optional, Tuple
-from backend.conversation.models import (
+from conversation.models import (
     BusinessIntent,
     RolePersona,
     PersonaProfile,

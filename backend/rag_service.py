@@ -54,7 +54,7 @@ except ImportError:
     from backend.intent_classifier import get_intent_classifier
     from backend.semantic_query_expander import get_semantic_query_expander
     from backend.entity_extractor import get_entity_extractor
-    from backend.conversation_context import get_context_manager
+    from conversation_context import get_context_manager
     from backend.retrieval_reranker import get_retrieval_reranker
     from backend.confidence_router import get_confidence_router
 

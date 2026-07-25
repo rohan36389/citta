@@ -1,7 +1,7 @@
 import re
 import logging
 from typing import Dict, Any, List, Optional, Tuple
-from backend.conversation.models import (
+from conversation.models import (
     EntityNode,
     CoreferenceCandidate,
     CoreferenceResult,

@@ -1,7 +1,7 @@
 import logging
 from typing import Dict, Any, List
-from backend.conversation.models import ConversationContext, IntentAnalysis, ToolSelection
-from backend.conversation.interfaces import IKnowledgeEngine
+from conversation.models import ConversationContext, IntentAnalysis, ToolSelection
+from conversation.interfaces import IKnowledgeEngine
 
 logger = logging.getLogger(__name__)
 

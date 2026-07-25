@@ -1,6 +1,6 @@
 import logging
-from backend.conversation.models import ConversationContext, ResponseStrategy
-from backend.conversation.interfaces import IPromptEngine
+from conversation.models import ConversationContext, ResponseStrategy
+from conversation.interfaces import IPromptEngine
 from typing import Dict, Any
 
 logger = logging.getLogger(__name__)

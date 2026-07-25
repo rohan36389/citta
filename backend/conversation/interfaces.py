@@ -1,5 +1,5 @@
 from typing import Protocol, Dict, Any, List, Optional
-from backend.conversation.models import (
+from conversation.models import (
     ConversationContext,
     IntentAnalysis,
     DiscoveryState,
