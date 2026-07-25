@@ -203,7 +203,7 @@ class KnowledgeRegistry:
                 } for cap in obj.capabilities
             ],
             "how_it_works": {
-                "steps": [w.title for w in obj.workflows]
+                "steps": [f"{w.title}: {w.description}" if w.description else w.title for w in obj.workflows]
             }
         }
 
