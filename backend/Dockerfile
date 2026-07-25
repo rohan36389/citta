@@ -9,8 +9,8 @@ ENV PYTHONUNBUFFERED=1 \
     PORT=8000 \
     ENVIRONMENT=production \
     DEBUG=false \
-    VECTOR_DB_PATH=/app/backend/vector_store.db \
-    PYTHONPATH=/app:/app/backend
+    VECTOR_DB_PATH=/app/vector_store.db \
+    PYTHONPATH=/app
 
 WORKDIR /app
 
@@ -20,25 +20,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy backend requirements first to optimize Docker layer caching
-COPY backend/requirements.txt /app/backend/requirements.txt
+# Copy requirements first to optimize Docker layer caching
+COPY requirements.txt /app/requirements.txt
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r /app/backend/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Copy backend source code
-COPY backend/ /app/backend/
-
+# Copy source code
+COPY . /app
 
 # Build offline vector database during Docker container build phase (Content-Hash Gated)
-RUN python /app/backend/scripts/build_vector_db.py
+RUN python scripts/build_vector_db.py
 
 # Verify build-time vector database artifact & print chunk count
-RUN ls -lh /app/backend/vector_store.db && \
-    python -c "import sqlite3; conn=sqlite3.connect('/app/backend/vector_store.db'); print('Build-time DB Chunk Count:', conn.execute('select count(*) from chunks').fetchone()[0]); conn.close()"
-
-# Set working directory to backend
-WORKDIR /app/backend
+RUN ls -lh /app/vector_store.db && \
+    python -c "import sqlite3; conn=sqlite3.connect('/app/vector_store.db'); print('Build-time DB Chunk Count:', conn.execute('select count(*) from chunks').fetchone()[0]); conn.close()"
 
 # Expose default backend port
 EXPOSE 8000
