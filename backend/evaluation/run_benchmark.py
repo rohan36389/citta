@@ -13,7 +13,7 @@ sys.path.append(str(BACKEND_DIR))
 try:
     from query_planner import classify_query
 except ImportError:
-    from backend.query_planner import classify_query
+    from query_planner import classify_query
 
 def run_evaluation():
     print("================ RUNNING CITTAAI V3.4 ACCURACY BENCHMARK ================")

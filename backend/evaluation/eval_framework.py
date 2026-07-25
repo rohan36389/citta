@@ -19,9 +19,9 @@ try:
     from deterministic_engine import get_deterministic_engine
     from intent_analyzer import get_intent_analyzer
 except ImportError:
-    from backend.rag_service import RAGService
-    from backend.deterministic_engine import get_deterministic_engine
-    from backend.intent_analyzer import get_intent_analyzer
+    from rag_service import RAGService
+    from deterministic_engine import get_deterministic_engine
+    from intent_analyzer import get_intent_analyzer
 
 logger = logging.getLogger("ecqf_evaluator")
 

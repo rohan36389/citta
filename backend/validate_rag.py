@@ -41,7 +41,7 @@ async def main():
     try:
         from static_data import get_static_data
     except ImportError:
-        from backend.static_data import get_static_data
+        from static_data import get_static_data
 
     sd = get_static_data()
     routes = sd.get("navigation_routes", []) + sd.get("service_routes", []) + sd.get("product_routes", [])

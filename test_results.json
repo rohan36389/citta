@@ -1,0 +1,274 @@
+[
+  {
+    "query": "Tell me about CittaAI.",
+    "error": "[WinError 10061] No connection could be made because the target machine actively refused it"
+  },
+  {
+    "query": "What is CittaAI's mission?",
+    "error": "[WinError 10061] No connection could be made because the target machine actively refused it"
+  },
+  {
+    "query": "What is CittaAI's vision?",
+    "error": "[WinError 10061] No connection could be made because the target machine actively refused it"
+  },
+  {
+    "query": "When was CittaAI founded?",
+    "error": "[WinError 10061] No connection could be made because the target machine actively refused it"
+  },
+  {
+    "query": "Where is CittaAI located?",
+    "error": "[WinError 10061] No connection could be made because the target machine actively refused it"
+  },
+  {
+    "query": "Who is the CEO?",
+    "error": "[WinError 10061] No connection could be made because the target machine actively refused it"
+  },
+  {
+    "query": "Show me the leadership team.",
+    "source": "Leadership Registry",
+    "redirect": "/about",
+    "resolved_registry": "LEADERSHIP",
+    "resolved_entity": "NONE",
+    "preview": " **Leadership Team**  Meet the experienced leaders driving innovation at CittaAI.   **Vinay Velive"
+  },
+  {
+    "query": "Tell me about Akhil Reddy.",
+    "source": "Leadership Registry",
+    "redirect": "/about",
+    "resolved_registry": "LEADERSHIP",
+    "resolved_entity": "akhil_reddy",
+    "preview": " **Akhil Reddy** *CoFounder & CTO  Technology*  Architecting enterprise AI platforms and advanced "
+  },
+  {
+    "query": "Who leads Technology?",
+    "source": "Leadership Registry",
+    "redirect": "/about",
+    "resolved_registry": "LEADERSHIP",
+    "resolved_entity": "NONE",
+    "preview": " **Leadership Team**  Meet the experienced leaders driving innovation at CittaAI.   **Vinay Velive"
+  },
+  {
+    "query": "Who is the COO?",
+    "source": "Leadership Registry",
+    "redirect": "/about",
+    "resolved_registry": "LEADERSHIP",
+    "resolved_entity": "saladi_chandra_balaji",
+    "preview": " **Saladi Chandra Balaji** *CoFounder & COO  Operations*  Leading operations, execution, and strat"
+  },
+  {
+    "query": "Tell me about the WhatsApp Marketing Platform.",
+    "source": "Registry Object: whatsapp_marketing",
+    "redirect": "/products/whatsapp-marketing",
+    "resolved_registry": "PRODUCT",
+    "resolved_entity": "whatsapp_marketing",
+    "preview": " **WhatsApp Marketing Platform** *Brand Messaging OS*  A scalable WhatsApp engagement and broadcast"
+  },
+  {
+    "query": "Explain the Influencer Marketing Platform.",
+    "source": "Registry Object: influencer_marketing",
+    "redirect": "/products/influencer-marketing",
+    "resolved_registry": "PRODUCT",
+    "resolved_entity": "influencer_marketing",
+    "preview": " **Influencer Marketing Platform** *Creator Collaboration OS*  A marketplace + campaign management "
+  },
+  {
+    "query": "What products does CittaAI offer?",
+    "source": "Registry Object: company_info",
+    "redirect": "/about",
+    "resolved_registry": "COMPANY",
+    "resolved_entity": "company_info",
+    "preview": " **About CittaAI** is an Enterprise AI consultancy that helps organizations build secure, scalable,"
+  },
+  {
+    "query": "Tell me about AI Strategy & Advisory.",
+    "source": "Registry Object: ai_strategy",
+    "redirect": "/services/ai-strategy",
+    "resolved_registry": "SERVICE",
+    "resolved_entity": "ai_strategy",
+    "preview": " **AI Strategy & Advisory** *Professional AI Services*  Book a consultation with our AI experts to"
+  },
+  {
+    "query": "Explain Data Engineering services.",
+    "source": "Registry Object: data_engineering",
+    "redirect": "/services/data-engineering",
+    "resolved_registry": "SERVICE",
+    "resolved_entity": "data_engineering",
+    "preview": " **Data Engineering** *Professional AI Services*  Book a consultation with our AI experts today.  "
+  },
+  {
+    "query": "What is Martech 360?",
+    "source": "Registry Object: ai_powered_marketing",
+    "redirect": "/services/ai-powered-marketing",
+    "resolved_registry": "SERVICE",
+    "resolved_entity": "ai_powered_marketing",
+    "preview": " **AIPowered Marketing** *Professional AI Services*  Book a consultation with our AI experts today"
+  },
+  {
+    "query": "Tell me about Enterprise & Agentic AI.",
+    "source": "Registry Object: enterprise_agentic_ai",
+    "redirect": "/services/enterprise-agentic-ai",
+    "resolved_registry": "SERVICE",
+    "resolved_entity": "enterprise_agentic_ai",
+    "preview": " **Enterprise & Agentic AI** *Professional AI Services*  Book a consultation with our AI experts t"
+  },
+  {
+    "query": "Explain Pharma OS.",
+    "source": "Registry Object: pharma_os",
+    "redirect": "/solutions/pharma-os",
+    "resolved_registry": "SOLUTION",
+    "resolved_entity": "pharma_os",
+    "preview": " **Pharma OS** *AIPowered Quality, Compliance & Release Intelligence*  Digitizes workflows for fas"
+  },
+  {
+    "query": "How does Education OS work?",
+    "source": "Registry Object: education_os",
+    "redirect": "/solutions/education-os",
+    "resolved_registry": "SOLUTION",
+    "resolved_entity": "education_os",
+    "preview": " **Education OS** *The Complete Learning + Assessment + Coding Ecosystem for Colleges*  Managed le"
+  },
+  {
+    "query": "Tell me about Enterprise AI OS.",
+    "source": "Registry Object: enterprise_ai_os",
+    "redirect": "/solutions/enterprise-ai-os",
+    "resolved_registry": "SOLUTION",
+    "resolved_entity": "enterprise_ai_os",
+    "preview": " **Enterprise AI OS** *Build, Evaluate, Deploy  ProductionReady AI Systems*  The complete platfor"
+  },
+  {
+    "query": "What is Smart Cities OS?",
+    "source": "Registry Object: smart_cities_os",
+    "redirect": "/solutions/smart-cities-os",
+    "resolved_registry": "SOLUTION",
+    "resolved_entity": "smart_cities_os",
+    "preview": " **Smart Cities OS** *Urban Intelligence Platform*  AIdriven insights from IoT, mobility, utilitie"
+  },
+  {
+    "query": "Explain Real Estate OS.",
+    "source": "Registry Object: real_estate_os",
+    "redirect": "/solutions/real-estate-os",
+    "resolved_registry": "SOLUTION",
+    "resolved_entity": "real_estate_os",
+    "preview": " **Real Estate OS** *OneStop Platform for Real Estate Operations*  Unify the entire lifecycle: lis"
+  },
+  {
+    "query": "Show me all case studies.",
+    "source": "Case Studies Registry",
+    "redirect": "/case-studies",
+    "resolved_registry": "CASE_STUDIES",
+    "resolved_entity": "NONE",
+    "preview": "**CittaAI Client Case Studies & Success Stories  We have published case studies demonstrating measur"
+  },
+  {
+    "query": "Explain the Jewellery Brand case study.",
+    "source": "Case Studies Registry",
+    "redirect": "/case-studies/jewellery-brand-roi",
+    "resolved_registry": "CASE_STUDIES",
+    "resolved_entity": "jewellery_brand_roi",
+    "preview": "**Case Study: Jewellery Brand  **Overview**: Improve customer engagement and maximize campaign retur"
+  },
+  {
+    "query": "Tell me about the FMCG case study.",
+    "source": "Case Studies Registry",
+    "redirect": "/case-studies/fmcg-social-growth",
+    "resolved_registry": "CASE_STUDIES",
+    "resolved_entity": "fmcg_social_growth",
+    "preview": "Here is a summary of our client success story for **FMCG Brand**:  Increase brand awareness and gene"
+  },
+  {
+    "query": "Explain the B2B Spices Export case study.",
+    "source": "Case Studies Registry",
+    "redirect": "/case-studies/b2b-spices-export",
+    "resolved_registry": "CASE_STUDIES",
+    "resolved_entity": "b2b_spices_export",
+    "preview": "**Case Study: B2B Spices Export  **Overview**: Generate qualified export leads while reducing acquis"
+  },
+  {
+    "query": "What awards has CittaAI won?",
+    "source": "Recognition Registry",
+    "redirect": null,
+    "resolved_registry": "RECOGNITION",
+    "resolved_entity": "NONE",
+    "preview": "**CittaAI Achievements & Recognitions  **Andhra Pradesh MSME Digital Empowerment Challenge 2025**: C"
+  },
+  {
+    "query": "Tell me about the HYBIZ award.",
+    "source": "Recognition Registry",
+    "redirect": null,
+    "resolved_registry": "RECOGNITION",
+    "resolved_entity": "NONE",
+    "preview": "**CittaAI Achievements & Recognitions  **Andhra Pradesh MSME Digital Empowerment Challenge 2025**: C"
+  },
+  {
+    "query": "Explain the AP MSME Digital Empowerment Challenge.",
+    "source": "Recognition Registry",
+    "redirect": null,
+    "resolved_registry": "RECOGNITION",
+    "resolved_entity": "NONE",
+    "preview": "**CittaAI Achievements & Recognitions  **Andhra Pradesh MSME Digital Empowerment Challenge 2025**: C"
+  },
+  {
+    "query": "How can I contact CittaAI?",
+    "source": "Registry Object Match: contact_info",
+    "redirect": "/contact",
+    "resolved_registry": "CONTACT",
+    "resolved_entity": "contact_info",
+    "preview": " **Contact Information**  Reach out via Email: info@cittaai.com or Phone: +91 9392655040.  **Addres"
+  },
+  {
+    "query": "What is CittaAI's email?",
+    "source": "Registry Object Match: contact_info",
+    "redirect": "/contact",
+    "resolved_registry": "CONTACT",
+    "resolved_entity": "contact_info",
+    "preview": " **Contact Information**  Reach out via Email: info@cittaai.com or Phone: +91 9392655040.  **Addres"
+  },
+  {
+    "query": "Where is your office?",
+    "source": "Registry Object Match: contact_info",
+    "redirect": "/contact",
+    "resolved_registry": "CONTACT",
+    "resolved_entity": "contact_info",
+    "preview": " **Contact Information**  Reach out via Email: info@cittaai.com or Phone: +91 9392655040.  **Addres"
+  },
+  {
+    "query": "Tell me about RAG Solutions.",
+    "source": "Registry Capability: enterprise_agentic_ai_rag_solutions",
+    "redirect": "/services/enterprise-agentic-ai",
+    "resolved_registry": "SERVICE",
+    "resolved_entity": "enterprise_agentic_ai",
+    "preview": " **RAG solutions** Part of **Enterprise & Agentic AI** (Service)  Ground your AI in reality with Re"
+  },
+  {
+    "query": "Tell me about Martech.",
+    "source": "Registry Object: ai_powered_marketing",
+    "redirect": "/services/ai-powered-marketing",
+    "resolved_registry": "SERVICE",
+    "resolved_entity": "ai_powered_marketing",
+    "preview": " **AIPowered Marketing** *Professional AI Services*  Book a consultation with our AI experts today"
+  },
+  {
+    "query": "Who are CittaAI's clients?",
+    "source": "Company Statistics Registry",
+    "redirect": "/about",
+    "resolved_registry": "STATISTICS",
+    "resolved_entity": "company_info",
+    "preview": "**CittaAI Platform Impact & Key Statistics   **Enterprise Clients**: 50+ Global Organizations  **A"
+  },
+  {
+    "query": "Explain Quantum OS.",
+    "source": "Graceful Registry Fallback",
+    "redirect": null,
+    "resolved_registry": "GENERAL",
+    "resolved_entity": "NONE",
+    "preview": "I searched our enterprise registry for **Explain Quantum OS.** but couldn't find a direct match.  He"
+  },
+  {
+    "query": "Tell me about Blockchain services.",
+    "source": "Graceful Registry Fallback",
+    "redirect": null,
+    "resolved_registry": "GENERAL",
+    "resolved_entity": "NONE",
+    "preview": "I searched our enterprise registry for **Tell me about Blockchain services.** but couldn't find a di"
+  }
+]

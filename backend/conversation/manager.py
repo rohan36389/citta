@@ -93,8 +93,8 @@ class ConversationManager:
 
         # 1c. Entity Resolver & Memory Event Generation
         try:
-            from backend.knowledge_registry import KnowledgeRegistry
-            from backend.entity_resolver import resolve_entity_dynamic
+            from knowledge_registry import KnowledgeRegistry
+            from entity_resolver import resolve_entity_dynamic
             kr = KnowledgeRegistry()
             ent_id, conf, match, _ = resolve_entity_dynamic(
                 effective_query, kr.entities, kr.entity_lookup, kr.aliases, kr.unified_vocabulary

@@ -1,4 +1,4 @@
-# Docker Ignore File for CittaAI Backend
+# Docker Ignore File for CittaAI
 __pycache__/
 *.pyc
 *.pyo
@@ -20,3 +20,15 @@ test_reports/
 .idea/
 *.zip
 *.tar.gz
+dist/
+build/
+.next/
+coverage/
+
+# Ignore frontend except content.js asset
+frontend/*
+!frontend/src
+frontend/src/*
+!frontend/src/data
+frontend/src/data/*
+!frontend/src/data/content.js

@@ -38,7 +38,7 @@ def resolve_entity_dynamic(
         try:
             import core.entity_resolver as core_resolver
         except ImportError:
-            from backend.core import entity_resolver as core_resolver
+            from core import entity_resolver as core_resolver
         res = core_resolver.resolve(query)
         # Handle context pronoun override if new resolver didn't find one but pronouns match
         if not res["entity_id"] and active_entity and contains_pronouns(query):

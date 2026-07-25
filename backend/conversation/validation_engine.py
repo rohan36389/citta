@@ -9,7 +9,7 @@ from conversation.models import (
     DraftResponse,
     ConversationContext
 )
-from backend.knowledge_registry import KnowledgeRegistry
+from knowledge_registry import KnowledgeRegistry
 
 logger = logging.getLogger(__name__)
 

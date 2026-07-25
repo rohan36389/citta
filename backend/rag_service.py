@@ -35,28 +35,28 @@ try:
     from phase2_orchestrator import get_phase2_orchestrator
     from unknown_entity_handler import get_unknown_entity_handler
 except ImportError:
-    from backend.llm_provider import LLMProvider
-    from backend.vector_store import VectorStore
-    from backend.intent_router import classify_intent, normalize_query, detect_tool_call
-    from backend.static_data import get_static_response, execute_tool
-    from backend.response_decision import make_response_decision
-    from backend.knowledge_registry import get_registry
-    from backend.query_planner import classify_query, init_anchor_embeddings, rewrite_query
-    from backend.response_validator import validate_response
-    from backend.response_builder import build_deterministic_response, load_registry_file, load_templates, validate_response_source, ResponsePersonalizer, STATIC_SUGGESTIONS
-    from backend.response_transformer import ResponseTransformer
-    from backend.query_normalizer import normalize_query_pipeline
-    from backend.registry_resolver import resolve_registry
-    from backend.entity_resolver import resolve_entity_dynamic, contains_pronouns
-    from backend.section_resolver import resolve_section_dynamic
-    from backend.knowledge_router import route_query
-    from backend.greeting_detector import detect_greeting
-    from backend.intent_classifier import get_intent_classifier
-    from backend.semantic_query_expander import get_semantic_query_expander
-    from backend.entity_extractor import get_entity_extractor
+    from llm_provider import LLMProvider
+    from vector_store import VectorStore
+    from intent_router import classify_intent, normalize_query, detect_tool_call
+    from static_data import get_static_response, execute_tool
+    from response_decision import make_response_decision
+    from knowledge_registry import get_registry
+    from query_planner import classify_query, init_anchor_embeddings, rewrite_query
+    from response_validator import validate_response
+    from response_builder import build_deterministic_response, load_registry_file, load_templates, validate_response_source, ResponsePersonalizer, STATIC_SUGGESTIONS
+    from response_transformer import ResponseTransformer
+    from query_normalizer import normalize_query_pipeline
+    from registry_resolver import resolve_registry
+    from entity_resolver import resolve_entity_dynamic, contains_pronouns
+    from section_resolver import resolve_section_dynamic
+    from knowledge_router import route_query
+    from greeting_detector import detect_greeting
+    from intent_classifier import get_intent_classifier
+    from semantic_query_expander import get_semantic_query_expander
+    from entity_extractor import get_entity_extractor
     from conversation_context import get_context_manager
-    from backend.retrieval_reranker import get_retrieval_reranker
-    from backend.confidence_router import get_confidence_router
+    from retrieval_reranker import get_retrieval_reranker
+    from confidence_router import get_confidence_router
 
 logger = logging.getLogger(__name__)
 

@@ -38,7 +38,7 @@ try:
     from intent_router import classify_intent, normalize_query
 except ImportError:
     from backend import llm_provider, vector_store, rag_service
-    from backend.intent_router import classify_intent, normalize_query
+    from intent_router import classify_intent, normalize_query
 import config
 
 # Load environment

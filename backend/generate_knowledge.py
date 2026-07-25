@@ -37,8 +37,8 @@ try:
     import config
     from vector_store import VectorStore
 except ImportError:
-    import backend.config as config
-    from backend.vector_store import VectorStore
+    import config as config
+    from vector_store import VectorStore
 
 def generate_aliases_for_entity(ent: Dict[str, Any]) -> List[str]:
     aliases = set()

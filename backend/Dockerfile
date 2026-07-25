@@ -9,34 +9,40 @@ ENV PYTHONUNBUFFERED=1 \
     PORT=8000 \
     ENVIRONMENT=production \
     DEBUG=false \
-    VECTOR_DB_PATH=/app/vector_store.db \
+    VECTOR_DB_PATH=/app/backend/vector_store.db \
     PYTHONPATH=/app:/app/backend
 
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies required for C extensions & runtime utilities
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements and install
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy backend requirements first to optimize Docker layer caching
+COPY backend/requirements.txt /app/backend/requirements.txt
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r /app/backend/requirements.txt
 
 # Copy backend source code
-COPY . .
+COPY backend/ /app/backend/
 
-# Create symlink alias /app/backend -> /app for backward compatibility with 'backend.xxx' imports
-RUN ln -s /app /app/backend
+# Copy frontend content asset if existing
+COPY frontend/src/data/content.js /app/frontend/src/data/content.js
 
 # Build offline vector database during Docker container build phase (Content-Hash Gated)
-RUN python scripts/build_vector_db.py
+RUN python /app/backend/scripts/build_vector_db.py
 
 # Verify build-time vector database artifact & print chunk count
-RUN ls -lh vector_store.db && \
-    python -c "import sqlite3; conn=sqlite3.connect('vector_store.db'); print('Build-time DB Chunk Count:', conn.execute('select count(*) from chunks').fetchone()[0]); conn.close()"
+RUN ls -lh /app/backend/vector_store.db && \
+    python -c "import sqlite3; conn=sqlite3.connect('/app/backend/vector_store.db'); print('Build-time DB Chunk Count:', conn.execute('select count(*) from chunks').fetchone()[0]); conn.close()"
 
+# Set working directory to backend
+WORKDIR /app/backend
+
+# Expose default backend port
 EXPOSE 8000
 
 # Start Uvicorn ASGI server respecting Railway's PORT environment variable

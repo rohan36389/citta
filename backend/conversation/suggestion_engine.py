@@ -10,7 +10,7 @@ from conversation.models import (
     SuggestionResult,
     ConversationContext
 )
-from backend.knowledge_registry import KnowledgeRegistry
+from knowledge_registry import KnowledgeRegistry
 
 logger = logging.getLogger(__name__)
 
