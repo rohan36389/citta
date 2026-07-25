@@ -4,8 +4,8 @@
     "registry_type": "SERVICES",
     "schema_version": "1.0",
     "content_version": "1.0",
-    "last_updated": "2026-07-23",
-    "knowledge_date": "2026-07-23",
+    "last_updated": "2026-07-25",
+    "knowledge_date": "2026-07-25",
     "priority": 80,
     "capabilities": {
       "reasoning": false,
@@ -82,7 +82,7 @@
         "real_estate_os",
         "enterprise_ai_os"
       ],
-      "last_updated": "2026-07-23",
+      "last_updated": "2026-07-25",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -137,7 +137,7 @@
       "related_entities": [
         "enterprise_ai_os"
       ],
-      "last_updated": "2026-07-23",
+      "last_updated": "2026-07-25",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -189,7 +189,7 @@
       ],
       "case_studies": [],
       "related_entities": [],
-      "last_updated": "2026-07-23",
+      "last_updated": "2026-07-25",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [
@@ -247,7 +247,7 @@
         "whatsapp_marketing",
         "influencer_marketing"
       ],
-      "last_updated": "2026-07-23",
+      "last_updated": "2026-07-25",
       "verified": true,
       "source": "cittaai_products_services.md",
       "aliases": [

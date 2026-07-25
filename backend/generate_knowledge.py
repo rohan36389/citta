@@ -847,41 +847,46 @@ def compile_registries():
             "name": "Enterprise AI OS",
             "category": "solution",
             "route": "/solutions/enterprise-ai-os",
-            "summary": "Cognitive middleware orchestrating database adapters and model paths.",
-            "description": "High-performance software suite serving as the intelligence layer, coordinating LLM routing, query safety checks, and secure DB connections.",
+            "summary": "The full-stack platform for enterprise AI.",
+            "description": "RAG, agentic apps, voice, document AI, knowledge graphs and fine-tuning — a governed platform to take AI from proof-of-concept to production.",
             "overview": {
-                "summary": "Cognitive middleware orchestrating database adapters and model paths.",
-                "description": "High-performance software suite serving as the intelligence layer, coordinating LLM routing, query safety checks, and secure DB connections."
+                "summary": "The full-stack platform for enterprise AI.",
+                "description": "RAG, agentic apps, voice, document AI, knowledge graphs and fine-tuning — a governed platform to take AI from proof-of-concept to production."
             },
             "how_it_works": {
-                "process": "Routes user requests to cost-efficient models while scrubbing sensitive data and running SQL mappings.",
+                "process": "End-to-End platform bringing enterprise AI from Proof-of-Concept to Production.",
                 "steps": [
-                    "Dynamic model routing parameters setup",
-                    "Enterprise DB adapters configuration",
-                    "PII/data compliance checks design",
-                    "Agent coordinate integration"
+                    "RAG & Agentic Applications: Retrieval-augmented reasoning apps with tool use, planning and multi-step workflows.",
+                    "Conversational AI: Enterprise chat agents for customers, employees and internal ops with guardrails.",
+                    "Voice Agents: Inbound and outbound voice AI with real-time telephony and CRM integrations.",
+                    "Multi-Agent Systems: Coordinated agents that plan, delegate and execute across business processes.",
+                    "Document AI: Extract, classify and reason over unstructured documents at enterprise scale.",
+                    "Data Engineering & Analytics: Pipelines, warehouses, feature stores and metrics stacks for AI-ready data.",
+                    "Agentic Knowledge Graph: Structured knowledge graphs powering reasoning, search and recommendation.",
+                    "Database Agents: AI agents that reason over structured databases with governed query surfaces.",
+                    "Fine-Tuning & RL: Model customisation with supervised fine-tuning, RLHF and evaluation loops."
                 ]
             },
             "features": [
-                "Model routing logic dynamically matching queries to cost-efficient backends",
-                "Secure database adapters mapping enterprise SQL/NoSQL targets",
-                "Compliance check guardrails preventing sensitive PII leakage"
+                "Fast Deployment",
+                "Enterprise Controls",
+                "Measurable Eval",
+                "PoC to Production",
+                "Integration Ready",
+                "Advanced Agents"
             ],
             "benefits": [
-                "Reduce API token cost structures by up to 40%",
-                "Accelerate custom AI agent deployment cycles from weeks to hours"
+                "10x Faster Development",
+                "99% Enterprise Uptime",
+                "Full Stack End-to-End Platform",
+                "Secure Enterprise Grade"
             ],
             "best_for": [
-                "Enterprise Developers",
-                "CTOs",
-                "Security Architects"
+                "Enterprise Teams",
+                "Developers",
+                "CTOs"
             ],
-            "faq": [
-                {
-                    "question": "How does it protect PII?",
-                    "answer": "Built-in redaction rules filter out credit cards, emails, and names before sending to external model paths."
-                }
-            ],
+            "faq": [],
             "case_studies": ["B2B Spices Export"],
             "related_entities": ["enterprise_agentic_ai", "data_engineering"],
             "last_updated": str(date.today()),
