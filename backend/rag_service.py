@@ -57,6 +57,8 @@ except ImportError:
     from conversation_context import get_context_manager
     from retrieval_reranker import get_retrieval_reranker
     from confidence_router import get_confidence_router
+    from phase2_orchestrator import get_phase2_orchestrator
+    from unknown_entity_handler import get_unknown_entity_handler
 
 logger = logging.getLogger(__name__)
 
