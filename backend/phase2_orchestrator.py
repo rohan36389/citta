@@ -13,12 +13,15 @@ from ambiguity_detector import get_ambiguity_detector
 from unknown_entity_handler import get_unknown_entity_handler
 from knowledge_registry import get_registry
 from entity_resolver import resolve_entity_dynamic
+from query_understanding_agent import get_query_understanding_agent
 
 logger = logging.getLogger(__name__)
 
 # General Catalog Query Patterns
 GENERAL_CATALOG_PATTERNS = [
     "what products do you offer", "what products", "list products", "show products", "our products", "products offered",
+    "marketing products", "marketing product", "any marketing products", "do they have any marketing products", "do you have any marketing products", "do you have marketing products", "what marketing products",
+    "marketing services", "marketing service", "any marketing services", "do they have any marketing services", "do you have any marketing services", "do you have marketing services", "what marketing services",
     "what services do you offer", "what services", "list services", "show services", "our services", "services offered",
     "what are the services provided", "services provided", "srevices provided", "what are the srevices provided",
     "what services are provided", "srevices", "serivces", "services",
@@ -30,9 +33,28 @@ GENERIC_ENTITIES = {"company_info", "faq_general", "contact", "location"}
 
 def check_general_catalog_query(query: str) -> bool:
     q_lower = query.lower().strip()
+    
+    # Exclude queries referencing specific enterprise offerings
+    specific_keywords = [
+        "real estate", "realestate", "pharma", "education", "ecommerce", "e-commerce",
+        "whatsapp", "influencer", "smart cities", "enterprise ai", "martech", "social media",
+        "leadership", "team", "founder", "contact", "address", "pricing", "cost"
+    ]
+    if any(k in q_lower for k in specific_keywords):
+        return False
+
     if q_lower in GENERAL_CATALOG_PATTERNS:
         return True
-    return any(p in q_lower for p in GENERAL_CATALOG_PATTERNS)
+
+    for p in GENERAL_CATALOG_PATTERNS:
+        if len(p.split()) > 1:
+            if p in q_lower:
+                return True
+        else:
+            if re.search(r"\b" + re.escape(p) + r"\b", q_lower) and len(q_lower.split()) <= 4:
+                return True
+
+    return False
 
 class Phase2Orchestrator:
     def __init__(self):
@@ -42,6 +64,7 @@ class Phase2Orchestrator:
         self.strategy_selector = get_execution_strategy_selector()
         self.ambiguity_detector = get_ambiguity_detector()
         self.unknown_handler = get_unknown_entity_handler()
+        self.query_understanding_agent = get_query_understanding_agent()
         self.reg = get_registry()
 
     def _extract_all_entities(self, query: str) -> List[str]:
@@ -77,7 +100,7 @@ class Phase2Orchestrator:
         )
         ctx.add_trace("Initialization", "SUCCESS", f"Context created for query: '{original_query}'")
 
-        # 2. Entity Resolution
+        # 2. Entity Resolution & Confidence Check
         all_matched_entities = self._extract_all_entities(normalized_query)
         detected_entity_id, conf, matched_alias, _ = resolve_entity_dynamic(
             query=normalized_query,
@@ -87,6 +110,15 @@ class Phase2Orchestrator:
             unified_vocabulary=self.reg.unified_vocabulary
         )
         
+        # 2.1 Confidence Threshold Check: If conf < 0.90, invoke QueryUnderstandingAgent for Data-Driven selection
+        if conf < 0.90 and not check_general_catalog_query(normalized_query):
+            agent_res = self.query_understanding_agent._data_driven_fallback(normalized_query)
+            if agent_res.get("primary_entity") and agent_res.get("confidence", 0.0) >= 0.70:
+                detected_entity_id = agent_res["primary_entity"]
+                conf = agent_res["confidence"]
+                matched_alias = "Data-Driven Agent Reasoning"
+                ctx.matched_entity_ids = [c["entity"] for c in agent_res.get("candidate_entities", [])]
+
         ctx.add_trace(
             stage="EntityResolver",
             result=str(detected_entity_id or "None"),
@@ -108,6 +140,8 @@ class Phase2Orchestrator:
         # 4. General Catalog Intent Check
         ctx.is_general_catalog_query = check_general_catalog_query(normalized_query)
         if ctx.is_general_catalog_query:
+            ctx.resolved_entity_id = None
+            ctx.resolved_entity_name = None
             ctx.add_trace(
                 stage="GeneralCatalogCheck",
                 result="TRUE",
