@@ -419,8 +419,46 @@ class DeterministicEngine:
                         "metrics": {"resolved_entity": "NONE", "resolved_registry": "CASE_STUDIES"}
                     }
 
+            # Specific Intercept for Marketing Products and Marketing Services
+            if any(k in q_lower for k in ["marketing product", "marketing products", "products for marketing", "do they have any marketing products", "do you have any marketing products", "do you have marketing products", "what marketing products"]):
+                resp_md = (
+                    "Yes, we have **2 marketing products** in our products catalog:\n\n"
+                    "1. **WhatsApp Marketing Platform**: Unified enterprise broadcast messaging, automated customer engagement, and multi-agent support desks.\n"
+                    "2. **Influencer Marketing Platform**: Creator discovery marketplace, contract workflow management, and campaign ROI tracking.\n\n"
+                    "Would you like to explore **WhatsApp Marketing** or **Influencer Marketing** in detail?"
+                )
+                return {
+                    "response": resp_md,
+                    "source": "Products Registry",
+                    "verified": True,
+                    "confidence": 1.0,
+                    "navigation": "/products/whatsapp-marketing",
+                    "suggestions": ["Explain WhatsApp Marketing Platform", "Explain Influencer Marketing Platform", "Show Products"],
+                    "metrics": {"resolved_entity": "NONE", "resolved_registry": "PRODUCTS"}
+                }
+
+            if any(k in q_lower for k in ["marketing service", "marketing services", "services for marketing", "do they have any marketing services", "do you have any marketing services", "do you have marketing services", "what marketing services"]):
+                resp_md = (
+                    "Yes, CittaAI provides marketing services through our **AI-Powered Marketing** catalog, which includes:\n\n"
+                    "• **Social Media Marketing Services** & autonomous growth engines\n"
+                    "• **Branding & Strategy** driven by AI intent & audience intelligence\n"
+                    "• **Automated Performance Marketing** & conversion optimization\n"
+                    "• **MarTech 360** unified tech stack integration\n\n"
+                    "Would you like to explore **AI-Powered Marketing** or **MarTech 360** services in detail?"
+                )
+                return {
+                    "response": resp_md,
+                    "source": "Services Registry",
+                    "verified": True,
+                    "confidence": 1.0,
+                    "navigation": "/services/ai-powered-marketing",
+                    "suggestions": ["Explain AI-Powered Marketing", "Explain MarTech 360", "Show Services"],
+                    "metrics": {"resolved_entity": "NONE", "resolved_registry": "SERVICES"}
+                }
+
             import config
-            if getattr(config, "USE_NEW_ENTITY_RESOLVER", True):
+            from phase2_orchestrator import check_general_catalog_query
+            if getattr(config, "USE_NEW_ENTITY_RESOLVER", True) and not check_general_catalog_query(query):
                 import core.entity_resolver as core_resolver
                 res = core_resolver.resolve(query)
                 resolved_entity_id = res["entity_id"]
@@ -720,58 +758,44 @@ class DeterministicEngine:
                     "metrics": {"resolved_entity": "NONE", "resolved_registry": res_reg}
                 }
 
-            # Pass known entities to RAGService entity resolver instead of generic fallback
-            if q_lower in self.ks.reg.entity_lookup or q_lower in self.ks.reg.unified_vocabulary:
-                return None
-
-            # General Fallback Intercept (Fix Issue 8: Graceful Fallbacks & Suggestions)
-            close_matches = []
-            try:
-                from rapidfuzz import process, fuzz
-                all_names = [obj.name for obj in self.ks.reg.registry_by_id.values() if obj.id != "company_info"]
-                top_matches = process.extract(q_lower, all_names, scorer=fuzz.partial_ratio, limit=3)
-                for m in top_matches:
-                    if m[1] >= 50 and m[0] not in close_matches:
-                        close_matches.append(m[0])
-            except Exception:
-                pass
-
-            if close_matches:
-                did_you_mean_str = "\n".join([f"• **{m}**" for m in close_matches])
-                fallback_md = (
-                    f"I couldn't find an exact match for **{query.strip()}** in our knowledge base.\n\n"
-                    f"**Did you mean**:\n\n{did_you_mean_str}\n\n"
-                    f"Alternatively, you can explore our **Solutions**, **Products**, or **Services**."
-                )
-                sugs = [f"Explain {m}" for m in close_matches[:3]]
-                for fallback_sug in ["Show Solutions", "Show Products", "Show Services"]:
-                    if len(sugs) < 2 and fallback_sug not in sugs:
-                        sugs.append(fallback_sug)
-            else:
-                fallback_md = (
-                    f"I couldn't find a direct match for **{query.strip()}**.\n\n"
-                    f"Here are the core sections of our AI platform you can explore:\n\n"
-                    f"• **Solutions**: Enterprise OS (Education, Real Estate, Pharma, E-Commerce)\n"
-                    f"• **Products**: WhatsApp Marketing & Influencer Marketing Platforms\n"
-                    f"• **Services**: Enterprise AI, Agentic AI, and Data Engineering\n"
-                    f"• **Leadership**: Executive Leadership Team & Founders\n\n"
-                    f"What topic would you like to explore?"
-                )
-                sugs = ["Show Solutions", "Show Products", "Show Services", "Show Leadership Team"]
-
-            return {
-                "response": fallback_md,
-                "source": "Graceful Registry Fallback",
-                "verified": True,
-                "confidence": 0.70,
-                "navigation": None,
-                "suggestions": sugs,
-                "metrics": {"resolved_entity": "NONE", "resolved_registry": "GENERAL"}
-            }
+            # Pass to RAGService entity resolver & LLM provider instead of hardcoded fallback
+            return None
 
         except Exception as e:
-            logger.error(f"Error in DeterministicEngine: {e}", exc_info=True)
-            # Issue 8: Graceful Failure Handling (Never display raw runtime error!)
+            import traceback
+            tb = traceback.format_exc()
+            exc_type = type(e).__name__
+            tb_obj = e.__traceback__
+            filename = ""
+            line_number = 0
+            if tb_obj:
+                while tb_obj.tb_next:
+                    tb_obj = tb_obj.tb_next
+                filename = tb_obj.tb_frame.f_code.co_filename
+                line_number = tb_obj.tb_lineno
+
+            norm_q = "N/A"
+            try:
+                if hasattr(self, 'ks') and hasattr(self.ks, 'reg'):
+                    from query_normalizer import normalize_query_pipeline
+                    norm_q = normalize_query_pipeline(query, self.ks.reg.unified_vocabulary, self.ks.reg.abbreviations, entity_lookup=self.ks.reg.entity_lookup)
+                else:
+                    norm_q = query.lower().strip()
+            except Exception:
+                norm_q = query.lower().strip()
+
+            logger.error(
+                f"=== Railway Debug ===\n"
+                f"Exception Type: {exc_type}\n"
+                f"Filename: {filename}\n"
+                f"Line Number: {line_number}\n"
+                f"Original Query: {query}\n"
+                f"Normalized Query: {norm_q}\n"
+                f"Resolved Entity: NONE\n"
+                f"Resolved Registry: ERROR\n"
+                f"Full Traceback:\n{tb}"
+            )
+            logger.exception("=== Railway Debug Exception ===")
             return {
                 "response": (
                     "I experienced a temporary lookup issue while retrieving this section. "
@@ -782,7 +806,7 @@ class DeterministicEngine:
                 "confidence": 0.50,
                 "navigation": None,
                 "suggestions": ["Show Solutions", "Show Products", "Show Services"],
-                "metrics": {"resolved_entity": "NONE", "resolved_registry": "ERROR"}
+                "metrics": {"resolved_entity": "NONE", "resolved_registry": "ERROR", "error": str(e)}
             }
 
 def get_deterministic_engine() -> DeterministicEngine:
