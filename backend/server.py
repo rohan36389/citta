@@ -79,6 +79,7 @@ async def root_health_check():
 # Production & Local CORS Middleware Configuration
 cors_env = os.environ.get('CORS_ORIGINS', '').strip()
 default_origins = [
+    "https://citta-omega.vercel.app",
     "https://citta-ten-sable.vercel.app",
     "https://citta-jbi1az638-rohanchilukuri06-8472s-projects.vercel.app",
     "http://localhost:3000",
