@@ -30,10 +30,7 @@ def resolve_entity_dynamic(
     Resolves the canonical entity ID using the single canonical entity_lookup and strict precedence order.
     Supports USE_NEW_ENTITY_RESOLVER rollout feature flag wrapping new core.entity_resolver.
     """
-    try:
-        import config
-    except ImportError:
-        from backend import config
+    import config
     if getattr(config, "USE_NEW_ENTITY_RESOLVER", True):
         try:
             import core.entity_resolver as core_resolver

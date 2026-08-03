@@ -1,5 +1,5 @@
 from typing import List, Dict, Any, Optional
-from backend.presentation.models.response_object import ResponseObject
+from presentation.models.response_object import ResponseObject
 
 class ResponseValidator:
     """

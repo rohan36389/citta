@@ -31,14 +31,10 @@ import pypdf
 import docx2txt
 
 # Import RAG files safely
-try:
-    import llm_provider
-    import vector_store
-    import rag_service
-    from intent_router import classify_intent, normalize_query
-except ImportError:
-    from backend import llm_provider, vector_store, rag_service
-    from intent_router import classify_intent, normalize_query
+import llm_provider
+import vector_store
+import rag_service
+from intent_router import classify_intent, normalize_query
 import config
 
 # Load environment

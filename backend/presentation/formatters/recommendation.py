@@ -1,5 +1,5 @@
-from backend.presentation.models.response_object import ResponseObject
-from backend.presentation.renderers.section_renderer import SectionRenderer
+from presentation.models.response_object import ResponseObject
+from presentation.renderers.section_renderer import SectionRenderer
 
 class RecommendationFormatter:
     

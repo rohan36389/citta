@@ -229,11 +229,8 @@ def run_ecqf_suite(repeat_count: int = 1) -> Dict[str, Any]:
     
     category_summary = {}
     
-    try:
-        import llm_provider
-        import vector_store
-    except ImportError:
-        from backend import llm_provider, vector_store
+    import llm_provider
+    import vector_store
 
     provider = llm_provider.get_llm_provider("mock", {})
     vstore = vector_store.VectorStore()

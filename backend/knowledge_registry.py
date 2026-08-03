@@ -83,10 +83,7 @@ class KnowledgeRegistry:
         # Sort by priority descending
         registries.sort(key=lambda x: x.get("priority", 0), reverse=True)
 
-        try:
-            import knowledge_validator
-        except ImportError:
-            from backend import knowledge_validator
+        import knowledge_validator
         loaded_objects = []
 
         for reg_conf in registries:

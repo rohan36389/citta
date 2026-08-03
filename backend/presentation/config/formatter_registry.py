@@ -1,9 +1,9 @@
-from backend.presentation.formatters.overview import OverviewFormatter
-from backend.presentation.formatters.workflow import WorkflowFormatter
-from backend.presentation.formatters.comparison import ComparisonFormatter
-from backend.presentation.formatters.recommendation import RecommendationFormatter
-from backend.presentation.formatters.faq import FAQFormatter
-from backend.presentation.formatters.contact import ContactFormatter
+from presentation.formatters.overview import OverviewFormatter
+from presentation.formatters.workflow import WorkflowFormatter
+from presentation.formatters.comparison import ComparisonFormatter
+from presentation.formatters.recommendation import RecommendationFormatter
+from presentation.formatters.faq import FAQFormatter
+from presentation.formatters.contact import ContactFormatter
 
 # Optional: You can import placeholder formatters if they have a basic render() method,
 # otherwise route them to OverviewFormatter for now until they are implemented.

@@ -403,7 +403,7 @@ def render_relationships_section(obj: Any) -> str:
     return f"🔗 **Related Offerings for {title}**:\n\n{title} seamlessly connects with CittaAI Data Engineering and Enterprise AI OS middleware."
 
 def map_schema_to_response_object(obj: Any, section: str = "overview") -> "ResponseObject":
-    from backend.presentation.models.response_object import ResponseObject
+    from presentation.models.response_object import ResponseObject
     
     # Extract title, tagline, overview safely
     title = clean_val(getattr(obj, "title", None) or getattr(obj, "name", None) or "Entity")
@@ -455,6 +455,16 @@ def map_schema_to_response_object(obj: Any, section: str = "overview") -> "Respo
             "answer": clean_val(getattr(f, "answer", ""))
         })
         
+    # Map contact info
+    contact_info_dict = None
+    if obj and hasattr(obj, "type") and getattr(obj.type, "value", "") == "contact":
+        contact_info_dict = {
+            "phone": "+91 9392655040",
+            "email": "info@cittaai.com",
+            "address": clean_val(getattr(obj, "description", "")) or "HITEC City, Hyderabad, Telangana, India",
+            "business_hours": "Mon-Fri 9am-6pm"
+        }
+        
     return ResponseObject(
         type=section,
         domain=domain_type,
@@ -464,13 +474,14 @@ def map_schema_to_response_object(obj: Any, section: str = "overview") -> "Respo
         capabilities=cap_strs if cap_strs else None,
         workflows=wf_dicts if wf_dicts else None,
         faq=faq_dicts if faq_dicts else None,
+        contact_info=contact_info_dict,
         benefits=[clean_val(b) for b in getattr(obj, "benefits", [])] or None,
         actions=actions
     )
 
 def render_section(obj: Any, section: str) -> str:
     """Renders specific section for an object using the new Presentation Layer."""
-    from backend.presentation.formatters.dispatcher import ResponseFormatterDispatcher
+    from presentation.formatters.dispatcher import ResponseFormatterDispatcher
     
     sec = (section or "").lower().strip()
     

@@ -1,6 +1,6 @@
-from backend.presentation.models.response_object import ResponseObject
-from backend.presentation.validators.response_validator import ResponseValidator
-from backend.presentation.config.formatter_registry import FORMATTERS
+from presentation.models.response_object import ResponseObject
+from presentation.validators.response_validator import ResponseValidator
+from presentation.config.formatter_registry import FORMATTERS
 
 class ResponseFormatterDispatcher:
     

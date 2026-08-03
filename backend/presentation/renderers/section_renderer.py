@@ -1,5 +1,5 @@
 from typing import List, Optional
-from backend.presentation.config.ui_theme import UI_THEME
+from presentation.config.ui_theme import UI_THEME
 
 class SectionRenderer:
     """

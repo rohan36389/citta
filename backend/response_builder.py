@@ -830,8 +830,8 @@ def build_deterministic_response(
 
     # Handle DETAIL Query Type with the new Presentation Layer
     if query_type == "DETAIL" and matched_entity_id and entity:
-        from backend.presentation.models.response_object import ResponseObject
-        from backend.presentation.formatters.dispatcher import ResponseFormatterDispatcher
+        from presentation.models.response_object import ResponseObject
+        from presentation.formatters.dispatcher import ResponseFormatterDispatcher
         
         target_section = section.lower() if section else "overview"
         
