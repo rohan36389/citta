@@ -103,6 +103,21 @@ app.add_middleware(
     expose_headers=["*"],
 )
 
+from fastapi.responses import JSONResponse
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request, exc):
+    logger.exception(f"Unhandled Exception on {request.url.path}: {exc}")
+    origin = request.headers.get("origin", "*")
+    return JSONResponse(
+        status_code=500,
+        content={"detail": f"Internal Server Error: {str(exc)}"},
+        headers={
+            "Access-Control-Allow-Origin": origin if origin else "*",
+            "Access-Control-Allow-Credentials": "true",
+        }
+    )
+
 
 api_router = APIRouter(prefix="/api")
 
@@ -620,21 +635,25 @@ async def log_feedback_endpoint(data: FeedbackInput):
 @api_router.post("/chat")
 async def chat_endpoint(input_data: ChatMessageInput, background_tasks: BackgroundTasks):
     """Streaming chat completions using Server Sent Events (SSE) routed through RAGService & DeterministicEngine."""
-    session_id = input_data.session_id
-    message = input_data.message
-    provider_model = get_config("llm_model", config.MODEL_NAME)
-    rag_serv = get_rag_service()
-    
-    async def sse_generator():
-        try:
-            async for chunk in rag_serv.chat_stream(session_id=session_id, message=message, model=provider_model):
-                yield f"data: {json.dumps(chunk)}\n\n"
-                await asyncio.sleep(0.01)
-        except Exception as e:
-            logger.exception("Error in SSE chat stream")
-            yield f"data: {json.dumps({'text': f'Error occurred: {str(e)}', 'done': True})}\n\n"
-            
-    return StreamingResponse(sse_generator(), media_type="text/event-stream")
+    try:
+        session_id = input_data.session_id
+        message = input_data.message
+        provider_model = get_config("llm_model", config.MODEL_NAME)
+        rag_serv = get_rag_service()
+        
+        async def sse_generator():
+            try:
+                async for chunk in rag_serv.chat_stream(session_id=session_id, message=message, model=provider_model):
+                    yield f"data: {json.dumps(chunk)}\n\n"
+                    await asyncio.sleep(0.01)
+            except Exception as e:
+                logger.exception("Error in SSE chat stream")
+                yield f"data: {json.dumps({'text': f'Error occurred: {str(e)}', 'done': True})}\n\n"
+                
+        return StreamingResponse(sse_generator(), media_type="text/event-stream")
+    except Exception as e:
+        logger.exception("Error in chat endpoint initialization")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @api_router.post("/chat/clear")
 async def clear_chat_endpoint(data: Dict[str, str]):
