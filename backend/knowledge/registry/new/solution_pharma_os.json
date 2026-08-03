@@ -17,7 +17,11 @@
       "pharmaa",
       "prescription",
       "prescription refill",
-      "refill"
+      "refill",
+      "hospital",
+      "medical",
+      "clinical",
+      "healthcare"
     ],
     "secondary_keywords": [
       "ai-powered quality, compliance & release intelligence"
@@ -31,7 +35,22 @@
       "pharma & healthcare os",
       "pharma and healthcare os",
       "pharma & healthcare",
-      "pharma and healthcare"
+      "pharma and healthcare",
+      "pharma services",
+      "medical services",
+      "hospital services",
+      "pharmaceutical services",
+      "pharma",
+      "pharmaceutical",
+      "pharmaceuticals",
+      "hospital",
+      "hospitals",
+      "medical",
+      "clinic",
+      "clinics",
+      "healthcare",
+      "healthtech",
+      "health tech"
     ],
     "synonyms": []
   },
@@ -422,7 +441,48 @@
       "relationships": []
     }
   ],
-  "workflows": [],
+  "workflows": [
+    {
+      "step": 1,
+      "title": "Clinical Research & Protocol Design",
+      "description": "Aggregate clinical trial data, structure research protocols, and align trial parameters with regulatory guidelines."
+    },
+    {
+      "step": 2,
+      "title": "Regulatory Document Extraction & Processing",
+      "description": "Digitize and classify complex unstructured regulatory filings, drug dossiers, and safety protocols using Document AI."
+    },
+    {
+      "step": 3,
+      "title": "Batch Production & Quality Assurance",
+      "description": "Monitor manufacturing batch records, track quality metrics, and verify adherence to Good Manufacturing Practice (GMP)."
+    },
+    {
+      "step": 4,
+      "title": "Compliance & Safety Audit Trails",
+      "description": "Maintain automated, immutable audit logs for regulatory inspections, FDA/EMA compliance, and internal governance."
+    },
+    {
+      "step": 5,
+      "title": "Pharmacovigilance & Adverse Event Monitoring",
+      "description": "Capture, analyze, and report adverse reaction signals across post-market surveillance channels in real time."
+    },
+    {
+      "step": 6,
+      "title": "Supply Chain & Serialization Tracking",
+      "description": "Track drug inventory from manufacturing plants to distributors with end-to-end serialization and batch traceability."
+    },
+    {
+      "step": 7,
+      "title": "Medical Representative & Sales Enablement",
+      "description": "Equip field force teams with compliant medical messaging, detailing content, and HCP engagement tracking."
+    },
+    {
+      "step": 8,
+      "title": "Executive Analytics & Regulatory Reporting",
+      "description": "Generate real-time compliance dashboards, operational efficiency reports, and market intelligence insights."
+    }
+  ],
   "benefits": [],
   "use_cases": [
     "Faster Documentation",

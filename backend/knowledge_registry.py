@@ -461,6 +461,22 @@ class KnowledgeRegistry:
         self.aliases[self._clean_key("akhil")] = "akhil_reddy"
         self.aliases[self._clean_key("balaji")] = "saladi_chandra_balaji"
 
+        # Domain concept mappings for solutions & products
+        domain_mappings = {
+            "pharma_os": ["pharma", "pharmaceutical", "pharmaceuticals", "hospital", "hospitals", "medical", "clinic", "clinics", "healthcare", "healthtech", "health tech"],
+            "education_os": ["education", "college", "colleges", "institute", "institutes", "institution", "institutions", "university", "universities", "school", "schools", "academic", "academics", "edtech"],
+            "real_estate_os": ["real estate", "realestate", "construction", "property", "properties", "realty", "builder", "builders", "broker", "brokers", "housing"],
+            "ecommerce_os": ["ecommerce", "e-commerce", "retail", "retailers", "online store", "shopping", "merchant", "merchants"],
+            "smart_cities_os": ["smart cities", "smart city", "urban", "municipality", "municipalities", "city management", "city planning"],
+            "enterprise_ai_os": ["enterprise ai", "ai os", "ai platform", "ai middleware", "ai infrastructure", "agentic ai"]
+        }
+        for ent_id, keywords in domain_mappings.items():
+            for kw in keywords:
+                k_clean = self._clean_key(kw)
+                self.aliases[k_clean] = ent_id
+                self.alias_lookup[k_clean] = ent_id
+                self.keyword_lookup[k_clean] = ent_id
+
         # Apply same injects to alias_lookup
         for k, v in self.aliases.items():
             self.alias_lookup[k] = v

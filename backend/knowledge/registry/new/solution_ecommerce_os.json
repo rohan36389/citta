@@ -15,7 +15,9 @@
       "e-commerce os",
       "checkout",
       "checkout optimization",
-      "shopping cart"
+      "shopping cart",
+      "retail",
+      "online store"
     ],
     "secondary_keywords": [
       "one-stop platform for commerce, growth, and operations"
@@ -25,7 +27,17 @@
       "ecommerce os",
       "ecommerce-os",
       "retail os",
-      "retail"
+      "retail",
+      "ecommerce",
+      "e-commerce",
+      "online store",
+      "shopping",
+      "merchant",
+      "merchants",
+      "retailers",
+      "e-commerce services",
+      "ecommerce services",
+      "retail services"
     ],
     "synonyms": []
   },
@@ -484,6 +496,48 @@
       ],
       "benefits": [],
       "relationships": []
+    }
+  ],
+  "workflows": [
+    {
+      "step": 1,
+      "title": "Product & Inventory Setup",
+      "description": "Create and manage a centralized product catalog with dynamic pricing, real-time inventory tracking, and multi-location stock management."
+    },
+    {
+      "step": 2,
+      "title": "Customer Order Processing",
+      "description": "Process customer orders automatically from checkout through delivery while managing returns, refunds, and shipment tracking."
+    },
+    {
+      "step": 3,
+      "title": "Customer Relationship Management",
+      "description": "Segment customers, manage loyalty programs, execute retention workflows, and analyze customer lifetime value."
+    },
+    {
+      "step": 4,
+      "title": "Marketing & Growth Campaigns",
+      "description": "Plan, execute, and monitor marketing campaigns using performance dashboards, creative asset management, and attribution analytics."
+    },
+    {
+      "step": 5,
+      "title": "AI Customer Support",
+      "description": "Provide 24/7 customer assistance using AI chatbots for order queries, product recommendations, and seamless escalation to human agents."
+    },
+    {
+      "step": 6,
+      "title": "Voice AI Operations",
+      "description": "Handle inbound customer calls, outbound follow-ups, order tracking, and customer feedback through intelligent voice agents."
+    },
+    {
+      "step": 7,
+      "title": "Supply Chain & Vendor Management",
+      "description": "Manage vendors, automate procurement workflows, optimize supply chain visibility, and monitor vendor performance."
+    },
+    {
+      "step": 8,
+      "title": "Business Analytics & Forecasting",
+      "description": "Analyze sales trends, forecast demand, optimize inventory, and monitor profitability through real-time business intelligence."
     }
   ],
   "benefits": [

@@ -34,10 +34,14 @@ GENERIC_ENTITIES = {"company_info", "faq_general", "contact", "location"}
 def check_general_catalog_query(query: str) -> bool:
     q_lower = query.lower().strip()
     
-    # Exclude queries referencing specific enterprise offerings
+    # Exclude queries referencing specific enterprise offerings or domain topics
     specific_keywords = [
-        "real estate", "realestate", "pharma", "education", "ecommerce", "e-commerce",
-        "whatsapp", "influencer", "smart cities", "enterprise ai", "martech", "social media",
+        "real estate", "realestate", "construction", "property", "realty", "builder", "broker", "housing",
+        "pharma", "pharmaceutical", "hospital", "medical", "clinic", "healthcare", "healthtech",
+        "education", "college", "institute", "university", "school", "academic", "edtech",
+        "ecommerce", "e-commerce", "retail", "online store", "shopping", "merchant",
+        "smart cities", "urban", "municipality", "city management",
+        "whatsapp", "influencer", "enterprise ai", "martech", "social media",
         "leadership", "team", "founder", "contact", "address", "pricing", "cost"
     ]
     if any(k in q_lower for k in specific_keywords):

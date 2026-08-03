@@ -17,7 +17,10 @@
       "college lms",
       "education os",
       "education platform",
-      "education"
+      "education",
+      "college",
+      "institute",
+      "university"
     ],
     "secondary_keywords": [
       "grading workflows",
@@ -34,7 +37,23 @@
       "education platform",
       "learning os",
       "lms",
-      "college os"
+      "college os",
+      "college services",
+      "institute services",
+      "university services",
+      "college",
+      "colleges",
+      "institute",
+      "institutes",
+      "institution",
+      "institutions",
+      "university",
+      "universities",
+      "school",
+      "schools",
+      "academic",
+      "academics",
+      "edtech"
     ],
     "synonyms": []
   },
@@ -427,7 +446,48 @@
       "relationships": []
     }
   ],
-  "workflows": [],
+  "workflows": [
+    {
+      "step": 1,
+      "title": "Student Onboarding & Cohort Assignment",
+      "description": "Enroll students, set up academic profiles, and automatically assign them to campus cohorts and courses."
+    },
+    {
+      "step": 2,
+      "title": "Curriculum & LMS Content Delivery",
+      "description": "Distribute interactive course materials, video lectures, assignments, and reading resources across departments."
+    },
+    {
+      "step": 3,
+      "title": "AI-Powered Adaptive Learning & Practice",
+      "description": "Provide students with personalized learning pathways, coding contests, and automated instant feedback."
+    },
+    {
+      "step": 4,
+      "title": "Automated Assessment & Grading",
+      "description": "Evaluate code submissions, multiple-choice tests, and written assignments with AI-driven grading criteria."
+    },
+    {
+      "step": 5,
+      "title": "Student Progress & Analytics Tracking",
+      "description": "Monitor real-time academic performance, attendance, assignment completion rates, and learning gaps."
+    },
+    {
+      "step": 6,
+      "title": "Faculty & Mentor Collaboration",
+      "description": "Enable faculty to schedule office hours, review student submissions, provide targeted feedback, and manage cohorts."
+    },
+    {
+      "step": 7,
+      "title": "Campus Administration & Hierarchy Management",
+      "description": "Manage department structures, multi-campus hierarchies, role-based access, and administrative workflows."
+    },
+    {
+      "step": 8,
+      "title": "Placement & Skill Certification",
+      "description": "Track career readiness, verify technical certifications, and connect graduating students with industry hiring partners."
+    }
+  ],
   "benefits": [],
   "use_cases": [
     "Unified Platform",

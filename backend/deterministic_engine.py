@@ -42,6 +42,7 @@ class DeterministicEngine:
         try:
             tenant = self.t_reg.get_tenant(tenant_id)
             q_lower = query.lower().strip()
+            from phase2_orchestrator import check_general_catalog_query
 
             # Allow follow-up queries with context pronouns or single section words to pass through to Active Context Memory
             from entity_resolver import contains_pronouns
@@ -93,7 +94,7 @@ class DeterministicEngine:
                 "what are the services provided", "services provided", "what are the srevices provided",
                 "srevices", "srevices provided", "srevice", "serivces"
             }
-            if q_lower in svc_triggers or (("service" in q_lower or "services" in q_lower or "srevice" in q_lower or "srevices" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer", "tell me about"]) and not any(e in q_lower for e in ["smart", "data engineering", "pharma", "real estate", "ecommerce", "whatsapp", "influencer", "strategy", "agentic", "martech", "belong", "parent", "is ", "category", "offering"])):
+            if q_lower in svc_triggers or (check_general_catalog_query(query) and ("service" in q_lower or "services" in q_lower or "srevice" in q_lower or "srevices" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer", "tell me about"])):
                 services_resp = (
                     "### CittaAI Enterprise Services\n\n"
                     "#### 1. Data Engineering\n"
@@ -139,7 +140,7 @@ class DeterministicEngine:
                 }
 
             prod_triggers = {"products", "what are the products", "what products do you offer", "what products", "list products", "show products", "our products", "products offered", "what products does cittaai provide", "what products are available"}
-            if q_lower in prod_triggers or (("product" in q_lower or "products" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer", "tell me about"]) and not any(e in q_lower for e in ["whatsapp", "influencer", "smart", "pharma", "real estate", "ecommerce", "education"])):
+            if q_lower in prod_triggers or (check_general_catalog_query(query) and ("product" in q_lower or "products" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer", "tell me about"])):
                 products = self.ks.list_entities(tenant_id, "PRODUCTS")
                 if products:
                     items_str = "\n".join([f"• **{p.get('name') or p.get('title')}**: {p.get('overview') or p.get('description') or p.get('summary') or 'Flagship Product'}" for p in products])
@@ -165,7 +166,7 @@ class DeterministicEngine:
                 }
 
             sol_triggers = {"solutions", "what are the solutions", "what solutions do you offer", "what solutions", "list solutions", "show solutions", "our solutions", "solutions offered", "industry os", "operating systems", "what solutions does cittaai provide"}
-            if q_lower in sol_triggers or (("solution" in q_lower or "solutions" in q_lower or "operating system" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer", "tell me about"]) and not any(e in q_lower for e in ["smart", "pharma", "real estate", "ecommerce", "education", "enterprise ai os", "rag", "fine-tuning", "governance"])):
+            if q_lower in sol_triggers or (check_general_catalog_query(query) and ("solution" in q_lower or "solutions" in q_lower or "operating system" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer", "tell me about"])):
                 solutions = self.ks.list_entities(tenant_id, "SOLUTIONS")
                 if solutions:
                     items_str = "\n".join([f"• **{s.get('name') or s.get('title')}**: {s.get('overview') or s.get('description') or s.get('summary') or 'Industry OS'}" for s in solutions])
@@ -196,7 +197,7 @@ class DeterministicEngine:
 
             # Global Capability Listing Intercept ("list capabilities", "what capabilities do you offer")
             cap_list_triggers = {"capabilities", "list capabilities", "list all capabilities", "what capabilities do you offer", "what capabilities are available", "show capabilities", "our capabilities", "capabilities offered"}
-            if q_lower in cap_list_triggers or (("capability" in q_lower or "capabilities" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer"]) and not any(e in q_lower for e in ["smart", "pharma", "real estate", "ecommerce", "education", "data engineering", "enterprise & agentic ai", "agentic", "strategy"])):
+            if q_lower in cap_list_triggers or (check_general_catalog_query(query) and ("capability" in q_lower or "capabilities" in q_lower) and any(w in q_lower for w in ["what", "list", "show", "our", "all", "available", "provide", "offer"])):
                 cap_summary = (
                     "⚡ **CittaAI Enterprise Capabilities Catalog**\n\n"
                     "Capabilities belong to our four professional Services:\n\n"
@@ -355,7 +356,7 @@ class DeterministicEngine:
                 TopicType.LEADERSHIP in topics or 
                 TopicType.PERSON_LOOKUP in topics or 
                 role or 
-                any(re.search(r"\b" + k + r"\b", q_lower) for k in ["team", "leadership", "management", "executive", "executives", "founder", "founders", "ceo", "cto", "coo", "cmo", "vinay", "akhil", "saladi", "balaji", "ganesh", "harish", "aravind", "parvatha"])):
+                any(re.search(r"\b" + k + r"\b", q_lower) for k in ["leadership team", "management team", "executive management", "leadership", "executive", "executives", "founder", "founders", "ceo", "cto", "coo", "cmo", "vinay", "akhil", "saladi", "balaji", "ganesh", "harish", "aravind", "parvatha"])):
                 
                 target_term = role or understanding.target or query.strip()
                 lead_res = self.lead_resolver.resolve_leadership(target_term, tenant_id=tenant_id)

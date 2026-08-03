@@ -14,7 +14,10 @@
     "primary_keywords": [
       "real estate os",
       "realestate os",
-      "realestate"
+      "realestate",
+      "construction",
+      "property",
+      "realty"
     ],
     "secondary_keywords": [
       "one-stop platform for real estate operations"
@@ -24,7 +27,21 @@
       "real estate os",
       "realestate os",
       "realestate",
-      "real_estate_os"
+      "real_estate_os",
+      "property os",
+      "broker os",
+      "real estate",
+      "real estate services",
+      "construction",
+      "construction services",
+      "property",
+      "properties",
+      "realty",
+      "builder",
+      "builders",
+      "broker",
+      "brokers",
+      "housing"
     ],
     "synonyms": []
   },
@@ -487,7 +504,48 @@
       "relationships": []
     }
   ],
-  "workflows": [],
+  "workflows": [
+    {
+      "step": 1,
+      "title": "Property Listings Management",
+      "description": "Centralize property listings from builders and owners while maintaining real-time inventory availability."
+    },
+    {
+      "step": 2,
+      "title": "Lead Capture & Qualification",
+      "description": "Capture leads from multiple channels, qualify them automatically, and initiate omnichannel follow-up campaigns."
+    },
+    {
+      "step": 3,
+      "title": "Customer Journey Management",
+      "description": "Track every customer interaction from site visits and negotiations through booking and documentation."
+    },
+    {
+      "step": 4,
+      "title": "Broker & Partner Collaboration",
+      "description": "Manage brokers and channel partners, monitor commissions, and collaborate throughout the sales cycle."
+    },
+    {
+      "step": 5,
+      "title": "Document Verification",
+      "description": "Store documents securely, perform verification workflows, enable digital signatures, and maintain compliance."
+    },
+    {
+      "step": 6,
+      "title": "Automated Customer Engagement",
+      "description": "Use AI chatbots and voice agents to answer enquiries, schedule appointments, and send proactive notifications."
+    },
+    {
+      "step": 7,
+      "title": "Finance & Payment Management",
+      "description": "Track payment milestones, invoices, receipts, outstanding dues, and financial progress."
+    },
+    {
+      "step": 8,
+      "title": "Analytics & Business Intelligence",
+      "description": "Analyze traffic sources, lead conversions, sales performance, ROI, and portfolio-wide business insights."
+    }
+  ],
   "benefits": [],
   "use_cases": [
     "Listings Mgmt",
