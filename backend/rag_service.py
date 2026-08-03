@@ -7,58 +7,32 @@ from typing import AsyncGenerator, Dict, Any, List, Tuple, Optional
 import httpx
 import config
 
-try:
-    from llm_provider import LLMProvider
-    from vector_store import VectorStore
-    from intent_router import classify_intent, normalize_query, detect_tool_call
-    from static_data import get_static_response, execute_tool
-    from response_decision import make_response_decision
-    from knowledge_registry import get_registry
-    from query_planner import classify_query, init_anchor_embeddings, rewrite_query
-    from response_validator import validate_response
-    from response_builder import build_deterministic_response, load_registry_file, load_templates, validate_response_source, ResponsePersonalizer, STATIC_SUGGESTIONS
-    from response_transformer import ResponseTransformer
-    from query_normalizer import normalize_query_pipeline
-    from registry_resolver import resolve_registry
-    from entity_resolver import resolve_entity_dynamic, contains_pronouns
-    from section_resolver import resolve_section_dynamic
-    from knowledge_router import route_query
-    from greeting_detector import detect_greeting
-    from context_builder import build_structured_context
-    from explainability_logger import create_explainability_log, log_explainability
-    from intent_classifier import get_intent_classifier
-    from semantic_query_expander import get_semantic_query_expander
-    from entity_extractor import get_entity_extractor
-    from conversation_context import get_context_manager
-    from retrieval_reranker import get_retrieval_reranker
-    from confidence_router import get_confidence_router
-    from phase2_orchestrator import get_phase2_orchestrator
-    from unknown_entity_handler import get_unknown_entity_handler
-except ImportError:
-    from llm_provider import LLMProvider
-    from vector_store import VectorStore
-    from intent_router import classify_intent, normalize_query, detect_tool_call
-    from static_data import get_static_response, execute_tool
-    from response_decision import make_response_decision
-    from knowledge_registry import get_registry
-    from query_planner import classify_query, init_anchor_embeddings, rewrite_query
-    from response_validator import validate_response
-    from response_builder import build_deterministic_response, load_registry_file, load_templates, validate_response_source, ResponsePersonalizer, STATIC_SUGGESTIONS
-    from response_transformer import ResponseTransformer
-    from query_normalizer import normalize_query_pipeline
-    from registry_resolver import resolve_registry
-    from entity_resolver import resolve_entity_dynamic, contains_pronouns
-    from section_resolver import resolve_section_dynamic
-    from knowledge_router import route_query
-    from greeting_detector import detect_greeting
-    from intent_classifier import get_intent_classifier
-    from semantic_query_expander import get_semantic_query_expander
-    from entity_extractor import get_entity_extractor
-    from conversation_context import get_context_manager
-    from retrieval_reranker import get_retrieval_reranker
-    from confidence_router import get_confidence_router
-    from phase2_orchestrator import get_phase2_orchestrator
-    from unknown_entity_handler import get_unknown_entity_handler
+from llm_provider import LLMProvider
+from vector_store import VectorStore
+from intent_router import classify_intent, normalize_query, detect_tool_call
+from static_data import get_static_response, execute_tool
+from response_decision import make_response_decision
+from knowledge_registry import get_registry
+from query_planner import classify_query, init_anchor_embeddings, rewrite_query
+from response_validator import validate_response
+from response_builder import build_deterministic_response, load_registry_file, load_templates, validate_response_source, ResponsePersonalizer, STATIC_SUGGESTIONS
+from response_transformer import ResponseTransformer
+from query_normalizer import normalize_query_pipeline
+from registry_resolver import resolve_registry
+from entity_resolver import resolve_entity_dynamic, contains_pronouns
+from section_resolver import resolve_section_dynamic
+from knowledge_router import route_query
+from greeting_detector import detect_greeting
+from context_builder import build_structured_context
+from explainability_logger import create_explainability_log, log_explainability
+from intent_classifier import get_intent_classifier
+from semantic_query_expander import get_semantic_query_expander
+from entity_extractor import get_entity_extractor
+from conversation_context import get_context_manager
+from retrieval_reranker import get_retrieval_reranker
+from confidence_router import get_confidence_router
+from phase2_orchestrator import get_phase2_orchestrator
+from unknown_entity_handler import get_unknown_entity_handler
 
 logger = logging.getLogger(__name__)
 
